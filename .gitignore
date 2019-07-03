@@ -7,6 +7,14 @@ npm-debug.*
 *.key
 *.mobileprovision
 
+### VisualStudioCode ###
+.vscode/*
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+
 # Created by https://www.gitignore.io/api/reactnative,webstorm+all
 # Edit at https://www.gitignore.io/?templates=reactnative,webstorm+all
 

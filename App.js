@@ -4,14 +4,28 @@ import { createBottomTabNavigator, createAppContainer, createSwitchNavigator } f
 import Home from './screens/home';
 import Settings from './screens/settings';
 import LoginScreen from './screens/login/login';
+import { Ionicons } from '@expo/vector-icons'; 
 
 const TabNavigator =  createBottomTabNavigator({
-  Home:Home,
-  Settings:Settings
+  Home: {
+    screen: Home,
+    navigationOptions: {
+        tabBarLabel:"Home",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons name="ios-home" size={30}  />
+        )
+      }
+    },
+  Settings:{
+    screen: Settings,
+    navigationOptions: {
+        tabBarLabel:"Settings",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons name="ios-settings" size={30}  />
+        )
+      }
+    },
 });
-
-// const tabbar = createAppContainer(TabNavigator);
-// export default tabbar;
 
 
 const RootStack = createSwitchNavigator(

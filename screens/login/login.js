@@ -10,7 +10,9 @@ export default class LoginScreen extends Component {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.loginScreenContainer}>
                   <View style={styles.loginFormView}>
-                    <Text style={styles.logoText}>Responder</Text>
+                  <Text style={styles.logoText}>Intergraph {"\n"}
+                  Mobile Responder</Text>
+                  <View style={styles.loginFormInputs}>
                     <TextInput 
                     placeholder="QID" 
                     placeholderColor="#c4c3cb" 
@@ -20,16 +22,21 @@ export default class LoginScreen extends Component {
                     placeholderColor="#c4c3cb" 
                     style={styles.loginFormTextInput} />
                     <TextInput 
-                    placeholder="Not a Password" 
+                    placeholder="Password" 
                     placeholderColor="#c4c3cb" 
                     style={styles.loginFormTextInput} 
                     secureTextEntry={true}/>
+                    </View>
                     <Button
                     buttonStyle={styles.loginButton}
                     onPress={() => this.onLoginPress()}
                     title="Login"
                     />
                     <ToggleComponent toggleLabel='Remember Me'/>
+                    <Text style={styles.changePassword}
+                    onPress={() => this.props.navigation.navigate('Password')}>
+                      Change Password
+                      </Text>
                  </View>
               </View>
             </TouchableWithoutFeedback>

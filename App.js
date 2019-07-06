@@ -5,6 +5,7 @@ import Home from './screens/home';
 import Settings from './screens/settings';
 import LoginScreen from './screens/login/login';
 import { Ionicons } from '@expo/vector-icons'; 
+import ChangePasswordScreen from './screens/login/changePassword';
 
 const TabNavigator =  createBottomTabNavigator({
   Home: {
@@ -32,6 +33,7 @@ const RootStack = createSwitchNavigator(
   {
     Login: LoginScreen,
     Home: TabNavigator,
+    Password: ChangePasswordScreen
   },
   {
     initialRouteName: 'Login',

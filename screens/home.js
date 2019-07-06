@@ -13,7 +13,7 @@ export default class Home extends Component {
                     centerComponent={{ text: 'HOMES', style: { fontSize:24 } }}
                     backgroundColor='none'
                 />
-                <ConsumerComponent/>
+                <ConsumerComponent paramvalues={['UNIT', 'JOBS']}/>
                 <ScrollView>
                     <Card>
                         <CardTitle

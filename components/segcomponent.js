@@ -2,7 +2,7 @@ import SegmentedControlTab from 'react-native-segmented-control-tab'
 import React, { Component } from "react";
 import { StyleSheet, View } from 'react-native';
 
-export default class ConsumerComponent extends Component {
+export default class ConsumerComponent<props, state> extends Component {
  
     constructor(){
       super()
@@ -22,7 +22,7 @@ export default class ConsumerComponent extends Component {
         return (
             <View style={styles.container}>
                 <SegmentedControlTab 
-                    values={['UNIT', 'JOB']}
+                    values={this.props.paramvalues}
                     selectedIndex={this.state.selectedIndex}
                     onTabPress={this.handleIndexChange}
                     />

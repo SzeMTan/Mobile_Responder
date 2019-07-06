@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
 import Home from './screens/home';
 import Settings from './screens/settings';
-import LoginScreen from './screens/login';
+import LoginScreen from './screens/login/login';
 
 const TabNavigator =  createBottomTabNavigator({
   Home:Home,

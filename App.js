@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createBottomTabNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
+import Home from './screens/home';
+import Settings from './screens/settings';
+import LoginScreen from './screens/login/login';
+
+const TabNavigator =  createBottomTabNavigator({
+  Home:Home,
+  Settings:Settings
+});
+
+// const tabbar = createAppContainer(TabNavigator);
+// export default tabbar;
+
+
+const RootStack = createSwitchNavigator(
+  {
+    Login: LoginScreen,
+    Home: TabNavigator,
+  },
+  {
+    initialRouteName: 'Login',
+  }
+);
+
+const AppContainer = createAppContainer(RootStack);
+
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Sze Meeng Tan Likes food</Text>
-      </View>
+        <AppContainer />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View, Button } from 'react-native';
 import { Header, Text, ThemeProvider } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
 import ConsumerComponent from '../components/segcomponent';
@@ -18,6 +18,11 @@ export default class Home extends Component {
                     <CardComponent title='Unit STATUS CODE: '/>
                     <CardComponent title='Unit: '/>
                 </ScrollView>
+                <Button
+                    // buttonStyle={styles.loginButton}
+                    onPress={() => this.props.navigation.navigate('Login')}
+                    title="Logout"
+                    />
             </View>
         );
     }

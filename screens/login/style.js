@@ -17,7 +17,8 @@ export default StyleSheet.create({
         textAlign: 'center',
       },
       loginFormView: {
-        flex: 1
+        flex: 1,
+        paddingHorizontal:30
       },
       loginFormTextInput: {
         height: 43,
@@ -26,9 +27,9 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderColor: '#eaeaea',
         backgroundColor: '#fafafa',
-        paddingLeft: 15,
-        marginLeft: 20,
-        marginRight: 20,
+        paddingLeft: 10,
+        marginLeft: 15,
+        marginRight: 15,
         marginTop: 5,
         marginBottom: 5,
       
@@ -37,6 +38,6 @@ export default StyleSheet.create({
         backgroundColor: '#3897f1',
         borderRadius: 5,
         height: 45,
-        paddingHorizontal: 20
-      }
+        marginTop: 10,
+      },
 });

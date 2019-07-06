@@ -4,7 +4,7 @@ import { Header, Text, ThemeProvider } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
 import ConsumerComponent from '../components/segcomponent';
 import {Card, CardImage, CardTitle, CardContent, CardButton, CardAction} from 'react-native-cards';
-
+import CardComponent from '../components/cardcomponent'
 export default class Home extends Component {
     render() {
         return (
@@ -13,24 +13,10 @@ export default class Home extends Component {
                     centerComponent={{ text: 'HOMES', style: { fontSize:24 } }}
                     backgroundColor='none'
                 />
-                <ConsumerComponent paramvalues={['UNIT', 'JOBS']}/>
+                <ConsumerComponent paramvalues={['UNIT', 'JOB']}/>
                 <ScrollView>
-                    <Card>
-                        <CardTitle
-                        title="Unit Status Code: "
-                        />                        
-                    </Card>
-                    <Card>
-                        <CardTitle
-                        title="Unit: "
-                        />
-                        <CardContent text="Name: " />
-                        <CardContent text="QIDs: " />
-                        <CardContent text="ph. no: " />
-                        <CardContent text="Shift start: " />
-                        <CardContent text="Shift end: " />
-                        <CardContent text="radio no: " />
-                    </Card>
+                    <CardComponent title='Unit STATUS CODE: '/>
+                    <CardComponent title='Unit: '/>
                 </ScrollView>
             </View>
         );

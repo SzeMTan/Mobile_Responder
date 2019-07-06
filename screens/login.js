@@ -23,7 +23,7 @@ export default class LoginScreen extends Component {
                     secureTextEntry={true}/>
                     <Button
                     buttonStyle={styles.loginButton}
-                    // onPress={() => this.onLoginPress()}
+                    onPress={() => this.onLoginPress()}
                     title="Login"
                     />
                 </View>
@@ -31,6 +31,10 @@ export default class LoginScreen extends Component {
       </KeyboardAvoidingView>
         );
     }
+
+    onLoginPress() {
+        this.props.navigation.navigate('Home');
+      }
 }
 
 const styles = StyleSheet.create({

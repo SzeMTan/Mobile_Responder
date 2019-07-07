@@ -2,8 +2,12 @@ import React, { Component } from "react";
 import {Keyboard, Text, View, TextInput, TouchableWithoutFeedback, KeyboardAvoidingView, Button, StyleSheet} from 'react-native';
 import styles from './style'
 import ToggleComponent from "../../components/toggleComponent";
+import CustomTextInputComponent from "../../components/customTextInputComponent";
+
+
 
 export default class LoginScreen extends Component {
+
     render() {
         return (
         <KeyboardAvoidingView style={styles.containerView} behavior="padding">
@@ -13,19 +17,17 @@ export default class LoginScreen extends Component {
                   <Text style={styles.logoText}>Intergraph {"\n"}
                   Mobile Responder</Text>
                   <View style={styles.loginFormInputs}>
-                    <TextInput 
+                    {/* <TextInput 
                     placeholder="QID" 
                     placeholderColor="#c4c3cb" 
-                    style={styles.loginFormTextInput} />
-                    <TextInput 
-                    placeholder="Callsign" 
-                    placeholderColor="#c4c3cb" 
-                    style={styles.loginFormTextInput} />
-                    <TextInput 
-                    placeholder="Password" 
-                    placeholderColor="#c4c3cb" 
-                    style={styles.loginFormTextInput} 
-                    secureTextEntry={true}/>
+                    style={styles.loginFormTextInput} /> */}
+                    <CustomTextInputComponent
+                    placeholderText="QID"/>
+                    <CustomTextInputComponent
+                    placeholderText="Callsign"/>
+                    <CustomTextInputComponent
+                    placeholderText="Password" 
+                    secureEntry={true}/>
                     </View>
                     <Button
                     buttonStyle={styles.loginButton}

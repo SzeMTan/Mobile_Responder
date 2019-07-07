@@ -15,8 +15,8 @@ export default class Home extends Component {
                 />
                 <ConsumerComponent paramvalues={['UNIT', 'JOB']}/>
                 <ScrollView>
-                    <CardComponent title='Unit STATUS CODE: '/>
-                    <CardComponent title='Unit: '/>
+                    <CardComponent title='Unit Status code: '/>
+                    <CardComponent title='Unit: ' titlecontent={['Name: ','QID: ']}/>
                 </ScrollView>
             </View>
         );

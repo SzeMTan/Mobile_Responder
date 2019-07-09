@@ -4,7 +4,8 @@ import { Header, Button} from 'react-native-elements';
 import SettingsList from 'react-native-settings-list';
 import { Ionicons } from '@expo/vector-icons'; 
 import { createBottomTabNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
-import ToggleComponent from '../components/toggleComponent'
+import ToggleComponent from '../components/toggleComponent';
+import SliderComponent from '../components/SliderComponent';
 
 export default class GeneralScreen extends Component {
     render() {
@@ -16,7 +17,7 @@ export default class GeneralScreen extends Component {
                 />
                 <ToggleComponent toggleLabel='Enable Dark Theme'/>
                 <ToggleComponent toggleLabel='Enable Text-to-Speech'/>
-                <>
+                <SliderComponent/>
             </View>
         );
     }

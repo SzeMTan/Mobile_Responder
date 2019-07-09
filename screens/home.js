@@ -16,7 +16,8 @@ export default class Home extends Component {
                 <ConsumerComponent paramvalues={['UNIT', 'JOB']}/>
                 <ScrollView>
                     <CardComponent title='Unit Status code: '/>
-                    <CardComponent title='Unit: ' titlecontent={['Name: ','QID: ']}/>
+                    <CardComponent title='Unit: ' 
+                        titlecontent={['Name: ','QID: ', 'phone no: ', 'shift start: ', 'shift end:', 'radio no: ']}/>
                 </ScrollView>
                 <Button
                     // buttonStyle={styles.loginButton}

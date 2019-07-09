@@ -3,12 +3,12 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator, createAppContainer, createSwitchNavigator, BottomTabBar } from 'react-navigation';
 
 import Home from './screens/home';
-import Settings from './screens/settings';
+import Settings from './screens/settings/settings';
 import LoginScreen from './screens/login/login';
 
-import AboutScreen from './screens/about';
-import GeneralScreen from './screens/general';
-import SettingsScreen from './screens/settingsScreen';
+import AboutScreen from './screens/settings/about';
+import GeneralScreen from './screens/settings/general';
+import SettingsScreen from './screens/settings/settingsScreen';
 
 import { Ionicons } from '@expo/vector-icons'; 
 

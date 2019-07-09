@@ -10,7 +10,7 @@ export default class Home extends Component {
         return (
             <View>
                 <Header
-                    centerComponent={{ text: 'HOMES', style: { fontSize:24 } }}
+                    centerComponent={{ text: 'HOME', style: { fontSize:24 } }}
                     backgroundColor='none'
                 />
                 <ConsumerComponent paramvalues={['UNIT', 'JOB']}/>

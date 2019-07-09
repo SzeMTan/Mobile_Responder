@@ -17,7 +17,7 @@ export default class GeneralScreen extends Component {
                 />
                 <ToggleComponent toggleLabel='Enable Dark Theme'/>
                 <ToggleComponent toggleLabel='Enable Text-to-Speech'/>
-                <SliderComponent/>
+                <SliderComponent title={'Notifications(mins)'} min={0} max={10}/>
             </View>
         );
     }

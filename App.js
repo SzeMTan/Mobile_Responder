@@ -64,6 +64,7 @@ const TabNavigator =  createBottomTabNavigator({
       jumpToIndex(scene.index);
     },
   }),
+  resetOnBlur:true
 });
 
 

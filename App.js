@@ -13,6 +13,17 @@ import SettingsScreen from './screens/settings/settingsScreen';
 import Map from './screens/map'
 import { Ionicons } from '@expo/vector-icons'; 
 
+const SettingsNavigator = createSwitchNavigator(
+  {
+    Settings: SettingsScreen,
+    General: GeneralScreen,
+    About: AboutScreen,
+  },
+  {
+    initialRouteName: 'Settings',
+  }
+);
+
 
 const TabNavigator =  createBottomTabNavigator({
   Home: {
@@ -25,7 +36,7 @@ const TabNavigator =  createBottomTabNavigator({
       }
     },
   Settings:{
-    screen: Settings,
+    screen: SettingsNavigator,
     navigationOptions: {
         tabBarLabel:"Settings",
         tabBarIcon: ({ tintColor }) => (
@@ -54,39 +65,6 @@ const TabNavigator =  createBottomTabNavigator({
     },
   }),
 });
-
-// const StacksInTabs = TabNavigator(
-//   {
-//     MainTab: {
-//       screen: MainTab,
-//     },
-//     SettingsTab: {
-//       screen: SettingsTab,
-//     },
-//   },
-//   {
-//     tabBarComponent: ({ jumpToIndex, ...props }) => (
-//       <TabView.TabBarBottom
-//         {...props}
-//         jumpToIndex={index => {
-//           if (currentIndex === index && index === 0) {
-//             let resetTabAction = NavigationActions.navigate({
-//               routeName: "MainTab",
-//               action: NavigationActions.reset({
-//                 index: 0,
-//                 actions: [NavigationActions.navigate({ routeName: "Home" })],
-//               }),
-//             });
-//             props.navigation.dispatch(resetTabAction);
-//           } else {
-//             currentIndex = index;
-//             jumpToIndex(index);
-//           }
-//         }}
-//       />
-//     ),
-//   }
-// );
 
 
 const RootStack = createSwitchNavigator(

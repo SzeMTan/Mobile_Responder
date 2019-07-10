@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from 'react-native';
-import { Header, Button} from 'react-native-elements';
-import SettingsList from 'react-native-settings-list';
-import { Ionicons } from '@expo/vector-icons'; 
-import { createBottomTabNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
-import ToggleComponent from '../../components/toggleComponent';
-import SliderComponent from '../../components/SliderComponent';
+import { View } from 'react-native';
+import { Header} from 'react-native-elements';
+import ToggleComponent from '../../components/customToggleComponent';
+import SliderComponent from '../../components/customSliderComponent';
 
 export default class GeneralScreen extends Component {
     render() {

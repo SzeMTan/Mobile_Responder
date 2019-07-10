@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import {Keyboard, Text, View, TextInput, TouchableWithoutFeedback, KeyboardAvoidingView, Button, StyleSheet} from 'react-native';
-import styles from './style'
-import ToggleComponent from "../../components/toggleComponent";
-import CustomTextInputComponent from "../../components/customTextInputComponent";
+import {Keyboard, Text, View, TextInput, TouchableWithoutFeedback, KeyboardAvoidingView, Button} from 'react-native';
+import styles from '../../styles/style'
+import ToggleComponent from "../../components/customToggleComponent";
+import TextInputComponent from "../../components/customTextInputComponent";
 
 
 
@@ -21,11 +21,11 @@ export default class LoginScreen extends Component {
                     placeholder="QID" 
                     placeholderColor="#c4c3cb" 
                     style={styles.loginFormTextInput} /> */}
-                    <CustomTextInputComponent
+                    <TextInputComponent
                     placeholderText="QID"/>
-                    <CustomTextInputComponent
+                    <TextInputComponent
                     placeholderText="Callsign"/>
-                    <CustomTextInputComponent
+                    <TextInputComponent
                     placeholderText="Password" 
                     secureEntry={true}/>
                     </View>

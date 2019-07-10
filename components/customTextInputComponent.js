@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 
-class CustomTextInputComponent extends Component {
+export default class TextInputComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,6 +48,5 @@ const styles = StyleSheet.create({
       },
 });
 
-export default CustomTextInputComponent;
 
 

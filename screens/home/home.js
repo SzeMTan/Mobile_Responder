@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { ScrollView, StyleSheet, View, Button } from 'react-native';
-import { Header, Text, ThemeProvider } from 'react-native-elements';
-import { SafeAreaView } from 'react-navigation';
-import ConsumerComponent from '../components/segcomponent';
-import {Card, CardImage, CardTitle, CardContent, CardButton, CardAction} from 'react-native-cards';
-import CardComponent from '../components/cardcomponent'
+import { ScrollView, View, Button } from 'react-native';
+import { Header, Text } from 'react-native-elements';
+import SegmentControlComponent from '../../components/customSegmentControlComponent';
+import CardComponent from '../../components/customCardComponent'
 export default class Home extends Component {
     constructor(){
         super()
@@ -41,7 +39,7 @@ export default class Home extends Component {
                     backgroundColor='none'
                 />
                 <View>
-                <ConsumerComponent paramvalues={['UNIT', 'JOB']} 
+                <SegmentControlComponent paramvalues={['UNIT', 'JOB']} 
                     tabAction={this.setIndex}
                 />
                 {this.renderTabContent(this.state.selectedIndex)}

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { StyleSheet, View } from 'react-native';
 import marginStyle from '../marginstyle';
 
-export default class ConsumerComponent extends Component {
+export default class SegmentControlComponent extends Component {
  
     constructor(){
       super()

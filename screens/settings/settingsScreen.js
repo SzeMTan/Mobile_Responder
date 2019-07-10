@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Header, Button} from 'react-native-elements';
 import SettingsList from 'react-native-settings-list';
 import { Ionicons } from '@expo/vector-icons'; 
-import { createBottomTabNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
 
 export default class SettingsScreen extends Component {
     render() {

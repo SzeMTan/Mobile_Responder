@@ -10,11 +10,11 @@ export default StyleSheet.create({
         flex: 1,
       },
       logoText: {
-        fontSize: 40,
+        fontSize: 35,
         fontWeight: "800",
-        marginTop: 150,
+        marginTop:40,
         marginBottom: 30,
-        textAlign: 'center',
+        textAlign: 'left',
       },
       loginFormView: {
         flex: 1,
@@ -40,4 +40,11 @@ export default StyleSheet.create({
         height: 45,
         marginTop: 10,
       },
+      changePassword: {
+          color: '#0a84ff',
+          textAlign: 'center'
+      },
+      loginFormInputs: {
+        marginTop: 40,
+      }
 });

@@ -1,35 +1,44 @@
 import React, { Component } from "react";
-import {Keyboard, Text, View, TextInput, TouchableWithoutFeedback, KeyboardAvoidingView, Button, StyleSheet} from 'react-native';
-import styles from './style'
-import ToggleComponent from "../../components/toggleComponent";
+import {Keyboard, Text, View, TextInput, TouchableWithoutFeedback, KeyboardAvoidingView, Button} from 'react-native';
+import styles from '../../styles/style'
+import ToggleComponent from "../../components/customToggleComponent";
+import TextInputComponent from "../../components/customTextInputComponent";
+
+
 
 export default class LoginScreen extends Component {
+
     render() {
         return (
         <KeyboardAvoidingView style={styles.containerView} behavior="padding">
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.loginScreenContainer}>
                   <View style={styles.loginFormView}>
-                    <Text style={styles.logoText}>Responder</Text>
-                    <TextInput 
+                  <Text style={styles.logoText}>Intergraph {"\n"}
+                  Mobile Responder</Text>
+                  <View style={styles.loginFormInputs}>
+                    {/* <TextInput 
                     placeholder="QID" 
                     placeholderColor="#c4c3cb" 
-                    style={styles.loginFormTextInput} />
-                    <TextInput 
-                    placeholder="Callsign" 
-                    placeholderColor="#c4c3cb" 
-                    style={styles.loginFormTextInput} />
-                    <TextInput 
-                    placeholder="Not a Password" 
-                    placeholderColor="#c4c3cb" 
-                    style={styles.loginFormTextInput} 
-                    secureTextEntry={true}/>
+                    style={styles.loginFormTextInput} /> */}
+                    <TextInputComponent
+                    placeholderText="QID"/>
+                    <TextInputComponent
+                    placeholderText="Callsign"/>
+                    <TextInputComponent
+                    placeholderText="Password" 
+                    secureEntry={true}/>
+                    </View>
                     <Button
                     buttonStyle={styles.loginButton}
                     onPress={() => this.onLoginPress()}
                     title="Login"
                     />
                     <ToggleComponent toggleLabel='Remember Me'/>
+                    <Text style={styles.changePassword}
+                    onPress={() => this.props.navigation.navigate('Password')}>
+                      Change Password
+                      </Text>
                  </View>
               </View>
             </TouchableWithoutFeedback>

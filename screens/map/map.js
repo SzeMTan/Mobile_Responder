@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Button } from 'react-native';
-import { Header, Text, ThemeProvider } from 'react-native-elements';
+import { View } from 'react-native';
+import { Header } from 'react-native-elements';
 
 export default class MAP extends Component {
     render() {

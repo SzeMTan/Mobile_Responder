@@ -16,6 +16,7 @@ export default class ConsumerComponent<props, state> extends Component {
         ...this.state,
         selectedIndex: index,
       });
+      this.props.tabAction(index)
     }
  
     render() {
@@ -27,6 +28,7 @@ export default class ConsumerComponent<props, state> extends Component {
                     onTabPress={this.handleIndexChange}
                     />
             </View>
+
         );
     }
 }

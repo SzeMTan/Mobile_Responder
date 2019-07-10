@@ -6,6 +6,32 @@ import ConsumerComponent from '../components/segcomponent';
 import {Card, CardImage, CardTitle, CardContent, CardButton, CardAction} from 'react-native-cards';
 import CardComponent from '../components/cardcomponent'
 export default class Home extends Component {
+    constructor(){
+        super()
+        this.state = {
+          selectedIndex:0
+        };
+      }
+
+    setIndex = (index) => {
+        this.setState({
+            ...this.state,
+            selectedIndex: index
+          });
+    }
+
+    renderTabContent(index){
+        if (index === 0){
+            return  <ScrollView>
+                        <CardComponent title='Unit STATUS CODE: '/>
+                        <CardComponent title='Unit: '/>
+                    </ScrollView>
+        }
+        else {
+            return <Text> Tab two </Text>
+        }
+    }
+
     render() {
         return (
             <View>
@@ -13,11 +39,12 @@ export default class Home extends Component {
                     centerComponent={{ text: 'HOMES', style: { fontSize:24 } }}
                     backgroundColor='none'
                 />
-                <ConsumerComponent paramvalues={['UNIT', 'JOB']}/>
-                <ScrollView>
-                    <CardComponent title='Unit STATUS CODE: '/>
-                    <CardComponent title='Unit: '/>
-                </ScrollView>
+                <View>
+                <ConsumerComponent paramvalues={['UNIT', 'JOB']} 
+                    tabAction={this.setIndex}
+                />
+                {this.renderTabContent(this.state.selectedIndex)}
+                </View>
                 <Button
                     // buttonStyle={styles.loginButton}
                     onPress={() => this.props.navigation.navigate('Login')}
@@ -26,4 +53,6 @@ export default class Home extends Component {
             </View>
         );
     }
+
+
 }

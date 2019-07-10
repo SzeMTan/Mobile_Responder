@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { ScrollView, View, Button } from 'react-native';
-import { Header, Text } from 'react-native-elements';
+import { Text } from 'react-native-elements';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
-import CardComponent from '../../components/customCardComponent'
+import CardComponent from '../../components/customCardComponent';
+import HeaderComponent from '../../components/customHeaderComponent';
+
 export default class Home extends Component {
     constructor(){
         super()
@@ -34,10 +36,7 @@ export default class Home extends Component {
     render() {
         return (
             <View>
-                <Header
-                    centerComponent={{ text: 'HOME', style: { fontSize:24 } }}
-                    backgroundColor='none'
-                />
+                <HeaderComponent title='HOME'/>
                 <View>
                 <SegmentControlComponent paramvalues={['UNIT', 'JOB']} 
                     tabAction={this.setIndex}

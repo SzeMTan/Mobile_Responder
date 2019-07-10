@@ -6,7 +6,7 @@ import LoginScreen from './screens/login/login';
 
 import AboutScreen from './screens/settings/about';
 import GeneralScreen from './screens/settings/general';
-import SettingsScreen from './screens/settings/settingsScreen';
+import SettingsScreen from './screens/settings/settings';
 
 import Map from './screens/map/map'
 import { Ionicons } from '@expo/vector-icons'; 
@@ -57,12 +57,6 @@ const TabNavigator =  createBottomTabNavigator({
 {
   order: ["Home", "Map", "Settings"],
   initialRouteName: "Home",
-  navigationOptions: ({ navigation }) => ({
-    tabBarOnPress: (scene, jumpToIndex) => {
-      console.log('onPress:', scene.route);
-      jumpToIndex(scene.index);
-    },
-  }),
   resetOnBlur:true
 });
 

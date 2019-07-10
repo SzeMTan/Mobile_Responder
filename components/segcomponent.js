@@ -1,8 +1,9 @@
 import SegmentedControlTab from 'react-native-segmented-control-tab'
 import React, { Component } from "react";
 import { StyleSheet, View } from 'react-native';
+import marginStyle from '../marginstyle';
 
-export default class ConsumerComponent<props, state> extends Component {
+export default class ConsumerComponent extends Component {
  
     constructor(){
       super()
@@ -21,7 +22,7 @@ export default class ConsumerComponent<props, state> extends Component {
  
     render() {
         return (
-            <View style={styles.container}>
+            <View>
                 <SegmentedControlTab 
                     values={this.props.paramvalues}
                     selectedIndex={this.state.selectedIndex}
@@ -32,11 +33,3 @@ export default class ConsumerComponent<props, state> extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        marginHorizontal: '5%',
-    },
-});

@@ -24,7 +24,8 @@ export default class Home extends Component {
         if (index === 0){
             return  <ScrollView>
                         <CardComponent title='Unit STATUS CODE: '/>
-                        <CardComponent title='Unit: '/>
+                        <CardComponent title='Unit: '
+                        titlecontent={['Name: ','QID: ', 'phone no: ', 'shift start: ', 'shift end:', 'radio no: ']}/>
                     </ScrollView>
         }
         else {
@@ -36,7 +37,7 @@ export default class Home extends Component {
         return (
             <View>
                 <Header
-                    centerComponent={{ text: 'HOMES', style: { fontSize:24 } }}
+                    centerComponent={{ text: 'HOME', style: { fontSize:24 } }}
                     backgroundColor='none'
                 />
                 <View>

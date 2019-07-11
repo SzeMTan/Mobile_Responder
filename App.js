@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { createBottomTabNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
-
+import { createBottomTabNavigator, createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
+import CardStackStyleInterpolator from 'react-navigation-stack/src/views/StackView/StackViewStyleInterpolator'
 import Home from './screens/home/home';
 import LoginScreen from './screens/login/login';
 
@@ -12,18 +12,42 @@ import Map from './screens/map/map'
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
 
-const SettingsNavigator = createSwitchNavigator(
+
+// navigation for the settings tab
+const SettingsNavigator = createStackNavigator(
   {
-    Settings: SettingsScreen,
-    General: GeneralScreen,
-    About: AboutScreen,
+    Settings: {
+      screen: SettingsScreen,
+      navigationOptions: {
+        title: "Settings",
+      },
+    },
+    General: {
+      screen: GeneralScreen,
+      navigationOptions: {
+        title: "General Settings",
+      }
+    },
+    About:{
+      screen: AboutScreen,
+      navigationOptions: {
+        title: "About",
+      }, 
+    },
   },
   {
     initialRouteName: 'Settings',
+    headerLayoutPreset: 'center',
+    // horizontal slide transition
+    transitionConfig: () => ({
+      screenInterpolator: sceneProps => {
+        return CardStackStyleInterpolator.forHorizontal(sceneProps);
+      }
+    }),
   }
 );
 
-
+// main bottom tab navigator
 const TabNavigator =  createBottomTabNavigator({
   Home: {
     screen: Home,
@@ -66,7 +90,7 @@ const TabNavigator =  createBottomTabNavigator({
   resetOnBlur:true
 });
 
-
+// login to home navigation
 const RootStack = createSwitchNavigator(
   {
     Login: LoginScreen,

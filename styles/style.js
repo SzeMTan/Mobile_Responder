@@ -12,7 +12,7 @@ export default StyleSheet.create({
       logoText: {
         fontSize: 35,
         fontWeight: "800",
-        marginTop:40,
+        marginTop:80,
         marginBottom: 30,
         textAlign: 'left',
       },

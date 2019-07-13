@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {View, StyleSheet } from 'react-native';
 import HeaderComponent from './components/customHeaderComponent';
 import { createBottomTabNavigator, createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
 
@@ -12,9 +13,11 @@ import SettingsScreen from './screens/settings/settings';
 import Map from './screens/map/map'
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
+import styles from './styles/style'
 
 const iconSize = 30;
 
+const headerFontSize = 24;
 const SettingsNavigator = createStackNavigator(
   {
     Settings: {
@@ -26,18 +29,29 @@ const SettingsNavigator = createStackNavigator(
     General: {
       screen: GeneralScreen,
       navigationOptions: {
-        headerTitle: 'General'
-      },
+        headerTitle: 'General',
+        headerTitleStyle: styles.header,
+        headerRight: (<View />),
+      }, 
     },
     About: {
       screen: AboutScreen,
       navigationOptions: {
-        headerTitle: 'About'
+        headerTitle: 'About',
+        headerTitleStyle: styles.header,
+        headerRight: (<View />),
       },    
     },
   },
   {
     initialRouteName: 'Settings',
+    defaultNavigationOptions: {
+      headerStyle: {
+        elevation: 0, //for android
+        shadowOpacity: 0, //for ios
+        borderBottomWidth: 0, //for ios
+      },
+    },
   }
 );
 

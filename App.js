@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { createBottomTabNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
+import HeaderComponent from './components/customHeaderComponent';
+import { createBottomTabNavigator, createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
 
 import Home from './screens/home/home';
 import LoginScreen from './screens/login/login';
@@ -12,11 +13,28 @@ import Map from './screens/map/map'
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
 
-const SettingsNavigator = createSwitchNavigator(
+const iconSize = 30;
+
+const SettingsNavigator = createStackNavigator(
   {
-    Settings: SettingsScreen,
-    General: GeneralScreen,
-    About: AboutScreen,
+    Settings: {
+      screen: SettingsScreen,
+      navigationOptions: () => ({
+        header: <HeaderComponent title='Settings'/>
+      }),
+    },
+    General: {
+      screen: GeneralScreen,
+      navigationOptions: {
+        headerTitle: 'General'
+      },
+    },
+    About: {
+      screen: AboutScreen,
+      navigationOptions: {
+        headerTitle: 'About'
+      },    
+    },
   },
   {
     initialRouteName: 'Settings',
@@ -30,7 +48,7 @@ const TabNavigator =  createBottomTabNavigator({
     navigationOptions: {
         tabBarLabel:"Home",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-home" size={30}  />
+          <Ionicons name="ios-home" size={iconSize}  />
         )
       }
     },
@@ -39,7 +57,7 @@ const TabNavigator =  createBottomTabNavigator({
     navigationOptions: {
         tabBarLabel:"Settings",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-settings" size={30}  />
+          <Ionicons name="ios-settings" size={iconSize}  />
         )
       }
     },
@@ -47,9 +65,9 @@ const TabNavigator =  createBottomTabNavigator({
     Map:{
       screen: Map,
       navigationOptions: {
-          tabBarLabel:"Map ",
+          tabBarLabel:"Map",
           tabBarIcon: ({ tintColor }) => (
-            <Ionicons name="ios-map" size={30}  />
+            <Ionicons name="ios-map" size={iconSize}  />
           )
         }
       },

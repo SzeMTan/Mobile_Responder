@@ -10,7 +10,9 @@ import AboutScreen from './screens/settings/about';
 import GeneralScreen from './screens/settings/general';
 import SettingsScreen from './screens/settings/settings';
 
-import Map from './screens/map/map'
+import Map from './screens/map/map';
+import Units from './screens/units/units';
+
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
 import styles from './styles/style'
@@ -85,9 +87,18 @@ const TabNavigator =  createBottomTabNavigator({
           )
         }
       },
+  Units:{
+    screen: Units,
+    navigationOptions: {
+        tabBarLabel:"Units",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons name="ios-car" size={iconSize}  />
+        )
+      }
+    },
 },  
 {
-  order: ["Home", "Map", "Settings"],
+  order: ["Units", "Home", "Map", "Settings"],
   initialRouteName: "Home",
   resetOnBlur:true
 });

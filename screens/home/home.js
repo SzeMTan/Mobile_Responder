@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ScrollView, View, Button } from 'react-native';
+import { ScrollView, View, Button, StyleSheet } from 'react-native';
 import { Header, Text } from 'react-native-elements';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent'
@@ -27,7 +27,14 @@ export default class Home extends Component {
                     </ScrollView>
         }
         else {
-            return <Text> Tab two </Text>
+            return <ScrollView>
+                        <CardComponent title='Current job: '/>
+                        <Button
+                        buttonStyle={styles.endJob}
+                        onPress={() => this.props.navigation.navigate('Login')}
+                        title="End Job ->"
+                        />
+                    </ScrollView>
         }
     }
 
@@ -45,13 +52,20 @@ export default class Home extends Component {
                 {this.renderTabContent(this.state.selectedIndex)}
                 </View>
                 <Button
-                    // buttonStyle={styles.loginButton}
                     onPress={() => this.props.navigation.navigate('Login')}
                     title="Logout"
                     />
             </View>
         );
     }
-
-
 }
+
+const styles = StyleSheet.create({
+    endJob: {
+        flexDirection: 'column',
+        backgroundColor: 'red',
+        borderRadius: 5,
+        height: 100,
+        marginHorizontal: 10,
+      },
+});

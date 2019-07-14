@@ -3,6 +3,7 @@ import {View, StyleSheet } from 'react-native';
 import HeaderComponent from './components/customHeaderComponent';
 import { createBottomTabNavigator, createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
 
+import CardStackStyleInterpolator from 'react-navigation-stack/src/views/StackView/StackViewStyleInterpolator'
 import Home from './screens/home/home';
 import LoginScreen from './screens/login/login';
 
@@ -20,6 +21,8 @@ import styles from './styles/style'
 const iconSize = 30;
 
 const headerFontSize = 24;
+
+// navigation for the settings tab
 const SettingsNavigator = createStackNavigator(
   {
     Settings: {
@@ -54,10 +57,17 @@ const SettingsNavigator = createStackNavigator(
         borderBottomWidth: 0, //for ios
       },
     },
+    headerLayoutPreset: 'center',
+    // horizontal slide transition
+    transitionConfig: () => ({
+      screenInterpolator: sceneProps => {
+        return CardStackStyleInterpolator.forHorizontal(sceneProps);
+      }
+    }),
   }
 );
 
-
+// main bottom tab navigator
 const TabNavigator =  createBottomTabNavigator({
   Home: {
     screen: Home,
@@ -103,7 +113,7 @@ const TabNavigator =  createBottomTabNavigator({
   resetOnBlur:true
 });
 
-
+// login to home navigation
 const RootStack = createSwitchNavigator(
   {
     Login: LoginScreen,

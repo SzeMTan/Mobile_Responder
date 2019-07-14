@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from 'react-native';
-import { Header, Button} from 'react-native-elements';
+import { Button} from 'react-native-elements';
 import SettingsList from 'react-native-settings-list';
 import { Ionicons } from '@expo/vector-icons'; 
 
@@ -10,10 +10,7 @@ export default class SettingsScreen extends Component {
             <View style={{flex: 1,
                 flexDirection: 'column',
                 justifyContent: 'space-between'}}>
-                {/* <Header
-                    centerComponent={{ text: 'SETTINGS', style: { fontSize:24 } }}
-                    backgroundColor='none'
-                /> */}
+
                 <View>
                     <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
                         <SettingsList.Item 

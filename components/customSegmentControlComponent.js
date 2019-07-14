@@ -1,7 +1,6 @@
 import SegmentedControlTab from 'react-native-segmented-control-tab'
 import React, { Component } from "react";
 import { StyleSheet, View } from 'react-native';
-import marginStyle from '../marginstyle';
 
 export default class SegmentControlComponent extends Component {
  

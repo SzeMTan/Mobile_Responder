@@ -46,5 +46,11 @@ export default StyleSheet.create({
       },
       loginFormInputs: {
         marginTop: 40,
-      }
+      },
+      header:{
+        fontSize: 24,
+        fontWeight: 'normal',
+        flex: 1,
+        textAlign: 'center',
+      },
 });

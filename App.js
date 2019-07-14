@@ -1,42 +1,62 @@
 import React, { Component } from 'react';
+import {View, StyleSheet } from 'react-native';
+import HeaderComponent from './components/customHeaderComponent';
 import { createBottomTabNavigator, createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
+
 import CardStackStyleInterpolator from 'react-navigation-stack/src/views/StackView/StackViewStyleInterpolator'
 import Home from './screens/home/home';
 import LoginScreen from './screens/login/login';
 
 import AboutScreen from './screens/settings/about';
 import GeneralScreen from './screens/settings/general';
-import SettingsScreen from './screens/settings/settingsScreen';
+import SettingsScreen from './screens/settings/settings';
 
-import Map from './screens/map/map'
+import Map from './screens/map/map';
+import Units from './screens/units/units';
+
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
+import styles from './styles/style'
 
+const iconSize = 30;
+
+const headerFontSize = 24;
 
 // navigation for the settings tab
 const SettingsNavigator = createStackNavigator(
   {
     Settings: {
       screen: SettingsScreen,
-      navigationOptions: {
-        title: "Settings",
-      },
+      navigationOptions: () => ({
+        header: <HeaderComponent title='Settings'/>
+      }),
     },
     General: {
       screen: GeneralScreen,
       navigationOptions: {
-        title: "General Settings",
-      }
+        headerTitle: 'General',
+        headerTitleStyle: styles.header,
+        headerRight: (<View />),
+      }, 
     },
-    About:{
+    About: {
       screen: AboutScreen,
       navigationOptions: {
-        title: "About",
-      }, 
+        headerTitle: 'About',
+        headerTitleStyle: styles.header,
+        headerRight: (<View />),
+      },    
     },
   },
   {
     initialRouteName: 'Settings',
+    defaultNavigationOptions: {
+      headerStyle: {
+        elevation: 0, //for android
+        shadowOpacity: 0, //for ios
+        borderBottomWidth: 0, //for ios
+      },
+    },
     headerLayoutPreset: 'center',
     // horizontal slide transition
     transitionConfig: () => ({
@@ -54,7 +74,7 @@ const TabNavigator =  createBottomTabNavigator({
     navigationOptions: {
         tabBarLabel:"Home",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-home" size={30}  />
+          <Ionicons name="ios-home" size={iconSize}  />
         )
       }
     },
@@ -63,7 +83,7 @@ const TabNavigator =  createBottomTabNavigator({
     navigationOptions: {
         tabBarLabel:"Settings",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-settings" size={30}  />
+          <Ionicons name="ios-settings" size={iconSize}  />
         )
       }
     },
@@ -71,22 +91,25 @@ const TabNavigator =  createBottomTabNavigator({
     Map:{
       screen: Map,
       navigationOptions: {
-          tabBarLabel:"Map ",
+          tabBarLabel:"Map",
           tabBarIcon: ({ tintColor }) => (
-            <Ionicons name="ios-map" size={30}  />
+            <Ionicons name="ios-map" size={iconSize}  />
           )
         }
       },
+  Units:{
+    screen: Units,
+    navigationOptions: {
+        tabBarLabel:"Units",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons name="ios-car" size={iconSize}  />
+        )
+      }
+    },
 },  
 {
-  order: ["Home", "Map", "Settings"],
+  order: ["Units", "Home", "Map", "Settings"],
   initialRouteName: "Home",
-  navigationOptions: ({ navigation }) => ({
-    tabBarOnPress: (scene, jumpToIndex) => {
-      console.log('onPress:', scene.route);
-      jumpToIndex(scene.index);
-    },
-  }),
   resetOnBlur:true
 });
 

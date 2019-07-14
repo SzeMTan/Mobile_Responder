@@ -16,6 +16,7 @@ export default class SearchBarComponent extends Component {
 
     return (
       <SearchBar
+      lightTheme
         placeholder="Type Here.."
         onChangeText={this.updateSearch}
         value={search}

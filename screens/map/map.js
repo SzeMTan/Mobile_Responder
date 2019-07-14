@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
-// import MapView from 'react-native-maps'
 import { Constants, MapView, Location, Permissions } from 'expo';
 
 export default class App extends Component {

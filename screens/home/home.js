@@ -20,7 +20,7 @@ export default class Home extends Component {
           });
     }
 
-    renderTabContent(index){
+    renderTabContent = (index) => {
         if (index === 0){
             return  <ScrollView>
                         <CardComponent title='Unit STATUS CODE: '/>

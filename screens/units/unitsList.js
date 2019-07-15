@@ -58,7 +58,7 @@ export default class UnitsList extends Component {
       onPress={() => {Alert.alert('hello')}}
       /></TouchableOpacity>)
     return (
-        <View style={{flex:1}}>
+        <View>
             <SearchBarComponent title='Units'/>
             <ScrollView >
             <View style={{flex:1,justifyContent:'center'}}>

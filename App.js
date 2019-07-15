@@ -12,7 +12,8 @@ import GeneralScreen from './screens/settings/general';
 import SettingsScreen from './screens/settings/settings';
 
 import Map from './screens/map/map';
-import Units from './screens/units/units';
+import UnitsList from './screens/units/unitsList';
+import IndividualUnit from './screens/units/individialUnit';
 
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
@@ -67,6 +68,42 @@ const SettingsNavigator = createStackNavigator(
   }
 );
 
+const UnitsNavigator = createStackNavigator(
+  {
+    Units: {
+      screen: UnitsList,
+      navigationOptions: () => ({
+        header: <HeaderComponent title='Units'/>
+      }),
+    },
+    IndividualUnit: {
+      screen: IndividualUnit,
+      navigationOptions: {
+        // headerTitle: 'Unit',
+        headerTitleStyle: styles.header,
+        headerRight: (<View />),
+      }, 
+    },
+  },
+  {
+    initialRouteName: 'Units',
+    defaultNavigationOptions: {
+      headerStyle: {
+        elevation: 0, //for android
+        shadowOpacity: 0, //for ios
+        borderBottomWidth: 0, //for ios
+      },
+    },
+    headerLayoutPreset: 'center',
+    // horizontal slide transition
+    transitionConfig: () => ({
+      screenInterpolator: sceneProps => {
+        return CardStackStyleInterpolator.forHorizontal(sceneProps);
+      }
+    }),
+  }
+);
+
 // main bottom tab navigator
 const TabNavigator =  createBottomTabNavigator({
   Home: {
@@ -98,7 +135,7 @@ const TabNavigator =  createBottomTabNavigator({
         }
       },
   Units:{
-    screen: Units,
+    screen: UnitsNavigator,
     navigationOptions: {
         tabBarLabel:"Units",
         tabBarIcon: ({ tintColor }) => (

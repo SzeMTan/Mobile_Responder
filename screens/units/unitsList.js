@@ -3,7 +3,7 @@ import { ScrollView, View, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
 import SearchBarComponent from '../../components/customSearchBarComponent';
 import CardComponent from '../../components/customCardComponent';
-export default class Units extends Component {
+export default class UnitsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +32,8 @@ export default class Units extends Component {
   }
   render() {
     const cards = this.state.data.map(unit =>         
-    <TouchableOpacity key={unit.title} onPress={() => console.log('Yea')}>
+    <TouchableOpacity key={unit.title} onPress={() => 
+    this.props.navigation.navigate('IndividualUnit', {id: 1, title: unit.title})}>
       <CardComponent key={unit.title} 
       title={unit.title} 
       titlecontent={[unit.code, unit.destination]}

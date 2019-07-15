@@ -72,17 +72,9 @@ const UnitsNavigator = createStackNavigator(
   {
     Units: {
       screen: UnitsList,
-      navigationOptions: () => ({
-        header: <HeaderComponent title='Units'/>
-      }),
     },
     IndividualUnit: {
       screen: IndividualUnit,
-      navigationOptions: {
-        // headerTitle: 'Unit',
-        headerTitleStyle: styles.header,
-        headerRight: (<View />),
-      }, 
     },
   },
   {

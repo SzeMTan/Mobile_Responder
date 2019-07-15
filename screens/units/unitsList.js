@@ -7,7 +7,6 @@ export default class UnitsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      number: 10,
       data: [{title: 'PBY',
               code: '3C-CRIME PREVENTION ADVICE',
               destination: '10 Waterloo Quadrant',
@@ -30,6 +29,24 @@ export default class UnitsList extends Component {
     }],
     };
   }
+
+  static navigationOptions = ({ navigation }) => {
+    const { state: { params = {} } } = navigation;
+    return {
+      header: (
+        <HeaderComponent title={'Units('+navigation.getParam('unitsListSize')+')'}/>
+      ),
+    };
+  }
+
+  componentDidMount() {
+    this.props.navigation.setParams({ unitsListSize: this._UnitsListSize()});
+  }
+
+  _UnitsListSize = () => {
+    return this.state.data.length;
+  };
+
   render() {
     const cards = this.state.data.map(unit =>         
     <TouchableOpacity key={unit.title} onPress={() => 
@@ -42,10 +59,7 @@ export default class UnitsList extends Component {
       /></TouchableOpacity>)
     return (
         <View style={{flex:1}}>
-            <HeaderComponent title={'Units('+this.state.number+')'}/>
-            <View>
             <SearchBarComponent title='Units'/>
-            </View>
             <ScrollView >
             <View style={{flex:1,justifyContent:'center'}}>
             {cards}

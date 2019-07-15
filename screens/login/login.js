@@ -3,6 +3,7 @@ import {Keyboard, Text, View, TextInput, TouchableWithoutFeedback, KeyboardAvoid
 import styles from '../../styles/style'
 import ToggleComponent from "../../components/customToggleComponent";
 import TextInputComponent from "../../components/customTextInputComponent";
+import ButtonComponent from "../../components/customButtonComponent";
 
 
 
@@ -29,11 +30,9 @@ export default class LoginScreen extends Component {
                     placeholderText="Password" 
                     secureEntry={true}/>
                     </View>
-                    <Button
-                    buttonStyle={styles.loginButton}
-                    onPress={() => this.onLoginPress()}
-                    title="Login"
-                    />
+                    <View style={styles.buttonView}>
+                    <ButtonComponent title="LOGIN" onPress={() => this.onLoginPress()}/>
+                    </View>
                     <ToggleComponent toggleLabel='Remember Me'/>
                     <Text style={styles.changePassword}
                     onPress={() => this.props.navigation.navigate('Password')}>

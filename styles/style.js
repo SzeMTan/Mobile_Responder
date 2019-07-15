@@ -40,6 +40,9 @@ export default StyleSheet.create({
         height: 45,
         marginTop: 10,
       },
+      buttonView: {
+        paddingVertical: 10
+      },
       changePassword: {
           color: '#0a84ff',
           textAlign: 'center'

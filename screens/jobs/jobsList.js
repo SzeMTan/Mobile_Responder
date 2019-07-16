@@ -35,6 +35,23 @@ export default class JobsList extends Component {
     ],};
   }
 
+  static navigationOptions = ({ navigation }) => {
+    const { state: { params = {} } } = navigation;
+    return {
+      header: (
+        <HeaderComponent title={'Jobs('+navigation.getParam('jobsListSize')+')'}/>
+      ),
+    };
+  }
+
+  componentDidMount() {
+    this.props.navigation.setParams({ jobsListSize: this._JobsListSize()});
+  }
+
+  _JobsListSize = () => {
+    return this.state.data.length;
+  };
+
   render() {
     const cards = this.state.data.map(job =>         
     <TouchableOpacity key={job.title} onPress={() => this.props.navigation.navigate('IndividualJob', {id: 1, title: job.title})}>

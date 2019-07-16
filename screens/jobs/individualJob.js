@@ -38,6 +38,12 @@ export default class IndividualJob extends Component {
                             <CardComponent title='Assigned: Unassigned'/>
                             <CardComponent title='JOB INFO'
                                 titlecontent={['Job code: ','Time Reported: ', 'Job status: ', 'Priority: ']}/>
+                            <CardComponent title='LOCATION'/>
+                            <CardComponent title='TIMES'
+                                titlecontent={['Dispatched: ','First Arrival: ', 'Closed: ']}/>
+                            <CardComponent title='HEADLINE' titlecontent={['ORANGE 1- ']}/>
+                            <CardComponent title='CROSS STREETS' titlecontent={['X-STREET 1 - Collow RD', 'X-STREET 1 - SELWYN AVE']}/>
+                            <CardComponent title='CALLER INFO' titlecontent={['Source: ', 'Name', 'Address', 'Number']}/>
                         </View>
                     </ScrollView>
                     <ButtonComponent title='Assign job'/>

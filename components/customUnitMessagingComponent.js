@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 
-export default class Example extends React.Component {
+export default class UnitMessagingComponent extends React.Component {
   state = {
     messages: [],
   }
@@ -12,7 +12,7 @@ export default class Example extends React.Component {
       messages: [
         {
           _id: 1,
-          text: 'Hello developer',
+          text: 'Hello World',
           createdAt: new Date(),
           user: {
             _id: 2,
@@ -32,14 +32,14 @@ export default class Example extends React.Component {
 
   render() {
     return (
-        <View style={{flex: 1}}>
-      <GiftedChat
-        messages={this.state.messages}
-        onSend={messages => this.onSend(messages)}
-        user={{
-          _id: 1,
-        }}
-      />
+      <View style={{flex: 1}}>
+        <GiftedChat
+          messages={this.state.messages}
+          onSend={messages => this.onSend(messages)}
+          user={{
+            _id: 1,
+          }}
+        />
       </View>
     )
   }

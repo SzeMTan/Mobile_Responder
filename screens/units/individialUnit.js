@@ -4,7 +4,7 @@ import styles from '../../styles/style';
 import HeaderComponent from '../../components/customHeaderComponent';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
-import { GiftedChat } from 'react-native-gifted-chat'
+import UnitMessagingComponent from '../../components/customUnitMessagingComponent';
 
 export default class IndividualUnit extends Component {
     constructor(props) {
@@ -22,6 +22,15 @@ export default class IndividualUnit extends Component {
           });
     }
 
+    static navigationOptions = ({ navigation }) => {
+        const { state: { params = {} } } = navigation;
+        return {
+          title: params.title || 'Unit',
+          headerTitleStyle: styles.header,
+          headerRight: (<View />),
+        };
+      }
+
     renderTabContent = (index) => {
         if (index === 0){
             return  <ScrollView>
@@ -36,24 +45,13 @@ export default class IndividualUnit extends Component {
                     </ScrollView>
         }
         else {
-            return <ScrollView>
-                        <CardComponent title='Messages'/>
-                    </ScrollView>
+            return <UnitMessagingComponent/>
         }
     }
 
-    static navigationOptions = ({ navigation }) => {
-        const { state: { params = {} } } = navigation;
-        return {
-          title: params.title || 'Unit',
-          headerTitleStyle: styles.header,
-          headerRight: (<View />),
-        };
-      }
-
     render() {
         return (
-            <View>
+            <View style={{flex: 1}}>
                 <SegmentControlComponent paramvalues={['INFO', 'MESSAGE']} 
                     tabAction={this.setIndex}
                 />

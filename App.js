@@ -17,7 +17,7 @@ import IndividualUnit from './screens/units/individialUnit';
 
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
-import styles from './styles/style'
+import styles from './styles/style';
 
 const iconSize = 30;
 

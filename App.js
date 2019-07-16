@@ -15,6 +15,8 @@ import Map from './screens/map/map';
 import UnitsList from './screens/units/unitsList';
 import IndividualUnit from './screens/units/individialUnit';
 
+import JobsList from './screens/jobs/jobsList';
+
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
 import styles from './styles/style';
@@ -135,9 +137,18 @@ const TabNavigator =  createBottomTabNavigator({
         )
       }
     },
+  Jobs:{
+    screen: JobsList,
+    navigationOptions:{
+      tabBarLabel:"Jobs",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons name="ios-briefcase" size={iconSize}  />
+        )
+    }
+  },
 },  
 {
-  order: ["Units", "Home", "Map", "Settings"],
+  order: ["Jobs", "Units", "Home", "Map", "Settings"],
   initialRouteName: "Home",
   resetOnBlur:true
 });

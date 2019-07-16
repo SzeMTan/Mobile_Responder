@@ -31,14 +31,19 @@ export default class IndividualJob extends Component {
       }
 
     renderTabContent = (index) => {
+        console.log(this.props.navigation.getParam("priority"));
+
         if (index === 0){
             return  <View style={{flex:1, justifyContent:'flex-end'}}>
                     <ScrollView>
                         <View style={{flex:1,justifyContent:'center'}}>
                             <CardComponent title='Assigned: Unassigned'/>
                             <CardComponent title='JOB INFO'
-                                titlecontent={['Job code: ','Time Reported: ', 'Job status: ', 'Priority: ']}/>
-                            <CardComponent title='LOCATION'/>
+                                titlecontent={['Job code: ' + this.props.navigation.getParam("code"),
+                                'Time Reported: ' + this.props.navigation.getParam("date"), 
+                                'Job status: ' + this.props.navigation.getParam("status"), 
+                                'Priority: '+this.props.navigation.getParam("priority", "P1")]}/>
+                            <CardComponent title='LOCATION' titlecontent={[this.props.navigation.getParam("destination", "N/A")]}/>
                             <CardComponent title='TIMES'
                                 titlecontent={['Dispatched: ','First Arrival: ', 'Closed: ']}/>
                             <CardComponent title='HEADLINE' titlecontent={['ORANGE 1- ']}/>
@@ -59,6 +64,7 @@ export default class IndividualJob extends Component {
     }
 
     render() {
+
         return (
             <View style={{flex: 1}}>
                 <SegmentControlComponent paramvalues={['INFO', 'COMMENTS']} 

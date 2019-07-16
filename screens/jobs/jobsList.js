@@ -37,7 +37,7 @@ export default class JobsList extends Component {
 
   render() {
     const cards = this.state.data.map(job =>         
-    <TouchableOpacity key={job.title} onPress={() => console.log("hello")}>
+    <TouchableOpacity key={job.title} onPress={() => this.props.navigation.navigate('IndividualJob', {id: 1, title: job.title})}>
       <CardComponent key={job.title} 
       title={job.title} 
       titlecontent={[job.code, job.destination]}

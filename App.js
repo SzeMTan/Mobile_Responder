@@ -16,6 +16,7 @@ import UnitsList from './screens/units/unitsList';
 import IndividualUnit from './screens/units/individialUnit';
 
 import JobsList from './screens/jobs/jobsList';
+import IndividualJob from './screens/jobs/individualJob';
 
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
@@ -98,6 +99,34 @@ const UnitsNavigator = createStackNavigator(
   }
 );
 
+const JobsNavigator = createStackNavigator(
+  {
+    Jobs: {
+      screen: JobsList,
+    },
+    IndividualJob: {
+      screen: IndividualJob,
+    },
+  },
+  {
+    initialRouteName: 'Jobs',
+    defaultNavigationOptions: {
+      headerStyle: {
+        elevation: 0, //for android
+        shadowOpacity: 0, //for ios
+        borderBottomWidth: 0, //for ios
+      },
+    },
+    headerLayoutPreset: 'center',
+    // horizontal slide transition
+    transitionConfig: () => ({
+      screenInterpolator: sceneProps => {
+        return CardStackStyleInterpolator.forHorizontal(sceneProps);
+      }
+    }),
+  }
+);
+
 // main bottom tab navigator
 const TabNavigator =  createBottomTabNavigator({
   Home: {
@@ -138,7 +167,7 @@ const TabNavigator =  createBottomTabNavigator({
       }
     },
   Jobs:{
-    screen: JobsList,
+    screen: JobsNavigator,
     navigationOptions:{
       tabBarLabel:"Jobs",
         tabBarIcon: ({ tintColor }) => (

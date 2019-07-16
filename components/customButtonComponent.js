@@ -9,6 +9,9 @@ class ButtonComponent extends Component {
     };
   }
 
+  static defaultProps = {
+    title: "default text",
+  }
   render() {
     const { title, onPress} = this.props;
     return (

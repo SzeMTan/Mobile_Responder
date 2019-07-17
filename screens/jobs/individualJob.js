@@ -30,12 +30,16 @@ export default class IndividualJob extends Component {
         };
       }
 
+    goToTop = () => {
+    this.scroll.scrollTo({x: 0, y: 0, animated: true});
+    }
+
     renderTabContent = (index) => {
         console.log(this.props.navigation.getParam("priority"));
 
         if (index === 0){
             return  <View style={{flex:1, justifyContent:'flex-end'}}>
-                    <ScrollView>
+                    <ScrollView ref={(c) => {this.scroll = c}}>
                         <View style={{flex:1,justifyContent:'center'}}>
                             <CardComponent title='Assigned: Unassigned'/>
                             <CardComponent title='JOB INFO'
@@ -51,7 +55,7 @@ export default class IndividualJob extends Component {
                             <CardComponent title='CALLER INFO' titlecontent={['Source: ', 'Name', 'Address', 'Number']}/>
                         </View>
                     </ScrollView>
-                    <ButtonComponent title='Assign job'/>
+                    <ButtonComponent title='Assign job' onPress={this.goToTop}/>
                     </View>
         }
         else {

@@ -12,11 +12,15 @@ import GeneralScreen from './screens/settings/general';
 import SettingsScreen from './screens/settings/settings';
 
 import Map from './screens/map/map';
-import Units from './screens/units/units';
+import UnitsList from './screens/units/unitsList';
+import IndividualUnit from './screens/units/individialUnit';
+
+import JobsList from './screens/jobs/jobsList';
+import IndividualJob from './screens/jobs/individualJob';
 
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
-import styles from './styles/style'
+import styles from './styles/style';
 
 const iconSize = 30;
 
@@ -67,6 +71,62 @@ const SettingsNavigator = createStackNavigator(
   }
 );
 
+const UnitsNavigator = createStackNavigator(
+  {
+    Units: {
+      screen: UnitsList,
+    },
+    IndividualUnit: {
+      screen: IndividualUnit,
+    },
+  },
+  {
+    initialRouteName: 'Units',
+    defaultNavigationOptions: {
+      headerStyle: {
+        elevation: 0, //for android
+        shadowOpacity: 0, //for ios
+        borderBottomWidth: 0, //for ios
+      },
+    },
+    headerLayoutPreset: 'center',
+    // horizontal slide transition
+    transitionConfig: () => ({
+      screenInterpolator: sceneProps => {
+        return CardStackStyleInterpolator.forHorizontal(sceneProps);
+      }
+    }),
+  }
+);
+
+const JobsNavigator = createStackNavigator(
+  {
+    Jobs: {
+      screen: JobsList,
+    },
+    IndividualJob: {
+      screen: IndividualJob,
+    },
+  },
+  {
+    initialRouteName: 'Jobs',
+    defaultNavigationOptions: {
+      headerStyle: {
+        elevation: 0, //for android
+        shadowOpacity: 0, //for ios
+        borderBottomWidth: 0, //for ios
+      },
+    },
+    headerLayoutPreset: 'center',
+    // horizontal slide transition
+    transitionConfig: () => ({
+      screenInterpolator: sceneProps => {
+        return CardStackStyleInterpolator.forHorizontal(sceneProps);
+      }
+    }),
+  }
+);
+
 // main bottom tab navigator
 const TabNavigator =  createBottomTabNavigator({
   Home: {
@@ -98,7 +158,7 @@ const TabNavigator =  createBottomTabNavigator({
         }
       },
   Units:{
-    screen: Units,
+    screen: UnitsNavigator,
     navigationOptions: {
         tabBarLabel:"Units",
         tabBarIcon: ({ tintColor }) => (
@@ -106,9 +166,18 @@ const TabNavigator =  createBottomTabNavigator({
         )
       }
     },
+  Jobs:{
+    screen: JobsNavigator,
+    navigationOptions:{
+      tabBarLabel:"Jobs",
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons name="ios-briefcase" size={iconSize}  />
+        )
+    }
+  },
 },  
 {
-  order: ["Units", "Home", "Map", "Settings"],
+  order: ["Jobs", "Units", "Home", "Map", "Settings"],
   initialRouteName: "Home",
   resetOnBlur:true
 });

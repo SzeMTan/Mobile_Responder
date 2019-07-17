@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 import { Button} from 'react-native-elements';
 import SettingsList from 'react-native-settings-list';
 import { Ionicons } from '@expo/vector-icons'; 
@@ -23,7 +23,7 @@ export default class SettingsScreen extends Component {
                             />
                         <SettingsList.Item 
                             title='Caching'
-                            onPress={() => Alert.alert('Route To Caching Settings Pag')}
+                            onPress={() => Alert.alert('Route To Caching Settings Page')}
                             />
                     </SettingsList>
                 </View>

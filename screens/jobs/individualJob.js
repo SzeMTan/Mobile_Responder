@@ -60,7 +60,7 @@ export default class IndividualJob extends Component {
                             <CardComponent title='CALLER INFO' titlecontent={['Source: ', 'Name', 'Address', 'Number']}/>
                         {/* </View> */}
                     </ScrollView>
-                    <BackToTopBtnComponent/>
+                    <ButtonComponent onPress={this.goToTop} isBackToTop={true}/>
             <ButtonComponent title='Assign job' onPress={this.goToTop}/>
             </View>
             // return  <View style={{flex:1, justifyContent:'flex-end'}}>

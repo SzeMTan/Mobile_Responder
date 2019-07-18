@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 class ButtonComponent extends Component {
   constructor(props) {
@@ -10,14 +11,25 @@ class ButtonComponent extends Component {
   }
 
   static defaultProps = {
-    title: "default text",
+    title: "",
+    isBackToTop: false
   }
+
+  renderBackToTop=() => {
+    if(this.props.isBackToTop){
+    return <Ionicons name="ios-arrow-up" size={30} color="#fff" />
+    }
+    else{
+      return <Text style={styles.textStyle}>{this.props.title}</Text>
+    }
+  };
+
   render() {
-    const { title, onPress} = this.props;
+    const { title, onPress, isBackToTop} = this.props;
     return (
-        <TouchableOpacity style={styles.buttonStyle}
+        <TouchableOpacity style={isBackToTop ? styles.TouchableOpacityStyle : styles.buttonStyle }
         onPress={() => onPress()}>
-         <Text style={styles.textStyle}>{title}</Text>
+         {this.renderBackToTop()}
       </TouchableOpacity>
     );
   }
@@ -36,6 +48,18 @@ class ButtonComponent extends Component {
       backgroundColor: '#202646',
       borderRadius:5    
     },
+    TouchableOpacityStyle: {
+      position: 'absolute',
+      width: 50,
+      height: 50,
+      alignItems: 'center',
+      justifyContent: 'center',
+      right: 20,
+      bottom: 55,
+      backgroundColor: '#202646',
+      borderRadius:25,
+    },
+
   });
 
 export default ButtonComponent;

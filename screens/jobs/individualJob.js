@@ -5,7 +5,8 @@ import HeaderComponent from '../../components/customHeaderComponent';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import ButtonComponent from '../../components/customButtonComponent';
-import Testpage from '../jobs/testpage'
+import Testpage from '../../components/customBackToTopBtnComponent'
+import BackToTopBtnComponent from "../../components/customBackToTopBtnComponent";
 export default class IndividualJob extends Component {
     constructor(props) {
         super(props);
@@ -59,7 +60,7 @@ export default class IndividualJob extends Component {
                             <CardComponent title='CALLER INFO' titlecontent={['Source: ', 'Name', 'Address', 'Number']}/>
                         {/* </View> */}
                     </ScrollView>
-                    <Testpage/>
+                    <BackToTopBtnComponent/>
             <ButtonComponent title='Assign job' onPress={this.goToTop}/>
             </View>
             // return  <View style={{flex:1, justifyContent:'flex-end'}}>

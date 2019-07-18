@@ -31,12 +31,11 @@ class ButtonComponent extends Component {
       textAlign: 'center',
       fontWeight: "bold"
     },
-    
     buttonStyle: {
       padding:10,
       backgroundColor: '#202646',
       borderRadius:5    
-    }
+    },
   });
 
 export default ButtonComponent;

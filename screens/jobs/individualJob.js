@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import { View, Text, ScrollView, Button } from 'react-native';
 import styles from '../../styles/style';
-import HeaderComponent from '../../components/customHeaderComponent';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import ButtonComponent from '../../components/customButtonComponent';
-import Testpage from '../../components/customBackToTopBtnComponent'
-import BackToTopBtnComponent from "../../components/customBackToTopBtnComponent";
 export default class IndividualJob extends Component {
     constructor(props) {
         super(props);
@@ -45,7 +42,6 @@ export default class IndividualJob extends Component {
                 justifyContent:'flex-end'
             }}>
                      <ScrollView ref={(c) => {this.scroll = c}} style={{flex:1}}>
-                         {/* <View style={{flex:1,justifyContent:'center'}}> */}
                              <CardComponent title='Assigned: Unassigned'/>
                              <CardComponent title='JOB INFO'
                                 titlecontent={['Job code: ' + this.props.navigation.getParam("code"),
@@ -58,30 +54,10 @@ export default class IndividualJob extends Component {
                             <CardComponent title='HEADLINE' titlecontent={['ORANGE 1- ']}/>
                             <CardComponent title='CROSS STREETS' titlecontent={['X-STREET 1 - Collow RD', 'X-STREET 1 - SELWYN AVE']}/>
                             <CardComponent title='CALLER INFO' titlecontent={['Source: ', 'Name', 'Address', 'Number']}/>
-                        {/* </View> */}
                     </ScrollView>
                     <ButtonComponent onPress={this.goToTop} isBackToTop={true}/>
             <ButtonComponent title='Assign job' onPress={this.goToTop}/>
             </View>
-            // return  <View style={{flex:1, justifyContent:'flex-end'}}>
-            //         <ScrollView ref={(c) => {this.scroll = c}}>
-            //             <View style={{flex:1,justifyContent:'center'}}>
-            //                 <CardComponent title='Assigned: Unassigned'/>
-            //                 <CardComponent title='JOB INFO'
-            //                     titlecontent={['Job code: ' + this.props.navigation.getParam("code"),
-            //                     'Time Reported: ' + this.props.navigation.getParam("date"), 
-            //                     'Job status: ' + this.props.navigation.getParam("status"), 
-            //                     'Priority: '+this.props.navigation.getParam("priority", "P1")]}/>
-            //                 <CardComponent title='LOCATION' titlecontent={[this.props.navigation.getParam("destination", "N/A")]}/>
-            //                 <CardComponent title='TIMES'
-            //                     titlecontent={['Dispatched: ','First Arrival: ', 'Closed: ']}/>
-            //                 <CardComponent title='HEADLINE' titlecontent={['ORANGE 1- ']}/>
-            //                 <CardComponent title='CROSS STREETS' titlecontent={['X-STREET 1 - Collow RD', 'X-STREET 1 - SELWYN AVE']}/>
-            //                 <CardComponent title='CALLER INFO' titlecontent={['Source: ', 'Name', 'Address', 'Number']}/>
-            //             </View>
-            //         </ScrollView>
-            //         <ButtonComponent title='Assign job' onPress={this.goToTop} style={{}}/>
-            //         </View>
         } 
         else {
             return <ScrollView>

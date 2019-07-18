@@ -5,6 +5,7 @@ import HeaderComponent from '../../components/customHeaderComponent';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import ButtonComponent from '../../components/customButtonComponent';
+
 export default class IndividualJob extends Component {
     constructor(props) {
         super(props);
@@ -31,7 +32,6 @@ export default class IndividualJob extends Component {
       }
 
     renderTabContent = (index) => {
-        console.log(this.props.navigation.getParam("priority"));
 
         if (index === 0){
             return  <View style={{flex:1, justifyContent:'flex-end'}}>

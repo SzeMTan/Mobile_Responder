@@ -14,7 +14,7 @@ export default class ReorderCardComponent extends Component {
           }}
         >
           <View style={{ paddingLeft: 10, paddingTop: 10 }}>
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>PBY</Text>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{this.props.sender}</Text>
           </View>
           <View style={{ margin: 0, padding: 0 }}>
             <Icon.Button
@@ -30,10 +30,10 @@ export default class ReorderCardComponent extends Component {
           </View>
         </View>
         <View style={{ paddingLeft: 10 }}>
-          <Text style={{ fontSize: 18 }}>CALL FOR WINDOW</Text>
+          <Text style={{ fontSize: 18 }}>{this.props.message}</Text>
         </View>
         <View style={{ paddingLeft: 10, paddingBottom: 10 }}>
-          <Text style={{ fontStyle: "italic" }}>17/03/19 2:16PM</Text>
+          <Text style={{ fontStyle: "italic" }}>{this.props.date}</Text>
         </View>
       </Card>
     );

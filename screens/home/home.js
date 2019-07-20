@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import { ScrollView, View, Button, StyleSheet } from 'react-native';
-import { Text } from 'react-native-elements';
+import { ScrollView, View,  StyleSheet } from 'react-native';
+import {Button, Text } from 'react-native-elements';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import HeaderComponent from '../../components/customHeaderComponent';
+import ButtonComponent from "../../components/customButtonComponent";
+import homeStyles from '../home/style'
+import styles from '../../styles/style'
 
 export default class Home extends Component {
     constructor(){
@@ -31,11 +34,8 @@ export default class Home extends Component {
         else {
             return <ScrollView>
                         <CardComponent title='Current job: '/>
-                        <Button
-                        buttonStyle={styles.endJob}
-                        onPress={() => this.props.navigation.navigate('Login')}
-                        title="End Job ->"
-                        />
+                        <ButtonComponent style={ homeStyles.endJob } title='END JOB ->' onPress={() => this.props.navigation.navigate('Login')}/>
+                        <View style={styles.horizonalLine}/>
                     </ScrollView>
         }
     }
@@ -50,21 +50,7 @@ export default class Home extends Component {
                 />
                 {this.renderTabContent(this.state.selectedIndex)}
                 </View>
-                <Button
-                    onPress={() => this.props.navigation.navigate('Login')}
-                    title="Logout"
-                    />
             </View>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    endJob: {
-        flexDirection: 'column',
-        backgroundColor: 'red',
-        borderRadius: 5,
-        height: 100,
-        marginHorizontal: 10,
-      },
-});

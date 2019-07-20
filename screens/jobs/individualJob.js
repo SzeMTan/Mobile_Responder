@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { View, Text, ScrollView, Button } from 'react-native';
-import styles from '../../styles/style';
+import styles from '../login/style';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import ButtonComponent from '../../components/customButtonComponent';
+import { Ionicons } from '@expo/vector-icons';
+
 export default class IndividualJob extends Component {
     constructor(props) {
         super(props);
@@ -55,7 +57,7 @@ export default class IndividualJob extends Component {
                             <CardComponent title='CROSS STREETS' titlecontent={['X-STREET 1 - Collow RD', 'X-STREET 1 - SELWYN AVE']}/>
                             <CardComponent title='CALLER INFO' titlecontent={['Source: ', 'Name', 'Address', 'Number']}/>
                     </ScrollView>
-                    <ButtonComponent onPress={this.goToTop} isBackToTop={true}/>
+        <ButtonComponent icon={<Ionicons name="ios-arrow-up" size={30} color="#fff" />} onPress={this.goToTop} isBackToTop={true}/>
             <ButtonComponent title='Assign job' onPress={this.goToTop}/>
             </View>
         } 

@@ -1,14 +1,6 @@
-const React = require("react-native");
-
-const { StyleSheet } = React;
+import {StyleSheet} from "react-native"
 
 export default loginStyles = StyleSheet.create({
-    // containerView: {
-    //     flex: 1,
-    //   },
-    //   loginScreenContainer: {
-    //     flex: 1,
-    //   },
       logoText: {
         fontSize: 35,
         fontWeight: "800",

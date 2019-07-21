@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
-import { Constants, MapView, Location, Permissions } from 'expo';
+import { MapView, Location, Permissions } from 'expo';
+import mapStyles from './style'
 
 export default class App extends Component {
   state = {
@@ -38,8 +39,8 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.paragraph}>
+      <View style={mapStyles.container}>
+        <Text style={mapStyles.paragraph}>
           Map
         </Text>
         
@@ -51,7 +52,7 @@ export default class App extends Component {
             this.state.mapRegion === null ?
             <Text>Map region doesn't exist.</Text> :
             <MapView
-              style={{ alignSelf: 'stretch', height: 400 }}
+              style={mapStyles.map}
               region={this.state.mapRegion}
               showsUserLocation={true}
             />
@@ -65,19 +66,3 @@ export default class App extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-  },
-  paragraph: {
-    margin: 15,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#34495e',
-  },
-});

@@ -34,5 +34,39 @@ export default styles = StyleSheet.create({
     segmentedControlTab: {
         marginHorizontal: 10,
         marginVertical: 5
-    }
+    },
+    card: {
+        backgroundColor: '#F7F9FB'
+    },
+    cardAction: {        
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+    },
+    cardContent: { 
+        flex: 1, 
+        textAlign: "right", 
+        flexDirection: 'row', 
+        justifyContent: 'flex-end'
+    },
+    sliderContainer: {
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        marginHorizontal: '5%',
+        paddingVertical: 15,
+        paddingHorizontal:30
+    },
+    sliderTitleContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    toggleSwitchContainer: {
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        marginHorizontal: '5%',
+        paddingVertical: 15,
+        paddingHorizontal:30
+    },
+
 });

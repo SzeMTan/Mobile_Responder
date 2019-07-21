@@ -19,8 +19,9 @@ export default class TextInputComponent extends Component {
   handleBlur = () => this.setState({isFocused: false})
 
   render() {
+    const { style } = this.props;
     return (
-      <TextInput style={[styles.loginFormTextInput, {borderColor: this.state.isFocused ? '#0a84ff' : '#eaeaea'}]}
+      <TextInput style={[style, {borderColor: this.state.isFocused ? '#0a84ff' : '#eaeaea'}]}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         placeholder={this.props.placeholderText}
@@ -30,23 +31,6 @@ export default class TextInputComponent extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-    loginFormTextInput: {
-        height: 43,
-        fontSize: 14,
-        borderRadius: 5,
-        borderWidth: 1,
-        // borderColor: '#eaeaea',
-        backgroundColor: '#fafafa',
-        paddingLeft: 10,
-        marginLeft: 15,
-        marginRight: 15,
-        marginTop: 5,
-        marginBottom: 5,
-      
-      },
-});
 
 
 

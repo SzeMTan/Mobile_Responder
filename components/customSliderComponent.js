@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text } from 'react-native';
 import Slider from 'react-native-slider';
+import styles from '../styles/style'
 
 export default class SliderComponent extends Component {
     state = {
@@ -14,8 +15,8 @@ export default class SliderComponent extends Component {
     }
       render() {
         return (
-          <View style={styles.container}>
-            <View style={styles.titleContainer}>
+          <View style={styles.sliderContainer}>
+            <View style={styles.sliderTitleContainer}>
                 <Text numberOfLines={1}>{this.props.title}</Text>
                 <Text numberOfLines={1}>{this.state.value}</Text>
             </View>
@@ -31,17 +32,3 @@ export default class SliderComponent extends Component {
       }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        marginHorizontal: '5%',
-        paddingVertical: 15,
-        paddingHorizontal:30
-    },
-    titleContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      },
-});

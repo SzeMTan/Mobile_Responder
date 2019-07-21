@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { Header, Text, ThemeProvider } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
 import { Card, CardImage, CardTitle, CardContent, CardButton, CardAction } from 'react-native-cards';
+import styles from '../styles/style'
 
 export default class CardComponent extends Component {
 
@@ -16,7 +17,7 @@ export default class CardComponent extends Component {
         const items = this.props.titlecontent.map(st => <CardContent key={st} text={st}/>)
         return (
             <View>
-                <Card>
+                <Card style={styles.card}>
                     <CardTitle
                         title={this.props.title}
                     />
@@ -25,20 +26,13 @@ export default class CardComponent extends Component {
                     <CardAction 
                       separator={true} 
                       inColumn={false} 
-                      style={{        
-                        flex: 1,
-                        flexDirection: 'row',
-                        justifyContent: 'flex-end',}}>
+                      style={styles.cardAction}>
                       <CardContent
                         text={this.props.leftbottom}
                       />
                       <CardContent
                         text={this.props.rightbottom}
-                        style={{ 
-                          flex: 1, 
-                          textAlign: "right", 
-                          flexDirection: 'row', 
-                          justifyContent: 'flex-end'}}
+                        style={styles.cardContent}
                       />
                     </CardAction>
                 </Card>

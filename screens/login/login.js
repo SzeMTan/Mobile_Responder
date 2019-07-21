@@ -21,12 +21,15 @@ export default class LoginScreen extends Component {
                   Mobile Responder</Text>
                   <View style={loginStyles.loginFormInputs}>
                     <TextInputComponent
-                    placeholderText="QID"/>
+                    placeholderText="QID"
+                    style={loginStyles.loginFormTextInput} />
                     <TextInputComponent
-                    placeholderText="Callsign"/>
+                    placeholderText="Callsign"
+                    style={loginStyles.loginFormTextInput}/>
                     <TextInputComponent
                     placeholderText="Password" 
-                    secureEntry={true}/>
+                    secureEntry={true}
+                    style={loginStyles.loginFormTextInput}/>
                     </View>
                     <ButtonComponent title='Login' onPress={() => this.onLoginPress()} />
                     <ToggleComponent toggleLabel='Remember Me'/>

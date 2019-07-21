@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ToggleSwitch from 'toggle-switch-react-native'
 import { StyleSheet, View } from 'react-native';
+import styles from '../styles/style'
 
 export default class ToggleComponent extends Component {
 
@@ -19,7 +20,8 @@ export default class ToggleComponent extends Component {
                     isOn={this.state.toggleState}
                     onColor='#30d158'
                     label={this.props.toggleLabel}
-                    labelStyle = {style=styles.container}
+                    // labelStyle = {style=styles.toggleSwitchContainer}
+                    labelStyle={styles.toggleSwitchContainer}
                     size='medium'
                     onToggle={ toggleState => {
                         this.setState({ toggleState })
@@ -29,13 +31,3 @@ export default class ToggleComponent extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        marginHorizontal: '5%',
-        paddingVertical: 15,
-        paddingHorizontal:30
-    },
-});

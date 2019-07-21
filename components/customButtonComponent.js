@@ -18,7 +18,7 @@ class ButtonComponent extends Component {
   render() {
     const { title, onPress, isBackToTop, icon, style} = this.props;
     return (
-      <Button buttonStyle={isBackToTop ? styles.iconButtonStyle : style }
+      <Button buttonStyle={isBackToTop ? styles.iconButtonStyle : [styles.button, style] }
       icon={icon}
       onPress={onPress}
       title={isBackToTop ? null : title}>

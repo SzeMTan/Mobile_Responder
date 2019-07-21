@@ -4,7 +4,9 @@ export default styles = StyleSheet.create({
     button: {
         backgroundColor: '#0076FF', // default ios button blue 
         padding:10,
-        borderRadius:10    
+        borderRadius:10,  
+        height:45,
+        margin:10
     },
     iconButtonStyle: {
         position: 'absolute',
@@ -17,8 +19,8 @@ export default styles = StyleSheet.create({
         backgroundColor: '#0076FF',
         borderRadius:25,
     },
-    view: {
-
+    containerView: {
+        flex: 1,
     },
     header:{
         fontSize: 24,
@@ -26,7 +28,11 @@ export default styles = StyleSheet.create({
         flex: 1,
         textAlign: 'center',
       },
-      rootContainer: {
+    rootContainer: {
           backgroundColor: '#8FC1E3',
-      }
+      },
+    segmentedControlTab: {
+        marginHorizontal: 10,
+        marginVertical: 5
+    }
 });

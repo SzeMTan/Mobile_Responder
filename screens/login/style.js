@@ -3,12 +3,12 @@ const React = require("react-native");
 const { StyleSheet } = React;
 
 export default loginStyles = StyleSheet.create({
-    containerView: {
-        flex: 1,
-      },
-      loginScreenContainer: {
-        flex: 1,
-      },
+    // containerView: {
+    //     flex: 1,
+    //   },
+    //   loginScreenContainer: {
+    //     flex: 1,
+    //   },
       logoText: {
         fontSize: 35,
         fontWeight: "800",
@@ -33,16 +33,6 @@ export default loginStyles = StyleSheet.create({
         marginTop: 5,
         marginBottom: 5,
       
-      },
-      loginButton: {
-        // backgroundColor: '#3897f1',
-        backgroundColor: 'red',
-        borderRadius: 5,
-        height: 45,
-        marginTop: 10,
-      },
-      buttonView: {
-        paddingVertical: 10
       },
       changePassword: {
           color: '#0a84ff',

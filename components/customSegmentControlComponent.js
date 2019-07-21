@@ -1,6 +1,7 @@
 import SegmentedControlTab from 'react-native-segmented-control-tab'
 import React, { Component } from "react";
 import { StyleSheet, View } from 'react-native';
+import styles from '../styles/style'
 
 export default class SegmentControlComponent extends Component {
  
@@ -26,6 +27,7 @@ export default class SegmentControlComponent extends Component {
                     values={this.props.paramvalues}
                     selectedIndex={this.state.selectedIndex}
                     onTabPress={this.handleIndexChange}
+                    tabsContainerStyle={styles.segmentedControlTab}
                     />
             </View>
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, ScrollView, Button } from 'react-native';
-import styles from '../login/style';
+import styles from '../../styles/style';
+import jobStyles from './style'
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import ButtonComponent from '../../components/customButtonComponent';
@@ -39,11 +40,8 @@ export default class IndividualJob extends Component {
         console.log(this.props.navigation.getParam("priority"));
 
         if (index === 0){
-            return <View style={{
-                flex: 1,
-                justifyContent:'flex-end'
-            }}>
-                     <ScrollView ref={(c) => {this.scroll = c}} style={{flex:1}}>
+            return <View style={[styles.containerView, jobStyles.jobEndContainer]}>
+                     <ScrollView ref={(c) => {this.scroll = c}} style={styles.containerView}>
                              <CardComponent title='Assigned: Unassigned'/>
                              <CardComponent title='JOB INFO'
                                 titlecontent={['Job code: ' + this.props.navigation.getParam("code"),
@@ -63,7 +61,7 @@ export default class IndividualJob extends Component {
         } 
         else {
             return <ScrollView>
-            <View style={{flex:1,justifyContent:'center'}}>
+            <View style={[styles.containerView, jobStyles.jobCenterContainer]}>
                 <CardComponent title='Comments'/>
             </View>
         </ScrollView>
@@ -73,7 +71,7 @@ export default class IndividualJob extends Component {
     render() {
 
         return (
-            <View style={{flex: 1}}>
+            <View style={styles.containerView}>
                 <SegmentControlComponent paramvalues={['INFO', 'COMMENTS']} 
                     tabAction={this.setIndex}
                 />

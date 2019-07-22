@@ -16,17 +16,10 @@ export default class ReorderCardComponent extends Component {
   }
 
   handleSortChange = () => {
-    if (this.state.selectedIndex) {
-      this.setState({
-        ...this.state,
-        selectedIndex: 0
-      });
-    } else {
-      this.setState({
-        ...this.state,
-        selectedIndex: 1
-      });
-    }
+    this.setState({
+      ...this.state,
+      selectedIndex: this.state.selectedIndex ? 0 : 1
+    });
     this.props.func();
   };
 

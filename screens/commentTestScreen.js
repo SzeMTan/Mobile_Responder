@@ -6,6 +6,8 @@ import HeaderComponent from "../components/customHeaderComponent";
 
 import ReorderCardComponent from "../components/customReorderCardComponent";
 import CommentCardComponent from "../components/customCommentCardComponent";
+import TextInputComponent from '../components/customTextInputComponent';
+import MessageInputComponent from '../components/customMessageInputComponent';
 
 export default class App extends React.Component {
 
@@ -21,11 +23,12 @@ export default class App extends React.Component {
         sender: "ACY3",
         message: "POS WAS ON THE MOVE",
         date: "17/03/19 3:00PM"
-      },{
-        sender: "d0710013",
-        message: "YOUNG MALE ASKING FOR POLICE",
-        date: "17/03/19 5:00PM"
-      },
+      }
+      // ,{
+      //   sender: "d0710013",
+      //   message: "YOUNG MALE ASKING FOR POLICE",
+      //   date: "17/03/19 5:00PM"
+      // },
 
       ]
     }
@@ -54,6 +57,7 @@ export default class App extends React.Component {
         <HeaderComponent title="Test" />
         <ReorderCardComponent func={this.reorder}/>
         {comments}
+        <MessageInputComponent/>
       </View>
     );
   }

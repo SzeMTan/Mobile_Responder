@@ -14,6 +14,7 @@ export default class HeaderComponent extends Component {
             <View>
                 <Header
                     centerComponent={{ text: this.props.title, style: { fontSize:this.props.fontSize } }}
+                    rightComponent={{text: '10/10'}}
                     backgroundColor='none'
                 />
             </View>

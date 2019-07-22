@@ -1,59 +1,38 @@
-const React = require("react-native");
+import {StyleSheet} from "react-native"
 
-const { StyleSheet } = React;
-
-export default StyleSheet.create({
+export default styles = StyleSheet.create({
+    button: {
+        backgroundColor: '#0076FF', // default ios button blue 
+        padding:10,
+        borderRadius:10,  
+        height:45,
+        margin:10
+    },
+    iconButtonStyle: {
+        position: 'absolute',
+        width: 50,
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        right: 20,
+        bottom: 55,
+        backgroundColor: '#0076FF',
+        borderRadius:25,
+    },
     containerView: {
         flex: 1,
-      },
-      loginScreenContainer: {
-        flex: 1,
-      },
-      logoText: {
-        fontSize: 35,
-        fontWeight: "800",
-        marginTop:80,
-        marginBottom: 30,
-        textAlign: 'left',
-      },
-      loginFormView: {
-        flex: 1,
-        paddingHorizontal:30
-      },
-      loginFormTextInput: {
-        height: 43,
-        fontSize: 14,
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: '#eaeaea',
-        backgroundColor: '#fafafa',
-        paddingLeft: 10,
-        marginLeft: 15,
-        marginRight: 15,
-        marginTop: 5,
-        marginBottom: 5,
-      
-      },
-      loginButton: {
-        backgroundColor: '#3897f1',
-        borderRadius: 5,
-        height: 45,
-        marginTop: 10,
-      },
-      buttonView: {
-        paddingVertical: 10
-      },
-      changePassword: {
-          color: '#0a84ff',
-          textAlign: 'center'
-      },
-      loginFormInputs: {
-        marginTop: 40,
-      },
-      header:{
+    },
+    header:{
         fontSize: 24,
         fontWeight: 'normal',
         flex: 1,
         textAlign: 'center',
       },
+    rootContainer: {
+          backgroundColor: '#8FC1E3',
+      },
+    segmentedControlTab: {
+        marginHorizontal: 10,
+        marginVertical: 5
+    }
 });

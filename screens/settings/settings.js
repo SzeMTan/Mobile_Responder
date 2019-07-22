@@ -3,13 +3,13 @@ import { Alert, StyleSheet, View } from 'react-native';
 import { Button} from 'react-native-elements';
 import SettingsList from 'react-native-settings-list';
 import { Ionicons } from '@expo/vector-icons'; 
+import ButtonComponent from "../../components/customButtonComponent";
+import settingsStyles from './style'
 
 export default class SettingsScreen extends Component {
     render() {
         return (
-            <View style={{flex: 1,
-                flexDirection: 'column',
-                justifyContent: 'space-between'}}>
+            <View style={settingsStyles.container}>
 
                 <View>
                     <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
@@ -28,8 +28,8 @@ export default class SettingsScreen extends Component {
                     </SettingsList>
                 </View>
                 <View>
-                    <Button
-                        buttonStyle={styles.emergencyButton}
+                    <ButtonComponent
+                        style={settingsStyles.emergencyButton}
                         icon={<Ionicons name="ios-warning" size={50} color="white"/>}
                         onPress={() => this.props.navigation.navigate('Login')}
                         title="10-10 EMERGENCY"
@@ -52,13 +52,3 @@ export default class SettingsScreen extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    emergencyButton: {
-        flexDirection: 'column',
-        backgroundColor: 'red',
-        borderRadius: 5,
-        height: 100,
-        marginHorizontal: 10,
-      },
-});

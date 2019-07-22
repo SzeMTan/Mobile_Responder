@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { View, Text, ScrollView, Button } from 'react-native';
 import styles from '../../styles/style';
+import jobStyles from './style'
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import ButtonComponent from '../../components/customButtonComponent';
+import { Ionicons } from '@expo/vector-icons';
 
 export default class IndividualJob extends Component {
     constructor(props) {
@@ -37,11 +39,8 @@ export default class IndividualJob extends Component {
     renderTabContent = (index) => {
 
         if (index === 0){
-            return <View style={{
-                flex: 1,
-                justifyContent:'flex-end'
-            }}>
-                     <ScrollView ref={(c) => {this.scroll = c}} style={{flex:1}}>
+            return <View style={[styles.containerView, jobStyles.jobEndContainer]}>
+                     <ScrollView ref={(c) => {this.scroll = c}} style={styles.containerView}>
                              <CardComponent title='Assigned: Unassigned'/>
                              <CardComponent title='JOB INFO'
                                 titlecontent={['Job code: ' + this.props.navigation.getParam("code"),
@@ -55,13 +54,13 @@ export default class IndividualJob extends Component {
                             <CardComponent title='CROSS STREETS' titlecontent={['X-STREET 1 - Collow RD', 'X-STREET 1 - SELWYN AVE']}/>
                             <CardComponent title='CALLER INFO' titlecontent={['Source: ', 'Name', 'Address', 'Number']}/>
                     </ScrollView>
-                    <ButtonComponent onPress={this.goToTop} isBackToTop={true}/>
+        <ButtonComponent icon={<Ionicons name="ios-arrow-up" size={30} color="#fff" />} onPress={this.goToTop} isBackToTop={true}/>
             <ButtonComponent title='Assign job' onPress={this.goToTop}/>
             </View>
         } 
         else {
             return <ScrollView>
-            <View style={{flex:1,justifyContent:'center'}}>
+            <View style={[styles.containerView, jobStyles.jobCenterContainer]}>
                 <CardComponent title='Comments'/>
             </View>
         </ScrollView>
@@ -71,7 +70,7 @@ export default class IndividualJob extends Component {
     render() {
 
         return (
-            <View style={{flex: 1}}>
+            <View style={styles.containerView}>
                 <SegmentControlComponent paramvalues={['INFO', 'COMMENTS']} 
                     tabAction={this.setIndex}
                 />

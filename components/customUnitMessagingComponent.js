@@ -1,6 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
+import styles from '../styles//style'
 
 export default class UnitMessagingComponent extends React.Component {
   state = {
@@ -32,7 +33,7 @@ export default class UnitMessagingComponent extends React.Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={styles.containerView}>
         <GiftedChat
           messages={this.state.messages}
           onSend={messages => this.onSend(messages)}

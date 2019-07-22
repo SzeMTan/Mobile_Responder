@@ -17,7 +17,6 @@ export default loginStyles = StyleSheet.create({
         fontSize: 14,
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#eaeaea',
         backgroundColor: '#fafafa',
         paddingLeft: 10,
         marginLeft: 15,

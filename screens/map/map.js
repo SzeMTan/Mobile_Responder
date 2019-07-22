@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
 import { MapView, Location, Permissions } from 'expo';
 import mapStyles from './style'
+import styles from '../../styles/style'
 
 export default class App extends Component {
   state = {
@@ -39,11 +40,12 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={mapStyles.container}>
-        <Text style={mapStyles.paragraph}>
+      <View style={styles.containerView}>
+        {/* <Text style={mapStyles.paragraph}>
           Map
-        </Text>
-        
+        </Text> */}
+        <HeaderComponent title='MAP'/>
+        <View style={mapStyles.container}>
         {
           this.state.locationResult === null ?
           <Text>Finding your current location...</Text> :
@@ -57,6 +59,7 @@ export default class App extends Component {
               showsUserLocation={true}
             />
         }
+        </View>
         
         <Text>
           Location: {this.state.locationResult}

@@ -37,7 +37,6 @@ export default class IndividualJob extends Component {
     }
 
     renderTabContent = (index) => {
-        console.log(this.props.navigation.getParam("priority"));
 
         if (index === 0){
             return <View style={[styles.containerView, jobStyles.jobEndContainer]}>

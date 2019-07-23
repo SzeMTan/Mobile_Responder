@@ -15,6 +15,7 @@ export default class App extends React.Component {
     super();
     selectedIndex: 0,
     this.state = {
+      sender: "d0710013",
       messages: [{
         sender: "PBY",
         message: "CALL FOR WINDOW",
@@ -41,6 +42,18 @@ export default class App extends React.Component {
     })
   }
 
+  postMessage = (message) =>{
+    messageObject = {
+      sender: this.state.sender,
+      message: message,
+      date: (new Date()).toLocaleString()
+    }
+    this.state.messages.push(messageObject)
+    this.setState({
+      ...this.state,
+    })
+  }
+  
   render() {
     const comments = this.state.messages.map(
       (message, index) =>         
@@ -57,7 +70,7 @@ export default class App extends React.Component {
         <HeaderComponent title="Test" />
         <ReorderCardComponent func={this.reorder}/>
         {comments}
-        <MessageInputComponent/>
+        <MessageInputComponent postMessage={this.postMessage}/>
       </View>
     );
   }

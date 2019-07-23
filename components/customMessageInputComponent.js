@@ -86,7 +86,7 @@ export default class MessagingInputComponent extends Component {
           />
         </View>
         <View>
-          <Text style={styles.commentButton} onPress={() => console.log("hi")}>
+          <Text style={styles.commentButton} onPress={() => this.props.postMessage("hi")}>
             Comment
           </Text>
         </View>

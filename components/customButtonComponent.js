@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Button } from 'react-native-elements'
-import styles from '../styles/style'
+import { Button } from 'react-native-ui-kitten';
+import styles from '../styles/style';
+import { Ionicons } from '@expo/vector-icons';
+import { View } from 'react-native'
 
 class ButtonComponent extends Component {
   constructor(props) {
@@ -11,22 +13,21 @@ class ButtonComponent extends Component {
 
   static defaultProps = {
     title: "",
-    isBackToTop: false,
+    isIcon: false,
     style: styles.button
   }
 
   render() {
-    const { title, onPress, isBackToTop, icon, style} = this.props;
+    const { title, onPress, isIcon, style} = this.props;
     return (
-      <Button buttonStyle={isBackToTop ? styles.iconButtonStyle : [styles.button, style] }
-      icon={icon}
-      onPress={onPress}
-      title={isBackToTop ? null : title}>
+      <Button buttonStyle={isIcon ? styles.iconButtonStyle : [styles.button, style] } onPress={onPress}>
+         <Ionicons name="ios-arrow-up" size={30} color="#fff" />
+         {/* {title} */}
       </Button>
     );
   }
 }
 
 export default ButtonComponent;
-
+ 
 

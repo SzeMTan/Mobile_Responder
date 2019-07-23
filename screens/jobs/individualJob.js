@@ -55,7 +55,7 @@ export default class IndividualJob extends Component {
                             <CardComponent title='CROSS STREETS' titlecontent={['X-STREET 1 - Collow RD', 'X-STREET 1 - SELWYN AVE']}/>
                             <CardComponent title='CALLER INFO' titlecontent={['Source: ', 'Name', 'Address', 'Number']}/>
                     </ScrollView>
-        <ButtonComponent icon={<Ionicons name="ios-arrow-up" size={30} color="#fff" />} onPress={this.goToTop} isBackToTop={true}/>
+        <ButtonComponent icon={<Ionicons name="ios-arrow-up" size={30} color="#fff" />} onPress={this.goToTop} isIcon={true}/>
             <ButtonComponent title='Assign job' onPress={this.goToTop}/>
             </View>
         } 

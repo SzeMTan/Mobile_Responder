@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
+import ButtonComponent from '../../components/customButtonComponent';
 
 class ChangePasswordScreen extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class ChangePasswordScreen extends Component {
     return (
         <View style={styles.container}>
             <Text>This screen represents the link to allow the user to change their password</Text>
-            <Button
+            <ButtonComponent
                     onPress={() => this.props.navigation.navigate('Login')}
                     title="Logout"
                     />

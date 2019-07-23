@@ -21,6 +21,8 @@ import IndividualJob from './screens/jobs/individualJob';
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
 import styles from './styles/style';
+import { mapping, light as lightTheme } from '@eva-design/eva'
+import { ApplicationProvider } from 'react-native-ui-kitten'
 
 const iconSize = 30;
 
@@ -114,7 +116,8 @@ const JobsNavigator = createStackNavigator(
       headerStyle: {
         elevation: 0, //for android
         shadowOpacity: 0, //for ios
-        borderBottomWidth: 0, //for ios
+        borderBottomWidth: 0, //for ios,
+        backgroundColor: '#31708E'
       },
     },
     headerLayoutPreset: 'center',
@@ -200,7 +203,11 @@ const AppContainer = createAppContainer(RootStack);
 export default class App extends Component {
   render() {
     return (
+      <ApplicationProvider
+        mapping={mapping}
+        theme={lightTheme}>
         <AppContainer />
+      </ApplicationProvider>
     );
   }
 }

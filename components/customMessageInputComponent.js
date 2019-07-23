@@ -4,7 +4,8 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Keyboard
 } from "react-native";
 import Icon from "@expo/vector-icons/Ionicons";
 import { Ionicons } from "@expo/vector-icons";
@@ -27,6 +28,15 @@ export default class MessagingInputComponent extends Component {
 
   handleBlur = () => this.setState({ isFocused: false });
 
+  commentButtonPressed = () => {
+    this.props.postMessage(this.state.text);
+    this.setState({
+      ...this.state,
+      text: ""
+    })
+    Keyboard.dismiss()
+  };
+
   render() {
     return (
       <View style={{ flexDirection: "row", padding: 0, margin: 0 }}>
@@ -43,17 +53,6 @@ export default class MessagingInputComponent extends Component {
         >
           <Ionicons name="ios-camera" size={40} />
         </TouchableOpacity>
-
-        {/* <Ionicons
-          name="ios-camera"
-          size={30}
-          backgroundColor="red"
-          onPress={() => {
-            console.log("camera");
-          }}
-          buttonStyle={{ padding: 0, margin: 0, maxWidth: 5 }}
-          containerStyle={{ padding: 0, margin: 0, maxWidth: 5 }}
-        /> */}
         <View>
           <TextInput
             {...this.props}
@@ -86,7 +85,10 @@ export default class MessagingInputComponent extends Component {
           />
         </View>
         <View>
-          <Text style={styles.commentButton} onPress={() => this.props.postMessage("hi")}>
+          <Text
+            style={styles.commentButton}
+            onPress={this.commentButtonPressed}
+          >
             Comment
           </Text>
         </View>

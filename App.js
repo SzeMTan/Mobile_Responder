@@ -39,7 +39,7 @@ const SettingsNavigator = createStackNavigator(
       screen: GeneralScreen,
       navigationOptions: {
         headerTitle: 'General',
-        headerTitleStyle: styles.header,
+        headerStyle: styles.header,
         headerRight: (<View />),
       }, 
     },
@@ -47,7 +47,7 @@ const SettingsNavigator = createStackNavigator(
       screen: AboutScreen,
       navigationOptions: {
         headerTitle: 'About',
-        headerTitleStyle: styles.header,
+        headerStyle: styles.header,
         headerRight: (<View />),
       },    
     },

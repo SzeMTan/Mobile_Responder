@@ -27,7 +27,7 @@ export default class IndividualJob extends Component {
         const { state: { params = {} } } = navigation;
         return {
           title: params.title || 'JOB',
-          headerTitleStyle: styles.header,
+          headerStyle: styles.header,
           headerRight: (<View />),
         };
       }

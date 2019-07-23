@@ -25,8 +25,8 @@ export default styles = StyleSheet.create({
     header:{
         fontSize: 24,
         fontWeight: 'normal',
-        flex: 1,
         textAlign: 'center',
+        backgroundColor: '#31708E'
       },
     rootContainer: {
           backgroundColor: '#8FC1E3',

@@ -6,6 +6,29 @@ import mapStyles from './style'
 import styles from '../../styles/style'
 
 export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      markers: [
+          {
+            title: 'P036986219',
+            latlng: {latitude: -36.848671,
+              longitude: 174.770107}
+          },
+        {
+          title: 'P036986218',
+          latlng: {latitude: -36.853943,
+            longitude: 174.768265}
+        },
+        {
+          title: 'P036986217',
+          latlng: {latitude: -36.852638,
+            longitude: 174.768265}
+        },
+    ],};
+  }
+
   state = {
     mapRegion: null,
     hasLocationPermissions: false,
@@ -41,9 +64,6 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.containerView}>
-        {/* <Text style={mapStyles.paragraph}>
-          Map
-        </Text> */}
         <HeaderComponent title='MAP'/>
         <View style={mapStyles.container}>
         {
@@ -57,7 +77,14 @@ export default class App extends Component {
               style={mapStyles.map}
               region={this.state.mapRegion}
               showsUserLocation={true}
+            >
+            {this.state.markers.map(marker => (
+            <MapView.Marker
+              key={marker.title}
+              coordinate={marker.latlng}
             />
+            ))}
+            </MapView>
         }
         </View>
         

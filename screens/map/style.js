@@ -15,6 +15,6 @@ export default mapStyles = StyleSheet.create({
       },
       map: {
         alignSelf: 'stretch',
-        height: 400
+        height: 450
       }
     })

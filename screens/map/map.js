@@ -58,14 +58,14 @@ export default class App extends Component {
    this.setState({ locationResult: JSON.stringify(location) });
    
    // Center the map on the location we just fetched.
-    this.setState({mapRegion: { latitude: location.coords.latitude, longitude: location.coords.longitude, latitudeDelta: 0.0922, longitudeDelta: 0.0421 }});
+    this.setState({mapRegion: { latitude: location.coords.latitude, longitude: location.coords.longitude, latitudeDelta: 0.015, longitudeDelta: 0.0045 }});
   };
 
   render() {
     return (
       <View style={styles.containerView}>
         <HeaderComponent title='MAP'/>
-        <View style={mapStyles.container}>
+        <View >
         {
           this.state.locationResult === null ?
           <Text>Finding your current location...</Text> :
@@ -87,7 +87,6 @@ export default class App extends Component {
             </MapView>
         }
         </View>
-        
         <Text>
           Location: {this.state.locationResult}
         </Text>

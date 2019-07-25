@@ -32,23 +32,27 @@ const SettingsNavigator = createStackNavigator(
     Settings: {
       screen: SettingsScreen,
       navigationOptions: () => ({
-        header: <HeaderComponent title='Settings'/>
+        header: <HeaderComponent title='Settings'/>,
       }),
     },
     General: {
       screen: GeneralScreen,
       navigationOptions: {
         headerTitle: 'General',
+        headerTitleStyle: styles.header,
+        headerTintColor: 'white',
         headerStyle: styles.header,
-        headerRight: (<View />),
+        headerRight: (<View/>),
       }, 
     },
     About: {
       screen: AboutScreen,
       navigationOptions: {
         headerTitle: 'About',
+        headerTitleStyle: styles.header,
+        headerTintColor: 'white',
         headerStyle: styles.header,
-        headerRight: (<View />),
+        headerRight: (<View/>),
       },    
     },
   },

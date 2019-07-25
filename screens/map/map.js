@@ -86,7 +86,7 @@ export default class App extends Component {
     return (
       <View style={styles.containerView}>
         <HeaderComponent title='MAP'/>
-        <View >
+        <View style={mapStyles.container}>
         {
           this.state.locationResult === null ?
           <Text>Finding your current location...</Text> :
@@ -118,9 +118,9 @@ export default class App extends Component {
             </MapView>
         }
         </View>
-        <Text>
+        {/* <Text>
           Location: {this.state.locationResult}
-        </Text>
+        </Text> */}
       </View>
         
     );

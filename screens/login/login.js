@@ -15,11 +15,10 @@ export default class LoginScreen extends Component {
         return (
         <KeyboardAvoidingView style={styles.containerView} behavior="padding">
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View style={styles.containerView}>
-                  <View style={loginStyles.loginFormView}>
+                <View style={[styles.containerView, loginStyles.loginFormView]}>
                   <Text style={loginStyles.logoText}>Intergraph {"\n"}
                   Mobile Responder</Text>
-                  <View style={loginStyles.loginFormInputs}>
+                  <View style={loginStyles.loginFormView}>
                     <TextInputComponent
                     placeholderText="QID"
                     style={loginStyles.loginFormTextInput} />
@@ -30,7 +29,6 @@ export default class LoginScreen extends Component {
                     placeholderText="Password" 
                     secureEntry={true}
                     style={loginStyles.loginFormTextInput}/>
-                    </View>
                     <ButtonComponent title='Login' onPress={() => this.onLoginPress()} />
                     <ToggleComponent toggleLabel='Remember Me'/>
                     <Text style={loginStyles.changePassword}

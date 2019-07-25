@@ -26,14 +26,19 @@ export default styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'normal',
         textAlign: 'center',
-        backgroundColor: '#31708E'
+        backgroundColor: '#0076FF',
+        color : 'white'
+        // backgroundColor: '#dfedf7'
       },
+    headerText:{
+        color : 'white',
+    },
     rootContainer: {
           backgroundColor: '#8FC1E3',
       },
     segmentedControlTab: {
         marginHorizontal: 10,
-        marginVertical: 5
+        marginTop: 5
     },
     card: {
         backgroundColor: '#F7F9FB'

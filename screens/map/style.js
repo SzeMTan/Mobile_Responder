@@ -14,7 +14,11 @@ export default mapStyles = StyleSheet.create({
         color: '#34495e',
       },
       map: {
+        flex:1,
         alignSelf: 'stretch',
-        height: 400
+      },
+      marker: {
+        width: 25,
+        height: 25
       }
     })

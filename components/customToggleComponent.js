@@ -20,7 +20,6 @@ export default class ToggleComponent extends Component {
                     isOn={this.state.toggleState}
                     onColor='#30d158'
                     label={this.props.toggleLabel}
-                    // labelStyle = {style=styles.toggleSwitchContainer}
                     labelStyle={styles.toggleSwitchContainer}
                     size='medium'
                     onToggle={ toggleState => {

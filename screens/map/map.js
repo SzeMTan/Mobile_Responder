@@ -1,16 +1,19 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
 import { MapView, Location, Permissions } from 'expo';
 import mapStyles from './style'
-import styles from '../../styles/style'
+import styles from '../../styles/style';
+// import {Icon} from "@expo/vector-icons/Ionicons";
+import Icon from "react-native-vector-icons/Ionicons";
+
 
 export default class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      markers: [
+      jobMarkers: [
           {
             title: 'P036986219',
             latlng: {latitude: -36.848671,
@@ -26,13 +29,31 @@ export default class App extends Component {
           latlng: {latitude: -36.852638,
             longitude: 174.768265}
         },
-    ],};
+    ],
+    unitMarkers: [
+      {
+        title: 'P036986219',
+        latlng: {latitude: -36.850581,
+          longitude: 174.772951}
+      },
+    {
+      title: 'P036986218',
+      latlng: {latitude: -36.851958,
+        longitude: 174.772524}
+    },
+    {
+      title: 'P036986217',
+      latlng: {latitude: -36.854165,
+        longitude: 174.770824}
+    },
+],
+  };
   }
 
   state = {
     mapRegion: null,
     hasLocationPermissions: false,
-    locationResult: null
+    locationResult: null,
   };
 
   componentDidMount() {
@@ -78,11 +99,21 @@ export default class App extends Component {
               region={this.state.mapRegion}
               showsUserLocation={true}
             >
-            {this.state.markers.map(marker => (
+            {this.state.jobMarkers.map(marker => (
             <MapView.Marker
               key={marker.title}
               coordinate={marker.latlng}
-            />
+            >
+            <Image source={require('../../assets/ios-briefcase.png')} style={mapStyles.marker}/>
+            </MapView.Marker>
+            ))}
+            {this.state.unitMarkers.map(marker => (
+            <MapView.Marker
+              key={marker.title}
+              coordinate={marker.latlng}
+            >
+            <Image source={require('../../assets/ios-car.png')} style={mapStyles.marker}/>
+            </MapView.Marker>
             ))}
             </MapView>
         }

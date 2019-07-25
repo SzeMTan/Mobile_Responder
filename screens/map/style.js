@@ -16,5 +16,9 @@ export default mapStyles = StyleSheet.create({
       map: {
         alignSelf: 'stretch',
         height: 450
+      },
+      marker: {
+        width: 25,
+        height: 25
       }
     })

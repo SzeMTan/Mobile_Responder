@@ -4,33 +4,25 @@ export default loginStyles = StyleSheet.create({
       logoText: {
         fontSize: 35,
         fontWeight: "800",
-        marginTop:80,
-        marginBottom: 30,
+        marginBottom:60,
         textAlign: 'left',
       },
       loginFormView: {
-        flex: 1,
-        paddingHorizontal:30
+        paddingHorizontal:30,
+        justifyContent:'center'
       },
       loginFormTextInput: {
-        height: 43,
+        height: 45,
         fontSize: 14,
         borderRadius: 5,
         borderWidth: 1,
         backgroundColor: '#fafafa',
         paddingLeft: 10,
-        marginLeft: 15,
-        marginRight: 15,
-        marginTop: 5,
-        marginBottom: 5,
-      
+        marginHorizontal: 15,
+        marginVertical: 5
       },
       changePassword: {
           color: '#0a84ff',
           textAlign: 'center'
       },
-      loginFormInputs: {
-        marginTop: 40,
-      },
-      
 });

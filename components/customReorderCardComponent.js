@@ -25,12 +25,11 @@ export default class ReorderCardComponent extends Component {
 
   render() {
     return (
-      <Card containerStyle={{ padding: 0, marginVertical: 0 }}>
+      <Card containerStyle={{ padding: 0, marginVertical: 0 , flexDirection: "row-reverse"}}>
         <TouchableOpacity
           style={{
             flex: 1,
             padding: 10,
-            marginLeft: 220
           }}
           onPress={() => {
             this.handleSortChange();

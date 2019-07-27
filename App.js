@@ -20,13 +20,20 @@ import IndividualJob from './screens/jobs/individualJob';
 
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
-import styles from './styles/style';
+// import styles from './styles/style';
+import GLOBAL from './global'
+import getStyleSheet from './styles/style';
+
 
 const iconSize = 30;
 
 const headerFontSize = 24;
 
-const backgroundColour = 'red';
+
+const styles = getStyleSheet(GLOBAL.darkState);
+const backgroundColour = styles.appbackground
+
+// const backgroundColour = 'red';
 
 // navigation for the settings tab
 const SettingsNavigator = createStackNavigator(
@@ -74,7 +81,8 @@ const SettingsNavigator = createStackNavigator(
         return CardStackStyleInterpolator.forHorizontal(sceneProps);
       }
     }),
-    cardStyle: {backgroundColor: backgroundColour}
+    // cardStyle: {backgroundColor: backgroundColour}
+    cardStyle: styles.appbackground
   }
 );
 
@@ -103,7 +111,8 @@ const UnitsNavigator = createStackNavigator(
         return CardStackStyleInterpolator.forHorizontal(sceneProps);
       }
     }),
-    cardStyle: {backgroundColor: backgroundColour}
+    // cardStyle: {backgroundColor: backgroundColour}
+    cardStyle: styles.appbackground
   }
 );
 
@@ -132,7 +141,8 @@ const JobsNavigator = createStackNavigator(
         return CardStackStyleInterpolator.forHorizontal(sceneProps);
       }
     }),
-    cardStyle: {backgroundColor: backgroundColour}    
+    // cardStyle: {backgroundColor: backgroundColour}    
+    cardStyle: styles.appbackground
   }
 );
 
@@ -200,7 +210,8 @@ const RootStack = createStackNavigator(
   },
   {
     initialRouteName: 'Login',
-    cardStyle: {backgroundColor: backgroundColour},
+    // cardStyle: {backgroundColor: backgroundColour},
+    cardStyle: styles.appbackground,
     headerMode: 'none'
   }
 );

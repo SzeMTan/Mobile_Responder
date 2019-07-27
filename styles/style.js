@@ -28,7 +28,6 @@ export default styles = StyleSheet.create({
         textAlign: 'center',
         backgroundColor: '#0076FF',
         color : 'white'
-        // backgroundColor: '#dfedf7'
       },
     headerText:{
         color : 'white',
@@ -73,5 +72,107 @@ export default styles = StyleSheet.create({
         paddingVertical: 15,
         paddingHorizontal:30
     },
+
+
+    // home
+    endJob: {
+        backgroundColor: 'green',
+        borderRadius: 5,
+        marginHorizontal: 10,
+      },
+      horizonalLine: {
+        borderBottomColor: 'grey',
+        borderBottomWidth: 2,
+        marginHorizontal:10
+      },
+
+
+
+    // job
+    jobEndContainer: {
+    justifyContent:'flex-end',
+    },
+    jobCenterContainer: {
+        justifyContent:'center',
+    },
+
+
+
+    // login
+    logoText: {
+        fontSize: 35,
+        fontWeight: "800",
+        marginBottom:60,
+        textAlign: 'left',
+      },
+      loginFormView: {
+        paddingHorizontal:30,
+        justifyContent:'center'
+      },
+      loginFormTextInput: {
+        height: 45,
+        fontSize: 14,
+        borderRadius: 5,
+        borderWidth: 1,
+        backgroundColor: '#fafafa',
+        paddingLeft: 10,
+        marginHorizontal: 15,
+        marginVertical: 5
+      },
+      changePassword: {
+          color: '#0a84ff',
+          textAlign: 'center'
+      },
+
+
+
+      // map
+      mapContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      paragraph: {
+        margin: 15,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: '#34495e',
+      },
+      map: {
+        flex:1,
+        alignSelf: 'stretch',
+      },
+      marker: {
+        width: 25,
+        height: 25
+      },
+
+
+      
+      // settings
+      emergencyButton: {
+        flexDirection: 'column',
+        backgroundColor: 'red',
+        height: 100,
+        marginHorizontal: 10,
+      },
+      settingsContainer:{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      },
+
+
+      // units
+      unitEndContainer: {
+        flex: 1,
+        justifyContent:'flex-end',
+    },
+    unitCenterContainer: {
+        justifyContent:'center',
+    }
+
+
 
 });

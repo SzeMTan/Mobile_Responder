@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, ScrollView, Button } from 'react-native';
 import styles from '../../styles/style';
-import jobStyles from './style'
+// import styles from './style'
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import ButtonComponent from '../../components/customButtonComponent';
@@ -39,7 +39,7 @@ export default class IndividualJob extends Component {
     renderTabContent = (index) => {
 
         if (index === 0){
-            return <View style={[styles.containerView, jobStyles.jobEndContainer]}>
+            return <View style={[styles.containerView, styles.jobEndContainer]}>
                      <ScrollView ref={(c) => {this.scroll = c}} style={styles.containerView}>
                              <CardComponent title='Assigned: Unassigned'/>
                              <CardComponent title='JOB INFO'
@@ -60,7 +60,7 @@ export default class IndividualJob extends Component {
         } 
         else {
             return <ScrollView>
-            <View style={[styles.containerView, jobStyles.jobCenterContainer]}>
+            <View style={[styles.containerView, styles.jobCenterContainer]}>
                 <CardComponent title='Comments'/>
             </View>
         </ScrollView>

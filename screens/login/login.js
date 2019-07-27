@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {Keyboard, Text, View, TouchableWithoutFeedback, KeyboardAvoidingView} from 'react-native';
-import loginStyles from './style'
+// import styles from './style'
 import styles from '../../styles/style'
 import { Button } from 'react-native-elements'
 import ToggleComponent from "../../components/customToggleComponent";
@@ -15,23 +15,23 @@ export default class LoginScreen extends Component {
         return (
         <KeyboardAvoidingView style={styles.containerView} behavior="padding">
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View style={[styles.containerView, loginStyles.loginFormView]}>
-                  <Text style={loginStyles.logoText}>Intergraph {"\n"}
+                <View style={[styles.containerView, styles.loginFormView]}>
+                  <Text style={styles.logoText}>Intergraph {"\n"}
                   Mobile Responder</Text>
-                  <View style={loginStyles.loginFormView}>
+                  <View style={styles.loginFormView}>
                     <TextInputComponent
                     placeholderText="QID"
-                    style={loginStyles.loginFormTextInput} />
+                    style={styles.loginFormTextInput} />
                     <TextInputComponent
                     placeholderText="Callsign"
-                    style={loginStyles.loginFormTextInput}/>
+                    style={styles.loginFormTextInput}/>
                     <TextInputComponent
                     placeholderText="Password" 
                     secureEntry={true}
-                    style={loginStyles.loginFormTextInput}/>
+                    style={styles.loginFormTextInput}/>
                     <ButtonComponent title='Login' onPress={() => this.onLoginPress()} />
                     <ToggleComponent toggleLabel='Remember Me'/>
-                    <Text style={loginStyles.changePassword}
+                    <Text style={styles.changePassword}
                     onPress={() => this.props.navigation.navigate('Password')}>
                       Change Password
                       </Text>

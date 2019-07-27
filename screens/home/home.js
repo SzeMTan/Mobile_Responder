@@ -5,7 +5,7 @@ import SegmentControlComponent from '../../components/customSegmentControlCompon
 import CardComponent from '../../components/customCardComponent';
 import HeaderComponent from '../../components/customHeaderComponent';
 import ButtonComponent from "../../components/customButtonComponent";
-import homeStyles from '../home/style'
+// import styles from '../home/style'
 import styles from '../../styles/style'
 
 export default class Home extends Component {
@@ -34,7 +34,7 @@ export default class Home extends Component {
         else {
             return <ScrollView>
                         <CardComponent title='Current job: '/>
-                        <ButtonComponent style={ homeStyles.endJob } title='END JOB ->' onPress={() => this.props.navigation.navigate('Login')}/>
+                        <ButtonComponent style={ styles.endJob } title='END JOB ->' onPress={() => this.props.navigation.navigate('Login')}/>
                         <View style={styles.horizonalLine}/>
                     </ScrollView>
         }

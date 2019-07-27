@@ -9,7 +9,7 @@ import settingsStyles from './style'
 export default class SettingsScreen extends Component {
     render() {
         return (
-            <View style={settingsStyles.container}>
+            <View style={settingsStyles.settingsContainer}>
 
                 <View>
                     <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>

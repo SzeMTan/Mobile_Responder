@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, ScrollView, Button } from 'react-native';
 import styles from '../../styles/style';
-import unitStyles from './style'
+// import styles from './style'
 import HeaderComponent from '../../components/customHeaderComponent';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
@@ -35,7 +35,7 @@ export default class IndividualUnit extends Component {
     renderTabContent = (index) => {
         if (index === 0){
             return  <ScrollView>
-                        <View style={unitStyles.unitCenterContainer}>
+                        <View style={styles.unitCenterContainer}>
                             <CardComponent title='PERSONNEL'
                                 titlecontent={['Name: ','UserID: ']}/>
                             <CardComponent title='LOCATION'/>

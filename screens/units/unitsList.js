@@ -3,7 +3,9 @@ import { ScrollView, View, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
 import SearchBarComponent from '../../components/customSearchBarComponent';
 import CardComponent from '../../components/customCardComponent';
-import unitStyles from './style'
+// import styles from './style'
+import styles from '../../styles/style'
+
 export default class UnitsList extends Component {
   constructor(props) {
     super(props);
@@ -64,7 +66,7 @@ export default class UnitsList extends Component {
         <View>
             <SearchBarComponent title='Units'/>
             <ScrollView >
-              <View style={unitStyles.unitCenterContainer}>
+              <View style={styles.unitCenterContainer}>
                 {cards}
               </View>
             </ScrollView>

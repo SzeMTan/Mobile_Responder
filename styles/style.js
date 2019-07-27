@@ -1,5 +1,12 @@
 import {StyleSheet} from "react-native"
 
+const buttonStyles = {
+    padding:10,
+    borderRadius:10,  
+    height:45,
+    margin:10
+}
+
 export default styles = StyleSheet.create({
     button: {
         backgroundColor: '#0076FF', // default ios button blue 
@@ -106,7 +113,7 @@ export default styles = StyleSheet.create({
         textAlign: 'left',
       },
       loginFormView: {
-        paddingHorizontal:30,
+        paddingHorizontal:20,
         justifyContent:'center'
       },
       loginFormTextInput: {
@@ -149,7 +156,7 @@ export default styles = StyleSheet.create({
       },
 
 
-      
+
       // settings
       emergencyButton: {
         flexDirection: 'column',

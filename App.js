@@ -26,6 +26,8 @@ const iconSize = 30;
 
 const headerFontSize = 24;
 
+const backgroundColour = 'red';
+
 // navigation for the settings tab
 const SettingsNavigator = createStackNavigator(
   {
@@ -72,6 +74,7 @@ const SettingsNavigator = createStackNavigator(
         return CardStackStyleInterpolator.forHorizontal(sceneProps);
       }
     }),
+    cardStyle: {backgroundColor: backgroundColour}
   }
 );
 
@@ -100,6 +103,7 @@ const UnitsNavigator = createStackNavigator(
         return CardStackStyleInterpolator.forHorizontal(sceneProps);
       }
     }),
+    cardStyle: {backgroundColor: backgroundColour}
   }
 );
 
@@ -128,6 +132,7 @@ const JobsNavigator = createStackNavigator(
         return CardStackStyleInterpolator.forHorizontal(sceneProps);
       }
     }),
+    cardStyle: {backgroundColor: backgroundColour}    
   }
 );
 
@@ -187,7 +192,7 @@ const TabNavigator =  createBottomTabNavigator({
 });
 
 // login to home navigation
-const RootStack = createSwitchNavigator(
+const RootStack = createStackNavigator(
   {
     Login: LoginScreen,
     Home: TabNavigator,
@@ -195,6 +200,8 @@ const RootStack = createSwitchNavigator(
   },
   {
     initialRouteName: 'Login',
+    cardStyle: {backgroundColor: backgroundColour},
+    headerMode: 'none'
   }
 );
 

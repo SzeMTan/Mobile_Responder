@@ -4,8 +4,11 @@ import { Button} from 'react-native-elements';
 import SettingsList from 'react-native-settings-list';
 import { Ionicons } from '@expo/vector-icons'; 
 import ButtonComponent from "../../components/customButtonComponent";
-// import styles from './style'
-import styles from '../../styles/style'
+// import styles from '../../styles/style'
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class SettingsScreen extends Component {
     render() {

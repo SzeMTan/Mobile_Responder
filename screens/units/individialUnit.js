@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { View, Text, ScrollView, Button } from 'react-native';
-import styles from '../../styles/style';
-// import styles from './style'
 import HeaderComponent from '../../components/customHeaderComponent';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import UnitMessagingComponent from '../../components/customUnitMessagingComponent';
+// import styles from '../../styles/style'
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class IndividualUnit extends Component {
     constructor(props) {

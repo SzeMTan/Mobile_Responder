@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import ToggleSwitch from 'toggle-switch-react-native'
 import { StyleSheet, View } from 'react-native';
-import styles from '../styles/style'
+// import styles from '../styles/style'
+import GLOBAL from '../global'
+import getStyleSheet from '../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class ToggleComponent extends Component {
 

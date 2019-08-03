@@ -5,9 +5,10 @@ import SegmentControlComponent from '../../components/customSegmentControlCompon
 import CardComponent from '../../components/customCardComponent';
 import HeaderComponent from '../../components/customHeaderComponent';
 import ButtonComponent from "../../components/customButtonComponent";
-// import styles from '../home/style'
-import styles from '../../styles/style'
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
 
+const styles = getStyleSheet(GLOBAL.darkState);
 export default class Home extends Component {
     constructor(){
         super()

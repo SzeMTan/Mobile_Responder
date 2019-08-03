@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Button } from 'react-native-elements'
-import styles from '../styles/style'
+// import styles from '../styles/style'
+import GLOBAL from '../global'
+import getStyleSheet from '../styles/style'
 
+const styles = getStyleSheet(GLOBAL.darkState);
 class ButtonComponent extends Component {
   constructor(props) {
     super(props);

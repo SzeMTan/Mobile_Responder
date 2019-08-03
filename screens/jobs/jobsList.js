@@ -3,8 +3,11 @@ import { ScrollView, View, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
 import SearchBarComponent from '../../components/customSearchBarComponent';
 import CardComponent from '../../components/customCardComponent';
-import styles from '../../styles/style'
-import jobStyles from './style'
+// import styles from '../../styles/style'
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class JobsList extends Component {
   constructor(props) {
@@ -69,7 +72,7 @@ export default class JobsList extends Component {
         <View>
             <SearchBarComponent title='Jobs'/>
             <ScrollView >
-                <View style={[styles.containerView, jobStyles.jobCenterContainer]}>
+                <View style={[styles.containerView, styles.jobCenterContainer]}>
                     {cards}
                 </View>
             </ScrollView>

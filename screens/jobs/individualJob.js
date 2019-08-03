@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { View, Text, ScrollView, Button } from 'react-native';
-import styles from '../../styles/style';
-// import styles from './style'
+// import styles from '../../styles/style';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import ButtonComponent from '../../components/customButtonComponent';
 import { Ionicons } from '@expo/vector-icons';
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class IndividualJob extends Component {
     constructor(props) {

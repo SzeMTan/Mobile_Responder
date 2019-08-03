@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
 import { MapView, Location, Permissions } from 'expo';
-// import styles from './style'
-import styles from '../../styles/style';
-// import {Icon} from "@expo/vector-icons/Ionicons";
-import Icon from "react-native-vector-icons/Ionicons";
+// import styles from '../../styles/style'
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
 
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class App extends Component {
 

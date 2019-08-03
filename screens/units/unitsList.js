@@ -3,8 +3,11 @@ import { ScrollView, View, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
 import SearchBarComponent from '../../components/customSearchBarComponent';
 import CardComponent from '../../components/customCardComponent';
-// import styles from './style'
-import styles from '../../styles/style'
+// import styles from '../../styles/style'
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class UnitsList extends Component {
   constructor(props) {

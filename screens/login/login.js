@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {Keyboard, Text, View, TouchableWithoutFeedback, KeyboardAvoidingView} from 'react-native';
-// import styles from './style'
 // import styles from '../../styles/style'
 import { Button } from 'react-native-elements'
 import ToggleComponent from "../../components/customToggleComponent";

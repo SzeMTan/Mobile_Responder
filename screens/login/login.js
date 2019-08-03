@@ -32,7 +32,7 @@ export default class LoginScreen extends Component {
                     secureEntry={true}
                     style={styles.loginFormTextInput}/>
                     <ButtonComponent title='Login' onPress={() => this.onLoginPress()} />
-                    <ToggleComponent toggleLabel='Remember Me'/>
+                    <ToggleComponent toggleLabel='Remember Me' onToggle={() => this.doNothing()}/>
                     <Text style={styles.changePassword}
                     onPress={() => this.props.navigation.navigate('Password')}>
                       Change Password
@@ -46,6 +46,10 @@ export default class LoginScreen extends Component {
 
     onLoginPress() {
         this.props.navigation.navigate('Home');
-        console.log(GLOBAL.darkState)
+        console.log('login' + GLOBAL.darkState)
+      }
+
+      doNothing(){
+
       }
 }

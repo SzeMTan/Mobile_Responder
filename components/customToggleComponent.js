@@ -6,7 +6,7 @@ import styles from '../styles/style'
 export default class ToggleComponent extends Component {
 
     state = {
-        toggleState: false,
+        // toggleState: false,
     };
 
     static defaultProps = {
@@ -14,17 +14,16 @@ export default class ToggleComponent extends Component {
     }
 
     render() {
+        const { onToggle, toggleState, toggleLabel } = this.props;
         return (
             <View>
                 <ToggleSwitch
-                    isOn={this.state.toggleState}
+                    isOn={toggleState}
                     onColor='#30d158'
-                    label={this.props.toggleLabel}
+                    label={toggleLabel}
                     labelStyle={styles.toggleSwitchContainer}
                     size='medium'
-                    onToggle={ toggleState => {
-                        this.setState({ toggleState })
-                    }}  
+                    onToggle={onToggle}
                 /> 
                 </View>
         )

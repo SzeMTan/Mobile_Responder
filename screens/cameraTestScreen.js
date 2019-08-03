@@ -46,7 +46,7 @@ export default class CameraScreen extends React.Component {
     const { state: { params = {} } } = navigation;
     console.log("in navigation options")
     return {
-      tabBarVisible: false,
+      header: null,
     };
   }
   

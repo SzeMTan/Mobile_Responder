@@ -54,6 +54,11 @@ export default class App extends React.Component {
     })
   }
   
+  cameraPressed = () => {
+    console.log("camera pressed function");
+    this.props.navigation.navigate("Camera");
+  }
+
   render() {
     const comments = this.state.messages.map(
       (message, index) =>         
@@ -67,10 +72,9 @@ export default class App extends React.Component {
 
     return (
       <View>
-        <HeaderComponent title="Test" />
         <ReorderCardComponent func={this.reorder}/>
         {comments}
-        <MessageInputComponent postMessage={this.postMessage}/>
+        {/* <MessageInputComponent postMessage={this.postMessage} cameraPressed={this.cameraPressed}/> */}
       </View>
     );
   }

@@ -22,6 +22,7 @@ import { Ionicons } from '@expo/vector-icons';
 import ChangePasswordScreen from './screens/login/changePassword';
 import styles from './styles/style';
 
+import CameraTestScreen from './screens/cameraTestScreen';
 const iconSize = 30;
 
 const headerFontSize = 24;
@@ -107,6 +108,9 @@ const JobsNavigator = createStackNavigator(
     IndividualJob: {
       screen: IndividualJob,
     },
+    Camera: {
+      screen: CameraTestScreen,
+    }
   },
   {
     initialRouteName: 'Jobs',
@@ -127,6 +131,18 @@ const JobsNavigator = createStackNavigator(
   }
 );
 
+//for hiding tab bar when in camera screen
+JobsNavigator.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+  console.log("index is " + navigation.state.index);
+  if (navigation.state.index == 2) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
+};
 // main bottom tab navigator
 const TabNavigator =  createBottomTabNavigator({
   Home: {

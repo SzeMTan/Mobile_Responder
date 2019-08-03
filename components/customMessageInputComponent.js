@@ -49,6 +49,7 @@ export default class MessagingInputComponent extends Component {
           }}
           onPress={() => {
             console.log("camera");
+            this.props.cameraPressed();
           }}
         >
           <Ionicons name="ios-camera" size={40} />

@@ -11,10 +11,7 @@ import {
 } from "react-native";
 import GalleryScreen from "./GalleryScreen";
 import isIPhoneX from "react-native-is-iphonex";
-
-import {
-  Ionicons,
-} from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 
 export default class CameraScreen extends React.Component {
   state = {
@@ -47,11 +44,13 @@ export default class CameraScreen extends React.Component {
     console.log("in navigation options")
     return {
       header: null,
-    };
+  };
   }
-  
+
   toggleView = () =>
     this.setState({ showGallery: !this.state.showGallery});
+
+  backButtonPressed = () => this.props.navigation.goBack();
 
   takePicture = () => {
     if (this.camera) {
@@ -90,7 +89,7 @@ export default class CameraScreen extends React.Component {
   };
 
   renderGallery() {
-    return <GalleryScreen onPress={this.toggleView.bind(this)} />;
+    return <GalleryScreen onPress={this.toggleView.bind(this)} backButtonPressed={this.backButtonPressed.bind(this)}/>;
   }
 
   renderNoPermissions = () =>
@@ -100,7 +99,11 @@ export default class CameraScreen extends React.Component {
       </Text>
     </View>;
 
-  renderTopBar = () => <View style={styles.topBar} />;
+  renderTopBar = () => <View style={styles.topBar}>
+    <TouchableOpacity onPress={()=>{this.props.navigation.goBack()}}>
+            <MaterialIcons name="arrow-back" size={40} color="white" />
+</TouchableOpacity>
+  </View>;
 
   renderBottomBar = () =>
     <View style={styles.bottomBar}>
@@ -159,8 +162,8 @@ const styles = StyleSheet.create({
     flex: 0.2,
     backgroundColor: "transparent",
     flexDirection: "row",
-    justifyContent: "space-around",
-    paddingTop: Constants.statusBarHeight / 2
+    paddingTop: Constants.statusBarHeight,
+    paddingLeft: Constants.statusBarHeight/2,
   },
   bottomBar: {
     paddingBottom: isIPhoneX ? 25 : 5,

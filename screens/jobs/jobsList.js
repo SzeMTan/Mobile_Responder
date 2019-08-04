@@ -3,8 +3,10 @@ import { ScrollView, View, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
 import SearchBarComponent from '../../components/customSearchBarComponent';
 import CardComponent from '../../components/customCardComponent';
-import styles from '../../styles/style'
-import jobStyles from './style'
+import styles from '../../styles/style';
+import jobStyles from './style';
+import ButtonComponent from "../../components/customButtonComponent";
+import {Ionicons} from "@expo/vector-icons";
 
 export default class JobsList extends Component {
   constructor(props) {
@@ -54,6 +56,10 @@ export default class JobsList extends Component {
     return this.state.data.length;
   };
 
+  newJob = () => {
+    this.props.navigation.navigate("NewFieldEvent")
+  }
+
   render() {
     const cards = this.state.data.map(job =>         
     <TouchableOpacity key={job.title} 
@@ -73,6 +79,11 @@ export default class JobsList extends Component {
                     {cards}
                 </View>
             </ScrollView>
+            <ButtonComponent
+            icon={<Ionicons name="ios-add" size={30} color="#fff" />}
+            onPress={this.newJob}
+            isBackToTop={true}
+          />
         </View>
     );
   }

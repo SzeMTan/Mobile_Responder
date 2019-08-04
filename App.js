@@ -23,6 +23,8 @@ import ChangePasswordScreen from './screens/login/changePassword';
 import styles from './styles/style';
 
 import CameraTestScreen from './screens/jobs/cameraScreen';
+import NewFieldEvent from "./screens/jobs/newFieldEvent";
+
 const iconSize = 30;
 
 const headerFontSize = 24;
@@ -107,6 +109,9 @@ const JobsNavigator = createStackNavigator(
     },
     IndividualJob: {
       screen: IndividualJob,
+    },
+    NewFieldEvent: {
+      screen: NewFieldEvent
     },
     Camera: {
       screen: CameraTestScreen,

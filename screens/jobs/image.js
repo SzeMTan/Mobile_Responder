@@ -11,6 +11,7 @@ import {
 import { FileSystem, MediaLibrary, Permissions } from "expo";
 import { MaterialIcons, SimpleLineIcons } from "@expo/vector-icons";
 import isIPhoneX from "react-native-is-iphonex";
+import styles from "./imageStyle";
 
 const PHOTOS_DIR = FileSystem.documentDirectory + "photos";
 
@@ -44,10 +45,7 @@ export default class GalleryScreen extends React.Component {
     const uri = `${PHOTOS_DIR}/${fileName}`;
     return (
       <ImageBackground
-        style={{
-          flex: 1,
-          justifyContent: "space-between"
-        }}
+        style={styles.imageBackgroundContainer}
         source={{ uri }}
       >
         <View style={styles.topBar}>
@@ -84,32 +82,3 @@ export default class GalleryScreen extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  topBar: {
-    flex: 0.2,
-    backgroundColor: "transparent",
-    flexDirection: "row",
-    paddingTop: Constants.statusBarHeight,
-    paddingLeft: Constants.statusBarHeight / 2
-  },
-  bottomBar: {
-    paddingBottom: isIPhoneX ? 25 : 5,
-    backgroundColor: "transparent",
-    justifyContent: "space-around",
-    flex: 0.12,
-    flexDirection: "row"
-  },
-  whiteText: {
-    color: "white"
-  },
-  bottomButton: {
-    // flex: 0.3,
-    height: 58,
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});

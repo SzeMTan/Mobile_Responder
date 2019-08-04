@@ -1,7 +1,7 @@
 import React from "react";
 import { View, KeyboardAvoidingView, Platform } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
-import styles from "../styles//style";
+import styles from "../styles/style";
 export default class UnitMessagingComponent extends React.Component {
   state = {
     messages: []

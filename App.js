@@ -22,7 +22,7 @@ import { Ionicons } from '@expo/vector-icons';
 import ChangePasswordScreen from './screens/login/changePassword';
 import styles from './styles/style';
 
-import CameraTestScreen from './screens/cameraTestScreen';
+import CameraTestScreen from './screens/jobs/cameraScreen';
 const iconSize = 30;
 
 const headerFontSize = 24;

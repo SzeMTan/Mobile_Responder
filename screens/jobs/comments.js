@@ -2,12 +2,12 @@ import React from "react";
 import { View } from "react-native";
 
 import Icon from "@expo/vector-icons/AntDesign";
-import HeaderComponent from "../components/customHeaderComponent";
+import HeaderComponent from "../../components/customHeaderComponent";
 
-import ReorderCardComponent from "../components/customReorderCardComponent";
-import CommentCardComponent from "../components/customCommentCardComponent";
-import TextInputComponent from "../components/customTextInputComponent";
-import MessageInputComponent from "../components/customMessageInputComponent";
+import ReorderCardComponent from "../../components/customReorderCardComponent";
+import CommentCardComponent from "../../components/customCommentCardComponent";
+import TextInputComponent from "../../components/customTextInputComponent";
+import MessageInputComponent from "../../components/customMessageInputComponent";
 
 export default class App extends React.Component {
   constructor() {

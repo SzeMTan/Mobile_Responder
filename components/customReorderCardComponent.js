@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 import { Card } from "react-native-elements";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
+import styles from "../styles/style"
 export default class ReorderCardComponent extends Component {
   constructor() {
     super();
@@ -25,21 +25,15 @@ export default class ReorderCardComponent extends Component {
 
   render() {
     return (
-      <Card containerStyle={{ padding: 0, marginVertical: 0 , flexDirection: "row-reverse"}}>
+      <Card containerStyle={styles.reorderCardContainer}>
         <TouchableOpacity
-          style={{
-            flex: 1,
-            padding: 10,
-          }}
+          style={styles.reorderCardTouch}
           onPress={() => {
             this.handleSortChange();
           }}
         >
           <View
-            style={{
-              flexDirection: "row-reverse",
-              alignItems: "center"
-            }}
+            style={styles.reorderCardRotation}
           >
             <MaterialCommunityIcons
               name={this.state.context[this.state.selectedIndex].iconName}

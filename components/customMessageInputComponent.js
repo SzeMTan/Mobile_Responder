@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import Icon from "@expo/vector-icons/Ionicons";
 import { Ionicons } from "@expo/vector-icons";
+import styles from "../styles/style";
 
 export default class MessagingInputComponent extends Component {
   constructor(props) {
@@ -40,13 +41,9 @@ export default class MessagingInputComponent extends Component {
 
   render() {
     return (
-      <View style={{ flexDirection: "row", padding: 0, margin: 0 }}>
+      <View style={styles.messageInputContainer}>
         <TouchableOpacity
-          style={{
-            height: 30,
-            width: 30,
-            marginLeft: 10
-          }}
+          style={styles.cameraTouch}
           onPress={() => {
             this.props.cameraPressed();
           }}
@@ -64,7 +61,7 @@ export default class MessagingInputComponent extends Component {
             }}
             value={this.state.text}
             style={[
-              styles.loginFormTextInput,
+              styles.messagingTextInput,
               {
                 borderColor: this.state.isFocused
                   ? "#0a84ff"
@@ -95,26 +92,3 @@ export default class MessagingInputComponent extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  loginFormTextInput: {
-    height: 43,
-    fontSize: 14,
-    borderRadius: 5,
-    borderWidth: 1,
-    backgroundColor: "#fafafa",
-    paddingLeft: 10,
-    marginLeft: 5,
-    marginRight: 5,
-    marginTop: 5,
-    marginBottom: 5
-  },
-  commentButton: {
-    color: "#0084ff",
-    fontWeight: "600",
-    fontSize: 17,
-    backgroundColor: "transparent",
-    marginTop: 10,
-    marginBottom: 5
-  }
-});

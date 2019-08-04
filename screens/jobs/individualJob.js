@@ -6,8 +6,8 @@ import SegmentControlComponent from "../../components/customSegmentControlCompon
 import CardComponent from "../../components/customCardComponent";
 import ButtonComponent from "../../components/customButtonComponent";
 import { Ionicons } from "@expo/vector-icons";
-import CameraTestScreen from "../cameraTestScreen";
-import CommentTestScreen from "../commentTestScreen";
+import CameraTestScreen from "./cameraScreen";
+import CommentTestScreen from "./comments";
 import MessageInputComponent from "../../components/customMessageInputComponent";
 
 export default class IndividualJob extends Component {

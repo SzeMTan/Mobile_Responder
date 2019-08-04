@@ -134,7 +134,6 @@ const JobsNavigator = createStackNavigator(
 //for hiding tab bar when in camera screen
 JobsNavigator.navigationOptions = ({ navigation }) => {
   let tabBarVisible = true;
-  console.log("index is " + navigation.state.index);
   if (navigation.state.index == 2) {
     tabBarVisible = false;
   }

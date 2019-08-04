@@ -12,30 +12,41 @@ import MessageInputComponent from "../components/customMessageInputComponent";
 export default class App extends React.Component {
   constructor() {
     super();
-    selectedIndex: 0, (this.state = {
+    this.state = {
       sender: "d0710013",
       messages: [
         {
           sender: "PBY",
           message: "CALL FOR WINDOW",
           date: "17/03/19 2:16PM",
-          uri: false
+          uri: false,
+          pinned: false
         },
         {
           sender: "ACY3",
           message: "POS WAS ON THE MOVE",
           uri: false,
+          pinned: false,
           date: "17/03/19 3:00PM"
-        }
-        ,{
+        },
+        {
           sender: "d0710013",
           message: "YOUNG MALE ASKING FOR POLICE",
           uri: false,
+          pinned: false,
           date: "17/03/19 5:00PM"
-        },
+        }
       ]
-    });
+    };
   }
+
+  pinnedButtonPressed = index => {
+    this.state.messages[index].pinned = !this.state.messages[index].pinned
+    this.setState({
+      ...this.state,
+    })
+    console.log(this.state.messages);
+  };
 
   reorder = () => {
     this.setState({
@@ -50,28 +61,55 @@ export default class App extends React.Component {
         sender: this.state.sender,
         message: this.props.uri,
         uri: true,
+        pinned: false,
         date: new Date().toLocaleString()
       });
     }
+    
     if (this.props.message != "") {
       this.state.messages.push({
         sender: this.state.sender,
         message: this.props.message,
         uri: false,
+        pinned: false,
         date: new Date().toLocaleString()
       });
     }
+
+    const pinnedComments = this.state.messages.map((message, index) => {
+      console.log(index + ": " + message.pinned);
+      if (message.pinned) {
+        console.log("in if pinned: " + index)
+        return (
+          <CommentCardComponent
+            key={index}
+            index={index}
+            sender={message.sender}
+            message={message.message}
+            uri={message.uri}
+            date={message.date}
+            pinned={message.pinned}
+            pinnedButtonPressed={this.pinnedButtonPressed}
+          />
+        );
+      }
+    });
+
     const comments = this.state.messages.map((message, index) =>
       <CommentCardComponent
         key={index}
+        index={index}
         sender={message.sender}
         message={message.message}
         uri={message.uri}
         date={message.date}
+        pinned={message.pinned}
+        pinnedButtonPressed={this.pinnedButtonPressed}
       />
     );
     return (
       <View>
+        {pinnedComments}
         <ReorderCardComponent func={this.reorder} />
         {comments}
       </View>

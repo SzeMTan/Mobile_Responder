@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import { View, TouchableOpacity, Text, Image } from "react-native";
 import { Card } from "react-native-elements";
-import Icon from "@expo/vector-icons/AntDesign";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default class ReorderCardComponent extends Component {
+  constructor(props) {
+    super(props);
+  }
+  pin = () => {
+    console.log(this.props.index + " pinned");
+    this.props.pinnedButtonPressed(this.props.index);
+  };
   render() {
     const { message } = this.props;
     return (
@@ -20,16 +27,13 @@ export default class ReorderCardComponent extends Component {
             </Text>
           </View>
           <View style={{ margin: 0, padding: 0 }}>
-            <Icon.Button
-              name="pushpino"
-              backgroundColor="red"
-              color="black"
-              onPress={() => {
-                console.log("pinned");
-              }}
-              underlayColor="rgba(255, 255, 255, 0)"
-              iconStyle={{ padding: 0, margin: 0 }}
-            />
+            <TouchableOpacity style={{ flex: 1 }} onPress={this.pin}>
+              <MaterialCommunityIcons
+                name={this.props.pinned ? "pin" : "pin-outline"}
+                color="black"
+                size={20}
+              />
+            </TouchableOpacity>
           </View>
         </View>
         {this.props.uri

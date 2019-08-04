@@ -1,4 +1,4 @@
-import { Constants, Camera, FileSystem, Permissions } from "expo";
+import { Camera, FileSystem, Permissions } from "expo";
 import React from "react";
 import {
   Alert,
@@ -10,9 +10,9 @@ import {
   Platform
 } from "react-native";
 import GalleryScreen from "./image";
-import isIPhoneX from "react-native-is-iphonex";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import styles from "./cameraStyle";
+
 export default class CameraScreen extends React.Component {
   state = {
     autoFocus: "on",
@@ -109,7 +109,7 @@ export default class CameraScreen extends React.Component {
     </View>;
 
   renderCamera = () =>
-    <View style={styles.generalContainer>}>
+    <View style={styles.generalContainer}>
       <Camera
         ref={ref => {
           this.camera = ref;

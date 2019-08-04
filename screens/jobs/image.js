@@ -1,4 +1,3 @@
-import { Constants } from "expo";
 import React from "react";
 import {
   StyleSheet,
@@ -10,7 +9,6 @@ import {
 } from "react-native";
 import { FileSystem, MediaLibrary, Permissions } from "expo";
 import { MaterialIcons, SimpleLineIcons } from "@expo/vector-icons";
-import isIPhoneX from "react-native-is-iphonex";
 import styles from "./imageStyle";
 
 const PHOTOS_DIR = FileSystem.documentDirectory + "photos";

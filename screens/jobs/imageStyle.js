@@ -1,4 +1,6 @@
 import { StyleSheet } from "react-native";
+import { Constants } from "expo";
+import isIPhoneX from "react-native-is-iphonex";
 
 export default (jobStyles = StyleSheet.create({
   container: {
@@ -7,7 +9,7 @@ export default (jobStyles = StyleSheet.create({
   imageBackgroundContainer: {
     flex: 1,
     justifyContent: "space-between"
-  }
+  },
   topBar: {
     flex: 0.2,
     backgroundColor: "transparent",

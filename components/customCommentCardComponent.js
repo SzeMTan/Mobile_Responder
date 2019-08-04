@@ -8,7 +8,6 @@ export default class ReorderCardComponent extends Component {
     super(props);
   }
   pin = () => {
-    console.log(this.props.index + " pinned");
     this.props.pinnedButtonPressed(this.props.index);
   };
   render() {

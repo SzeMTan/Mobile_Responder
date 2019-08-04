@@ -45,7 +45,6 @@ export default class App extends React.Component {
     this.setState({
       ...this.state,
     })
-    console.log(this.state.messages);
   };
 
   reorder = () => {
@@ -77,9 +76,7 @@ export default class App extends React.Component {
     }
 
     const pinnedComments = this.state.messages.map((message, index) => {
-      console.log(index + ": " + message.pinned);
       if (message.pinned) {
-        console.log("in if pinned: " + index)
         return (
           <CommentCardComponent
             key={index}

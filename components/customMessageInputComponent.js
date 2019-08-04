@@ -5,7 +5,8 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
-  Keyboard
+  Keyboard,
+  Dimensions
 } from "react-native";
 import Icon from "@expo/vector-icons/Ionicons";
 import { Ionicons } from "@expo/vector-icons";
@@ -33,8 +34,8 @@ export default class MessagingInputComponent extends Component {
     this.setState({
       ...this.state,
       text: ""
-    })
-    Keyboard.dismiss()
+    });
+    Keyboard.dismiss();
   };
 
   render() {
@@ -44,8 +45,7 @@ export default class MessagingInputComponent extends Component {
           style={{
             height: 30,
             width: 30,
-            marginLeft: 10,
-            // backgroundColor: "red"
+            marginLeft: 10
           }}
           onPress={() => {
             this.props.cameraPressed();
@@ -71,7 +71,7 @@ export default class MessagingInputComponent extends Component {
                   : "rgba(255,255,255,0)"
               },
               { height: Math.max(35, this.state.height) },
-              { width: 250 }
+              { width: Dimensions.get("window").width - 110 - 2 * 8 * 1.5 }
             ]}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
@@ -80,7 +80,6 @@ export default class MessagingInputComponent extends Component {
             enablesReturnKeyAutomatically={true}
             multiline={true}
             numberOfLines={3}
-            //   returnKeyType="send"
             spellCheck={true}
           />
         </View>
@@ -103,11 +102,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
     borderRadius: 5,
     borderWidth: 1,
-    // borderColor: '#eaeaea',
     backgroundColor: "#fafafa",
     paddingLeft: 10,
-    marginLeft: 15,
-    marginRight: 15,
+    marginLeft: 5,
+    marginRight: 5,
     marginTop: 5,
     marginBottom: 5
   },

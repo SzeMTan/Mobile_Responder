@@ -48,7 +48,6 @@ export default class MessagingInputComponent extends Component {
             // backgroundColor: "red"
           }}
           onPress={() => {
-            console.log("camera");
             this.props.cameraPressed();
           }}
         >

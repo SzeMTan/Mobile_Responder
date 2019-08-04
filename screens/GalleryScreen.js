@@ -9,7 +9,8 @@ import {
   ImageBackground
 } from "react-native";
 import { FileSystem, MediaLibrary, Permissions } from "expo";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons, SimpleLineIcons } from "@expo/vector-icons";
+import isIPhoneX from "react-native-is-iphonex";
 
 const PHOTOS_DIR = FileSystem.documentDirectory + "photos";
 
@@ -24,20 +25,51 @@ export default class GalleryScreen extends React.Component {
     this.setState({ photos });
   };
 
-  sendImage = async () => {
+  sendImage = () => {
     fileName = this.state.photos[this.state.photos.length - 1];
     const uri = `${PHOTOS_DIR}/${fileName}`;
-    console.log(uri);
-    console.log("in sendingImage ");
+    this.props.sendButtonPressed(uri);
+  };
+
+  deleteImages = () => {
+    for (i = 0; i < this.state.photos.length; i++) {
+      fileName = this.state.photos[i];
+      uri = `${PHOTOS_DIR}/${fileName}`;
+      console.log("deleting " + uri);
+      FileSystem.deleteAsync(uri);
+    }
   };
 
   renderPhoto = fileName => {
     const uri = `${PHOTOS_DIR}/${fileName}`;
     return (
-      <ImageBackground style={{ flex: 1 }} source={{ uri }}>
+      <ImageBackground
+        style={{
+          flex: 1,
+          justifyContent: "space-between"
+        }}
+        source={{ uri }}
+      >
         <View style={styles.topBar}>
           <TouchableOpacity onPress={this.props.backButtonPressed}>
             <MaterialIcons name="arrow-back" size={40} color="white" />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.bottomBar}>
+          <TouchableOpacity
+            style={styles.bottomButton}
+            // onPress={this.props.onPress}
+            onPress={this.deleteImages}
+          >
+            <SimpleLineIcons name="reload" size={40} color="white" />
+            <Text style={styles.whiteText}>Retake</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.bottomButton}
+            onPress={this.sendImage}
+          >
+            <MaterialIcons name="send" size={40} color="white" />
+            <Text style={styles.whiteText}>Send</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -45,17 +77,8 @@ export default class GalleryScreen extends React.Component {
   };
 
   render() {
-    console.log(this.state.photos);
     return (
-      <View style={{ flex: 1 }}>
-        {/* <View style={styles.tobBar}>
-          <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-            <MaterialIcons name="arrow-back" size={25} color="white" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={this.sendImage}>
-            <Text style={styles.whiteText}>Save selected to gallery</Text>
-          </TouchableOpacity>
-        </View> */}
+      <View style={styles.container}>
         {this.renderPhoto(this.state.photos[this.state.photos.length - 1])}
       </View>
     );
@@ -64,25 +87,29 @@ export default class GalleryScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 20,
-    backgroundColor: "white"
+    flex: 1
   },
   topBar: {
+    flex: 0.2,
     backgroundColor: "transparent",
+    flexDirection: "row",
     paddingTop: Constants.statusBarHeight,
     paddingLeft: Constants.statusBarHeight / 2
   },
-  navbar: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: "#4630EB"
-  },
-  button: {
-    padding: 20
+  bottomBar: {
+    paddingBottom: isIPhoneX ? 25 : 5,
+    backgroundColor: "transparent",
+    justifyContent: "space-around",
+    flex: 0.12,
+    flexDirection: "row"
   },
   whiteText: {
     color: "white"
+  },
+  bottomButton: {
+    // flex: 0.3,
+    height: 58,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });

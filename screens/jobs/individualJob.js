@@ -15,7 +15,8 @@ export default class IndividualJob extends Component {
     super(props);
     this.state = {
       selectedIndex: 0,
-      messages: []
+      uri: "",
+      message: ""
     };
   }
 
@@ -35,15 +36,30 @@ export default class IndividualJob extends Component {
     };
   };
 
+  postMessage = message => {
+    this.setState({
+      ...this.state,
+      message: message,
+      uri: ""
+    });
+  };
+
   goToTop = () => {
     this.scroll.scrollTo({ x: 0, y: 0, animated: true });
   };
 
   cameraPressed = () => {
-    console.log("camera pressed function");
-    this.props.navigation.navigate("Camera");
-  }
-  
+    this.props.navigation.navigate("Camera", { send: this.sendImage });
+  };
+
+  sendImage = uri => {
+    this.setState({
+      ...this.state,
+      uri: uri,
+      message: ""
+    });
+  };
+
   renderTabContent = index => {
     if (index === 0) {
       return (
@@ -98,13 +114,18 @@ export default class IndividualJob extends Component {
     } else {
       return (
         <View style={[styles.containerView, jobStyles.jobEndContainer]}>
-                  <ScrollView
+          <ScrollView
             ref={c => {
               this.scroll = c;
             }}
             style={styles.containerView}
+            contentComponentStyle={styles.containerView}
           >
-          <CommentTestScreen title="Comments" />
+            <CommentTestScreen
+              title="Comments"
+              uri={this.state.uri}
+              message={this.state.message}
+            />
           </ScrollView>
           <MessageInputComponent
             postMessage={this.postMessage}

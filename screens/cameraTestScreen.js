@@ -20,9 +20,6 @@ export default class CameraScreen extends React.Component {
     whiteBalance: "auto",
     ratio: "16:9",
     permissionsGranted: false,
-    pictureSize: undefined,
-    pictureSizes: [],
-    pictureSizeId: 0,
     showGallery: false
   };
 
@@ -41,16 +38,19 @@ export default class CameraScreen extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     const { state: { params = {} } } = navigation;
-    console.log("in navigation options")
     return {
-      header: null,
+      header: null
+    };
   };
-  }
 
-  toggleView = () =>
-    this.setState({ showGallery: !this.state.showGallery});
+  toggleView = () => this.setState({ showGallery: !this.state.showGallery });
 
   backButtonPressed = () => this.props.navigation.goBack();
+
+  sendButtonPressed = (uri) =>{
+    this.props.navigation.state.params.send(uri)
+    this.props.navigation.goBack();
+  }
 
   takePicture = () => {
     if (this.camera) {
@@ -68,28 +68,14 @@ export default class CameraScreen extends React.Component {
     this.setState({ showGallery: true });
   };
 
-  collectPictureSizes = async () => {
-    if (this.camera) {
-      const pictureSizes = await this.camera.getAvailablePictureSizesAsync(
-        this.state.ratio
-      );
-      let pictureSizeId = 0;
-      if (Platform.OS === "ios") {
-        pictureSizeId = pictureSizes.indexOf("High");
-      } else {
-        // returned array is sorted in ascending order - default size is the largest one
-        pictureSizeId = pictureSizes.length - 1;
-      }
-      this.setState({
-        pictureSizes,
-        pictureSizeId,
-        pictureSize: pictureSizes[pictureSizeId]
-      });
-    }
-  };
-
   renderGallery() {
-    return <GalleryScreen onPress={this.toggleView.bind(this)} backButtonPressed={this.backButtonPressed.bind(this)}/>;
+    return (
+      <GalleryScreen
+        onPress={this.toggleView.bind(this)}
+        backButtonPressed={this.backButtonPressed.bind(this)}
+        sendButtonPressed={this.sendButtonPressed.bind(this)}
+      />
+    );
   }
 
   renderNoPermissions = () =>
@@ -99,11 +85,16 @@ export default class CameraScreen extends React.Component {
       </Text>
     </View>;
 
-  renderTopBar = () => <View style={styles.topBar}>
-    <TouchableOpacity onPress={()=>{this.props.navigation.goBack()}}>
-            <MaterialIcons name="arrow-back" size={40} color="white" />
-</TouchableOpacity>
-  </View>;
+  renderTopBar = () =>
+    <View style={styles.topBar}>
+      <TouchableOpacity
+        onPress={() => {
+          this.props.navigation.goBack();
+        }}
+      >
+        <MaterialIcons name="arrow-back" size={40} color="white" />
+      </TouchableOpacity>
+    </View>;
 
   renderBottomBar = () =>
     <View style={styles.bottomBar}>
@@ -124,9 +115,7 @@ export default class CameraScreen extends React.Component {
           this.camera = ref;
         }}
         style={styles.camera}
-        onCameraReady={this.collectPictureSizes}
         ratio={this.state.ratio}
-        pictureSize={this.state.pictureSize}
         onMountError={this.handleMountError}
       >
         {this.renderTopBar()}
@@ -163,7 +152,7 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     flexDirection: "row",
     paddingTop: Constants.statusBarHeight,
-    paddingLeft: Constants.statusBarHeight/2,
+    paddingLeft: Constants.statusBarHeight / 2
   },
   bottomBar: {
     paddingBottom: isIPhoneX ? 25 : 5,
@@ -179,28 +168,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 10
   },
-  gallery: {
-    flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap"
-  },
-  toggleButton: {
-    flex: 0.25,
-    height: 40,
-    marginHorizontal: 2,
-    marginBottom: 10,
-    marginTop: 20,
-    padding: 5,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  bottomButton: {
-    flex: 0.3,
-    height: 58,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  row: {
-    flexDirection: "row"
-  }
 });

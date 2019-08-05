@@ -9,7 +9,10 @@ import {
 } from "react-native";
 import { FileSystem, MediaLibrary, Permissions } from "expo";
 import { MaterialIcons, SimpleLineIcons } from "@expo/vector-icons";
-import styles from "./imageStyle";
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
+
+styles = getStyleSheet(GLOBAL.darkState);
 
 const PHOTOS_DIR = FileSystem.documentDirectory + "photos";
 
@@ -74,7 +77,7 @@ export default class GalleryScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.containerView}>
         {this.renderPhoto(this.state.photos[this.state.photos.length - 1])}
       </View>
     );

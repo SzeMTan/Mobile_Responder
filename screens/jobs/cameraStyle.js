@@ -5,7 +5,7 @@ import isIPhoneX from "react-native-is-iphonex";
 export default (cameraStyles = StyleSheet.create({
   cameraContainer: {
     flex: 1,
-    backgroundColor: "#000"
+    backgroundColor: 'black'
   },
   camera: {
     flex: 1,

@@ -7,14 +7,30 @@ import ButtonComponent from "../../components/customButtonComponent";
 // import styles from '../../styles/style'
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
+import { withNavigation } from "react-navigation";
 
-const styles = getStyleSheet(GLOBAL.darkState);
+styles = getStyleSheet(GLOBAL.darkState);
 
-export default class SettingsScreen extends Component {
+class SettingsScreen extends Component {
+    componentDidMount() {
+        const { navigation } = this.props;
+        this.focusListener = navigation.addListener("didFocus", () => {
+            console.log('mounting settings screen')
+            styles = getStyleSheet(GLOBAL.darkState);
+          this.forceUpdate()
+        });
+      }
+    
+      componentWillUnmount() {
+        // Remove the event listener
+        this.focusListener.remove();
+      }
+
+    
+
     render() {
         return (
-            <View style={styles.settingsContainer}>
-
+            <View style={[styles.settingsContainer, styles.appbackground]}>
                 <View>
                     <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
                         <SettingsList.Item 
@@ -56,3 +72,6 @@ export default class SettingsScreen extends Component {
         );
     }
 }
+
+
+export default withNavigation(SettingsScreen);

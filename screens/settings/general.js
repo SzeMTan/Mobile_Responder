@@ -4,17 +4,20 @@ import ToggleComponent from '../../components/customToggleComponent';
 import SliderComponent from '../../components/customSliderComponent';
 import SettingsList from 'react-native-settings-list';
 import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'   
 
 export default class GeneralScreen extends Component {
+
     constructor(){
         super();
-        this.state = {switchValue: GLOBAL.darkState};
+        styles = getStyleSheet(GLOBAL.darkState)
+        this.state = {switchValue: GLOBAL.darkState, backgroundColor: styles.appbackground};
         this.onValueChange = this.onValueChange.bind(this);
       }
 
     render() {
         return (
-            <View>
+            <View style={ this.state.backgroundColor}>
                 <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
                     {/* <SettingsList.Item 
                     title='Enable Dark Theme'
@@ -40,9 +43,7 @@ export default class GeneralScreen extends Component {
     onValueChange(value){
         this.setState({switchValue: value});
         const currentState = GLOBAL.darkState;
-        console.log(currentState + ' hi')
         GLOBAL.darkState = !currentState;
-        console.log(GLOBAL.darkState)
-        // this.forceUpdate();
+        this.setState({backgroundColor: getStyleSheet(GLOBAL.darkState).appbackground})
       }
 }

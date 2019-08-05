@@ -31,9 +31,6 @@ const headerFontSize = 24;
 
 
 const styles = getStyleSheet(GLOBAL.darkState);
-const backgroundColour = styles.appbackground
-
-// const backgroundColour = 'red';
 
 // navigation for the settings tab
 const SettingsNavigator = createStackNavigator(
@@ -81,8 +78,6 @@ const SettingsNavigator = createStackNavigator(
         return CardStackStyleInterpolator.forHorizontal(sceneProps);
       }
     }),
-    // cardStyle: {backgroundColor: backgroundColour}
-    cardStyle: styles.appbackground
   }
 );
 
@@ -111,8 +106,6 @@ const UnitsNavigator = createStackNavigator(
         return CardStackStyleInterpolator.forHorizontal(sceneProps);
       }
     }),
-    // cardStyle: {backgroundColor: backgroundColour}
-    cardStyle: styles.appbackground
   }
 );
 
@@ -141,8 +134,6 @@ const JobsNavigator = createStackNavigator(
         return CardStackStyleInterpolator.forHorizontal(sceneProps);
       }
     }),
-    // cardStyle: {backgroundColor: backgroundColour}    
-    cardStyle: styles.appbackground
   }
 );
 
@@ -210,14 +201,11 @@ const RootStack = createStackNavigator(
   },
   {
     initialRouteName: 'Login',
-    // cardStyle: {backgroundColor: backgroundColour},
-    cardStyle: styles.appbackground,
     headerMode: 'none'
   }
 );
 
 const AppContainer = createAppContainer(RootStack);
-
 
 export default class App extends Component {
   render() {

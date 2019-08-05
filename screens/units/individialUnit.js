@@ -30,7 +30,9 @@ export default class IndividualUnit extends Component {
         const { state: { params = {} } } = navigation;
         return {
           title: params.title || 'Unit',
+          headerTitleStyle: styles.header,
           headerStyle: styles.header,
+          headerTintColor: 'white',
           headerRight: (<View />),
         };
       }

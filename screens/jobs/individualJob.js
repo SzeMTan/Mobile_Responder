@@ -34,6 +34,8 @@ export default class IndividualJob extends Component {
     return {
       title: params.title || "JOB",
       headerTitleStyle: styles.header,
+      headerStyle: styles.header,
+      headerTintColor: 'white',
       headerRight: <View />
     };
   };

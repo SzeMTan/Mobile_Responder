@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import {Keyboard, Text, View, TouchableWithoutFeedback, KeyboardAvoidingView} from 'react-native';
-import loginStyles from './style'
-import styles from '../../styles/style'
+// import styles from '../../styles/style'
 import { Button } from 'react-native-elements'
 import ToggleComponent from "../../components/customToggleComponent";
 import TextInputComponent from "../../components/customTextInputComponent";
 import ButtonComponent from "../../components/customButtonComponent";
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
 
-
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class LoginScreen extends Component {
 
@@ -15,25 +16,23 @@ export default class LoginScreen extends Component {
         return (
         <KeyboardAvoidingView style={styles.containerView} behavior="padding">
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View style={styles.containerView}>
-                  <View style={loginStyles.loginFormView}>
-                  <Text style={loginStyles.logoText}>Intergraph {"\n"}
+                <View style={[styles.containerView, styles.loginFormView]}>
+                  <Text style={styles.logoText}>Intergraph {"\n"}
                   Mobile Responder</Text>
-                  <View style={loginStyles.loginFormInputs}>
+                  <View style={styles.loginFormView}>
                     <TextInputComponent
                     placeholderText="QID"
-                    style={loginStyles.loginFormTextInput} />
+                    style={styles.loginFormTextInput} />
                     <TextInputComponent
                     placeholderText="Callsign"
-                    style={loginStyles.loginFormTextInput}/>
+                    style={styles.loginFormTextInput}/>
                     <TextInputComponent
                     placeholderText="Password" 
                     secureEntry={true}
-                    style={loginStyles.loginFormTextInput}/>
-                    </View>
+                    style={styles.loginFormTextInput}/>
                     <ButtonComponent title='Login' onPress={() => this.onLoginPress()} />
-                    <ToggleComponent toggleLabel='Remember Me'/>
-                    <Text style={loginStyles.changePassword}
+                    <ToggleComponent toggleLabel='Remember Me' onToggle={() => this.doNothing()}/>
+                    <Text style={styles.changePassword}
                     onPress={() => this.props.navigation.navigate('Password')}>
                       Change Password
                       </Text>
@@ -46,5 +45,10 @@ export default class LoginScreen extends Component {
 
     onLoginPress() {
         this.props.navigation.navigate('Home');
+        console.log('login' + GLOBAL.darkState)
+      }
+
+      doNothing(){
+
       }
 }

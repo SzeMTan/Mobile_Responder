@@ -20,7 +20,10 @@ import IndividualJob from './screens/jobs/individualJob';
 
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
-import styles from './styles/style';
+// import styles from './styles/style';
+import GLOBAL from './global'
+import getStyleSheet from './styles/style';
+
 
 import CameraTestScreen from './screens/jobs/cameraScreen';
 import NewFieldEvent from "./screens/jobs/newFieldEvent";
@@ -29,13 +32,16 @@ const iconSize = 30;
 
 const headerFontSize = 24;
 
+
+const styles = getStyleSheet(GLOBAL.darkState);
+
 // navigation for the settings tab
 const SettingsNavigator = createStackNavigator(
   {
     Settings: {
       screen: SettingsScreen,
       navigationOptions: () => ({
-        header: <HeaderComponent title='Settings'/>
+        header: <HeaderComponent title='Settings'/>,
       }),
     },
     General: {
@@ -43,7 +49,9 @@ const SettingsNavigator = createStackNavigator(
       navigationOptions: {
         headerTitle: 'General',
         headerTitleStyle: styles.header,
-        headerRight: (<View />),
+        headerTintColor: 'white',
+        headerStyle: styles.header,
+        headerRight: (<View/>),
       }, 
     },
     About: {
@@ -51,7 +59,9 @@ const SettingsNavigator = createStackNavigator(
       navigationOptions: {
         headerTitle: 'About',
         headerTitleStyle: styles.header,
-        headerRight: (<View />),
+        headerTintColor: 'white',
+        headerStyle: styles.header,
+        headerRight: (<View/>),
       },    
     },
   },
@@ -203,7 +213,7 @@ const TabNavigator =  createBottomTabNavigator({
 });
 
 // login to home navigation
-const RootStack = createSwitchNavigator(
+const RootStack = createStackNavigator(
   {
     Login: LoginScreen,
     Home: TabNavigator,
@@ -211,11 +221,11 @@ const RootStack = createSwitchNavigator(
   },
   {
     initialRouteName: 'Login',
+    headerMode: 'none'
   }
 );
 
 const AppContainer = createAppContainer(RootStack);
-
 
 export default class App extends Component {
   render() {

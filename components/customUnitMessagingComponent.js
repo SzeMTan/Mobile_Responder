@@ -1,7 +1,11 @@
-import React from "react";
-import { View, KeyboardAvoidingView, Platform } from "react-native";
-import { GiftedChat } from "react-native-gifted-chat";
-import styles from "../styles/style";
+import React from 'react';
+import {View, KeyboardAvoidingView, Platform } from 'react-native';
+import { GiftedChat } from 'react-native-gifted-chat';
+import GLOBAL from '../global'
+import getStyleSheet from '../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
+
 export default class UnitMessagingComponent extends React.Component {
   state = {
     messages: []

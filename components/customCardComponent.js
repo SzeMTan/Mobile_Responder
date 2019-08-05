@@ -3,7 +3,11 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { Header, Text, ThemeProvider } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
 import { Card, CardImage, CardTitle, CardContent, CardButton, CardAction } from 'react-native-cards';
-import styles from '../styles/style'
+// import styles from '../styles/style'
+import GLOBAL from '../global'
+import getStyleSheet from '../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class CardComponent extends Component {
 

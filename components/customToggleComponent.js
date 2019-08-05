@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import ToggleSwitch from 'toggle-switch-react-native'
 import { StyleSheet, View } from 'react-native';
-import styles from '../styles/style'
+// import styles from '../styles/style'
+import GLOBAL from '../global'
+import getStyleSheet from '../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class ToggleComponent extends Component {
 
     state = {
-        toggleState: false,
+        // toggleState: false,
     };
 
     static defaultProps = {
@@ -14,18 +18,16 @@ export default class ToggleComponent extends Component {
     }
 
     render() {
+        const { onToggle, toggleState, toggleLabel } = this.props;
         return (
             <View>
                 <ToggleSwitch
-                    isOn={this.state.toggleState}
+                    isOn={toggleState}
                     onColor='#30d158'
-                    label={this.props.toggleLabel}
-                    // labelStyle = {style=styles.toggleSwitchContainer}
+                    label={toggleLabel}
                     labelStyle={styles.toggleSwitchContainer}
                     size='medium'
-                    onToggle={ toggleState => {
-                        this.setState({ toggleState })
-                    }}  
+                    onToggle={onToggle}
                 /> 
                 </View>
         )

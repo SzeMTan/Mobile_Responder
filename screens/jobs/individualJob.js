@@ -1,14 +1,16 @@
 import React, { Component } from "react";
-import { View, Text, ScrollView, Button } from "react-native";
-import styles from "../../styles/style";
-import jobStyles from "./style";
-import SegmentControlComponent from "../../components/customSegmentControlComponent";
-import CardComponent from "../../components/customCardComponent";
-import ButtonComponent from "../../components/customButtonComponent";
-import { Ionicons } from "@expo/vector-icons";
 import CameraTestScreen from "./cameraScreen";
 import CommentTestScreen from "./comments";
 import MessageInputComponent from "../../components/customMessageInputComponent";
+import { View, Text, ScrollView, Button } from 'react-native';
+import SegmentControlComponent from '../../components/customSegmentControlComponent';
+import CardComponent from '../../components/customCardComponent';
+import ButtonComponent from '../../components/customButtonComponent';
+import { Ionicons } from '@expo/vector-icons';
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class IndividualJob extends Component {
   constructor(props) {
@@ -63,7 +65,7 @@ export default class IndividualJob extends Component {
   renderTabContent = index => {
     if (index === 0) {
       return (
-        <View style={[styles.containerView, jobStyles.jobEndContainer]}>
+        <View style={[styles.containerView, styles.jobEndContainer]}>
           <ScrollView
             ref={c => {
               this.scroll = c;
@@ -113,7 +115,7 @@ export default class IndividualJob extends Component {
       );
     } else {
       return (
-        <View style={[styles.containerView, jobStyles.jobEndContainer]}>
+        <View style={[styles.containerView, styles.jobEndContainer]}>
           <ScrollView
             ref={c => {
               this.scroll = c;

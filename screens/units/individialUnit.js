@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { View, Text, ScrollView, Button } from 'react-native';
-import styles from '../../styles/style';
-import unitStyles from './style'
 import HeaderComponent from '../../components/customHeaderComponent';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import UnitMessagingComponent from '../../components/customUnitMessagingComponent';
+// import styles from '../../styles/style'
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class IndividualUnit extends Component {
     constructor(props) {
@@ -27,7 +30,7 @@ export default class IndividualUnit extends Component {
         const { state: { params = {} } } = navigation;
         return {
           title: params.title || 'Unit',
-          headerTitleStyle: styles.header,
+          headerStyle: styles.header,
           headerRight: (<View />),
         };
       }
@@ -35,7 +38,7 @@ export default class IndividualUnit extends Component {
     renderTabContent = (index) => {
         if (index === 0){
             return  <ScrollView>
-                        <View style={unitStyles.unitCenterContainer}>
+                        <View style={styles.unitCenterContainer}>
                             <CardComponent title='PERSONNEL'
                                 titlecontent={['Name: ','UserID: ']}/>
                             <CardComponent title='LOCATION'/>

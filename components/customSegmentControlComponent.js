@@ -1,7 +1,11 @@
 import SegmentedControlTab from 'react-native-segmented-control-tab'
 import React, { Component } from "react";
 import { StyleSheet, View } from 'react-native';
-import styles from '../styles/style'
+// import styles from '../styles/style'
+import GLOBAL from '../global'
+import getStyleSheet from '../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class SegmentControlComponent extends Component {
  

@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 import { Card } from "react-native-elements";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import styles from "../styles/style"
+
+import GLOBAL from '../global'
+import getStyleSheet from '../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
+
 export default class ReorderCardComponent extends Component {
   constructor() {
     super();

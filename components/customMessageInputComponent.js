@@ -10,7 +10,10 @@ import {
 } from "react-native";
 import Icon from "@expo/vector-icons/Ionicons";
 import { Ionicons } from "@expo/vector-icons";
-import styles from "../styles/style";
+import GLOBAL from '../global'
+import getStyleSheet from '../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class MessagingInputComponent extends Component {
   constructor(props) {

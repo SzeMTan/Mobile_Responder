@@ -1,4 +1,6 @@
 import {StyleSheet} from "react-native"
+import { Constants } from "expo";
+import isIPhoneX from "react-native-is-iphonex";
 
 const buttonStyles = {
     padding:10,
@@ -88,6 +90,74 @@ const lightStyleSheet = StyleSheet.create({
         paddingHorizontal:30
     },
 
+    //camera
+    cameraContainer: {
+      flex: 1,
+      backgroundColor: 'black'
+    },
+    camera: {
+      flex: 1,
+      justifyContent: "space-between"
+    },
+    topBar: {
+      flex: 0.2,
+      backgroundColor: "transparent",
+      flexDirection: "row",
+      paddingTop: Constants.statusBarHeight,
+      paddingLeft: Constants.statusBarHeight / 2
+    },
+    bottomBar: {
+      paddingBottom: isIPhoneX ? 25 : 5,
+      backgroundColor: "transparent",
+      alignSelf: "flex-end",
+      justifyContent: "space-between",
+      flex: 0.12,
+      flexDirection: "row"
+    },
+    noPermissions: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      padding: 10
+    },
+    cameraFontColor: {
+      color: "white"
+    },
+    generalContainer: {
+      flex: 1
+    },
+    takePicture: {
+      alignSelf: "center"
+    },
+
+    // image
+    imageBackgroundContainer: {
+      flex: 1,
+      justifyContent: "space-between"
+    },
+    topBar: {
+      flex: 0.2,
+      backgroundColor: "transparent",
+      flexDirection: "row",
+      paddingTop: Constants.statusBarHeight,
+      paddingLeft: Constants.statusBarHeight / 2
+    },
+    bottomBar: {
+      paddingBottom: isIPhoneX ? 25 : 5,
+      backgroundColor: "transparent",
+      justifyContent: "space-around",
+      flex: 0.12,
+      flexDirection: "row"
+    },
+    whiteText: {
+      color: "white"
+    },
+    bottomButton: {
+      // flex: 0.3,
+      height: 58,
+      justifyContent: "center",
+      alignItems: "center"
+    },
 
     // home
     endJob: {
@@ -186,7 +256,106 @@ const lightStyleSheet = StyleSheet.create({
     },
     unitCenterContainer: {
         justifyContent:'center',
-    }
+    },
+
+    reorderCardContainer: {
+        padding: 0, 
+        marginVertical: 0, 
+        flexDirection: "row-reverse"
+    },
+    reorderCardTouch: {
+        flex: 1,
+        padding: 10,
+    },
+    reorderCardRotation: {
+        flexDirection: "row-reverse",
+        alignItems: "center",
+    },
+    messageInputContainer: {
+        flexDirection: "row", 
+        padding: 0, 
+        margin: 0
+    },
+    messagingTextInput: {
+        height: 43,
+        fontSize: 14,
+        borderRadius: 5,
+        borderWidth: 1,
+        backgroundColor: "#fafafa",
+        paddingLeft: 10,
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 5,
+        marginBottom: 5
+    },
+    commentButton: {
+        color: "#0084ff",
+        fontWeight: "600",
+        fontSize: 17,
+        backgroundColor: "transparent",
+        marginTop: 10,
+        marginBottom: 5
+    },
+    cameraTouch: {
+        height: 30,
+        width: 30,
+        marginLeft: 10
+    },
+    commentCardContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between"
+    },
+    commentCardAuthorContainer: {
+        paddingLeft: 10, 
+        paddingTop: 10
+    },
+    commentCardAuthorText: {
+        fontSize: 18, 
+        fontWeight: "bold"
+    },
+    commentCardTopLevelContainer: {
+        marginVertical: 0, 
+        padding: 0
+    },
+    pinContainer: { 
+        margin: 0, 
+        padding: 0 
+    },
+    commentCardImageTopLevel: {
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-around"
+    },
+    commentCardImageSecondaryLevel: {
+        flex: 1,
+        width: 150,
+        height: 150,
+        alignItems: "center",
+        justifyContent: "center",
+        margin: 5
+    },
+    commentCardImageThirdLevel: {
+        position: "absolute",
+        bottom: 0,
+        right: 0,
+        left: 0,
+        top: 0,
+        resizeMode: "contain"
+    },
+    commentCardFontContainer: {
+        paddingLeft: 10
+    },
+    commentCardFontSize: {
+        fontSize: 18    
+    },
+    commentCardDateContainer: {
+        paddingLeft: 10, 
+        paddingBottom: 10
+    },
+    commentCardDate: {
+        fontStyle: "italic"   
+    },
+    
 });
 
 
@@ -265,8 +434,172 @@ const darkStyleSheet = StyleSheet.create({
         paddingVertical: 15,
         paddingHorizontal:30
     },
+    reorderCardContainer: {
+        padding: 0, 
+        marginVertical: 0, 
+        flexDirection: "row-reverse"
+    },
+    reorderCardTouch: {
+        flex: 1,
+        padding: 10,
+    },
+    reorderCardRotation: {
+        flexDirection: "row-reverse",
+        alignItems: "center",
+    },
+    messageInputContainer: {
+        flexDirection: "row", 
+        padding: 0, 
+        margin: 0
+    },
+    messagingTextInput: {
+        height: 43,
+        fontSize: 14,
+        borderRadius: 5,
+        borderWidth: 1,
+        backgroundColor: "#fafafa",
+        paddingLeft: 10,
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 5,
+        marginBottom: 5
+    },
+    commentButton: {
+        color: "#0084ff",
+        fontWeight: "600",
+        fontSize: 17,
+        backgroundColor: "transparent",
+        marginTop: 10,
+        marginBottom: 5
+    },
+    cameraTouch: {
+        height: 30,
+        width: 30,
+        marginLeft: 10
+    },
+    commentCardContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between"
+    },
+    commentCardAuthorContainer: {
+        paddingLeft: 10, 
+        paddingTop: 10
+    },
+    commentCardAuthorText: {
+        fontSize: 18, 
+        fontWeight: "bold"
+    },
+    commentCardTopLevelContainer: {
+        marginVertical: 0, 
+        padding: 0
+    },
+    pinContainer: { 
+        margin: 0, 
+        padding: 0 
+    },
+    commentCardImageTopLevel: {
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-around"
+    },
+    commentCardImageSecondaryLevel: {
+        flex: 1,
+        width: 150,
+        height: 150,
+        alignItems: "center",
+        justifyContent: "center",
+        margin: 5
+    },
+    commentCardImageThirdLevel: {
+        position: "absolute",
+        bottom: 0,
+        right: 0,
+        left: 0,
+        top: 0,
+        resizeMode: "contain"
+    },
+    commentCardFontContainer: {
+        paddingLeft: 10
+    },
+    commentCardFontSize: {
+        fontSize: 18    
+    },
+    commentCardDateContainer: {
+        paddingLeft: 10, 
+        paddingBottom: 10
+    },
+    commentCardDate: {
+        fontStyle: "italic"   
+    },
 
+    // camera
+    cameraContainer: {
+      flex: 1,
+      backgroundColor: 'black'
+    },
+    camera: {
+      flex: 1,
+      justifyContent: "space-between"
+    },
+    topBar: {
+      flex: 0.2,
+      backgroundColor: "transparent",
+      flexDirection: "row",
+      paddingTop: Constants.statusBarHeight,
+      paddingLeft: Constants.statusBarHeight / 2
+    },
+    bottomBar: {
+      paddingBottom: isIPhoneX ? 25 : 5,
+      backgroundColor: "transparent",
+      alignSelf: "flex-end",
+      justifyContent: "space-between",
+      flex: 0.12,
+      flexDirection: "row"
+    },
+    noPermissions: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      padding: 10
+    },
+    cameraFontColor: {
+      color: "white"
+    },
+    generalContainer: {
+      flex: 1
+    },
+    takePicture: {
+      alignSelf: "center"
+    },
 
+    // image
+    imageBackgroundContainer: {
+      flex: 1,
+      justifyContent: "space-between"
+    },
+    topBar: {
+      flex: 0.2,
+      backgroundColor: "transparent",
+      flexDirection: "row",
+      paddingTop: Constants.statusBarHeight,
+      paddingLeft: Constants.statusBarHeight / 2
+    },
+    bottomBar: {
+      paddingBottom: isIPhoneX ? 25 : 5,
+      backgroundColor: "transparent",
+      justifyContent: "space-around",
+      flex: 0.12,
+      flexDirection: "row"
+    },
+    whiteText: {
+      color: "white"
+    },
+    bottomButton: {
+      // flex: 0.3,
+      height: 58,
+      justifyContent: "center",
+      alignItems: "center"
+    },
     // home
     endJob: {
         backgroundColor: 'green',

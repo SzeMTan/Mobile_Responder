@@ -25,6 +25,9 @@ import GLOBAL from './global'
 import getStyleSheet from './styles/style';
 
 
+import CameraTestScreen from './screens/jobs/cameraScreen';
+import NewFieldEvent from "./screens/jobs/newFieldEvent";
+
 const iconSize = 30;
 
 const headerFontSize = 24;
@@ -117,6 +120,12 @@ const JobsNavigator = createStackNavigator(
     IndividualJob: {
       screen: IndividualJob,
     },
+    NewFieldEvent: {
+      screen: NewFieldEvent
+    },
+    Camera: {
+      screen: CameraTestScreen,
+    }
   },
   {
     initialRouteName: 'Jobs',
@@ -137,6 +146,17 @@ const JobsNavigator = createStackNavigator(
   }
 );
 
+//for hiding tab bar when in camera screen
+JobsNavigator.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+  if (navigation.state.index == 2) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
+};
 // main bottom tab navigator
 const TabNavigator =  createBottomTabNavigator({
   Home: {

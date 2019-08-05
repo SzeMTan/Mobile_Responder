@@ -4,10 +4,11 @@ import { Button} from 'react-native-elements';
 import SettingsList from 'react-native-settings-list';
 import { Ionicons } from '@expo/vector-icons'; 
 import ButtonComponent from "../../components/customButtonComponent";
+import { withNavigation } from "react-navigation";
 // import styles from '../../styles/style'
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
-import { withNavigation } from "react-navigation";
+
 
 styles = getStyleSheet(GLOBAL.darkState);
 

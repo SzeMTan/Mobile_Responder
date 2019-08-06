@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text } from 'react-native';
 import Slider from 'react-native-slider';
-import styles from '../styles/style'
+// import styles from '../styles/style'
+import GLOBAL from '../global'
+import getStyleSheet from '../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class SliderComponent extends Component {
     state = {

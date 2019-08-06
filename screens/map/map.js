@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
 import { MapView, Location, Permissions } from 'expo';
-import mapStyles from './style'
-import styles from '../../styles/style';
-// import {Icon} from "@expo/vector-icons/Ionicons";
-import Icon from "react-native-vector-icons/Ionicons";
+// import styles from '../../styles/style'
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
 
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class App extends Component {
 
@@ -86,7 +86,7 @@ export default class App extends Component {
     return (
       <View style={styles.containerView}>
         <HeaderComponent title='MAP'/>
-        <View style={mapStyles.container}>
+        <View style={styles.mapContainer}>
         {
           this.state.locationResult === null ?
           <Text>Finding your current location...</Text> :
@@ -95,7 +95,7 @@ export default class App extends Component {
             this.state.mapRegion === null ?
             <Text>Map region doesn't exist.</Text> :
             <MapView
-              style={mapStyles.map}
+              style={styles.map}
               region={this.state.mapRegion}
               showsUserLocation={true}
             >
@@ -104,7 +104,7 @@ export default class App extends Component {
               key={marker.title}
               coordinate={marker.latlng}
             >
-            <Image source={require('../../assets/ios-briefcase.png')} style={mapStyles.marker}/>
+            <Image source={require('../../assets/ios-briefcase.png')} style={styles.marker}/>
             </MapView.Marker>
             ))}
             {this.state.unitMarkers.map(marker => (
@@ -112,7 +112,7 @@ export default class App extends Component {
               key={marker.title}
               coordinate={marker.latlng}
             >
-            <Image source={require('../../assets/ios-car.png')} style={mapStyles.marker}/>
+            <Image source={require('../../assets/ios-car.png')} style={styles.marker}/>
             </MapView.Marker>
             ))}
             </MapView>

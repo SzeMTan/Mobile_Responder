@@ -4,10 +4,16 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Keyboard,
+  Dimensions
 } from "react-native";
 import Icon from "@expo/vector-icons/Ionicons";
 import { Ionicons } from "@expo/vector-icons";
+import GLOBAL from '../global'
+import getStyleSheet from '../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class MessagingInputComponent extends Component {
   constructor(props) {
@@ -27,33 +33,26 @@ export default class MessagingInputComponent extends Component {
 
   handleBlur = () => this.setState({ isFocused: false });
 
+  commentButtonPressed = () => {
+    this.props.postMessage(this.state.text);
+    this.setState({
+      ...this.state,
+      text: ""
+    });
+    Keyboard.dismiss();
+  };
+
   render() {
     return (
-      <View style={{ flexDirection: "row", padding: 0, margin: 0 }}>
+      <View style={styles.messageInputContainer}>
         <TouchableOpacity
-          style={{
-            height: 30,
-            width: 30,
-            marginLeft: 10,
-            // backgroundColor: "red"
-          }}
+          style={styles.cameraTouch}
           onPress={() => {
-            console.log("camera");
+            this.props.cameraPressed();
           }}
         >
           <Ionicons name="ios-camera" size={40} />
         </TouchableOpacity>
-
-        {/* <Ionicons
-          name="ios-camera"
-          size={30}
-          backgroundColor="red"
-          onPress={() => {
-            console.log("camera");
-          }}
-          buttonStyle={{ padding: 0, margin: 0, maxWidth: 5 }}
-          containerStyle={{ padding: 0, margin: 0, maxWidth: 5 }}
-        /> */}
         <View>
           <TextInput
             {...this.props}
@@ -65,14 +64,14 @@ export default class MessagingInputComponent extends Component {
             }}
             value={this.state.text}
             style={[
-              styles.loginFormTextInput,
+              styles.messagingTextInput,
               {
                 borderColor: this.state.isFocused
                   ? "#0a84ff"
                   : "rgba(255,255,255,0)"
               },
               { height: Math.max(35, this.state.height) },
-              { width: 250 }
+              { width: Dimensions.get("window").width - 110 - 2 * 8 * 1.5 }
             ]}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
@@ -81,12 +80,14 @@ export default class MessagingInputComponent extends Component {
             enablesReturnKeyAutomatically={true}
             multiline={true}
             numberOfLines={3}
-            //   returnKeyType="send"
             spellCheck={true}
           />
         </View>
         <View>
-          <Text style={styles.commentButton} onPress={() => console.log("hi")}>
+          <Text
+            style={styles.commentButton}
+            onPress={this.commentButtonPressed}
+          >
             Comment
           </Text>
         </View>
@@ -94,27 +95,3 @@ export default class MessagingInputComponent extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  loginFormTextInput: {
-    height: 43,
-    fontSize: 14,
-    borderRadius: 5,
-    borderWidth: 1,
-    // borderColor: '#eaeaea',
-    backgroundColor: "#fafafa",
-    paddingLeft: 10,
-    marginLeft: 15,
-    marginRight: 15,
-    marginTop: 5,
-    marginBottom: 5
-  },
-  commentButton: {
-    color: "#0084ff",
-    fontWeight: "600",
-    fontSize: 17,
-    backgroundColor: "transparent",
-    marginTop: 10,
-    marginBottom: 5
-  }
-});

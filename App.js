@@ -20,11 +20,20 @@ import IndividualJob from './screens/jobs/individualJob';
 
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
-import styles from './styles/style';
+// import styles from './styles/style';
+import GLOBAL from './global'
+import getStyleSheet from './styles/style';
+
+
+import CameraTestScreen from './screens/jobs/cameraScreen';
+import NewFieldEvent from "./screens/jobs/newFieldEvent";
 
 const iconSize = 30;
 
 const headerFontSize = 24;
+
+
+const styles = getStyleSheet(GLOBAL.darkState);
 
 // navigation for the settings tab
 const SettingsNavigator = createStackNavigator(
@@ -32,23 +41,27 @@ const SettingsNavigator = createStackNavigator(
     Settings: {
       screen: SettingsScreen,
       navigationOptions: () => ({
-        header: <HeaderComponent title='Settings'/>
+        header: <HeaderComponent title='Settings'/>,
       }),
     },
     General: {
       screen: GeneralScreen,
       navigationOptions: {
         headerTitle: 'General',
+        headerTitleStyle: styles.header,
+        headerTintColor: 'white',
         headerStyle: styles.header,
-        headerRight: (<View />),
+        headerRight: (<View/>),
       }, 
     },
     About: {
       screen: AboutScreen,
       navigationOptions: {
         headerTitle: 'About',
+        headerTitleStyle: styles.header,
+        headerTintColor: 'white',
         headerStyle: styles.header,
-        headerRight: (<View />),
+        headerRight: (<View/>),
       },    
     },
   },
@@ -107,6 +120,12 @@ const JobsNavigator = createStackNavigator(
     IndividualJob: {
       screen: IndividualJob,
     },
+    NewFieldEvent: {
+      screen: NewFieldEvent
+    },
+    Camera: {
+      screen: CameraTestScreen,
+    }
   },
   {
     initialRouteName: 'Jobs',
@@ -127,6 +146,17 @@ const JobsNavigator = createStackNavigator(
   }
 );
 
+//for hiding tab bar when in camera screen
+JobsNavigator.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+  if (navigation.state.index == 2) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
+};
 // main bottom tab navigator
 const TabNavigator =  createBottomTabNavigator({
   Home: {
@@ -183,7 +213,7 @@ const TabNavigator =  createBottomTabNavigator({
 });
 
 // login to home navigation
-const RootStack = createSwitchNavigator(
+const RootStack = createStackNavigator(
   {
     Login: LoginScreen,
     Home: TabNavigator,
@@ -191,11 +221,11 @@ const RootStack = createSwitchNavigator(
   },
   {
     initialRouteName: 'Login',
+    headerMode: 'none'
   }
 );
 
 const AppContainer = createAppContainer(RootStack);
-
 
 export default class App extends Component {
   render() {

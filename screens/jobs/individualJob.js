@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CameraTestScreen from "./cameraScreen";
 import CommentTestScreen from "./comments";
 import MessageInputComponent from "../../components/customMessageInputComponent";
-import { View, Text, ScrollView, Button } from 'react-native';
+import { View, Text, ScrollView, Button, TouchableOpacity } from 'react-native';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import ButtonComponent from '../../components/customButtonComponent';
@@ -84,12 +84,15 @@ export default class IndividualJob extends Component {
                 "Priority: " + this.props.navigation.getParam("priority", "P1")
               ]}
             />
+            <TouchableOpacity 
+            onPress={() => this.props.navigation.navigate('Map', {latlng: this.props.navigation.getParam("latlng")})}>
             <CardComponent
               title="LOCATION"
               titlecontent={[
                 this.props.navigation.getParam("destination", "N/A")
               ]}
             />
+            </TouchableOpacity>
             <CardComponent
               title="TIMES"
               titlecontent={["Dispatched: ", "First Arrival: ", "Closed: "]}

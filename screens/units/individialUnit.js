@@ -32,7 +32,7 @@ export default class IndividualUnit extends Component {
           title: params.title || 'Unit',
           headerTitleStyle: styles.header,
           headerStyle: styles.header,
-          headerTintColor: 'white',
+          headerTintColor: styles.header,
           headerRight: (<View />),
         };
       }

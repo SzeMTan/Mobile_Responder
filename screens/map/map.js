@@ -57,7 +57,10 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    this.getLocationAsync();
+    const { navigation } = this.props;
+        this.focusListener = navigation.addListener("didFocus", () => {
+            this.getLocationAsync();
+        });
   }
 
   handleMapRegionChange = mapRegion => {
@@ -75,11 +78,21 @@ export default class App extends Component {
      this.setState({ hasLocationPermissions: true });
    }
 
+   let locationFromJob = this.props.navigation.getParam("latlng")
+   console.log(locationFromJob)
+
+   if ( locationFromJob == null ){
    let location = await Location.getCurrentPositionAsync({});
    this.setState({ locationResult: JSON.stringify(location) });
    
    // Center the map on the location we just fetched.
     this.setState({mapRegion: { latitude: location.coords.latitude, longitude: location.coords.longitude, latitudeDelta: 0.015, longitudeDelta: 0.0045 }});
+   }
+   else {
+     this.setState({mapRegion: {latitude: locationFromJob.latitude, longitude: locationFromJob.longitude, latitudeDelta: 0.015, longitudeDelta: 0.0045}})
+
+   }
+   
   };
 
   render() {

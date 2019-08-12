@@ -18,7 +18,8 @@ export default class IndividualJob extends Component {
     this.state = {
       selectedIndex: 0,
       uri: "",
-      message: ""
+      message: "",
+      assigned: false
     };
   }
 
@@ -64,6 +65,11 @@ export default class IndividualJob extends Component {
     });
   };
 
+  assignJob() {
+    this.setState({assigned : true})
+
+  }
+
   renderTabContent = index => {
     if (index === 0) {
       return (
@@ -74,7 +80,7 @@ export default class IndividualJob extends Component {
             }}
             style={styles.containerView}
           >
-            <CardComponent title="Assigned: Unassigned" />
+            <CardComponent title={this.state.assigned ? 'Assigned: Assigned' : 'Assigned: Unassigned' }/>
             <CardComponent
               title="JOB INFO"
               titlecontent={[
@@ -115,7 +121,7 @@ export default class IndividualJob extends Component {
             onPress={this.goToTop}
             isBackToTop={true}
           />
-          <ButtonComponent title="Assign job" onPress={this.goToTop} />
+          <ButtonComponent title="Assign job" onPress={() => this.assignJob()} />
         </View>
       );
     } else {

@@ -105,6 +105,10 @@ export default class App extends Component {
   }
 
 
+  calloutPress(job) {
+    this.props.navigation.navigate('IndividualJob', {id: 1, title: job.title, code: job.code, date: job.date, status: job.status, priority: job.priority, latlng: job.latlng})
+    }
+
   //needs to use title rather than identifying by the latlng
   render() {
     return (
@@ -127,6 +131,10 @@ export default class App extends Component {
             <MapView.Marker
               key={marker.title}
               coordinate={marker.latlng}
+              ref={marker => (this.marker = marker)}
+              onPress={() => this.calloutPress(marker)}
+              // onPress={() => this.marker.showCallout()}
+              // onCalloutPress={this.calloutPress(marker)}
             >
               {this.renderMarker(marker.latlng)}
             </MapView.Marker>
@@ -136,17 +144,14 @@ export default class App extends Component {
               key={marker.title}
               coordinate={marker.latlng}
             >
+              
             <Image source={require('../../assets/ios-car.png')} style={styles.marker}/>
             </MapView.Marker>
             ))}
             </MapView>
         }
         </View>
-        {/* <Text>
-          Location: {this.state.locationResult}
-        </Text> */}
       </View>
-        
     );
   }
 }

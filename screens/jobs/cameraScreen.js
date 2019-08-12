@@ -11,8 +11,11 @@ import {
 } from "react-native";
 import GalleryScreen from "./image";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import styles from "./cameraStyle";
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
 
+
+styles = getStyleSheet(GLOBAL.darkState);
 export default class CameraScreen extends React.Component {
   state = {
     autoFocus: "on",

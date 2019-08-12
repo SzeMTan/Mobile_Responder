@@ -13,23 +13,25 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      jobMarkers: [
-          {
-            title: 'P036986219',
-            latlng: {latitude: -36.848671,
-              longitude: 174.770107}
-          },
-        {
-          title: 'P036986218',
-          latlng: {latitude: -36.853943,
-            longitude: 174.768265}
-        },
-        {
-          title: 'P036986217',
-          latlng: {latitude: -36.852638,
-            longitude: 174.768265}
-        },
-    ],
+      // jobMarkers: [
+      //     {
+      //       title: 'P036986219',
+      //       latlng: {latitude: -36.848671,
+      //         longitude: 174.770107}
+      //     },
+      //   {
+      //     title: 'P036986218',
+      //     latlng: {latitude: -36.853943,
+      //       longitude: 174.768265}
+      //   },
+      //   {
+      //     title: 'P036986217',
+      //     latlng: {latitude: -36.852638,
+      //       longitude: 174.768265}
+      //   },
+    // ],
+    jobMarkers: GLOBAL.jobs,
+    selectedJob: null,
     unitMarkers: [
       {
         title: 'P036986219',
@@ -78,10 +80,9 @@ export default class App extends Component {
      this.setState({ hasLocationPermissions: true });
    }
 
-   let locationFromJob = this.props.navigation.getParam("latlng")
-   console.log(locationFromJob)
+   this.setState({selectedJob: this.props.navigation.getParam('latlng')})
 
-   if ( locationFromJob == null ){
+   if ( this.state.selectedJob == null ){
    let location = await Location.getCurrentPositionAsync({});
    this.setState({ locationResult: JSON.stringify(location) });
    
@@ -89,12 +90,22 @@ export default class App extends Component {
     this.setState({mapRegion: { latitude: location.coords.latitude, longitude: location.coords.longitude, latitudeDelta: 0.015, longitudeDelta: 0.0045 }});
    }
    else {
-     this.setState({mapRegion: {latitude: locationFromJob.latitude, longitude: locationFromJob.longitude, latitudeDelta: 0.015, longitudeDelta: 0.0045}})
-
+     this.setState({mapRegion: {latitude: this.state.selectedJob.latitude, longitude: this.state.selectedJob.longitude, latitudeDelta: 0.015, longitudeDelta: 0.0045}})
    }
    
   };
 
+  renderMarker(latlng) {
+    if (latlng == this.state.selectedJob){
+       return <Image source={require('../../assets/ios-briefcase.png')} style={[styles.marker, {tintColor: 'red'}]}/>
+    }
+    else {
+      return <Image source={require('../../assets/ios-briefcase.png')} style={styles.marker}/>
+    }
+  }
+
+
+  //needs to use title rather than identifying by the latlng
   render() {
     return (
       <View style={styles.containerView}>
@@ -117,7 +128,7 @@ export default class App extends Component {
               key={marker.title}
               coordinate={marker.latlng}
             >
-            <Image source={require('../../assets/ios-briefcase.png')} style={styles.marker}/>
+              {this.renderMarker(marker.latlng)}
             </MapView.Marker>
             ))}
             {this.state.unitMarkers.map(marker => (

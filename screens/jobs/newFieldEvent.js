@@ -15,18 +15,17 @@ import { FileSystem, FaceDetector, MediaLibrary, Permissions } from "expo";
 import { MaterialIcons } from "@expo/vector-icons";
 import TextInput from "../../components/customTextInputComponent";
 export default class NewFieldEvent extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      eventTypes: [
-        { name: "1310 Robbery" },
-        { name: "1510 Serious Assault" }
-      ]
+      eventType: "1310 Robbery",
+      status: "PENDING",
     };
-    eventType: this.state.default;
-    status: "PENDING"
   }
 
+  static defaultProps = {
+    eventTypes: [{ name: "1310 Robbery" }, { name: "1510 Serious Assault" }],
+  }
   updateEventType = eventType => {
     this.setState({ eventType: eventType });
   };
@@ -39,10 +38,10 @@ export default class NewFieldEvent extends Component {
     this.props.navigation.goBack();
   }
 
-  cancelPressed = () => {
-      //
+  donePressed = () => {
+    this.props.navigation.state.params.done(this.state)
     this.props.navigation.goBack();
-  }
+  };
 
   static navigationOptions = ({ navigation }) => {
     const { state: { params = {} } } = navigation;
@@ -51,7 +50,7 @@ export default class NewFieldEvent extends Component {
     };
   };
   render() {
-    const renderPickerItems = this.state.eventTypes.map((eventType, index) =>
+    const renderPickerItems = this.props.eventTypes.map((eventType, index) =>
       <Picker.Item key={index} label={eventType.name} value={eventType.name} />
     );
     return (
@@ -60,9 +59,7 @@ export default class NewFieldEvent extends Component {
           <TouchableOpacity style={styles.button} onPress={this.cancelPressed}>
             <Text style={styles.buttonText}>Cancel</Text>
           </TouchableOpacity>
-          {/* <TouchableOpacity style={styles.button} onPress={this.saveToGallery}> */}
           <Text style={styles.headerText}>Create Field Event</Text>
-          {/* </TouchableOpacity> */}
           <TouchableOpacity style={styles.button} onPress={this.donePressed}>
             <Text style={styles.buttonText}>Done</Text>
           </TouchableOpacity>

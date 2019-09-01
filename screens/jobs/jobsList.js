@@ -1,19 +1,33 @@
-import React, { Alert, Component } from "react";
-import { ScrollView, View, TouchableOpacity } from 'react-native';
-import HeaderComponent from '../../components/customHeaderComponent';
-import SearchBarComponent from '../../components/customSearchBarComponent';
-import CardComponent from '../../components/customCardComponent';
+import React, { Component } from "react";
+import { ScrollView, View, TouchableOpacity } from "react-native";
+import HeaderComponent from "../../components/customHeaderComponent";
+import SearchBarComponent from "../../components/customSearchBarComponent";
+import CardComponent from "../../components/customCardComponent";
 
 import ButtonComponent from "../../components/customButtonComponent";
-import {Ionicons} from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
-import GLOBAL from '../../global'
-import getStyleSheet from '../../styles/style'
+import GLOBAL from "../../global";
+import getStyleSheet from "../../styles/style";
 
 const styles = getStyleSheet(GLOBAL.darkState);
 
-export default class JobsList extends Component {
+const monthNames = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec"
+];
 
+export default class JobsList extends Component {
   componentDidMount() {
     FileSystem.makeDirectoryAsync(
       FileSystem.documentDirectory + "photos"
@@ -26,43 +40,49 @@ export default class JobsList extends Component {
     super(props);
     this.state = {
       data: [
-          {title: 'P036986219',
-            priority: 'P2',
-            code: '3C-CRIME PREVENTION ADVICE',
-            destination: '10 Waterloo Quadrant',
-            date: '17/03/19 5:35PM',
-            status: 'PENDING',
+        {
+          title: "P036986219",
+          priority: "P2",
+          code: "3C-CRIME PREVENTION ADVICE",
+          destination: "10 Waterloo Quadrant",
+          date: "17 Mar 17:35",
+          status: "PENDING"
         },
         {
-            title: 'P036986218',
-            priority: 'P2',
-            code: '3C-CRIME PREVENTION ADVICE',
-            destination: '10 Waterloo Quadrant',
-            date: '17/03/19 5:35PM',
-            status: 'PENDING',
+          title: "P036986218",
+          priority: "P2",
+          code: "3C-CRIME PREVENTION ADVICE",
+          destination: "10 Waterloo Quadrant",
+          date: "17 Mar 17:35",
+          status: "PENDING"
         },
         {
-            title: 'P036986217',
-            priority: 'P2',
-            code: '3C-CRIME PREVENTION ADVICE',
-            destination: '10 Waterloo Quadrant',
-            date: '17/03/19 5:35PM',
-            status: 'PENDING',
-        },
-    ],};
-  }
-
-  static navigationOptions = ({ navigation }) => {
-    const { state: { params = {} } } = navigation;
-    return {
-      header: (
-        <HeaderComponent title={'Jobs('+navigation.getParam('jobsListSize')+')'}/>
-      ),
+          title: "P036986217",
+          priority: "P2",
+          code: "3C-CRIME PREVENTION ADVICE",
+          destination: "10 Waterloo Quadrant",
+          date: "17 Mar 17:35",
+          status: "PENDING"
+        }
+      ]
     };
   }
 
+  static navigationOptions = ({ navigation }) => {
+    const {
+      state: { params = {} }
+    } = navigation;
+    return {
+      header: (
+        <HeaderComponent
+          title={"Jobs(" + navigation.getParam("jobsListSize") + ")"}
+        />
+      )
+    };
+  };
+
   componentDidMount() {
-    this.props.navigation.setParams({ jobsListSize: this._JobsListSize()});
+    this.props.navigation.setParams({ jobsListSize: this._JobsListSize() });
   }
 
   _JobsListSize = () => {
@@ -77,22 +97,35 @@ export default class JobsList extends Component {
 
   newJobCreated = object => {
     console.log(object);
+    console.log(new Date().getDate());
+    console.log(new Date().getHours());
+    console.log(new Date().getMinutes());
+    const d = new Date();
+
+    const formattedDate =
+      d.getDate() +
+      " " +
+      monthNames[d.getMonth()] +
+      " " +
+      d.getHours() +
+      ":" +
+      d.getMinutes();
+    console.log(formattedDate);
+
     newEvent = {
-      title: "generate random id",
+      title: "P0" + Math.round(Math.random() * 100000000),
       priority: "P2",
       code: object.eventType,
-      destination: "get current location",
-      date: new Date().toLocaleString(),
-      status: object.status
+      destination: object.location,
+      date: formattedDate,
+      status: object.jobStatus
     };
-    console.log(newEvent);
     this.state.data.push(newEvent);
-    console.log(this.state);
     this.forceUpdate();
   };
 
   render() {
-    const cards = this.state.data.map(job =>
+    const cards = this.state.data.map(job => (
       <TouchableOpacity
         key={job.title}
         onPress={() =>
@@ -102,8 +135,10 @@ export default class JobsList extends Component {
             code: job.code,
             date: job.date,
             status: job.status,
-            priority: job.priority
-          })}
+            priority: job.priority,
+            destination: job.destination
+          })
+        }
       >
         <CardComponent
           key={job.title}
@@ -113,9 +148,9 @@ export default class JobsList extends Component {
           rightbottom={job.status}
         />
       </TouchableOpacity>
-    );
+    ));
     return (
-      <View>
+      <View style={styles.containerView}>
         <SearchBarComponent title="Jobs" />
         <ScrollView>
           <View style={[styles.containerView, styles.jobCenterContainer]}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {View, StyleSheet } from 'react-native';
+import {View } from 'react-native';
 import HeaderComponent from './components/customHeaderComponent';
-import { createBottomTabNavigator, createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
 
 import CardStackStyleInterpolator from 'react-navigation-stack/src/views/StackView/StackViewStyleInterpolator'
 import Home from './screens/home/home';
@@ -20,7 +20,6 @@ import IndividualJob from './screens/jobs/individualJob';
 
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
-// import styles from './styles/style';
 import GLOBAL from './global'
 import getStyleSheet from './styles/style';
 

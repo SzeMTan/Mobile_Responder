@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import CameraTestScreen from "./cameraScreen";
 import CommentTestScreen from "./comments";
 import MessageInputComponent from "../../components/customMessageInputComponent";
-import { View, Text, ScrollView, Button } from 'react-native';
-import SegmentControlComponent from '../../components/customSegmentControlComponent';
-import CardComponent from '../../components/customCardComponent';
-import ButtonComponent from '../../components/customButtonComponent';
-import { Ionicons } from '@expo/vector-icons';
-import GLOBAL from '../../global'
-import getStyleSheet from '../../styles/style'
+import { View, ScrollView } from "react-native";
+import SegmentControlComponent from "../../components/customSegmentControlComponent";
+import CardComponent from "../../components/customCardComponent";
+import ButtonComponent from "../../components/customButtonComponent";
+import { Ionicons } from "@expo/vector-icons";
+import GLOBAL from "../../global";
+import getStyleSheet from "../../styles/style";
 
 const styles = getStyleSheet(GLOBAL.darkState);
 
@@ -30,7 +29,9 @@ export default class IndividualJob extends Component {
   };
 
   static navigationOptions = ({ navigation }) => {
-    const { state: { params = {} } } = navigation;
+    const {
+      state: { params = {} }
+    } = navigation;
     return {
       title: params.title || "JOB",
       headerTitleStyle: styles.header,

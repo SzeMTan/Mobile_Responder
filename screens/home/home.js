@@ -1,8 +1,14 @@
 import React, { Component } from "react";
-import { ScrollView, View, Button } from 'react-native';
-import { Header, Text } from 'react-native-elements';
+import { ScrollView, View,  StyleSheet } from 'react-native';
+import {Button, Text } from 'react-native-elements';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
-import CardComponent from '../../components/customCardComponent'
+import CardComponent from '../../components/customCardComponent';
+import HeaderComponent from '../../components/customHeaderComponent';
+import ButtonComponent from "../../components/customButtonComponent";
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
+
+const styles = getStyleSheet(GLOBAL.darkState);
 export default class Home extends Component {
     constructor(){
         super()
@@ -18,7 +24,7 @@ export default class Home extends Component {
           });
     }
 
-    renderTabContent(index){
+    renderTabContent = (index) => {
         if (index === 0){
             return  <ScrollView>
                         <CardComponent title='Unit STATUS CODE: '/>
@@ -27,31 +33,25 @@ export default class Home extends Component {
                     </ScrollView>
         }
         else {
-            return <Text> Tab two </Text>
+            return <ScrollView>
+                        <CardComponent title='Current job: '/>
+                        <ButtonComponent style={ styles.endJob } title='END JOB ->' onPress={() => this.props.navigation.navigate('Login')}/>
+                        <View style={styles.horizonalLine}/>
+                    </ScrollView>
         }
     }
 
     render() {
         return (
             <View>
-                <Header
-                    centerComponent={{ text: 'HOME', style: { fontSize:24 } }}
-                    backgroundColor='none'
-                />
+                <HeaderComponent title='HOME'/>
                 <View>
                 <SegmentControlComponent paramvalues={['UNIT', 'JOB']} 
                     tabAction={this.setIndex}
                 />
                 {this.renderTabContent(this.state.selectedIndex)}
                 </View>
-                <Button
-                    // buttonStyle={styles.loginButton}
-                    onPress={() => this.props.navigation.navigate('Login')}
-                    title="Logout"
-                    />
             </View>
         );
     }
-
-
 }

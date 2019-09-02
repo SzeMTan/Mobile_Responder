@@ -1,21 +1,49 @@
 import React, { Component } from "react";
-import { View } from 'react-native';
-import { Header} from 'react-native-elements';
+import { View, Alert } from 'react-native';
 import ToggleComponent from '../../components/customToggleComponent';
 import SliderComponent from '../../components/customSliderComponent';
+import SettingsList from 'react-native-settings-list';
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'   
 
 export default class GeneralScreen extends Component {
+
+    constructor(){
+        super();
+        styles = getStyleSheet(GLOBAL.darkState)
+        this.state = {switchValue: GLOBAL.darkState, backgroundColor: styles.appbackground};
+        this.onValueChange = this.onValueChange.bind(this);
+      }
+
     render() {
         return (
-            <View>
-                <Header
-                    centerComponent={{ text: 'General Settings', style: { fontSize:24 } }}
-                    backgroundColor='none'
-                />
-                <ToggleComponent toggleLabel='Enable Dark Theme'/>
-                <ToggleComponent toggleLabel='Enable Text-to-Speech'/>
+            <View style={ this.state.backgroundColor}>
+                <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
+                    {/* <SettingsList.Item 
+                    title='Enable Dark Theme'
+                    switchOnValueChange={this.onValueChange}
+                    switchState={this.state.switchValue}
+                    hasSwitch={true}
+                    hasNavArrow={false}
+                    />
+                    <SettingsList.Item 
+                    title='Enable Text-to-Speech'
+                    switchOnValueChange={() => Alert.alert('Route To General Page')}
+                    hasSwitch={true}
+                    hasNavArrow={false}
+                    /> */}
+                </SettingsList>
+                    <ToggleComponent toggleLabel='Enable Dark Theme' onToggle={() => this.onValueChange()} toggleState={GLOBAL.darkState}/>
                 <SliderComponent title={'Notifications(mins)'} min={0} max={10}/>
             </View>
         );
     }
+
+
+    onValueChange(value){
+        this.setState({switchValue: value});
+        const currentState = GLOBAL.darkState;
+        GLOBAL.darkState = !currentState;
+        this.setState({backgroundColor: getStyleSheet(GLOBAL.darkState).appbackground})
+      }
 }

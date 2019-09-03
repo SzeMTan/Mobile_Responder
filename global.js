@@ -30,6 +30,35 @@ module.exports = {
           latlng: {latitude: -36.852638,
             longitude: 174.768265}
       },
-  ]
+  ], 
+  units: [
+    {
+      title: 'PBY',
+      code: '3C-CRIME PREVENTION ADVICE',
+      destination: '10 Waterloo Quadrant',
+      id: 'P036986219',
+      status: 'ARRIVED',
+      latlng: {latitude: -36.850581,
+      longitude: 174.772951}
+      },
+    {
+      title: 'ACY3',
+      code: '3M-DIRECTED PATROL',
+      destination: '10 Waterloo Quadrant',
+      id: 'P036986219',
+      status: 'ARRIVED',
+      latlng: {latitude: -36.851958,
+      longitude: 174.772524}
+    },
+    {
+      title: 'ACY1',
+      code: '3M-DIRECTED PATROL',
+      destination: '10 Waterloo Quadrant',
+      id: 'P036986219',
+      status: 'ARRIVED',
+      latlng: {latitude: -36.854165,
+      longitude: 174.770824}
+    }
+],
  };
  

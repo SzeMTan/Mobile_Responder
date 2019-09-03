@@ -31,24 +31,8 @@ export default class App extends Component {
       //   },
     // ],
     jobMarkers: GLOBAL.jobs,
-    selectedJob: null,
-    unitMarkers: [
-      {
-        title: 'P036986219',
-        latlng: {latitude: -36.850581,
-          longitude: 174.772951}
-      },
-    {
-      title: 'P036986218',
-      latlng: {latitude: -36.851958,
-        longitude: 174.772524}
-    },
-    {
-      title: 'P036986217',
-      latlng: {latitude: -36.854165,
-        longitude: 174.770824}
-    },
-],
+    selectedObject: null,
+    unitMarkers: GLOBAL.units
   };
   }
 
@@ -66,7 +50,6 @@ export default class App extends Component {
   }
 
   handleMapRegionChange = mapRegion => {
-    console.log(mapRegion);
     this.setState({ mapRegion });
   };
 
@@ -80,9 +63,9 @@ export default class App extends Component {
      this.setState({ hasLocationPermissions: true });
    }
 
-   this.setState({selectedJob: this.props.navigation.getParam('latlng')})
+   this.setState({selectedObject: this.props.navigation.getParam('latlng')})
 
-   if ( this.state.selectedJob == null ){
+   if ( this.state.selectedObject == null ){
    let location = await Location.getCurrentPositionAsync({});
    this.setState({ locationResult: JSON.stringify(location) });
    
@@ -90,13 +73,13 @@ export default class App extends Component {
     this.setState({mapRegion: { latitude: location.coords.latitude, longitude: location.coords.longitude, latitudeDelta: 0.015, longitudeDelta: 0.0045 }});
    }
    else {
-     this.setState({mapRegion: {latitude: this.state.selectedJob.latitude, longitude: this.state.selectedJob.longitude, latitudeDelta: 0.015, longitudeDelta: 0.0045}})
+     this.setState({mapRegion: {latitude: this.state.selectedObject.latitude, longitude: this.state.selectedObject.longitude, latitudeDelta: 0.015, longitudeDelta: 0.0045}})
    }
    
   };
 
-  renderMarker(latlng) {
-    if (latlng == this.state.selectedJob){
+  renderJobMarker(latlng) {
+    if (latlng == this.state.selectedObject){
        return <Image source={require('../../assets/ios-briefcase.png')} style={[styles.marker, {tintColor: 'red'}]}/>
     }
     else {
@@ -104,10 +87,23 @@ export default class App extends Component {
     }
   }
 
+  renderUnitMarker(latlng) {
+    if (latlng == this.state.selectedObject){
+       return <Image source={require('../../assets/ios-car.png')} style={[styles.marker, {tintColor: 'red'}]}/>
+    }
+    else {
+      return <Image source={require('../../assets/ios-car.png')} style={styles.marker}/>
+    }
+  }
 
-  calloutPress(job) {
+
+  calloutJobPress(job) {
     this.props.navigation.navigate('IndividualJob', {id: 1, title: job.title, code: job.code, date: job.date, status: job.status, priority: job.priority, latlng: job.latlng})
     }
+
+  calloutUnitPress(unit) {
+    this.props.navigation.navigate('IndividualUnit', {id: 1, title: unit.title, latlng: unit.latlng})
+  }
 
   //needs to use title rather than identifying by the latlng
   render() {
@@ -132,20 +128,21 @@ export default class App extends Component {
               key={marker.title}
               coordinate={marker.latlng}
               ref={marker => (this.marker = marker)}
-              onPress={() => this.calloutPress(marker)}
+              onPress={() => this.calloutJobPress(marker)}
               // onPress={() => this.marker.showCallout()}
               // onCalloutPress={this.calloutPress(marker)}
             >
-              {this.renderMarker(marker.latlng)}
+              {this.renderJobMarker(marker.latlng)}
             </MapView.Marker>
             ))}
             {this.state.unitMarkers.map(marker => (
             <MapView.Marker
               key={marker.title}
               coordinate={marker.latlng}
+              ref={marker => (this.marker = marker)}
+              onPress={() => this.calloutUnitPress(marker)}
             >
-              
-            <Image source={require('../../assets/ios-car.png')} style={styles.marker}/>
+              {this.renderUnitMarker(marker.latlng)}
             </MapView.Marker>
             ))}
             </MapView>

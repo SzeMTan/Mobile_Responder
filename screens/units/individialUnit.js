@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, ScrollView, Button } from 'react-native';
+import { View, Text, ScrollView, Button, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
@@ -43,7 +43,10 @@ export default class IndividualUnit extends Component {
                         <View style={styles.unitCenterContainer}>
                             <CardComponent title='PERSONNEL'
                                 titlecontent={['Name: ','UserID: ']}/>
+                            <TouchableOpacity 
+                            onPress={() => this.props.navigation.navigate('Map', {latlng: this.props.navigation.getParam("latlng")})}>
                             <CardComponent title='LOCATION'/>
+                            </TouchableOpacity>
                             <CardComponent title='DEVICES' leftbottom='N/A'/>
                             <CardComponent title='VEHICLES' leftbottom='N/A'/>
                             <CardComponent title='EQUIPMENT' leftbottom='N/A'/>

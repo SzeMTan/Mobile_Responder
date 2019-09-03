@@ -13,26 +13,6 @@ export default class UnitsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [{title: 'PBY',
-              code: '3C-CRIME PREVENTION ADVICE',
-              destination: '10 Waterloo Quadrant',
-              id: 'P036986219',
-              status: 'ARRIVED',
-      },
-    {
-      title: 'ACY3',
-              code: '3M-DIRECTED PATROL',
-              destination: '10 Waterloo Quadrant',
-              id: 'P036986219',
-              status: 'ARRIVED',
-    },
-    {
-      title: 'ACY1',
-              code: '3M-DIRECTED PATROL',
-              destination: '10 Waterloo Quadrant',
-              id: 'P036986219',
-              status: 'ARRIVED',
-    }],
     };
   }
 
@@ -50,14 +30,14 @@ export default class UnitsList extends Component {
   }
 
   _UnitsListSize = () => {
-    return this.state.data.length;
+    return GLOBAL.units.length;
   };
 
   render() {
-    const cards = this.state.data.map(
+    const cards = GLOBAL.units.map(
       unit =>         
         <TouchableOpacity key={unit.title} onPress={() => 
-        this.props.navigation.navigate('IndividualUnit', {id: 1, title: unit.title})}>
+        this.props.navigation.navigate('IndividualUnit', {id: 1, title: unit.title, latlng: unit.latlng})}>
           <CardComponent key={unit.title} 
           title={unit.title} 
           titlecontent={[unit.code, unit.destination]}

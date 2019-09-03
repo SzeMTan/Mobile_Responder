@@ -32,7 +32,7 @@ const lightStyleSheet = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         right: 20,
-        bottom: 55,
+        bottom: 25,
         backgroundColor: '#0076FF',
         borderRadius:25,
     },

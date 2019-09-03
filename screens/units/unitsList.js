@@ -66,7 +66,7 @@ export default class UnitsList extends Component {
         </TouchableOpacity>
       )
     return (
-        <View>
+        <View style={styles.containerView}>
             <SearchBarComponent title='Units'/>
             <ScrollView >
               <View style={styles.unitCenterContainer}>

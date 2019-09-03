@@ -36,7 +36,7 @@ export default class IndividualJob extends Component {
       title: params.title || "JOB",
       headerTitleStyle: styles.header,
       headerStyle: styles.header,
-      headerTintColor: 'white',
+      headerTintColor: styles.header,
       headerRight: <View />
     };
   };
@@ -125,7 +125,8 @@ export default class IndividualJob extends Component {
             onPress={this.goToTop}
             isBackToTop={true}
           />
-          <ButtonComponent title="Assign job" onPress={() => this.assignJob()} />
+          {this.state.assigned ? null : <ButtonComponent title="Assign job" onPress={() => this.assignJob()} />}
+          
         </View>
       );
     } else {

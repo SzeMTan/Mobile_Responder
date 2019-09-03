@@ -26,16 +26,16 @@ export default class IndividualUnit extends Component {
           });
     }
 
-    static navigationOptions = ({ navigation }) => {
+      static navigationOptions = ({ navigation }) => {
         const { state: { params = {} } } = navigation;
         return {
-          title: params.title || 'Unit',
+          title: params.title || "Unit",
           headerTitleStyle: styles.header,
           headerStyle: styles.header,
           headerTintColor: styles.header,
-          headerRight: (<View />),
+          headerRight: <View />
         };
-      }
+      };
 
     renderTabContent = (index) => {
         if (index === 0){

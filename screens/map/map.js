@@ -97,9 +97,13 @@ export default class App extends Component {
   }
 
 
-  calloutPress(job) {
+  calloutJobPress(job) {
     this.props.navigation.navigate('IndividualJob', {id: 1, title: job.title, code: job.code, date: job.date, status: job.status, priority: job.priority, latlng: job.latlng})
     }
+
+  calloutUnitPress(unit) {
+    this.props.navigation.navigate('IndividualUnit', {id: 1, title: unit.title, latlng: unit.latlng})
+  }
 
   //needs to use title rather than identifying by the latlng
   render() {
@@ -124,7 +128,7 @@ export default class App extends Component {
               key={marker.title}
               coordinate={marker.latlng}
               ref={marker => (this.marker = marker)}
-              onPress={() => this.calloutPress(marker)}
+              onPress={() => this.calloutJobPress(marker)}
               // onPress={() => this.marker.showCallout()}
               // onCalloutPress={this.calloutPress(marker)}
             >
@@ -135,8 +139,9 @@ export default class App extends Component {
             <MapView.Marker
               key={marker.title}
               coordinate={marker.latlng}
+              ref={marker => (this.marker = marker)}
+              onPress={() => this.calloutUnitPress(marker)}
             >
-              
               {this.renderUnitMarker(marker.latlng)}
             </MapView.Marker>
             ))}

@@ -9,6 +9,7 @@ import {Ionicons} from "@expo/vector-icons";
 
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
+import { FlatList } from "react-native-gesture-handler";
 
 const styles = getStyleSheet(GLOBAL.darkState);
 
@@ -79,13 +80,13 @@ export default class JobsList extends Component {
       
       /></TouchableOpacity>)
     return (
-      <View>
+      <View style={styles.containerView}>
         <SearchBarComponent title="Jobs" />
         <ScrollView>
           <View style={[styles.containerView, styles.jobCenterContainer]}>
-            {cards}
+            {cards} 
           </View>
-        </ScrollView>
+          </ScrollView>
         <ButtonComponent
           icon={<Ionicons name="ios-add" size={30} color="#fff" />}
           onPress={this.newJob}

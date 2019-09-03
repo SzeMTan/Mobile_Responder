@@ -70,6 +70,10 @@ export default class IndividualJob extends Component {
 
   }
 
+  commentPressed = () => {
+    this.props.navigation.navigate('OnDuty')
+  }
+
   renderTabContent = index => {
     if (index === 0) {
       return (
@@ -121,7 +125,8 @@ export default class IndividualJob extends Component {
             onPress={this.goToTop}
             isBackToTop={true}
           />
-          <ButtonComponent title="Assign job" onPress={() => this.assignJob()} />
+          {this.state.assigned ? null : <ButtonComponent title="Assign job" onPress={() => this.assignJob()} />}
+          
         </View>
       );
     } else {
@@ -138,6 +143,7 @@ export default class IndividualJob extends Component {
               title="Comments"
               uri={this.state.uri}
               message={this.state.message}
+              commentPressed={() => this.commentPressed()}
             />
           </ScrollView>
           <MessageInputComponent

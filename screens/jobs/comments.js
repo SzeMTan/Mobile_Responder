@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 
 import Icon from "@expo/vector-icons/AntDesign";
 import HeaderComponent from "../../components/customHeaderComponent";
@@ -9,7 +9,7 @@ import CommentCardComponent from "../../components/customCommentCardComponent";
 import TextInputComponent from "../../components/customTextInputComponent";
 import MessageInputComponent from "../../components/customMessageInputComponent";
 
-export default class App extends React.Component {
+export default class CommentTestScreen extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -31,7 +31,7 @@ export default class App extends React.Component {
         },
         {
           sender: "d0710013",
-          message: "YOUNG MALE ASKING FOR POLICE",
+          message: "YOUNG MALE ASKING FOR POLICE PRN: 765846",
           uri: false,
           pinned: false,
           date: "17/03/19 5:00PM"
@@ -83,6 +83,7 @@ export default class App extends React.Component {
             index={index}
             sender={message.sender}
             message={message.message}
+            onDuty={this.props.commentPressed}
             uri={message.uri}
             date={message.date}
             pinned={message.pinned}
@@ -93,16 +94,19 @@ export default class App extends React.Component {
     });
 
     const comments = this.state.messages.map((message, index) =>
+    // <TouchableOpacity onPress={this.props.commentPressed} >
       <CommentCardComponent
         key={index}
         index={index}
         sender={message.sender}
         message={message.message}
+        onDuty={this.props.commentPressed}
         uri={message.uri}
         date={message.date}
         pinned={message.pinned}
         pinnedButtonPressed={this.pinnedButtonPressed}
       />
+    // </TouchableOpacity>
     );
     return (
       <View>
@@ -112,4 +116,5 @@ export default class App extends React.Component {
       </View>
     );
   }
+
 }

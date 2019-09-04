@@ -67,7 +67,6 @@ export default class IndividualJob extends Component {
 
   assignJob() {
     this.setState({assigned : true})
-
   }
 
   commentPressed = () => {

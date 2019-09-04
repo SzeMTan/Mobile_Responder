@@ -58,7 +58,8 @@ module.exports = {
       status: 'ARRIVED',
       latlng: {latitude: -36.854165,
       longitude: 174.770824}
-    }
+    },
 ],
+currentJob: null
  };
  

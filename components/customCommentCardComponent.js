@@ -46,9 +46,11 @@ export default class ReorderCardComponent extends Component {
               </View>
             </View>
           : <View style={styles.commentCardFontContainer}>
+            <TouchableOpacity onPress={this.props.onDuty}>
               <Text style={styles.commentCardFontSize}>
                 {this.props.message}
               </Text>
+            </TouchableOpacity>
             </View>}
         <View style={styles.commentCardDateContainer}>
           <Text style={styles.commentCardDate}>

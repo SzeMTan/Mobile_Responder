@@ -26,6 +26,7 @@ import getStyleSheet from './styles/style';
 
 import CameraTestScreen from './screens/jobs/cameraScreen';
 import NewFieldEvent from "./screens/jobs/newFieldEvent";
+import OnDutyScreen from './screens/jobs/onDutyScreen';
 
 const iconSize = 30;
 
@@ -124,6 +125,9 @@ const JobsNavigator = createStackNavigator(
     },
     Camera: {
       screen: CameraTestScreen,
+    },
+    OnDuty: {
+      screen: OnDutyScreen,
     }
   },
   {

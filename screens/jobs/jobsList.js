@@ -7,8 +7,14 @@ import CardComponent from "../../components/customCardComponent";
 import ButtonComponent from "../../components/customButtonComponent";
 import { Ionicons } from "@expo/vector-icons";
 
+<<<<<<< HEAD
 import GLOBAL from "../../global";
 import getStyleSheet from "../../styles/style";
+=======
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
+import { FlatList } from "react-native-gesture-handler";
+>>>>>>> master
 
 const styles = getStyleSheet(GLOBAL.darkState);
 
@@ -39,33 +45,7 @@ export default class JobsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [
-        {
-          title: "P036986219",
-          priority: "P2",
-          code: "3C-CRIME PREVENTION ADVICE",
-          destination: "10 Waterloo Quadrant",
-          date: "17 Mar 17:35",
-          status: "PENDING"
-        },
-        {
-          title: "P036986218",
-          priority: "P2",
-          code: "3C-CRIME PREVENTION ADVICE",
-          destination: "10 Waterloo Quadrant",
-          date: "17 Mar 17:35",
-          status: "PENDING"
-        },
-        {
-          title: "P036986217",
-          priority: "P2",
-          code: "3C-CRIME PREVENTION ADVICE",
-          destination: "10 Waterloo Quadrant",
-          date: "17 Mar 17:35",
-          status: "PENDING"
-        }
-      ]
-    };
+  };
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -86,7 +66,7 @@ export default class JobsList extends Component {
   }
 
   _JobsListSize = () => {
-    return this.state.data.length;
+    return GLOBAL.jobs.length;
   };
 
   newJob = () => {
@@ -125,38 +105,25 @@ export default class JobsList extends Component {
   };
 
   render() {
-    const cards = this.state.data.map(job => (
-      <TouchableOpacity
-        key={job.title}
-        onPress={() =>
-          this.props.navigation.navigate("IndividualJob", {
-            id: 1,
-            title: job.title,
-            code: job.code,
-            date: job.date,
-            status: job.status,
-            priority: job.priority,
-            destination: job.destination
-          })
-        }
-      >
-        <CardComponent
-          key={job.title}
-          title={job.title}
-          titlecontent={[job.code, job.destination]}
-          leftbottom={job.date}
-          rightbottom={job.status}
-        />
-      </TouchableOpacity>
-    ));
+
+    const cards = GLOBAL.jobs.map(job =>         
+    <TouchableOpacity key={job.title} 
+    onPress={() => 
+    this.props.navigation.navigate('IndividualJob', {id: 1, title: job.title, code: job.code, date: job.date, status: job.status, priority: job.priority, latlng: job.latlng})}>
+      <CardComponent key={job.title} 
+      title={job.title} 
+      titlecontent={[job.code, job.destination]}
+      leftbottom={job.date} rightbottom={job.status}    
+      
+      /></TouchableOpacity>)
     return (
       <View style={styles.containerView}>
         <SearchBarComponent title="Jobs" />
         <ScrollView>
           <View style={[styles.containerView, styles.jobCenterContainer]}>
-            {cards}
+            {cards} 
           </View>
-        </ScrollView>
+          </ScrollView>
         <ButtonComponent
           icon={<Ionicons name="ios-add" size={30} color="#fff" />}
           onPress={this.newJob}

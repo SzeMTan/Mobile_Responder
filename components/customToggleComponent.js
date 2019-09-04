@@ -9,10 +9,6 @@ const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class ToggleComponent extends Component {
 
-    state = {
-        // toggleState: false,
-    };
-
     static defaultProps = {
         toggleLabel: ""
     }

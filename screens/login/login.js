@@ -8,10 +8,27 @@ import ButtonComponent from "../../components/customButtonComponent";
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
+styles = getStyleSheet(GLOBAL.darkState);
 
 export default class LoginScreen extends Component {
+  constructor() {
+    super()
+    this.state = {
+      switchValue: false
+    }
+  }
+  componentDidMount() {
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+        styles = getStyleSheet(GLOBAL.darkState);
+      this.forceUpdate()
+    });
+  }
 
+  componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
+  }
     render() {
         return (
         <KeyboardAvoidingView style={styles.containerView} behavior="padding">
@@ -31,7 +48,7 @@ export default class LoginScreen extends Component {
                     secureEntry={true}
                     style={styles.loginFormTextInput}/>
                     <ButtonComponent title='Login' onPress={() => this.onLoginPress()} />
-                    <ToggleComponent toggleLabel='Remember Me' onToggle={() => this.doNothing()}/>
+                    <ToggleComponent toggleLabel='Remember Me' onToggle={switchValue => {this.setState({switchValue})}} toggleState={this.state.switchValue}/>
                     <Text style={styles.changePassword}
                     onPress={() => this.props.navigation.navigate('Password')}>
                       Change Password
@@ -45,10 +62,5 @@ export default class LoginScreen extends Component {
 
     onLoginPress() {
         this.props.navigation.navigate('Home');
-        console.log('login' + GLOBAL.darkState)
-      }
-
-      doNothing(){
-
       }
 }

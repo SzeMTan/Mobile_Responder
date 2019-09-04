@@ -31,8 +31,6 @@ module.exports = {
             longitude: 174.768265}
       },
   ], 
-
-};
   units: [
     {
       title: 'PBY',

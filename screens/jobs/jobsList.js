@@ -7,14 +7,9 @@ import CardComponent from "../../components/customCardComponent";
 import ButtonComponent from "../../components/customButtonComponent";
 import { Ionicons } from "@expo/vector-icons";
 
-<<<<<<< HEAD
-import GLOBAL from "../../global";
-import getStyleSheet from "../../styles/style";
-=======
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 import { FlatList } from "react-native-gesture-handler";
->>>>>>> master
 
 const styles = getStyleSheet(GLOBAL.darkState);
 

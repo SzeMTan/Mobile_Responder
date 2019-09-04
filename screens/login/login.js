@@ -31,7 +31,7 @@ export default class LoginScreen extends Component {
   }
     render() {
         return (
-        <KeyboardAvoidingView style={styles.containerView} behavior="padding">
+        <KeyboardAvoidingView style={[styles.containerView, styles.appbackground]} behavior="padding">
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={[styles.containerView, styles.loginFormView]}>
                   <Text style={styles.logoText}>Intergraph {"\n"}

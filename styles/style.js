@@ -9,40 +9,46 @@ const buttonStyles = {
     margin:10
 }
 
+const iconButtonStyle = {
+  position: 'absolute',
+  width: 50,
+  height: 50,
+  alignItems: 'center',
+  justifyContent: 'center',
+  right: 20,
+  bottom: 25,
+  borderRadius:25,
+}
+
+const header = {
+  fontSize: 24,
+  fontWeight: 'normal',
+  textAlign: 'center',
+}
+
+
 export default function getStyleSheet(useDarkTheme){
     return useDarkTheme ? darkStyleSheet : lightStyleSheet;
 }
 
 const lightStyleSheet = StyleSheet.create({
     appbackground: {
-        backgroundColor: 'blue'
+        backgroundColor: 'white'
     },
     button: {
         // backgroundColor: '#0076FF', // default ios button blue 
+        ...buttonStyles,
         backgroundColor: 'green',
-        padding:10,
-        borderRadius:10,  
-        height:45,
-        margin:10
     },
     iconButtonStyle: {
-        position: 'absolute',
-        width: 50,
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        right: 20,
-        bottom: 25,
+      ...iconButtonStyle,
         backgroundColor: '#0076FF',
-        borderRadius:25,
     },
     containerView: {
         flex: 1,
     },
     header:{
-        fontSize: 24,
-        fontWeight: 'normal',
-        textAlign: 'center',
+        ...header,
         backgroundColor: '#0076FF',
         color : 'white'
       },
@@ -361,33 +367,21 @@ const lightStyleSheet = StyleSheet.create({
 
 const darkStyleSheet = StyleSheet.create({
     appbackground: {
-        backgroundColor: 'red'
+        backgroundColor: '#002060'
     },
     button: {
+      ...buttonStyles,
         backgroundColor: '#0076FF', // default ios button blue 
-        padding:10,
-        borderRadius:10,  
-        height:45,
-        margin:10
     },
     iconButtonStyle: {
-        position: 'absolute',
-        width: 50,
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        right: 20,
-        bottom: 55,
+        ...iconButtonStyle,
         backgroundColor: '#0076FF',
-        borderRadius:25,
     },
     containerView: {
         flex: 1,
     },
     header:{
-        fontSize: 24,
-        fontWeight: 'normal',
-        textAlign: 'center',
+        ...header,
         backgroundColor: '#0076FF',
         color : 'white'
       },
@@ -428,7 +422,8 @@ const darkStyleSheet = StyleSheet.create({
         alignItems: 'center',
     },
     toggleSwitchContainer: {
-        backgroundColor: '#fff',
+        backgroundColor: '#002060',
+        color:'white',
         justifyContent: 'center',
         marginHorizontal: '5%',
         paddingVertical: 15,
@@ -630,6 +625,7 @@ const darkStyleSheet = StyleSheet.create({
         fontWeight: "800",
         marginBottom:60,
         textAlign: 'left',
+        color: 'white'
       },
       loginFormView: {
         paddingHorizontal:20,

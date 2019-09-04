@@ -1,5 +1,5 @@
 module.exports = {
-    darkState: false,
+    darkState: true,
     jobs: [
         {title: 'P036986219',
           priority: 'P2',

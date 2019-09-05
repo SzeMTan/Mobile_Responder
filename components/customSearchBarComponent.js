@@ -16,7 +16,8 @@ export default class SearchBarComponent extends Component {
 
     return (
       <SearchBar
-      lightTheme
+        lightTheme
+        containerStyle={{ flex: 1 }}
         placeholder="Type Here.."
         onChangeText={this.updateSearch}
         value={search}

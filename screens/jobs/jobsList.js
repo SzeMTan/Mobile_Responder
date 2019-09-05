@@ -5,7 +5,7 @@ import SearchBarComponent from '../../components/customSearchBarComponent';
 import CardComponent from '../../components/customCardComponent';
 
 import ButtonComponent from "../../components/customButtonComponent";
-import {Ionicons} from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
@@ -52,6 +52,10 @@ export default class JobsList extends Component {
     });
   };
 
+  filter = () => {
+    this.props.navigation.navigate("JobFilter");
+  };
+  
   newJobCreated = object => {
     console.log(object);
     newEvent = {
@@ -62,9 +66,7 @@ export default class JobsList extends Component {
       date: new Date().toLocaleString(),
       status: object.status
     };
-    console.log(newEvent);
     this.state.data.push(newEvent);
-    console.log(this.state);
     this.forceUpdate();
   };
 
@@ -81,7 +83,15 @@ export default class JobsList extends Component {
       /></TouchableOpacity>)
     return (
       <View style={styles.containerView}>
-        <SearchBarComponent title="Jobs" />
+        <View style={{ alignContent: "stretch", flexDirection: "row" }}>
+          <SearchBarComponent title="Jobs" />
+          <TouchableOpacity
+            style={{ alignSelf: "center" }}
+            onPress={this.filter}
+          >
+            <MaterialCommunityIcons name="filter" size={40} />
+          </TouchableOpacity>
+        </View>
         <ScrollView>
           <View style={[styles.containerView, styles.jobCenterContainer]}>
             {cards} 

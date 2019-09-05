@@ -1,0 +1,164 @@
+import React, { Component } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import HeaderComponent from "../../components/customHeaderComponent";
+import Accordion from "../../components/customAccordianComponent";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+export default class JobFilter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      priority: [
+        { title: "P0", selected: true },
+        { title: "P1", selected: false },
+        { title: "P2", selected: false },
+        { title: "P3", selected: false },
+        { title: "P4", selected: false },
+        { title: "P5", selected: false },
+        { title: "P6", selected: false },
+        { title: "P7", selected: false },
+        { title: "P8", selected: false },
+        { title: "P9", selected: false }
+      ],
+      dGroups: [
+        { title: "AA", selected: false },
+        { title: "AC", selected: false },
+        { title: "AN", selected: false },
+        { title: "AS", selected: false },
+        { title: "AW", selected: false }
+      ]
+    };
+  }
+  static navigationOptions = ({ navigation }) => {
+    const {
+      state: { params = {} }
+    } = navigation;
+    return {
+      header: null
+    };
+  };
+
+  cancel = () => {
+    this.props.navigation.goBack();
+  };
+
+  done = () => {
+    this.props.navigation.setParams({ filter: this.state});
+    this.props.navigation.goBack();
+  };
+
+  filterSelected(accordionType, i) {
+    {
+      accordionType == "priority"
+        ? ((stateCopy = Object.assign({}, this.state)),
+          (stateCopy.priority = stateCopy.priority.slice()),
+          (stateCopy.priority[i] = Object.assign({}, stateCopy.priority[i])),
+          (stateCopy.priority[i].selected = !stateCopy.priority[i].selected),
+          this.setState(stateCopy))
+        : ((stateCopy = Object.assign({}, this.state)),
+          (stateCopy.dGroups = stateCopy.dGroups.slice()),
+          (stateCopy.dGroups[i] = Object.assign({}, stateCopy.dGroups[i])),
+          (stateCopy.dGroups[i].selected = !stateCopy.dGroups[i].selected),
+          this.setState(stateCopy));
+    }
+  }
+
+  render() {
+    return (
+      <View>
+        <HeaderComponent
+          title="Job Filter"
+          filter={true}
+          done={this.done}
+          cancel={this.cancel}
+        />
+        <Accordion
+          title={() =>
+            this.renderAccordionTitle(this.state.priority, "Priority")
+          }
+          content={() =>
+            this.renderAccordionContent(this.state.priority, "priority")
+          }
+        />
+        <Accordion
+          title={() => this.renderAccordionTitle(this.state.dGroups, "DGroups")}
+          content={() =>
+            this.renderAccordionContent(this.state.dGroups, "dGroups")
+          }
+        />
+      </View>
+    );
+  }
+
+  renderAccordionTitle(content, title) {
+    const selectedOptions = content
+      .filter(filterType => filterType.selected)
+      .map((filterType, index) => (
+        
+        <View
+          key={index}
+          style={{
+            borderColor: "steelblue",
+            borderWidth: 2,
+            borderRadius: 13,
+            marginHorizontal: 5,
+            paddingHorizontal: 5
+          }}
+        >
+          <Text>{filterType.title}</Text>
+        </View>
+      ));
+    return (
+      <View style={styles.accordionTitleRow}>
+        <Text style={styles.title}>{title}</Text>
+        {selectedOptions}
+      </View>
+    );
+  }
+
+  renderAccordionContent(content, accordionType) {
+    const filter = content.map((filterType, index) => (
+      <TouchableOpacity
+        key={index}
+        onPress={() => this.filterSelected(accordionType, index)}
+      >
+        <View style={styles.box}>
+          {filterType.selected && (
+            <MaterialCommunityIcons
+              style={{ position: "absolute", top: 0, left: 0 }}
+              name="checkbox-marked-circle-outline"
+              size={20}
+              color="green"
+            />
+          )}
+          <Text>{filterType.title}</Text>
+        </View>
+      </TouchableOpacity>
+    ));
+    return <View style={styles.contentRow}>{filter}</View>;
+  }
+}
+
+const styles = StyleSheet.create({
+  accordionTitleRow: {
+    flex: 1,
+    flexDirection: "row"
+  },
+  title: {
+    fontSize: 18
+  },
+  contentRow: {
+    flexDirection: "row",
+    flexWrap: "wrap"
+  },
+  box: {
+    minWidth: 65,
+    minHeight: 65,
+    borderColor: "steelblue",
+    borderRadius: 1,
+    borderWidth: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 5
+  }
+});

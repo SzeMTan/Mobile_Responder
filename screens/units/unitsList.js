@@ -47,7 +47,9 @@ export default class UnitsList extends Component {
       )
     return (
         <View style={styles.containerView}>
-            <SearchBarComponent title='Units'/>
+            <View style={{ alignContent: "stretch", flexDirection: "row" }}>
+              <SearchBarComponent title='Units'/>
+            </View>
             <ScrollView >
               <View style={styles.unitCenterContainer}>
                 {cards}

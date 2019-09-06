@@ -59,9 +59,9 @@ export default class Home extends Component {
     renderTabContent = (index) => {
         if (index === 0){
             return  <ScrollView>
-                        <CardComponent title='Unit STATUS CODE: '/>
-                        <CardComponent title='Unit: '
-                        titlecontent={['Name: ','QID: ', 'phone no: ', 'shift start: ', 'shift end:', 'radio no: ']}/>
+                      <CardComponent title='Unit status code: 10/10 '/>
+                        <CardComponent title='Unit: CEPR22'
+                        titlecontent={['Name: Bob','QID: bob123', 'phone no: +64 21 3613 4287', 'shift start: 0800', 'shift end: 1700', 'radio no: -']}/>
                     </ScrollView>
         }
         else {

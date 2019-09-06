@@ -2,7 +2,7 @@ import {StyleSheet} from "react-native"
 import { Constants } from "expo";
 import isIPhoneX from "react-native-is-iphonex";
 
-const buttonStyles = {
+const button = {
     padding:10,
     borderRadius:10,  
     height:45,
@@ -20,13 +20,286 @@ const iconButtonStyle = {
   borderRadius:25,
 }
 
+const containerView = {
+  flex: 1,
+}
+
 const header = {
   fontSize: 24,
   fontWeight: 'normal',
   textAlign: 'center',
 }
 
+const segmentedControlTab = {
+  marginHorizontal: 10,
+  marginTop: 5
+}
 
+const sliderContainer = {
+  justifyContent: 'center',
+  marginHorizontal: '5%',
+  paddingVertical: 15,
+  paddingHorizontal:30
+}
+
+const sliderTitleContainer = {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+}
+
+const toggleSwitchContainer = {
+  justifyContent: 'center',
+  marginHorizontal: '5%',
+  paddingVertical: 15,
+  paddingHorizontal:30
+}
+
+const cameraContainer = {
+  flex: 1,
+  backgroundColor: 'black'
+}
+
+const camera = {
+  flex: 1,
+  justifyContent: "space-between"
+}
+
+const topBar = {
+  flex: 0.2,
+  backgroundColor: "transparent",
+  flexDirection: "row",
+  paddingTop: Constants.statusBarHeight,
+  paddingLeft: Constants.statusBarHeight / 2
+}
+
+const bottomBar = {
+  paddingBottom: isIPhoneX ? 25 : 5,
+  backgroundColor: "transparent",
+  justifyContent: "space-around",
+  flex: 0.12,
+  flexDirection: "row"
+}
+
+const noPermissions = {
+  flex: 1,
+  alignItems: "center",
+  justifyContent: "center",
+  padding: 10
+}
+
+const bottomButton = {
+  height: 58,
+  justifyContent: "center",
+  alignItems: "center"
+}
+
+const takePicture = {
+  alignSelf: "center"
+}
+
+const imageBackgroundContainer = {
+  flex: 1,
+  justifyContent: "space-between"
+}
+
+const endJob = {
+  backgroundColor: 'red',
+  borderRadius: 5,
+  marginHorizontal: 10,
+}
+
+const horizonalLine = {
+  borderBottomColor: 'grey',
+  borderBottomWidth: 2,
+  marginHorizontal:10
+}
+
+const endContainer = {
+  justifyContent:'flex-end',
+}
+
+const centerContainer = {
+  justifyContent:'center'
+}
+
+const logoText = {
+  fontSize: 35,
+  fontWeight: "800",
+  marginBottom:60,
+  textAlign: 'left',
+}
+
+const loginFormView = {
+  paddingHorizontal:20,
+  justifyContent:'center'
+}
+
+const loginFormTextInput = {
+  height: 45,
+  fontSize: 14,
+  borderRadius: 5,
+  borderWidth: 1,
+  paddingLeft: 10,
+  marginHorizontal: 15,
+  marginVertical: 5,
+}
+
+const emergencyButton = {
+  flexDirection: 'column',
+  backgroundColor: 'red',
+  height: 100,
+  marginHorizontal: 10,
+}
+
+const mapContainer = {
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center',
+}
+
+const paragraph = {
+  margin: 15,
+  fontSize: 18,
+  fontWeight: 'bold',
+  textAlign: 'center',
+}
+
+const map = {
+  flex:1,
+  alignSelf: 'stretch',
+}
+
+const marker = {
+  width: 25,
+  height: 25
+}
+
+const changePassword = {
+  textAlign: 'center'
+}
+
+const settingsContainer = {
+  flex: 1,
+  flexDirection: 'column',
+  justifyContent: 'space-between'
+}
+
+const reorderCardContainer = {
+  padding: 0, 
+  marginVertical: 0, 
+  flexDirection: "row-reverse"
+}
+
+const reorderCardTouch = {
+  flex: 1,
+  padding: 10,
+}
+
+const reorderCardRotation = {
+  flexDirection: "row-reverse",
+  alignItems: "center",
+}
+
+const messageInputContainer = {
+  flexDirection: "row", 
+  padding: 0, 
+  margin: 0
+}
+
+const messagingTextInput = {
+  height: 43,
+  fontSize: 14,
+  borderRadius: 5,
+  borderWidth: 1,
+  paddingLeft: 10,
+  marginLeft: 5,
+  marginRight: 5,
+  marginTop: 5,
+  marginBottom: 5,
+}
+
+const commentButton = {
+  fontWeight: "600",
+  fontSize: 17,
+  backgroundColor: "transparent",
+  marginTop: 10,
+  marginBottom: 5
+}
+
+const cameraTouch = {
+  height: 30,
+  width: 30,
+  marginLeft: 10
+}
+
+const commentCardContainer = {
+  flexDirection: "row",
+  justifyContent: "space-between"
+}
+
+const commentCardAuthorContainer = {
+  paddingLeft: 10, 
+  paddingTop: 10
+}
+
+const commentCardAuthorText = {
+  fontSize: 18, 
+  fontWeight: "bold"
+}
+
+const commentCardTopLevelContainer = {
+  marginVertical: 0, 
+  padding: 0
+}
+
+const pinContainer = {
+  margin: 0, 
+  padding: 0 
+}
+
+const commentCardImageTopLevel = {
+  flex: 1,
+  flexDirection: "row",
+  justifyContent: "space-around"
+}
+
+const commentCardImageSecondaryLevel = {
+  flex: 1,
+  width: 150,
+  height: 150,
+  alignItems: "center",
+  justifyContent: "center",
+  margin: 5
+}
+
+const commentCardImageThirdLevel = {
+  position: "absolute",
+  bottom: 0,
+  right: 0,
+  left: 0,
+  top: 0,
+  resizeMode: "contain"
+}
+
+const commentCardFontContainer = {
+  paddingLeft: 10
+}
+
+const commentCardFontSize = {
+  fontSize: 18
+}
+
+const commentCardDateContainer = {
+  paddingLeft: 10, 
+  paddingBottom: 10
+}
+
+const commentCardDate = {
+  fontStyle: "italic" 
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export default function getStyleSheet(useDarkTheme){
     return useDarkTheme ? darkStyleSheet : lightStyleSheet;
 }
@@ -37,7 +310,7 @@ const lightStyleSheet = StyleSheet.create({
     },
     button: {
         // backgroundColor: '#0076FF', // default ios button blue 
-        ...buttonStyles,
+        ...button,
         backgroundColor: 'green',
     },
     iconButtonStyle: {
@@ -45,7 +318,7 @@ const lightStyleSheet = StyleSheet.create({
         backgroundColor: '#0076FF',
     },
     containerView: {
-        flex: 1,
+      ...containerView
     },
     header:{
         ...header,
@@ -59,318 +332,196 @@ const lightStyleSheet = StyleSheet.create({
           backgroundColor: '#8FC1E3',
       },
     segmentedControlTab: {
-        marginHorizontal: 10,
-        marginTop: 5
+        ...segmentedControlTab
     },
     card: {
         backgroundColor: '#F7F9FB'
     },
-    cardAction: {        
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-    },
-    cardContent: { 
-        flex: 1, 
-        textAlign: "right", 
-        flexDirection: 'row', 
-        justifyContent: 'flex-end'
-    },
     sliderContainer: {
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        marginHorizontal: '5%',
-        paddingVertical: 15,
-        paddingHorizontal:30
+      ...sliderContainer,
+      backgroundColor: 'white',
     },
     sliderTitleContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+      ...sliderTitleContainer
     },
     toggleSwitchContainer: {
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        marginHorizontal: '5%',
-        paddingVertical: 15,
-        paddingHorizontal:30
+      ...toggleSwitchContainer,
+      backgroundColor: 'white'
+        
     },
 
     //camera
     cameraContainer: {
-      flex: 1,
-      backgroundColor: 'black'
+      ...cameraContainer
     },
     camera: {
-      flex: 1,
-      justifyContent: "space-between"
+      ...camera
     },
     topBar: {
-      flex: 0.2,
-      backgroundColor: "transparent",
-      flexDirection: "row",
-      paddingTop: Constants.statusBarHeight,
-      paddingLeft: Constants.statusBarHeight / 2
-    },
-    bottomBar: {
-      paddingBottom: isIPhoneX ? 25 : 5,
-      backgroundColor: "transparent",
-      alignSelf: "flex-end",
-      justifyContent: "space-between",
-      flex: 0.12,
-      flexDirection: "row"
+      ...topBar
     },
     noPermissions: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      padding: 10
+      ...noPermissions
     },
     cameraFontColor: {
       color: "white"
     },
-    generalContainer: {
-      flex: 1
-    },
     takePicture: {
-      alignSelf: "center"
+      ...takePicture
     },
 
     // image
     imageBackgroundContainer: {
-      flex: 1,
-      justifyContent: "space-between"
-    },
-    topBar: {
-      flex: 0.2,
-      backgroundColor: "transparent",
-      flexDirection: "row",
-      paddingTop: Constants.statusBarHeight,
-      paddingLeft: Constants.statusBarHeight / 2
+      ...imageBackgroundContainer
     },
     bottomBar: {
-      paddingBottom: isIPhoneX ? 25 : 5,
-      backgroundColor: "transparent",
-      justifyContent: "space-around",
-      flex: 0.12,
-      flexDirection: "row"
+      ...bottomBar
     },
     whiteText: {
       color: "white"
     },
     bottomButton: {
-      // flex: 0.3,
-      height: 58,
-      justifyContent: "center",
-      alignItems: "center"
+      ...bottomButton
     },
 
     // home
     endJob: {
-        backgroundColor: 'green',
-        borderRadius: 5,
-        marginHorizontal: 10,
+      ...endJob
       },
-      horizonalLine: {
-        borderBottomColor: 'grey',
-        borderBottomWidth: 2,
-        marginHorizontal:10
-      },
+    horizonalLine: {
+      ...horizonalLine
+    },
 
 
 
     // job
     jobEndContainer: {
-    justifyContent:'flex-end',
+    ...endContainer
     },
     jobCenterContainer: {
-        justifyContent:'center',
+      ...centerContainer
     },
 
 
 
     // login
     logoText: {
-        fontSize: 35,
-        fontWeight: "800",
-        marginBottom:60,
-        textAlign: 'left',
-      },
-      loginFormView: {
-        paddingHorizontal:20,
-        justifyContent:'center'
-      },
-      loginFormTextInput: {
-        height: 45,
-        fontSize: 14,
-        borderRadius: 5,
-        borderWidth: 1,
-        backgroundColor: '#fafafa',
-        paddingLeft: 10,
-        marginHorizontal: 15,
-        marginVertical: 5
-      },
-      changePassword: {
-          color: '#0a84ff',
-          textAlign: 'center'
-      },
-
-
-
-      // map
-      mapContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      paragraph: {
-        margin: 15,
-        fontSize: 18,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: '#34495e',
-      },
-      map: {
-        flex:1,
-        alignSelf: 'stretch',
-      },
-      marker: {
-        width: 25,
-        height: 25
-      },
-
-
-
-      // settings
-      emergencyButton: {
-        flexDirection: 'column',
-        backgroundColor: 'red',
-        height: 100,
-        marginHorizontal: 10,
-      },
-      settingsContainer:{
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between'
-      },
-
-
-      // units
-      unitEndContainer: {
-        flex: 1,
-        justifyContent:'flex-end',
+      ...logoText
     },
+    loginFormView: {
+      ...loginFormView
+    },
+    loginFormTextInput: {
+      ...loginFormTextInput,
+      backgroundColor: '#fafafa',
+    },
+    changePassword: {
+      ...changePassword,
+        color: '#0a84ff',
+    },
+
+
+
+    // map
+    mapContainer: {
+      ...mapContainer
+    },
+    paragraph: {
+      ...paragraph,
+      color: '#34495e',
+    },
+    map: {
+      ...map
+    },
+    marker: {
+      ...marker
+    },
+
+
+
+    // settings
+    emergencyButton: {
+      ...emergencyButton
+    },
+    settingsContainer:{
+      ...settingsContainer
+    },
+
+
+    // units
     unitCenterContainer: {
-        justifyContent:'center',
+      ...centerContainer
     },
 
     reorderCardContainer: {
-        padding: 0, 
-        marginVertical: 0, 
-        flexDirection: "row-reverse"
+      ...reorderCardContainer
     },
     reorderCardTouch: {
-        flex: 1,
-        padding: 10,
+      ...reorderCardTouch
     },
     reorderCardRotation: {
-        flexDirection: "row-reverse",
-        alignItems: "center",
+      ...reorderCardRotation
     },
     messageInputContainer: {
-        flexDirection: "row", 
-        padding: 0, 
-        margin: 0
+      ...messageInputContainer
     },
     messagingTextInput: {
-        height: 43,
-        fontSize: 14,
-        borderRadius: 5,
-        borderWidth: 1,
-        backgroundColor: "#fafafa",
-        paddingLeft: 10,
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: 5,
-        marginBottom: 5
+      ...messagingTextInput,
+      backgroundColor: "#fafafa",
     },
     commentButton: {
+      ...commentButton,
         color: "#0084ff",
-        fontWeight: "600",
-        fontSize: 17,
-        backgroundColor: "transparent",
-        marginTop: 10,
-        marginBottom: 5
     },
     cameraTouch: {
-        height: 30,
-        width: 30,
-        marginLeft: 10
+      ...cameraTouch
     },
     commentCardContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between"
+      ...commentCardContainer
     },
     commentCardAuthorContainer: {
-        paddingLeft: 10, 
-        paddingTop: 10
+      ...commentCardAuthorContainer
     },
     commentCardAuthorText: {
-        fontSize: 18, 
-        fontWeight: "bold"
+      ...commentCardAuthorText
     },
     commentCardTopLevelContainer: {
-        marginVertical: 0, 
-        padding: 0
+      ...commentCardTopLevelContainer
     },
     pinContainer: { 
-        margin: 0, 
-        padding: 0 
+      ...pinContainer
     },
     commentCardImageTopLevel: {
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "space-around"
+      ...commentCardImageTopLevel
     },
     commentCardImageSecondaryLevel: {
-        flex: 1,
-        width: 150,
-        height: 150,
-        alignItems: "center",
-        justifyContent: "center",
-        margin: 5
+      ...commentCardImageSecondaryLevel
     },
     commentCardImageThirdLevel: {
-        position: "absolute",
-        bottom: 0,
-        right: 0,
-        left: 0,
-        top: 0,
-        resizeMode: "contain"
+      ...commentCardImageThirdLevel
     },
     commentCardFontContainer: {
-        paddingLeft: 10
+      ...commentCardFontContainer
     },
     commentCardFontSize: {
-        fontSize: 18    
+      ...commentCardFontSize 
     },
     commentCardDateContainer: {
-        paddingLeft: 10, 
-        paddingBottom: 10
+      ...commentCardDateContainer
     },
     commentCardDate: {
-        fontStyle: "italic"   
+      ...commentCardDate  
     },
     
 });
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const darkStyleSheet = StyleSheet.create({
     appbackground: {
         backgroundColor: '#002060'
     },
     button: {
-      ...buttonStyles,
+      ...button,
         backgroundColor: '#0076FF', // default ios button blue 
     },
     iconButtonStyle: {
@@ -378,7 +529,7 @@ const darkStyleSheet = StyleSheet.create({
         backgroundColor: '#0076FF',
     },
     containerView: {
-        flex: 1,
+      ...containerView
     },
     header:{
         ...header,
@@ -392,306 +543,187 @@ const darkStyleSheet = StyleSheet.create({
           backgroundColor: '#8FC1E3',
       },
     segmentedControlTab: {
-        marginHorizontal: 10,
-        marginTop: 5
+        ...segmentedControlTab
     },
     card: {
         backgroundColor: '#F7F9FB'
     },
-    cardAction: {        
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-    },
-    cardContent: { 
-        flex: 1, 
-        textAlign: "right", 
-        flexDirection: 'row', 
-        justifyContent: 'flex-end'
-    },
     sliderContainer: {
+      ...sliderContainer,
         backgroundColor: '#fff',
-        justifyContent: 'center',
-        marginHorizontal: '5%',
-        paddingVertical: 15,
-        paddingHorizontal:30
+        
     },
     sliderTitleContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+      ...sliderTitleContainer
     },
     toggleSwitchContainer: {
+      ...toggleSwitchContainer,
         backgroundColor: '#002060',
         color:'white',
-        justifyContent: 'center',
-        marginHorizontal: '5%',
-        paddingVertical: 15,
-        paddingHorizontal:30
-    },
-    reorderCardContainer: {
-        padding: 0, 
-        marginVertical: 0, 
-        flexDirection: "row-reverse"
-    },
-    reorderCardTouch: {
-        flex: 1,
-        padding: 10,
-    },
-    reorderCardRotation: {
-        flexDirection: "row-reverse",
-        alignItems: "center",
-    },
-    messageInputContainer: {
-        flexDirection: "row", 
-        padding: 0, 
-        margin: 0
-    },
-    messagingTextInput: {
-        height: 43,
-        fontSize: 14,
-        borderRadius: 5,
-        borderWidth: 1,
-        backgroundColor: "#fafafa",
-        paddingLeft: 10,
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: 5,
-        marginBottom: 5
-    },
-    commentButton: {
-        color: "#0084ff",
-        fontWeight: "600",
-        fontSize: 17,
-        backgroundColor: "transparent",
-        marginTop: 10,
-        marginBottom: 5
-    },
-    cameraTouch: {
-        height: 30,
-        width: 30,
-        marginLeft: 10
-    },
-    commentCardContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between"
-    },
-    commentCardAuthorContainer: {
-        paddingLeft: 10, 
-        paddingTop: 10
-    },
-    commentCardAuthorText: {
-        fontSize: 18, 
-        fontWeight: "bold"
-    },
-    commentCardTopLevelContainer: {
-        marginVertical: 0, 
-        padding: 0
-    },
-    pinContainer: { 
-        margin: 0, 
-        padding: 0 
-    },
-    commentCardImageTopLevel: {
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "space-around"
-    },
-    commentCardImageSecondaryLevel: {
-        flex: 1,
-        width: 150,
-        height: 150,
-        alignItems: "center",
-        justifyContent: "center",
-        margin: 5
-    },
-    commentCardImageThirdLevel: {
-        position: "absolute",
-        bottom: 0,
-        right: 0,
-        left: 0,
-        top: 0,
-        resizeMode: "contain"
-    },
-    commentCardFontContainer: {
-        paddingLeft: 10
-    },
-    commentCardFontSize: {
-        fontSize: 18    
-    },
-    commentCardDateContainer: {
-        paddingLeft: 10, 
-        paddingBottom: 10
-    },
-    commentCardDate: {
-        fontStyle: "italic"   
+        
     },
 
     // camera
     cameraContainer: {
-      flex: 1,
-      backgroundColor: 'black'
+      ...cameraContainer
     },
     camera: {
-      flex: 1,
-      justifyContent: "space-between"
+      ...camera
     },
     topBar: {
-      flex: 0.2,
-      backgroundColor: "transparent",
-      flexDirection: "row",
-      paddingTop: Constants.statusBarHeight,
-      paddingLeft: Constants.statusBarHeight / 2
+      ...topBar
     },
-    bottomBar: {
-      paddingBottom: isIPhoneX ? 25 : 5,
-      backgroundColor: "transparent",
-      alignSelf: "flex-end",
-      justifyContent: "space-between",
-      flex: 0.12,
-      flexDirection: "row"
-    },
+
     noPermissions: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      padding: 10
+      ...noPermissions
     },
     cameraFontColor: {
       color: "white"
     },
-    generalContainer: {
-      flex: 1
-    },
     takePicture: {
-      alignSelf: "center"
+      ...takePicture
     },
 
     // image
     imageBackgroundContainer: {
-      flex: 1,
-      justifyContent: "space-between"
+      ...imageBackgroundContainer
     },
-    topBar: {
-      flex: 0.2,
-      backgroundColor: "transparent",
-      flexDirection: "row",
-      paddingTop: Constants.statusBarHeight,
-      paddingLeft: Constants.statusBarHeight / 2
-    },
+
     bottomBar: {
-      paddingBottom: isIPhoneX ? 25 : 5,
-      backgroundColor: "transparent",
-      justifyContent: "space-around",
-      flex: 0.12,
-      flexDirection: "row"
+      ...bottomBar
     },
     whiteText: {
       color: "white"
     },
     bottomButton: {
-      // flex: 0.3,
-      height: 58,
-      justifyContent: "center",
-      alignItems: "center"
+      ...bottomButton
     },
     // home
     endJob: {
-        backgroundColor: 'green',
-        borderRadius: 5,
-        marginHorizontal: 10,
+        ...endJob
       },
-      horizonalLine: {
-        borderBottomColor: 'grey',
-        borderBottomWidth: 2,
-        marginHorizontal:10
-      },
+    horizonalLine: {
+      ...horizonalLine
+    },
 
 
 
     // job
     jobEndContainer: {
-    justifyContent:'flex-end',
+    ...endContainer
     },
     jobCenterContainer: {
-        justifyContent:'center',
+      ...centerContainer
     },
 
 
 
     // login
     logoText: {
-        fontSize: 35,
-        fontWeight: "800",
-        marginBottom:60,
-        textAlign: 'left',
-        color: 'white'
+      ...logoText,
+      color: 'white'
       },
-      loginFormView: {
-        paddingHorizontal:20,
-        justifyContent:'center'
-      },
-      loginFormTextInput: {
-        height: 45,
-        fontSize: 14,
-        borderRadius: 5,
-        borderWidth: 1,
-        backgroundColor: '#fafafa',
-        paddingLeft: 10,
-        marginHorizontal: 15,
-        marginVertical: 5
-      },
-      changePassword: {
-          color: '#0a84ff',
-          textAlign: 'center'
-      },
-
-
-
-      // map
-      mapContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      paragraph: {
-        margin: 15,
-        fontSize: 18,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: '#34495e',
-      },
-      map: {
-        flex:1,
-        alignSelf: 'stretch',
-      },
-      marker: {
-        width: 25,
-        height: 25
-      },
-
-
-
-      // settings
-      emergencyButton: {
-        flexDirection: 'column',
-        backgroundColor: 'red',
-        height: 100,
-        marginHorizontal: 10,
-      },
-      settingsContainer:{
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between'
-      },
-
-
-      // units
-      unitEndContainer: {
-        flex: 1,
-        justifyContent:'flex-end',
+    loginFormView: {
+      ...loginFormView
     },
-    unitCenterContainer: {
-        justifyContent:'center',
-    }
+    loginFormTextInput: {
+      ...loginFormTextInput,
+      backgroundColor: '#fafafa',
+    },
+    changePassword: {
+      ...changePassword,
+      color: '#0a84ff',
+    },
+
+
+
+    // map
+    mapContainer: {
+      ...mapContainer
+    },
+    paragraph: {
+      ...paragraph,
+      color: '#34495e',
+    },
+    map: {
+      ...map
+    },
+    marker: {
+      ...marker
+    },
+
+
+
+  // settings
+  emergencyButton: {
+    ...emergencyButton
+  },
+  settingsContainer:{
+    ...settingsContainer
+  },
+
+
+  // units
+  unitCenterContainer: {
+    ...centerContainer
+  },
+  reorderCardContainer: {
+    ...reorderCardContainer
+  },
+  reorderCardTouch: {
+    ...reorderCardTouch
+  },
+  reorderCardRotation: {
+    ...reorderCardRotation
+  },
+  messageInputContainer: {
+    ...messageInputContainer
+  },
+  messagingTextInput: {
+    ...messagingTextInput,
+      backgroundColor: "#fafafa",
+  },
+  commentButton: {
+    ...commentButton,
+      color: "#0084ff"
+  },
+  cameraTouch: {
+    ...cameraTouch
+  },
+  commentCardContainer: {
+    ...commentCardContainer
+  },
+  commentCardAuthorContainer: {
+    ...commentCardAuthorContainer
+  },
+  commentCardAuthorText: {
+    ...commentCardAuthorText
+  },
+  commentCardTopLevelContainer: {
+    ...commentCardTopLevelContainer
+  },
+  pinContainer: { 
+    ...pinContainer
+  },
+  commentCardImageTopLevel: {
+    ...commentCardImageTopLevel
+  },
+  commentCardImageSecondaryLevel: {
+    ...commentCardImageSecondaryLevel
+  },
+  commentCardImageThirdLevel: {
+    ...commentCardImageThirdLevel
+  },
+  commentCardFontContainer: {
+    ...commentCardFontContainer
+  },
+  commentCardFontSize: {
+    ...commentCardFontSize  
+  },
+  commentCardDateContainer: {
+    ...commentCardDateContainer
+  },
+  commentCardDate: {
+    ...commentCardDate  
+  },
 });

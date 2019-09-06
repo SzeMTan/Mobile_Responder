@@ -101,7 +101,7 @@ export default class CameraScreen extends React.Component {
 
   renderBottomBar = () =>
     <View style={styles.bottomBar}>
-      <View style={styles.generalContainer}>
+      <View style={styles.containerView}>
         <TouchableOpacity
           onPress={this.takePicture}
           style={styles.takePicture}
@@ -112,7 +112,7 @@ export default class CameraScreen extends React.Component {
     </View>;
 
   renderCamera = () =>
-    <View style={styles.generalContainer}>
+    <View style={styles.containerView}>
       <Camera
         ref={ref => {
           this.camera = ref;

@@ -299,6 +299,27 @@ const commentCardDate = {
   fontStyle: "italic" 
 }
 
+const accordionTitleRow = {
+  flex: 1,
+  flexDirection: "row"
+} 
+const title = {
+  fontSize: 18
+}
+const contentRow = {
+  flexDirection: "row",
+  flexWrap: "wrap"
+}
+const box = {
+  minWidth: 65,
+  minHeight: 65,
+  borderRadius: 1,
+  borderWidth: 1,
+  alignItems: "center",
+  justifyContent: "center",
+  margin: 5
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export default function getStyleSheet(useDarkTheme){
     return useDarkTheme ? darkStyleSheet : lightStyleSheet;
@@ -511,6 +532,21 @@ const lightStyleSheet = StyleSheet.create({
     },
     commentCardDate: {
       ...commentCardDate  
+    },
+
+    // job filter
+    accordionTitleRow: {
+      ...accordionTitleRow
+    },
+    title: {
+      ...title
+    },
+    contentRow: {
+      ...contentRow
+    },
+    box: {
+      ...box,
+      borderColor: "steelblue",
     },
     
 });
@@ -725,5 +761,20 @@ const darkStyleSheet = StyleSheet.create({
   },
   commentCardDate: {
     ...commentCardDate  
+  },
+
+  // job filter
+  accordionTitleRow: {
+    ...accordionTitleRow
+  },
+  title: {
+    ...title
+  },
+  contentRow: {
+    ...contentRow
+  },
+  box: {
+    ...box,
+    borderColor: "steelblue",
   },
 });

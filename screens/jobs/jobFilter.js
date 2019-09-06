@@ -43,7 +43,12 @@ export default class JobFilter extends Component {
   };
 
   done = () => {
-    this.props.navigation.setParams({ filter: this.state});
+    stateCopy = {priority: [], dGroups:[]}
+    this.state.priority.filter(priority => priority.selected).map(priority => stateCopy.priority.push(priority.title))
+    this.state.dGroups.filter(group => group.selected).map(group => stateCopy.dGroups.push(group.title))
+    
+    {stateCopy.priority.length == 0 && stateCopy.dGroups.length == 0 ? stateCopy =[] : stateCopy=stateCopy}
+    this.props.navigation.state.params.jobFilter(stateCopy);
     this.props.navigation.goBack();
   };
 

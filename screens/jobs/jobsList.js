@@ -1,8 +1,8 @@
 import React, { Alert, Component } from "react";
-import { ScrollView, View, TouchableOpacity } from 'react-native';
-import HeaderComponent from '../../components/customHeaderComponent';
-import SearchBarComponent from '../../components/customSearchBarComponent';
-import CardComponent from '../../components/customCardComponent';
+import { ScrollView, View, TouchableOpacity } from "react-native";
+import HeaderComponent from "../../components/customHeaderComponent";
+import SearchBarComponent from "../../components/customSearchBarComponent";
+import CardComponent from "../../components/customCardComponent";
 
 import ButtonComponent from "../../components/customButtonComponent";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -26,6 +26,7 @@ export default class JobsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      filter: []
   };
   }
 
@@ -53,9 +54,15 @@ export default class JobsList extends Component {
   };
 
   filter = () => {
-    this.props.navigation.navigate("JobFilter");
+    this.props.navigation.navigate("JobFilter", {jobFilter: this.filterJobs});
   };
   
+  filterJobs = object => {
+    this.state.filter = object;
+    console.log(this.state);
+    this.forceUpdate();
+  };
+
   newJobCreated = object => {
     console.log(object);
     newEvent = {
@@ -70,17 +77,45 @@ export default class JobsList extends Component {
     this.forceUpdate();
   };
 
+  renderCard(job){
+    return <TouchableOpacity
+      key={job.title}
+      onPress={() =>
+        this.props.navigation.navigate("IndividualJob", {
+          id: 1,
+          title: job.title,
+          code: job.code,
+          date: job.date,
+          status: job.status,
+          priority: job.priority,
+          latlng: job.latlng
+        })
+      }
+    >
+      <CardComponent
+        key={job.title}
+        title={job.title}
+        titlecontent={[job.code, job.destination]}
+        leftbottom={job.date}
+        rightbottom={job.status}
+      />
+    </TouchableOpacity>
+  }
   render() {
-    const cards = GLOBAL.jobs.map(job =>         
-    <TouchableOpacity key={job.title} 
-    onPress={() => 
-    this.props.navigation.navigate('IndividualJob', {id: 1, title: job.title, code: job.code, date: job.date, status: job.status, priority: job.priority, latlng: job.latlng})}>
-      <CardComponent key={job.title} 
-      title={job.title} 
-      titlecontent={[job.code, job.destination]}
-      leftbottom={job.date} rightbottom={job.status}    
-      
-      /></TouchableOpacity>)
+    const cards =
+      this.state.filter.dGroups == undefined
+        ? GLOBAL.jobs.map(job => (
+            this.renderCard(job)
+          ))
+        : GLOBAL.jobs
+            .filter(
+              job =>
+                this.state.filter.priority.includes(job.priority) ||
+                this.state.filter.dGroups.includes(job.destination)
+            )
+            .map(job => (
+              this.renderCard(job)
+            ));
     return (
       <View style={styles.containerView}>
         <View style={{ alignContent: "stretch", flexDirection: "row" }}>

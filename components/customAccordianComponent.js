@@ -5,19 +5,6 @@ import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 
 export default class Accordion extends React.Component {
-  componentDidMount() {
-    const { navigation } = this.props;
-    this.focusListener = navigation.addListener("didFocus", () => {
-      styles = getStyleSheet(GLOBAL.darkState);
-      this.forceUpdate()
-    });
-  }
-
-  componentWillUnmount() {
-    // Remove the event listener
-    this.focusListener.remove();
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -26,6 +13,7 @@ export default class Accordion extends React.Component {
   }
 
   render() {
+    styles = getStyleSheet(GLOBAL.darkState);
     return (
       <View>
         <TouchableOpacity

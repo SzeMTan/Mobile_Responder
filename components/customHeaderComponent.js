@@ -5,8 +5,6 @@ import { Header } from 'react-native-elements';
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class HeaderComponent extends Component {
 
     static defaultProps = {
@@ -16,6 +14,7 @@ export default class HeaderComponent extends Component {
     }
 
     render() {
+      styles = getStyleSheet(GLOBAL.darkState);
         return (
             <View>
                 {this.props.filter ? (

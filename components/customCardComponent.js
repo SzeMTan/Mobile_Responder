@@ -7,8 +7,6 @@ import { Card, CardImage, CardTitle, CardContent, CardButton, CardAction } from 
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class CardComponent extends Component {
 
     static defaultProps = {
@@ -18,6 +16,7 @@ export default class CardComponent extends Component {
 
 
     render() {
+        styles = getStyleSheet(GLOBAL.darkState);
         const items = this.props.titlecontent.map(st => <CardContent key={st} text={st}/>)
         return (
             <View>

@@ -19,19 +19,6 @@ export default class GeneralScreen extends Component {
         return (
             <View style={ this.state.backgroundColor}>
                 <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
-                    {/* <SettingsList.Item 
-                    title='Enable Dark Theme'
-                    switchOnValueChange={this.onValueChange}
-                    switchState={this.state.switchValue}
-                    hasSwitch={true}
-                    hasNavArrow={false}
-                    />
-                    <SettingsList.Item 
-                    title='Enable Text-to-Speech'
-                    switchOnValueChange={() => Alert.alert('Route To General Page')}
-                    hasSwitch={true}
-                    hasNavArrow={false}
-                    /> */}
                 </SettingsList>
                     <ToggleComponent toggleLabel='Enable Dark Theme' onToggle={() => this.onValueChange()} toggleState={GLOBAL.darkState}/>
                 <SliderComponent title={'Notifications(mins)'} min={0} max={10}/>

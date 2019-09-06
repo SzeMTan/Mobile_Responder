@@ -5,8 +5,6 @@ import { StyleSheet, View } from 'react-native';
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class SegmentControlComponent extends Component {
  
     constructor(){
@@ -25,6 +23,7 @@ export default class SegmentControlComponent extends Component {
     }
  
     render() {
+      styles = getStyleSheet(GLOBAL.darkState);
         return (
             <View>
                 <SegmentedControlTab 

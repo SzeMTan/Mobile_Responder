@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import CameraTestScreen from "./cameraScreen";
 import CommentTestScreen from "./comments";
 import MessageInputComponent from "../../components/customMessageInputComponent";
+
 import { View, Text, ScrollView, Button, TouchableOpacity } from 'react-native';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
@@ -23,6 +23,10 @@ export default class IndividualJob extends Component {
     };
   }
 
+  componentWillMount(){
+    GLOBAL.jobs.filter(job => this.props.navigation.getParam("title") == job.title).map(job=>this.setState({assigned: job.assigned}))
+  }
+
   setIndex = index => {
     this.setState({
       ...this.state,
@@ -31,7 +35,9 @@ export default class IndividualJob extends Component {
   };
 
   static navigationOptions = ({ navigation }) => {
-    const { state: { params = {} } } = navigation;
+    const {
+      state: { params = {} }
+    } = navigation;
     return {
       title: params.title || "JOB",
       headerTitleStyle: styles.header,

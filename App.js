@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {View, StyleSheet } from 'react-native';
+import {View } from 'react-native';
 import HeaderComponent from './components/customHeaderComponent';
-import { createBottomTabNavigator, createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
 
 import CardStackStyleInterpolator from 'react-navigation-stack/src/views/StackView/StackViewStyleInterpolator'
 import Home from './screens/home/home';
@@ -20,7 +20,6 @@ import IndividualJob from './screens/jobs/individualJob';
 
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
-// import styles from './styles/style';
 import GLOBAL from './global'
 import getStyleSheet from './styles/style';
 
@@ -28,11 +27,9 @@ import getStyleSheet from './styles/style';
 import CameraTestScreen from './screens/jobs/cameraScreen';
 import NewFieldEvent from "./screens/jobs/newFieldEvent";
 import OnDutyScreen from './screens/jobs/onDutyScreen';
+import JobFilter from "./screens/jobs/jobFilter";
 
 const iconSize = 30;
-
-const headerFontSize = 24;
-
 
 const styles = getStyleSheet(GLOBAL.darkState);
 
@@ -113,6 +110,20 @@ const UnitsNavigator = createStackNavigator(
   }
 );
 
+const HomeNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: Home,
+    },
+    IndividualJob: {
+      screen: IndividualJob,
+    },
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+
 const JobsNavigator = createStackNavigator(
   {
     Jobs: {
@@ -129,6 +140,9 @@ const JobsNavigator = createStackNavigator(
     },
     OnDuty: {
       screen: OnDutyScreen,
+    },
+    JobFilter: {
+      screen: JobFilter
     }
   },
   {
@@ -153,18 +167,26 @@ const JobsNavigator = createStackNavigator(
 //for hiding tab bar when in camera screen
 JobsNavigator.navigationOptions = ({ navigation }) => {
   let tabBarVisible = true;
-  if (navigation.state.index == 2) {
-    tabBarVisible = false;
+  for (i = 0; i < navigation.state.routes.length; i++) {
+    if (
+      navigation.state.routes[i].routeName == "OnDutyScreen" ||
+      navigation.state.routes[i].routeName == "NewFieldEvent" ||
+      navigation.state.routes[i].routeName == "JobFilter" ||
+      navigation.state.routes[i].routeName == "Camera"
+    ) {
+      tabBarVisible = false;
+    }
   }
 
   return {
     tabBarVisible,
   };
 };
+
 // main bottom tab navigator
 const TabNavigator =  createBottomTabNavigator({
   Home: {
-    screen: Home,
+    screen: HomeNavigator,
     navigationOptions: {
         tabBarLabel:"Home",
         tabBarIcon: ({ tintColor }) => (

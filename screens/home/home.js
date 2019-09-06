@@ -29,10 +29,10 @@ export default class Home extends Component {
           });
     }
 
-  renderCard(job) {
+  renderCard(job, index) {
     return (
       <TouchableOpacity
-        key={job.title}
+        key={index}
         onPress={() =>
           this.props.navigation.navigate("IndividualJob", {
             id: 1,
@@ -62,17 +62,20 @@ export default class Home extends Component {
                       <CardComponent title='Unit status code: 10/10 '/>
                         <CardComponent title='Unit: CEPR22'
                         titlecontent={['Name: Bob','QID: bob123', 'phone no: +64 21 3613 4287', 'shift start: 0800', 'shift end: 1700', 'radio no: -']}/>
+                      <ButtonComponent style={ styles.endJob } title='END SHIFT' 
+                            onPress={() =>this.props.navigation.navigate("Login")}/>
                     </ScrollView>
         }
         else {
             return <ScrollView>
                         <View style={styles.unitCenterContainer}>
                           <Text style={{fontSize: 25, marginTop: 10, alignSelf: "center"}}>Current Jobs</Text>
-                          {GLOBAL.jobs.filter(job=>job.assigned && job.status=="PENDING").map(job => this.renderCard(job))}
-                          <ButtonComponent style={ styles.endJob } title='END JOB ->' onPress={() => this.props.navigation.navigate('Login')}/>
+                          {GLOBAL.jobs.filter(job=>job.assigned && job.status=="PENDING").map((job, index) => this.renderCard(job, index))}
+                          <ButtonComponent style={ styles.endJob } title='END JOB' 
+                            onPress={() => GLOBAL.jobs.map((job, index) => {if (job.assigned == true & job.status=="PENDING") {console.log(index); GLOBAL.jobs[index].status = "COMPLETED"; this.forceUpdate()}})}/>
                           <View style={styles.horizonalLine}/>
                           <Text style={{fontSize: 25, marginTop: 10, alignSelf: "center"}}>Dispatched Jobs</Text>
-                          {GLOBAL.jobs.filter(job=>job.assigned && job.status=="COMPLETED").map(job => this.renderCard(job))}
+                          {GLOBAL.jobs.filter(job=>job.assigned && job.status=="COMPLETED").map((job, index) => this.renderCard(job, index))}
                         </View>
                     </ScrollView>
         }
@@ -80,8 +83,8 @@ export default class Home extends Component {
 
     render() {
         return (
-            <View >
-                <HeaderComponent title='HOME'/>
+            <View style={{flex: 1}}>
+                <HeaderComponent title='HOME '/>
                 <View style={styles.containerView}>
                 <SegmentControlComponent paramvalues={['UNIT', 'JOB']} 
                     tabAction={this.setIndex}

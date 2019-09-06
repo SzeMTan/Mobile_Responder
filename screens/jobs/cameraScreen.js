@@ -14,8 +14,6 @@ import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
-
-styles = getStyleSheet(GLOBAL.darkState);
 export default class CameraScreen extends React.Component {
   state = {
     autoFocus: "on",
@@ -37,6 +35,16 @@ export default class CameraScreen extends React.Component {
     ).catch(e => {
       console.log(e, "Directory exists");
     });
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+      styles = getStyleSheet(GLOBAL.darkState);
+      this.forceUpdate()
+    });
+  }
+
+  componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
   }
 
   static navigationOptions = ({ navigation }) => {

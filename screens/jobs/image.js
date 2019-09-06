@@ -12,8 +12,6 @@ import { MaterialIcons, SimpleLineIcons } from "@expo/vector-icons";
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
-styles = getStyleSheet(GLOBAL.darkState);
-
 const PHOTOS_DIR = FileSystem.documentDirectory + "photos";
 
 export default class GalleryScreen extends React.Component {
@@ -22,9 +20,20 @@ export default class GalleryScreen extends React.Component {
     photos: []
   };
 
+
+  componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
+  }
+
   componentDidMount = async () => {
     const photos = await FileSystem.readDirectoryAsync(PHOTOS_DIR);
     this.setState({ photos });
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+      styles = getStyleSheet(GLOBAL.darkState);
+      this.forceUpdate()
+    });
   };
 
   sendImage = () => {

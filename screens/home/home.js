@@ -7,8 +7,19 @@ import ButtonComponent from "../../components/customButtonComponent";
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
 export default class Home extends Component {
+  componentDidMount() {
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+      styles = getStyleSheet(GLOBAL.darkState);
+      this.forceUpdate()
+    });
+  }
+
+  componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
+  }
     constructor(){
         super()
         this.state = {

@@ -5,13 +5,24 @@ import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 import { SimpleLineIcons } from '@expo/vector-icons';
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 class OnDutyScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
     };
+  }
+
+  componentDidMount() {
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+      styles = getStyleSheet(GLOBAL.darkState);
+      this.forceUpdate()
+    });
+  }
+
+  componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
   }
 
   static navigationOptions = ({ navigation }) => {

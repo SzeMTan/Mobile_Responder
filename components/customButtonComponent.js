@@ -4,7 +4,6 @@ import { Button } from 'react-native-elements'
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 
-
 class ButtonComponent extends Component {
   constructor(props) {
     super(props);

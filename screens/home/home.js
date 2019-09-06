@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ScrollView, View, TouchableOpacity, Text } from 'react-native';
+import { ScrollView, View, TouchableOpacity, Text, Alert } from 'react-native';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import HeaderComponent from '../../components/customHeaderComponent';
@@ -63,7 +63,20 @@ export default class Home extends Component {
                         <CardComponent title='Unit: CEPR22'
                         titlecontent={['Name: Bob','QID: bob123', 'phone no: +64 21 3613 4287', 'shift start: 0800', 'shift end: 1700', 'radio no: -']}/>
                       <ButtonComponent style={ styles.endJob } title='END SHIFT' 
-                            onPress={() =>this.props.navigation.navigate("Login")}/>
+                        onPress={() =>
+                          {if(GLOBAL.jobs.filter(job=>job.assigned && job.status=="PENDING").length !=0) {
+                            Alert.alert(
+                              'Alert',
+                              'You are still assigned to a job, would you like to close it before ending your shift?',
+                              [
+                                {text: 'Yes', onPress: () => {(GLOBAL.jobs.map((job, index) => {if (job.assigned == true & job.status=="PENDING") {console.log(index); GLOBAL.jobs[index].status = "COMPLETED";}})); this.props.navigation.navigate("Login")}},
+                                {text: 'No', onPress: () => this.props.navigation.navigate("Login")},
+                              ],
+                              )
+                        }else{
+                          this.props.navigation.navigate("Login")
+                        }}}
+                        />
                     </ScrollView>
         }
         else {

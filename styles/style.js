@@ -320,6 +320,17 @@ const box = {
   margin: 5
 }
 
+const titleRow = {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  height: 56,
+  alignItems: "center",
+  padding: 10,
+} 
+const accordionContentRow = {
+  paddingHorizontal: 15
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export default function getStyleSheet(useDarkTheme){
     return useDarkTheme ? darkStyleSheet : lightStyleSheet;
@@ -549,6 +560,14 @@ const lightStyleSheet = StyleSheet.create({
       borderColor: "steelblue",
     },
     
+    // accordion
+    titleRow: {
+      ...titleRow,
+      backgroundColor: "#F8F8F8"
+    },
+    accordionContentRow: {
+      ...accordionContentRow
+    }
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -777,4 +796,13 @@ const darkStyleSheet = StyleSheet.create({
     ...box,
     borderColor: "steelblue",
   },
+
+  // accordion
+  titleRow: {
+    ...titleRow,
+    backgroundColor: "#F8F8F8"
+  },
+  accordionContentRow: {
+    ...accordionContentRow
+  }
 });

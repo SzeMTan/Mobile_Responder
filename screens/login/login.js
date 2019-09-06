@@ -16,18 +16,7 @@ export default class LoginScreen extends Component {
       switchValue: false
     }
   }
-  componentDidMount() {
-    const { navigation } = this.props;
-    this.focusListener = navigation.addListener("didFocus", () => {
-      styles = getStyleSheet(GLOBAL.darkState);
-      this.forceUpdate()
-    });
-  }
 
-  componentWillUnmount() {
-    // Remove the event listener
-    this.focusListener.remove();
-  }
     render() {
         return (
         <KeyboardAvoidingView style={[styles.containerView, styles.appbackground]} behavior="padding">

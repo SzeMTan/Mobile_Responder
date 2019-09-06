@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ScrollView, View, TouchableOpacity } from 'react-native';
+import { ScrollView, View, TouchableOpacity, Text } from 'react-native';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import HeaderComponent from '../../components/customHeaderComponent';
@@ -66,19 +66,23 @@ export default class Home extends Component {
         }
         else {
             return <ScrollView>
-                        <CardComponent title='Current job: '/>
-                        {GLOBAL.jobs.filter(job=>job.assigned).map(job => this.renderCard(job))}
-                        <ButtonComponent style={ styles.endJob } title='END JOB ->' onPress={() => this.props.navigation.navigate('Login')}/>
-                        <View style={styles.horizonalLine}/>
+                        <View style={styles.unitCenterContainer}>
+                          <Text style={{fontSize: 25, marginTop: 10, alignSelf: "center"}}>Current Jobs</Text>
+                          {GLOBAL.jobs.filter(job=>job.assigned && job.status=="PENDING").map(job => this.renderCard(job))}
+                          <ButtonComponent style={ styles.endJob } title='END JOB ->' onPress={() => this.props.navigation.navigate('Login')}/>
+                          <View style={styles.horizonalLine}/>
+                          <Text style={{fontSize: 25, marginTop: 10, alignSelf: "center"}}>Dispatched Jobs</Text>
+                          {GLOBAL.jobs.filter(job=>job.assigned && job.status=="COMPLETED").map(job => this.renderCard(job))}
+                        </View>
                     </ScrollView>
         }
     }
 
     render() {
         return (
-            <View>
+            <View >
                 <HeaderComponent title='HOME'/>
-                <View>
+                <View style={styles.containerView}>
                 <SegmentControlComponent paramvalues={['UNIT', 'JOB']} 
                     tabAction={this.setIndex}
                 />

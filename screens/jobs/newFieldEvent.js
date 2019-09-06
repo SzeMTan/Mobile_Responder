@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import { Permissions, Location } from "expo";
 import TextInput from "../../components/customTextInputComponent";
+import HeaderComponent from "../../components/customHeaderComponent";
+
 export default class NewFieldEvent extends Component {
   constructor(props) {
     super(props);
@@ -84,16 +86,13 @@ export default class NewFieldEvent extends Component {
       <Picker.Item key={index} label={eventType.name} value={eventType.name} />
     ));
     return (
-      <View style={styles.container}>
-        <View style={styles.navbar}>
-          <TouchableOpacity style={styles.button} onPress={this.cancelPressed}>
-            <Text style={styles.buttonText}>Cancel</Text>
-          </TouchableOpacity>
-          <Text style={styles.headerText}>Create Field Event</Text>
-          <TouchableOpacity style={styles.button} onPress={this.donePressed}>
-            <Text style={styles.buttonText}>Done</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={{flex: 1}}>
+        <HeaderComponent
+          title="Create Field Event"
+          filter={true}
+          done={this.donePressed}
+          cancel={this.cancelPressed}
+        />
         <ScrollView contentComponentStyle={{ flex: 1 }}>
           <Text style={styles.heading}>Event Type</Text>
           <Picker

@@ -2,6 +2,8 @@ import {StyleSheet} from "react-native"
 import { Constants } from "expo";
 import isIPhoneX from "react-native-is-iphonex";
 
+const darkThemeTextColor='white'
+
 const button = {
     padding:10,
     borderRadius:10,  
@@ -331,6 +333,11 @@ const accordionContentRow = {
   paddingHorizontal: 15
 }
 
+const heading= {
+  fontSize: 17,
+  padding: 10
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export default function getStyleSheet(useDarkTheme){
     return useDarkTheme ? darkStyleSheet : lightStyleSheet;
@@ -338,7 +345,7 @@ export default function getStyleSheet(useDarkTheme){
 
 const lightStyleSheet = StyleSheet.create({
     appbackground: {
-        backgroundColor: 'white'
+        backgroundColor: darkThemeTextColor
     },
     button: {
         // backgroundColor: '#0076FF', // default ios button blue 
@@ -355,10 +362,10 @@ const lightStyleSheet = StyleSheet.create({
     header:{
         ...header,
         backgroundColor: '#0076FF',
-        color : 'white'
+        color : darkThemeTextColor
       },
     headerText:{
-        color : 'white',
+        color : darkThemeTextColor,
     },
     rootContainer: {
           backgroundColor: '#8FC1E3',
@@ -371,14 +378,14 @@ const lightStyleSheet = StyleSheet.create({
     },
     sliderContainer: {
       ...sliderContainer,
-      backgroundColor: 'white',
+      backgroundColor: darkThemeTextColor,
     },
     sliderTitleContainer: {
       ...sliderTitleContainer
     },
     toggleSwitchContainer: {
       ...toggleSwitchContainer,
-      backgroundColor: 'white'
+      backgroundColor: darkThemeTextColor
         
     },
 
@@ -396,7 +403,7 @@ const lightStyleSheet = StyleSheet.create({
       ...noPermissions
     },
     cameraFontColor: {
-      color: "white"
+      color: darkThemeTextColor
     },
     takePicture: {
       ...takePicture
@@ -410,7 +417,7 @@ const lightStyleSheet = StyleSheet.create({
       ...bottomBar
     },
     whiteText: {
-      color: "white"
+      color: darkThemeTextColor
     },
     bottomButton: {
       ...bottomButton
@@ -476,7 +483,11 @@ const lightStyleSheet = StyleSheet.create({
       ...emergencyButton
     },
     settingsContainer:{
-      ...settingsContainer
+      ...settingsContainer,
+    },
+
+    settingsChildren:{
+
     },
 
 
@@ -567,6 +578,11 @@ const lightStyleSheet = StyleSheet.create({
     },
     accordionContentRow: {
       ...accordionContentRow
+    },
+
+    // new field event
+    heading: {
+      ...heading
     }
 });
 
@@ -589,13 +605,13 @@ const darkStyleSheet = StyleSheet.create({
     header:{
         ...header,
         backgroundColor: '#0076FF',
-        color : 'white'
+        color : darkThemeTextColor
       },
     headerText:{
-        color : 'white',
+        color : darkThemeTextColor,
     },
     rootContainer: {
-          backgroundColor: '#8FC1E3',
+          backgroundColor: darkThemeTextColor,
       },
     segmentedControlTab: {
         ...segmentedControlTab
@@ -605,16 +621,21 @@ const darkStyleSheet = StyleSheet.create({
     },
     sliderContainer: {
       ...sliderContainer,
-        backgroundColor: '#fff',
+        backgroundColor: '#002060',
         
     },
     sliderTitleContainer: {
-      ...sliderTitleContainer
+      ...sliderTitleContainer,
     },
+
+    sliderText:{
+      color: darkThemeTextColor
+    },
+
     toggleSwitchContainer: {
       ...toggleSwitchContainer,
         backgroundColor: '#002060',
-        color:'white',
+        color: darkThemeTextColor,
         
     },
 
@@ -633,7 +654,7 @@ const darkStyleSheet = StyleSheet.create({
       ...noPermissions
     },
     cameraFontColor: {
-      color: "white"
+      color: darkThemeTextColor
     },
     takePicture: {
       ...takePicture
@@ -648,7 +669,7 @@ const darkStyleSheet = StyleSheet.create({
       ...bottomBar
     },
     whiteText: {
-      color: "white"
+      color: darkThemeTextColor
     },
     bottomButton: {
       ...bottomButton
@@ -676,7 +697,7 @@ const darkStyleSheet = StyleSheet.create({
     // login
     logoText: {
       ...logoText,
-      color: 'white'
+      color: darkThemeTextColor
       },
     loginFormView: {
       ...loginFormView
@@ -715,6 +736,10 @@ const darkStyleSheet = StyleSheet.create({
   },
   settingsContainer:{
     ...settingsContainer
+  },
+  settingsChildren:{
+    backgroundColor: '#002060',
+    color: 'white'
   },
 
 
@@ -804,5 +829,10 @@ const darkStyleSheet = StyleSheet.create({
   },
   accordionContentRow: {
     ...accordionContentRow
+  },
+
+  //new field event
+  heading: {
+    ...heading
   }
 });

@@ -8,9 +8,22 @@ import getStyleSheet from '../../styles/style'
 
 export default class GeneralScreen extends Component {
 
+    componentDidMount() {
+        const { navigation } = this.props;
+        this.focusListener = navigation.addListener("didFocus", () => {
+          styles = getStyleSheet(GLOBAL.darkState);
+          this.forceUpdate()
+        });
+      }
+    
+      componentWillUnmount() {
+        // Remove the event listener
+        this.focusListener.remove();
+      }
+
+
     constructor(){
         super();
-        styles = getStyleSheet(GLOBAL.darkState)
         this.state = {switchValue: GLOBAL.darkState, backgroundColor: styles.appbackground};
         this.onValueChange = this.onValueChange.bind(this);
       }

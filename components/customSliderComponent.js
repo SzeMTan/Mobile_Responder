@@ -20,8 +20,8 @@ export default class SliderComponent extends Component {
         return (
           <View style={styles.sliderContainer}>
             <View style={styles.sliderTitleContainer}>
-                <Text numberOfLines={1}>{this.props.title}</Text>
-                <Text numberOfLines={1}>{this.state.value}</Text>
+                <Text numberOfLines={1} style={styles.sliderText}>{this.props.title}</Text>
+                <Text numberOfLines={1} style={styles.sliderText}>{this.state.value}</Text>
             </View>
             <Slider
               value={this.state.value}

@@ -8,9 +8,21 @@ import UnitMessagingComponent from '../../components/customUnitMessagingComponen
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class IndividualUnit extends Component {
+
+    componentDidMount() {
+        const { navigation } = this.props;
+        this.focusListener = navigation.addListener("didFocus", () => {
+          styles = getStyleSheet(GLOBAL.darkState);
+          this.forceUpdate()
+        });
+      }
+    
+      componentWillUnmount() {
+        // Remove the event listener
+        this.focusListener.remove();
+      }
+
     constructor(props) {
         super(props);
         this.state = {

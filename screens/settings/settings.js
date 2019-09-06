@@ -9,10 +9,8 @@ import { withNavigation } from "react-navigation";
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
-
-styles = getStyleSheet(GLOBAL.darkState);
-
 class SettingsScreen extends Component {
+
     componentDidMount() {
         const { navigation } = this.props;
         this.focusListener = navigation.addListener("didFocus", () => {
@@ -33,18 +31,21 @@ class SettingsScreen extends Component {
         return (
             <View style={[styles.settingsContainer, styles.appbackground]}>
                 <View>
-                    <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
+                    <SettingsList backgroundColor={styles.settingsChildren.backgroundColor} borderColor='#c8c7cc' defaultItemSize={50}>
                         <SettingsList.Item 
                             title='General'
                             onPress={() => this.props.navigation.navigate('General')}
+                            titleStyle={styles.settingsChildren}
                             />
                         <SettingsList.Item 
                             title='Map'
                             onPress={() => Alert.alert('Route To Map Settings Page')}
+                            titleStyle={styles.settingsChildren}
                             />
                         <SettingsList.Item 
                             title='Caching'
                             onPress={() => Alert.alert('Route To Caching Settings Page')}
+                            titleStyle={styles.settingsChildren}
                             />
                     </SettingsList>
                 </View>
@@ -57,14 +58,17 @@ class SettingsScreen extends Component {
                         />
                 </View>
                 <View>
-                    <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
+                    <SettingsList 
+                    backgroundColor={styles.settingsChildren.backgroundColor} borderColor='#c8c7cc' defaultItemSize={50}>
                         <SettingsList.Item 
                             title='Reset Application'
                             onPress={() => Alert.alert('Route To General Page')}
+                            titleStyle={styles.settingsChildren}
                             />
                         <SettingsList.Item 
                             title='About App'
                             onPress={() => this.props.navigation.navigate('About')}
+                            titleStyle={styles.settingsChildren}
                             />
 
                     </SettingsList>

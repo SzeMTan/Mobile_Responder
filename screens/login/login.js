@@ -8,6 +8,7 @@ import ButtonComponent from "../../components/customButtonComponent";
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
+styles = getStyleSheet(GLOBAL.darkState);
 
 export default class LoginScreen extends Component {
   constructor() {
@@ -16,7 +17,7 @@ export default class LoginScreen extends Component {
       switchValue: false
     }
   }
-  componentDidMount() {
+  componentWillMount() {
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
       styles = getStyleSheet(GLOBAL.darkState);

@@ -6,8 +6,6 @@ import { MapView, Location, Permissions } from 'expo';
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class App extends Component {
 
   constructor(props) {
@@ -46,7 +44,14 @@ export default class App extends Component {
     const { navigation } = this.props;
         this.focusListener = navigation.addListener("didFocus", () => {
             this.getLocationAsync();
+            styles = getStyleSheet(GLOBAL.darkState);
+            this.forceUpdate() 
         });
+  }
+
+  componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
   }
 
   handleMapRegionChange = mapRegion => {

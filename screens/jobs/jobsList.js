@@ -5,7 +5,7 @@ import SearchBarComponent from "../../components/customSearchBarComponent";
 import CardComponent from "../../components/customCardComponent";
 
 import ButtonComponent from "../../components/customButtonComponent";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
@@ -40,6 +40,7 @@ export default class JobsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      filter: []
   };
   }
 
@@ -70,6 +71,16 @@ export default class JobsList extends Component {
     });
   };
 
+  filter = () => {
+    this.props.navigation.navigate("JobFilter", {jobFilter: this.filterJobs});
+  };
+  
+  filterJobs = object => {
+    this.state.filter = object;
+    console.log(this.state);
+    this.forceUpdate();
+  };
+
   newJobCreated = object => {
     console.log(object);
     console.log(new Date().getDate());
@@ -95,25 +106,60 @@ export default class JobsList extends Component {
       date: formattedDate,
       status: object.jobStatus
     };
-    this.state.data.push(newEvent);
+    GLOBAL.jobs.push(newEvent);
     this.forceUpdate();
   };
 
+  renderCard(job){
+    return <TouchableOpacity
+      key={job.title}
+      onPress={() =>
+        this.props.navigation.navigate("IndividualJob", {
+          id: 1,
+          title: job.title,
+          code: job.code,
+          date: job.date,
+          status: job.status,
+          priority: job.priority,
+          latlng: job.latlng
+        })
+      }
+    >
+      <CardComponent
+        key={job.title}
+        title={job.title}
+        titlecontent={[job.code, job.destination]}
+        leftbottom={job.date}
+        rightbottom={job.status}
+      />
+    </TouchableOpacity>
+  }
   render() {
-
-    const cards = GLOBAL.jobs.map(job =>         
-    <TouchableOpacity key={job.title} 
-    onPress={() => 
-    this.props.navigation.navigate('IndividualJob', {id: 1, title: job.title, code: job.code, date: job.date, status: job.status, priority: job.priority, latlng: job.latlng})}>
-      <CardComponent key={job.title} 
-      title={job.title} 
-      titlecontent={[job.code, job.destination]}
-      leftbottom={job.date} rightbottom={job.status}    
-      
-      /></TouchableOpacity>)
+    const cards =
+      this.state.filter.dGroups == undefined
+        ? GLOBAL.jobs.map(job => (
+            this.renderCard(job)
+          ))
+        : GLOBAL.jobs
+            .filter(
+              job =>
+                this.state.filter.priority.includes(job.priority) ||
+                this.state.filter.dGroups.includes(job.destination)
+            )
+            .map(job => (
+              this.renderCard(job)
+            ));
     return (
       <View style={styles.containerView}>
-        <SearchBarComponent title="Jobs" />
+        <View style={{ alignContent: "stretch", flexDirection: "row" }}>
+          <SearchBarComponent title="Jobs" />
+          <TouchableOpacity
+            style={{ alignSelf: "center" }}
+            onPress={this.filter}
+          >
+            <MaterialCommunityIcons name="filter" size={40} />
+          </TouchableOpacity>
+        </View>
         <ScrollView>
           <View style={[styles.containerView, styles.jobCenterContainer]}>
             {cards} 

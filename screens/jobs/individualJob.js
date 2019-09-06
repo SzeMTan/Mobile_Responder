@@ -23,6 +23,10 @@ export default class IndividualJob extends Component {
     };
   }
 
+  componentWillMount(){
+    GLOBAL.jobs.filter(job => this.props.navigation.getParam("title") == job.title).map(job=>this.setState({assigned: job.assigned}))
+  }
+
   setIndex = index => {
     this.setState({
       ...this.state,

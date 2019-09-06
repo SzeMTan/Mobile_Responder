@@ -8,7 +8,8 @@ module.exports = {
           date: "17 Mar 17:35",
           status: 'PENDING',
           latlng: {latitude: -36.848671,
-            longitude: 174.770107}
+            longitude: 174.770107},
+          assigned: false,
       },
       {
           title: 'P036986218',
@@ -18,7 +19,8 @@ module.exports = {
           date: "17 Mar 17:35",
           status: 'PENDING',
           latlng: {latitude: -36.853943,
-            longitude: 174.768265}
+            longitude: 174.768265},
+          assigned: false,
       },
       {
           title: 'P036986217',
@@ -28,7 +30,8 @@ module.exports = {
           date: "17 Mar 17:35",
           status: 'PENDING',
           latlng: {latitude: -36.852638,
-            longitude: 174.768265}
+            longitude: 174.768265},
+          assigned: true,
       },
   ], 
   units: [

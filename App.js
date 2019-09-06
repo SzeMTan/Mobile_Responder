@@ -110,6 +110,20 @@ const UnitsNavigator = createStackNavigator(
   }
 );
 
+const HomeNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: Home,
+    },
+    IndividualJob: {
+      screen: IndividualJob,
+    },
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+
 const JobsNavigator = createStackNavigator(
   {
     Jobs: {
@@ -172,7 +186,7 @@ JobsNavigator.navigationOptions = ({ navigation }) => {
 // main bottom tab navigator
 const TabNavigator =  createBottomTabNavigator({
   Home: {
-    screen: Home,
+    screen: HomeNavigator,
     navigationOptions: {
         tabBarLabel:"Home",
         tabBarIcon: ({ tintColor }) => (

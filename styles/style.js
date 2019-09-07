@@ -38,7 +38,7 @@ const header = {
 
 const segmentedControlTab = {
   marginHorizontal: 10,
-  marginTop: 5
+  marginVertical: 5
 }
 
 const sliderContainer = {
@@ -342,6 +342,12 @@ const heading= {
   padding: 10
 }
 
+const homeText = {
+  fontSize: 25, 
+  marginTop: 10, 
+  alignSelf: "center"
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export default function getStyleSheet(useDarkTheme){
     return useDarkTheme ? darkStyleSheet : lightStyleSheet;
@@ -438,6 +444,10 @@ const lightStyleSheet = StyleSheet.create({
     horizonalLine: {
       ...horizonalLine
     },
+    homeText: {
+      ...homeText,
+      color: 'black'
+    },
 
 
 
@@ -501,7 +511,8 @@ const lightStyleSheet = StyleSheet.create({
 
     // units
     unitCenterContainer: {
-      ...centerContainer
+      ...centerContainer,
+      marginBottom: 20
     },
 
     reorderCardContainer: {
@@ -693,6 +704,10 @@ const darkStyleSheet = StyleSheet.create({
       },
     horizonalLine: {
       ...horizonalLine
+    },
+    homeText: {
+      ...homeText,
+      color: darkThemeTextColor
     },
 
 

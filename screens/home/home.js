@@ -91,17 +91,19 @@ export default class Home extends Component {
                     </ScrollView>
         }
         else {
-            return <ScrollView>
+            // return <View style={styles.containerView}>
+                 return     <ScrollView>
                         <View style={styles.unitCenterContainer}>
-                          <Text style={{fontSize: 25, marginTop: 10, alignSelf: "center"}}>Current Jobs</Text>
+                          <Text style={styles.homeText}>Current Jobs</Text>
                           {GLOBAL.jobs.filter(job=>job.assigned && job.status=="PENDING").map((job, index) => this.renderCard(job, index))}
                           <ButtonComponent style={ styles.endJob } title='END JOB' 
                             onPress={() => GLOBAL.jobs.map((job, index) => {if (job.assigned == true & job.status=="PENDING") {console.log(index); GLOBAL.jobs[index].status = "COMPLETED"; this.forceUpdate()}})}/>
                           <View style={styles.horizonalLine}/>
-                          <Text style={{fontSize: 25, marginTop: 10, alignSelf: "center"}}>Dispatched Jobs</Text>
+                          <Text style={styles.homeText}>Dispatched Jobs</Text>
                           {GLOBAL.jobs.filter(job=>job.assigned && job.status=="COMPLETED").map((job, index) => this.renderCard(job, index))}
                         </View>
                     </ScrollView>
+                    // </View>
         }
     }
 

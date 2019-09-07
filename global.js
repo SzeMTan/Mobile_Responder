@@ -1,5 +1,5 @@
 module.exports = {
-    darkState: false,
+    darkState: true,
     jobs: [
         {title: 'P036986219',
           priority: 'P2',
@@ -83,7 +83,8 @@ module.exports = {
       status: 'ARRIVED',
       latlng: {latitude: -36.854165,
       longitude: 174.770824}
-    }
+    },
 ],
+currentJob: null
  };
  

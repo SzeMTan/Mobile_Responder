@@ -1,6 +1,8 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import GLOBAL from '../global'
+import getStyleSheet from '../styles/style'
 
 export default class Accordion extends React.Component {
   constructor(props) {
@@ -11,6 +13,7 @@ export default class Accordion extends React.Component {
   }
 
   render() {
+    styles = getStyleSheet(GLOBAL.darkState);
     return (
       <View>
         <TouchableOpacity
@@ -26,7 +29,7 @@ export default class Accordion extends React.Component {
           {this.props.title()}
         </TouchableOpacity>
         {this.state.expanded && (
-          <View style={styles.contentRow}>{this.props.content()}</View>
+          <View style={styles.accordionContentRow}>{this.props.content()}</View>
         )}
       </View>
     );
@@ -37,16 +40,3 @@ export default class Accordion extends React.Component {
   };
 }
 
-const styles = StyleSheet.create({
-  titleRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    height: 56,
-    alignItems: "center",
-    padding: 10,
-    backgroundColor: "#F8F8F8"
-  },
-  contentRow: {
-    paddingHorizontal: 15
-  }
-});

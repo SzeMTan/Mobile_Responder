@@ -13,8 +13,6 @@ import { Ionicons } from "@expo/vector-icons";
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class MessagingInputComponent extends Component {
   constructor(props) {
     super(props);
@@ -43,6 +41,7 @@ export default class MessagingInputComponent extends Component {
   };
 
   render() {
+    styles = getStyleSheet(GLOBAL.darkState);
     return (
       <View style={styles.messageInputContainer}>
         <TouchableOpacity

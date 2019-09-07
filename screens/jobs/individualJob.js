@@ -10,8 +10,6 @@ import { Ionicons } from '@expo/vector-icons';
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class IndividualJob extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +19,19 @@ export default class IndividualJob extends Component {
       message: "",
       assigned: false
     };
+  }
+
+  componentDidMount() {
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+      styles = getStyleSheet(GLOBAL.darkState);
+      this.forceUpdate()
+    });
+  }
+
+  componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
   }
 
   componentWillMount(){
@@ -73,7 +84,6 @@ export default class IndividualJob extends Component {
 
   assignJob() {
     this.setState({assigned : true})
-
   }
 
   commentPressed = () => {

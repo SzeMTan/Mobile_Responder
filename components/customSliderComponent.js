@@ -5,8 +5,6 @@ import Slider from 'react-native-slider';
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class SliderComponent extends Component {
     state = {
         value: 0
@@ -18,11 +16,12 @@ export default class SliderComponent extends Component {
         min: 1
     }
       render() {
+        styles = getStyleSheet(GLOBAL.darkState);
         return (
           <View style={styles.sliderContainer}>
             <View style={styles.sliderTitleContainer}>
-                <Text numberOfLines={1}>{this.props.title}</Text>
-                <Text numberOfLines={1}>{this.state.value}</Text>
+                <Text numberOfLines={1} style={styles.sliderText}>{this.props.title}</Text>
+                <Text numberOfLines={1} style={styles.sliderText}>{this.state.value}</Text>
             </View>
             <Slider
               value={this.state.value}

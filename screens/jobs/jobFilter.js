@@ -1,10 +1,26 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import HeaderComponent from "../../components/customHeaderComponent";
 import Accordion from "../../components/customAccordianComponent";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
 
 export default class JobFilter extends Component {
+
+  componentDidMount() {
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+        styles = getStyleSheet(GLOBAL.darkState);
+      this.forceUpdate()
+    });
+  }
+
+  componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -144,26 +160,3 @@ export default class JobFilter extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  accordionTitleRow: {
-    flex: 1,
-    flexDirection: "row"
-  },
-  title: {
-    fontSize: 18
-  },
-  contentRow: {
-    flexDirection: "row",
-    flexWrap: "wrap"
-  },
-  box: {
-    minWidth: 65,
-    minHeight: 65,
-    borderColor: "steelblue",
-    borderRadius: 1,
-    borderWidth: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    margin: 5
-  }
-});

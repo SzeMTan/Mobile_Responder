@@ -5,19 +5,14 @@ import { StyleSheet, View } from 'react-native';
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class ToggleComponent extends Component {
-
-    state = {
-        // toggleState: false,
-    };
 
     static defaultProps = {
         toggleLabel: ""
     }
 
     render() {
+        styles = getStyleSheet(GLOBAL.darkState);
         const { onToggle, toggleState, toggleLabel } = this.props;
         return (
             <View>

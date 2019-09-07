@@ -4,8 +4,6 @@ import { Card, Divider } from "react-native-elements";
 import GLOBAL from "../global";
 import getStyleSheet from "../styles/style";
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class CardComponent extends Component {
   static defaultProps = {
     title: "",
@@ -13,6 +11,7 @@ export default class CardComponent extends Component {
   };
 
   render() {
+      styles = getStyleSheet(GLOBAL.darkState);
     return (
       <Card>
         <Text

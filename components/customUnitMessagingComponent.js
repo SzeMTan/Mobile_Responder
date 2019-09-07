@@ -4,8 +4,6 @@ import { GiftedChat } from 'react-native-gifted-chat';
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class UnitMessagingComponent extends React.Component {
   state = {
     messages: []
@@ -35,6 +33,7 @@ export default class UnitMessagingComponent extends React.Component {
   }
 
   render() {
+    styles = getStyleSheet(GLOBAL.darkState);
     return (
       <View style={styles.containerView}>
         {Platform.OS === "android"

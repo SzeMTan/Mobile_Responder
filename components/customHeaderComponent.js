@@ -5,8 +5,6 @@ import { Header } from 'react-native-elements';
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class HeaderComponent extends Component {
 
     static defaultProps = {
@@ -16,6 +14,7 @@ export default class HeaderComponent extends Component {
     }
 
     render() {
+      styles = getStyleSheet(GLOBAL.darkState);
         return (
             <View>
                 {this.props.filter ? (
@@ -31,13 +30,13 @@ export default class HeaderComponent extends Component {
                         <Text style={styles.headerText}>DONE</Text>
                       </TouchableOpacity>
                     }
-                    backgroundColor="#0076FF"
+                    backgroundColor={styles.header.backgroundColor}
                   />
                 ) : (
                   <Header
                     centerComponent={{ text: this.props.title, style: styles.header }}
                     rightComponent={{ text: "10/10", style: styles.headerText }}
-                    backgroundColor="#0076FF"
+                    backgroundColor={styles.header.backgroundColor}
                   />
                 )}
             </View>

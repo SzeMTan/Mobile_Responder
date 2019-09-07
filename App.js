@@ -47,7 +47,7 @@ const SettingsNavigator = createStackNavigator(
       navigationOptions: {
         headerTitle: 'General',
         headerTitleStyle: styles.header,
-        headerTintColor: 'white',
+        headerTintColor: styles.headerText.color,
         headerStyle: styles.header,
         headerRight: (<View/>),
       }, 
@@ -57,7 +57,7 @@ const SettingsNavigator = createStackNavigator(
       navigationOptions: {
         headerTitle: 'About',
         headerTitleStyle: styles.header,
-        headerTintColor: 'white',
+        headerTintColor: styles.headerText.color,
         headerStyle: styles.header,
         headerRight: (<View/>),
       },    
@@ -190,7 +190,7 @@ const TabNavigator =  createBottomTabNavigator({
     navigationOptions: {
         tabBarLabel:"Home",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-home" size={iconSize}  />
+          <Ionicons name="ios-home" size={iconSize} color={tintColor} />
         )
       }
     },
@@ -199,7 +199,7 @@ const TabNavigator =  createBottomTabNavigator({
     navigationOptions: {
         tabBarLabel:"Settings",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-settings" size={iconSize}  />
+          <Ionicons name="ios-settings" size={iconSize} color={tintColor}  />
         )
       }
     },
@@ -209,7 +209,7 @@ const TabNavigator =  createBottomTabNavigator({
       navigationOptions: {
           tabBarLabel:"Map",
           tabBarIcon: ({ tintColor }) => (
-            <Ionicons name="ios-map" size={iconSize}  />
+            <Ionicons name="ios-map" size={iconSize} color={tintColor} />
           )
         }
       },
@@ -218,7 +218,7 @@ const TabNavigator =  createBottomTabNavigator({
     navigationOptions: {
         tabBarLabel:"Units",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-car" size={iconSize}  />
+          <Ionicons name="ios-car" size={iconSize} color={tintColor} />
         )
       }
     },
@@ -227,7 +227,7 @@ const TabNavigator =  createBottomTabNavigator({
     navigationOptions:{
       tabBarLabel:"Jobs",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-briefcase" size={iconSize}  />
+          <Ionicons name="ios-briefcase" size={iconSize} color={tintColor} />
         )
     }
   },
@@ -235,7 +235,12 @@ const TabNavigator =  createBottomTabNavigator({
 {
   order: ["Jobs", "Units", "Home", "Map", "Settings"],
   initialRouteName: "Home",
-  resetOnBlur:true
+  resetOnBlur:true,
+  tabBarOptions: {
+    inactiveBackgroundColor: styles.tabStyles.backgroundColor,
+    inactiveTintColor: styles.tabStyles.color,
+    activeTintColor: styles.tabStyles.backgroundColor
+  }
 });
 
 // login to home navigation

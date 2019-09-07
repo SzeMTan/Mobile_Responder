@@ -8,32 +8,30 @@ import getStyleSheet from '../../styles/style'
 
 export default class GeneralScreen extends Component {
 
+    componentDidMount() {
+        const { navigation } = this.props;
+        this.focusListener = navigation.addListener("didFocus", () => {
+          styles = getStyleSheet(GLOBAL.darkState);
+          this.forceUpdate()
+        });
+      }
+    
+      componentWillUnmount() {
+        // Remove the event listener
+        this.focusListener.remove();
+      }
+
+
     constructor(){
         super();
-        styles = getStyleSheet(GLOBAL.darkState)
-        this.state = {switchValue: GLOBAL.darkState, backgroundColor: styles.appbackground};
+        this.state = {switchValue: GLOBAL.darkState};
         this.onValueChange = this.onValueChange.bind(this);
       }
 
     render() {
         return (
-            <View style={ this.state.backgroundColor}>
-                <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
-                    {/* <SettingsList.Item 
-                    title='Enable Dark Theme'
-                    switchOnValueChange={this.onValueChange}
-                    switchState={this.state.switchValue}
-                    hasSwitch={true}
-                    hasNavArrow={false}
-                    />
-                    <SettingsList.Item 
-                    title='Enable Text-to-Speech'
-                    switchOnValueChange={() => Alert.alert('Route To General Page')}
-                    hasSwitch={true}
-                    hasNavArrow={false}
-                    /> */}
-                </SettingsList>
-                    <ToggleComponent toggleLabel='Enable Dark Theme' onToggle={() => this.onValueChange()} toggleState={GLOBAL.darkState}/>
+            <View style={[styles.appbackground,styles.containerView]}>
+                <ToggleComponent toggleLabel='Enable Dark Theme' onToggle={() => this.onValueChange()} toggleState={GLOBAL.darkState}/>
                 <SliderComponent title={'Notifications(mins)'} min={0} max={10}/>
             </View>
         );

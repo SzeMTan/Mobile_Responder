@@ -10,6 +10,8 @@ import {
 import { Permissions, Location } from "expo";
 import TextInput from "../../components/customTextInputComponent";
 import HeaderComponent from "../../components/customHeaderComponent";
+import GLOBAL from '../../global'
+import getStyleSheet from '../../styles/style'
 
 export default class NewFieldEvent extends Component {
   constructor(props) {
@@ -24,6 +26,16 @@ export default class NewFieldEvent extends Component {
 
   componentDidMount() {
     this.getLocationAsync();
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+      styles = getStyleSheet(GLOBAL.darkState);
+      this.forceUpdate()
+    });
+  }
+
+  componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
   }
 
   getLocationAsync = async () => {
@@ -98,7 +110,7 @@ export default class NewFieldEvent extends Component {
           <Picker
             selectedValue={this.state.eventType}
             onValueChange={this.updateEventType}
-            style={styles.picker}
+            style={styles.loginFormTextInput}
           >
             {renderPickerItems}
           </Picker>
@@ -106,7 +118,7 @@ export default class NewFieldEvent extends Component {
           <Picker
             selectedValue={this.state.jobStatus}
             onValueChange={this.updateStatus}
-            style={styles.picker}
+            style={styles.loginFormTextInput}
           >
             <Picker.Item label="PENDING" value="PENDING" />
             <Picker.Item label="COMPLETE" value="COMPLETE" />
@@ -123,60 +135,3 @@ export default class NewFieldEvent extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 20,
-    backgroundColor: "white"
-  },
-  navbar: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    borderColor: "#d3d3d3",
-    borderBottomColor: "#d3d3d3"
-  },
-  pictures: {
-    flex: 1,
-    flexWrap: "wrap",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    paddingVertical: 8
-  },
-  button: {
-    padding: 20
-  },
-  headerText: {
-    fontSize: 24
-  },
-  buttonText: {
-    color: "#0084ff"
-  },
-  heading: {
-    fontSize: 17,
-    padding: 10
-  },
-  loginFormTextInput: {
-    height: 43,
-    fontSize: 14,
-    borderRadius: 5,
-    borderWidth: 1,
-    backgroundColor: "#fafafa",
-    paddingLeft: 10,
-    marginLeft: 15,
-    marginRight: 15,
-    marginTop: 5,
-    marginBottom: 5
-  },
-  picker: {
-    height: 43,
-    borderRadius: 5,
-    borderWidth: 1,
-    backgroundColor: "#fafafa",
-    paddingLeft: 10,
-    marginLeft: 15,
-    marginRight: 15,
-    marginTop: 5,
-    marginBottom: 5
-  }
-});

@@ -66,7 +66,10 @@ export default class JobsList extends Component {
         <HeaderComponent
           title={"Jobs(" + navigation.getParam("jobsListSize") + ")"}
         />
-      )
+      ),
+      headerTitleStyle: styles.header,
+      headerStyle: styles.header,
+      headerTintColor: styles.headerText,
     };
   };
 

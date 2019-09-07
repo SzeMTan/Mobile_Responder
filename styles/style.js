@@ -8,6 +8,8 @@ const darkThemeBackgroundColor = '#002060'
 
 const iphoneBlue = '#0076FF'
 
+const darkThemeHeader = '#65000B'
+
 const button = {
     padding:10,
     borderRadius:10,  
@@ -111,7 +113,7 @@ const imageBackgroundContainer = {
 
 const endJob = {
   backgroundColor: 'red',
-  borderRadius: 5,
+  borderRadius: 10,
   marginHorizontal: 10,
 }
 
@@ -194,7 +196,8 @@ const settingsContainer = {
 const reorderCardContainer = {
   padding: 0, 
   marginVertical: 0, 
-  flexDirection: "row-reverse"
+  flexDirection: "row-reverse",
+  borderRadius: 5
 }
 
 const reorderCardTouch = {
@@ -256,7 +259,8 @@ const commentCardAuthorText = {
 
 const commentCardTopLevelContainer = {
   marginVertical: 0, 
-  padding: 0
+  padding: 0,
+  borderRadius: 5,
 }
 
 const pinContainer = {
@@ -348,6 +352,10 @@ const homeText = {
   alignSelf: "center"
 }
 
+const card = {
+  borderRadius:10, 
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export default function getStyleSheet(useDarkTheme){
     return useDarkTheme ? darkStyleSheet : lightStyleSheet;
@@ -401,6 +409,10 @@ const lightStyleSheet = StyleSheet.create({
     tabStyles: {
       backgroundColor: darkThemeTextColor,
       color: 'black',
+    },
+
+    card: {
+      ...card
     },
 
     //camera
@@ -624,7 +636,7 @@ const darkStyleSheet = StyleSheet.create({
     header:{
         ...header,
         // backgroundColor: '#0076FF',
-        backgroundColor: '#65000B',
+        backgroundColor: darkThemeHeader,
         color : darkThemeTextColor
       },
     headerText:{
@@ -634,10 +646,12 @@ const darkStyleSheet = StyleSheet.create({
           backgroundColor: darkThemeTextColor,
       },
     segmentedControlTab: {
-        ...segmentedControlTab
+        ...segmentedControlTab,
+        backgroundColor: darkThemeBackgroundColor
     },
     card: {
-        backgroundColor: '#F7F9FB'
+      ...card,
+      backgroundColor: '#d8e6f0'
     },
     sliderContainer: {
       ...sliderContainer,
@@ -714,7 +728,8 @@ const darkStyleSheet = StyleSheet.create({
 
     // job
     jobEndContainer: {
-    ...endContainer
+    ...endContainer,
+    backgroundColor: darkThemeBackgroundColor
     },
     jobCenterContainer: {
       ...centerContainer
@@ -793,7 +808,7 @@ const darkStyleSheet = StyleSheet.create({
   },
   commentButton: {
     ...commentButton,
-      color: "#0084ff"
+      color: darkThemeTextColor
   },
   cameraTouch: {
     ...cameraTouch
@@ -837,10 +852,12 @@ const darkStyleSheet = StyleSheet.create({
 
   // job filter
   accordionTitleRow: {
-    ...accordionTitleRow
+    ...accordionTitleRow,
+    backgroundColor: darkThemeBackgroundColor
   },
   title: {
-    ...title
+    ...title,
+    color: darkThemeTextColor
   },
   contentRow: {
     ...contentRow
@@ -853,14 +870,16 @@ const darkStyleSheet = StyleSheet.create({
   // accordion
   titleRow: {
     ...titleRow,
-    backgroundColor: "#F8F8F8"
+    backgroundColor: darkThemeBackgroundColor
   },
   accordionContentRow: {
-    ...accordionContentRow
+    ...accordionContentRow,
+
   },
 
   //new field event
   heading: {
-    ...heading
+    ...heading,
+    color: darkThemeTextColor
   }
 });

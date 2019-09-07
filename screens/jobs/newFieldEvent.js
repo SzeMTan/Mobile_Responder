@@ -98,7 +98,7 @@ export default class NewFieldEvent extends Component {
       <Picker.Item key={index} label={eventType.name} value={eventType.name} />
     ));
     return (
-      <View style={{flex: 1}}>
+      <View style={[styles.containerView, styles.appbackground]}>
         <HeaderComponent
           title="Create Field Event"
           filter={true}

@@ -14,6 +14,19 @@ export default class GeneralScreen extends Component {
         this.onValueChange = this.onValueChange.bind(this);
       }
 
+      componentDidMount() {
+        const { navigation } = this.props;
+        this.focusListener = navigation.addListener("didFocus", () => {
+            styles = getStyleSheet(GLOBAL.darkState);
+          this.forceUpdate()
+        });
+      }
+    
+      componentWillUnmount() {
+        // Remove the event listener
+        this.focusListener.remove();
+      }
+
     render() {
         return (
             <View style={[styles.appbackground,styles.containerView]}>

@@ -121,7 +121,8 @@ export default class JobsList extends Component {
           date: job.date,
           status: job.status,
           priority: job.priority,
-          latlng: job.latlng
+          latlng: job.latlng,
+          destination: job.destination
         })
       }
     >

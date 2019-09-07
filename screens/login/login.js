@@ -7,11 +7,15 @@ import TextInputComponent from "../../components/customTextInputComponent";
 import ButtonComponent from "../../components/customButtonComponent";
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
+import {askPermissions} from '../../notifications'
 
 const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class LoginScreen extends Component {
 
+    componentWillMount(){
+      askPermissions()
+    }
     render() {
         return (
         <KeyboardAvoidingView style={styles.containerView} behavior="padding">

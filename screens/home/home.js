@@ -96,7 +96,7 @@ export default class Home extends Component {
 
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={styles.containerView}>
                 <HeaderComponent title='HOME '/>
                 <View style={styles.containerView}>
                 <SegmentControlComponent paramvalues={['UNIT', 'JOB']} 

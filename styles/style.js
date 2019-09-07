@@ -4,6 +4,10 @@ import isIPhoneX from "react-native-is-iphonex";
 
 const darkThemeTextColor='white'
 
+const darkThemeBackgroundColor = '#002060'
+
+const iphoneBlue = '#0076FF'
+
 const button = {
     padding:10,
     borderRadius:10,  
@@ -354,7 +358,7 @@ const lightStyleSheet = StyleSheet.create({
     },
     iconButtonStyle: {
       ...iconButtonStyle,
-        backgroundColor: '#0076FF',
+        backgroundColor: iphoneBlue,
     },
     containerView: {
       ...containerView
@@ -386,7 +390,11 @@ const lightStyleSheet = StyleSheet.create({
     toggleSwitchContainer: {
       ...toggleSwitchContainer,
       backgroundColor: darkThemeTextColor
-        
+    },
+
+    tabStyles: {
+      backgroundColor: darkThemeTextColor,
+      color: 'black',
     },
 
     //camera
@@ -589,7 +597,7 @@ const lightStyleSheet = StyleSheet.create({
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const darkStyleSheet = StyleSheet.create({
     appbackground: {
-        backgroundColor: '#002060'
+        backgroundColor: darkThemeBackgroundColor
     },
     button: {
       ...button,
@@ -604,7 +612,8 @@ const darkStyleSheet = StyleSheet.create({
     },
     header:{
         ...header,
-        backgroundColor: '#0076FF',
+        // backgroundColor: '#0076FF',
+        backgroundColor: '#65000B',
         color : darkThemeTextColor
       },
     headerText:{
@@ -635,8 +644,12 @@ const darkStyleSheet = StyleSheet.create({
     toggleSwitchContainer: {
       ...toggleSwitchContainer,
         backgroundColor: '#002060',
-        color: darkThemeTextColor,
-        
+        color: darkThemeTextColor,  
+    },
+
+    tabStyles: {
+      backgroundColor: 'black',
+      color: darkThemeTextColor,
     },
 
     // camera

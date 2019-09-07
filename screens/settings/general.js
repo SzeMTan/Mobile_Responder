@@ -24,16 +24,14 @@ export default class GeneralScreen extends Component {
 
     constructor(){
         super();
-        this.state = {switchValue: GLOBAL.darkState, backgroundColor: styles.appbackground};
+        this.state = {switchValue: GLOBAL.darkState};
         this.onValueChange = this.onValueChange.bind(this);
       }
 
     render() {
         return (
-            <View style={ this.state.backgroundColor}>
-                <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
-                </SettingsList>
-                    <ToggleComponent toggleLabel='Enable Dark Theme' onToggle={() => this.onValueChange()} toggleState={GLOBAL.darkState}/>
+            <View style={[styles.appbackground,styles.containerView]}>
+                <ToggleComponent toggleLabel='Enable Dark Theme' onToggle={() => this.onValueChange()} toggleState={GLOBAL.darkState}/>
                 <SliderComponent title={'Notifications(mins)'} min={0} max={10}/>
             </View>
         );

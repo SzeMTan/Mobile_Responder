@@ -30,13 +30,13 @@ export default class HeaderComponent extends Component {
                         <Text style={styles.headerText}>DONE</Text>
                       </TouchableOpacity>
                     }
-                    backgroundColor="#0076FF"
+                    backgroundColor={styles.header.backgroundColor}
                   />
                 ) : (
                   <Header
                     centerComponent={{ text: this.props.title, style: styles.header }}
                     rightComponent={{ text: "10/10", style: styles.headerText }}
-                    backgroundColor="#0076FF"
+                    backgroundColor={styles.header.backgroundColor}
                   />
                 )}
             </View>

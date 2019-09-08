@@ -20,20 +20,10 @@ export default class GalleryScreen extends React.Component {
     photos: []
   };
 
-
-  componentWillUnmount() {
-    // Remove the event listener
-    this.focusListener.remove();
-  }
-
   componentDidMount = async () => {
     const photos = await FileSystem.readDirectoryAsync(PHOTOS_DIR);
     this.setState({ photos });
     const { navigation } = this.props;
-    this.focusListener = navigation.addListener("didFocus", () => {
-      styles = getStyleSheet(GLOBAL.darkState);
-      this.forceUpdate()
-    });
   };
 
   sendImage = () => {

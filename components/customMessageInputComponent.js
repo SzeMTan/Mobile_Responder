@@ -56,7 +56,7 @@ export default class MessagingInputComponent extends Component {
               <Ionicons
                 name="ios-camera"
                 size={40}
-                color={styles.headerText.color}
+                color={styles.accordianText.color}
               />
             </TouchableOpacity>
             <View>

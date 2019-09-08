@@ -2,14 +2,7 @@ import React, { Component } from "react";
 import CommentTestScreen from "./comments";
 import MessageInputComponent from "../../components/customMessageInputComponent";
 
-import {
-  View,
-  ScrollView,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Keyboard,
-  TouchableWithoutFeedback
-} from "react-native";
+import { View, ScrollView, TouchableOpacity } from "react-native";
 import SegmentControlComponent from "../../components/customSegmentControlComponent";
 import CardComponent from "../../components/customCardComponent";
 import ButtonComponent from "../../components/customButtonComponent";
@@ -156,12 +149,23 @@ export default class IndividualJob extends Component {
               titlecontent={["Source: ", "Name", "Address", "Number"]}
             />
           </ScrollView>
-          <ButtonComponent
-            icon={<Ionicons name="ios-arrow-up" size={30} color="#fff" />}
-            onPress={this.goToTop}
-            isBackToTop={true}
-          />
-          {this.state.assigned ? null : (
+          {!this.state.assigned ? (
+            <TouchableOpacity
+              style={styles.iconButtonStyle}
+              onPress={this.goToTop.bind(this)}
+            >
+              <Ionicons name="ios-arrow-up" size={30} color="#fff" />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              style={styles.newJobIcon}
+              onPress={this.goToTop.bind(this)}
+            >
+              <Ionicons name="ios-arrow-up" size={30} color="#fff" />
+            </TouchableOpacity>
+          )}
+
+          {!this.state.assigned && (
             <ButtonComponent
               title="Assign job"
               onPress={() => this.assignJob()}

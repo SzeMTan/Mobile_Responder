@@ -31,6 +31,17 @@ const iconButtonStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   right: 20,
+  bottom: 75,
+  borderRadius:25,
+}
+
+const newJobIcon = {
+  position: 'absolute',
+  width: 50,
+  height: 50,
+  alignItems: 'center',
+  justifyContent: 'center',
+  right: 20,
   bottom: 25,
   borderRadius:25,
 }
@@ -392,8 +403,14 @@ const lightStyleSheet = StyleSheet.create({
     },
     iconButtonStyle: {
       ...iconButtonStyle,
-        backgroundColor: iphoneBlue,
+        backgroundColor: "#0076FF",
     },
+
+    newJobIcon: {
+      ...newJobIcon,
+        backgroundColor: "#0076FF",
+    },
+
     containerView: {
       ...containerView
     },
@@ -668,6 +685,10 @@ const darkStyleSheet = StyleSheet.create({
     iconButtonStyle: {
         ...iconButtonStyle,
         backgroundColor: '#0076FF',
+    },
+    newJobIcon: {
+      ...newJobIcon,
+        backgroundColor: "#0076FF",
     },
     containerView: {
       ...containerView

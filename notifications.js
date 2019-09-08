@@ -1,4 +1,5 @@
 import { Notifications, Permissions } from "expo";
+import { Platform } from "react-native";
 
 const sleep = milliseconds => {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
@@ -14,17 +15,18 @@ async function sendSingleNotification(message) {
 }
 
 async function startSendingNotification(f) {
-  Notifications.dismissAllNotificationsAsync();
-  Notifications.cancelAllScheduledNotificationsAsync();
+  if (Platform.OS != "ios") {
+    Notifications.dismissAllNotificationsAsync();
+    Notifications.cancelAllScheduledNotificationsAsync();
+  }
 
   await sendSingleNotification("d0100017: something happened...");
-  f("d0100017: something happened...")
+  f("d0100017: something happened...");
   await sendSingleNotification("d0100018: something happened...");
-  f("d0100018: something happened...")
+  f("d0100018: something happened...");
 
   await sendSingleNotification("d0100019: something happened...");
-  f("d0100019: something happened...")
-
+  f("d0100019: something happened...");
 }
 
 export async function askPermissions(f) {

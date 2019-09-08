@@ -66,6 +66,7 @@ export default class UnitMessagingComponent extends React.Component {
             user={{
               _id: 1
             }}
+            bottomOffset={80}
           />
         )}
       </View>

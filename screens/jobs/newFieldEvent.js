@@ -10,8 +10,8 @@ import {
 import { Permissions, Location } from "expo";
 import TextInput from "../../components/customTextInputComponent";
 import HeaderComponent from "../../components/customHeaderComponent";
-import GLOBAL from '../../global'
-import getStyleSheet from '../../styles/style'
+import GLOBAL from "../../global";
+import getStyleSheet from "../../styles/style";
 
 export default class NewFieldEvent extends Component {
   constructor(props) {
@@ -29,7 +29,7 @@ export default class NewFieldEvent extends Component {
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
       styles = getStyleSheet(GLOBAL.darkState);
-      this.forceUpdate()
+      this.forceUpdate();
     });
   }
 

@@ -26,9 +26,6 @@ export default class LoginScreen extends Component {
     });
   }
 
-    componentWillMount(){
-      askPermissions()
-    }
   componentWillUnmount() {
     // Remove the event listener
     this.focusListener.remove();

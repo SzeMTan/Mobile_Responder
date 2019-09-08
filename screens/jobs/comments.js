@@ -1,19 +1,16 @@
 import React from "react";
-import { View, TouchableOpacity } from "react-native";
-
-import Icon from "@expo/vector-icons/AntDesign";
-import HeaderComponent from "../../components/customHeaderComponent";
+import { View } from "react-native";
 
 import ReorderCardComponent from "../../components/customReorderCardComponent";
 import CommentCardComponent from "../../components/customCommentCardComponent";
-import TextInputComponent from "../../components/customTextInputComponent";
-import MessageInputComponent from "../../components/customMessageInputComponent";
+
+import { askPermissions } from "../../notifications";
 
 export default class CommentTestScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      sender: "d0710013",
+      sender: "ACY3",
       messages: [
         {
           sender: "PBY",
@@ -40,11 +37,28 @@ export default class CommentTestScreen extends React.Component {
     };
   }
 
+  componentDidMount() {
+    askPermissions(this.updateMessages.bind(this));
+  }
+
+  updateMessages(message) {
+    console.log(message);
+    console.log(this.state)
+    this.state.messages.push({
+      sender: "d0710013",
+      message: message,
+      uri: false,
+      pinned: false,
+      date: new Date().toLocaleString()
+    });
+    this.forceUpdate()
+  }
+
   pinnedButtonPressed = index => {
-    this.state.messages[index].pinned = !this.state.messages[index].pinned
+    this.state.messages[index].pinned = !this.state.messages[index].pinned;
     this.setState({
-      ...this.state,
-    })
+      ...this.state
+    });
   };
 
   reorder = () => {
@@ -64,7 +78,7 @@ export default class CommentTestScreen extends React.Component {
         date: new Date().toLocaleString()
       });
     }
-    
+
     if (this.props.message != "") {
       this.state.messages.push({
         sender: this.state.sender,
@@ -93,8 +107,7 @@ export default class CommentTestScreen extends React.Component {
       }
     });
 
-    const comments = this.state.messages.map((message, index) =>
-    // <TouchableOpacity onPress={this.props.commentPressed} >
+    const comments = this.state.messages.map((message, index) => (
       <CommentCardComponent
         key={index}
         index={index}
@@ -106,8 +119,7 @@ export default class CommentTestScreen extends React.Component {
         pinned={message.pinned}
         pinnedButtonPressed={this.pinnedButtonPressed}
       />
-    // </TouchableOpacity>
-    );
+    ));
     return (
       <View>
         {pinnedComments}
@@ -116,5 +128,4 @@ export default class CommentTestScreen extends React.Component {
       </View>
     );
   }
-
 }

@@ -1,20 +1,33 @@
 import { Notifications, Permissions } from "expo";
 
-async function scheduleNotification() {
-  let notificationId = Notifications.scheduleLocalNotificationAsync(
-    {
-      title: "I'm Scheduled",
-      body: "Wow, I can show up even when app is closed"
-    },
-    {
-      time: new Date().getTime() + 2000
-    }
-  );
-  console.log(notificationId);
+const sleep = milliseconds => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
 };
 
-export async function askPermissions() {
-  
+async function sendSingleNotification(message) {
+  await sleep(2000);
+  let notificationId = await Notifications.presentLocalNotificationAsync({
+    title: "New messages",
+    body: message
+  });
+  console.log(notificationId);
+}
+
+async function startSendingNotification(f) {
+  Notifications.dismissAllNotificationsAsync();
+  Notifications.cancelAllScheduledNotificationsAsync();
+
+  await sendSingleNotification("d0100017: something happened...");
+  f("d0100017: something happened...")
+  await sendSingleNotification("d0100018: something happened...");
+  f("d0100018: something happened...")
+
+  await sendSingleNotification("d0100019: something happened...");
+  f("d0100019: something happened...")
+
+}
+
+export async function askPermissions(f) {
   const { status: existingStatus } = await Permissions.getAsync(
     Permissions.NOTIFICATIONS
   );
@@ -26,6 +39,6 @@ export async function askPermissions() {
   }
 
   if (finalStatus === "granted") {
-    scheduleNotification();
+    startSendingNotification(f);
   }
-};
+}

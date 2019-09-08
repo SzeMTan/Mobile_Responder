@@ -1,3 +1,4 @@
+import { getFormattedDate } from "./helpers"
 module.exports = {
   darkState: false,
   jobs: [
@@ -6,7 +7,7 @@ module.exports = {
       priority: "P2",
       code: "3C-CRIME PREVENTION ADVICE",
       destination: "10 Waterloo Quadrant",
-      date: "17 Mar 17:35",
+      date: getFormattedDate("02:35"),
       status: "PENDING",
       latlng: { latitude: -36.848671, longitude: 174.770107 },
       assigned: false
@@ -16,7 +17,7 @@ module.exports = {
       priority: "P2",
       code: "3C-CRIME PREVENTION ADVICE",
       destination: "10 Waterloo Quadrant",
-      date: "17 Mar 17:35",
+      date: getFormattedDate("03:03"),
       status: "CLOSED",
       latlng: { latitude: -36.853943, longitude: 174.768265 },
       assigned: false
@@ -26,7 +27,7 @@ module.exports = {
       priority: "P2",
       code: "3C-CRIME PREVENTION ADVICE",
       destination: "10 Waterloo Quadrant",
-      date: "17 Mar 17:35",
+      date: getFormattedDate("08:25"),
       status: "PENDING",
       latlng: { latitude: -36.852638, longitude: 174.768265 },
       assigned: true
@@ -36,7 +37,7 @@ module.exports = {
       priority: "P2",
       code: "3C-CRIME PREVENTION ADVICE",
       destination: "10 Waterloo Quadrant",
-      date: "17 Mar 17:35",
+      date: getFormattedDate("10:24"),
       status: "CLOSED",
       latlng: { latitude: -36.852638, longitude: 174.768265 },
       assigned: true
@@ -46,7 +47,7 @@ module.exports = {
       priority: "P2",
       code: "3C-CRIME PREVENTION ADVICE",
       destination: "10 Waterloo Quadrant",
-      date: "17 Mar 17:35",
+      date: getFormattedDate("11:40"),
       status: "CLOSED",
       latlng: { latitude: -36.852638, longitude: 174.768265 },
       assigned: true
@@ -80,26 +81,26 @@ module.exports = {
   ],
   messages: [
     {
-      sender: "PBY",
-      message: "CALL FOR WINDOW",
-      date: "17/03/19 2:16PM",
+      sender: "d0750033",
+      message: "HEADLINE: Operator - female req police - line cutting in and out",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate(""),
+    },
+    {
+      sender: "d0750033",
+      message: "female stating address",
+      date: getFormattedDate(""),
       uri: false,
       pinned: false
     },
     {
-      sender: "ACY3",
-      message: "POS WAS ON THE MOVE",
+      sender: "d0750033",
+      message: "said she was locked out",
       uri: false,
       pinned: false,
-      date: "17/03/19 3:00PM"
+      date: getFormattedDate(""),
     },
-    {
-      sender: "d0710013",
-      message: "YOUNG MALE ASKING FOR POLICE PRN: 765846",
-      uri: false,
-      pinned: false,
-      date: "17/03/19 5:00PM"
-    }
   ],
   mounted: false
 };

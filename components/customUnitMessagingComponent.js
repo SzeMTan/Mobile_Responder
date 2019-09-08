@@ -9,6 +9,7 @@ import {
 import { GiftedChat } from "react-native-gifted-chat";
 import GLOBAL from "../global";
 import getStyleSheet from "../styles/style";
+import { getFormattedDate } from "../helpers";
 
 export default class UnitMessagingComponent extends React.Component {
   state = {
@@ -16,12 +17,13 @@ export default class UnitMessagingComponent extends React.Component {
   };
 
   componentWillMount() {
+    formattedDate = getFormattedDate("");
     this.setState({
       messages: [
         {
           _id: 1,
           text: "Hello World",
-          createdAt: new Date(),
+          createdAt: formattedDate,
           user: {
             _id: 2,
             name: "PBY"

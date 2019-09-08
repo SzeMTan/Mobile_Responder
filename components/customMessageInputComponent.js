@@ -9,7 +9,6 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback
 } from "react-native";
-import Icon from "@expo/vector-icons/Ionicons";
 import { Ionicons } from "@expo/vector-icons";
 import GLOBAL from "../global";
 import getStyleSheet from "../styles/style";

@@ -1,32 +1,15 @@
 import React, { Component } from "react";
 import { ScrollView, View, TouchableOpacity } from "react-native";
 import HeaderComponent from "../../components/customHeaderComponent";
-import SearchBarComponent from "../../components/customSearchBarComponent";
 import CardComponent from "../../components/customCardComponent";
 
-import ButtonComponent from "../../components/customButtonComponent";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import GLOBAL from "../../global";
 import getStyleSheet from "../../styles/style";
-import { FlatList } from "react-native-gesture-handler";
 
+import { getFormattedDate } from "../../helpers";
 styles = getStyleSheet(GLOBAL.darkState);
-
-const monthNames = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sept",
-  "Oct",
-  "Nov",
-  "Dec"
-];
 
 export default class JobsList extends Component {
   componentDidMount() {
@@ -91,16 +74,7 @@ export default class JobsList extends Component {
   };
 
   newJobCreated = object => {
-    const d = new Date();
-
-    const formattedDate =
-      d.getDate() +
-      " " +
-      monthNames[d.getMonth()] +
-      " " +
-      d.getHours() +
-      ":" +
-      d.getMinutes();
+    formattedDate = getFormattedDate("");
 
     newEvent = {
       title: "P0" + Math.round(Math.random() * 100000000),
@@ -155,25 +129,17 @@ export default class JobsList extends Component {
             .map(job => this.renderCard(job));
     return (
       <View style={[styles.containerView, styles.appbackground]}>
-        <View style={{ alignContent: "stretch", flexDirection: "row" }}>
-          <SearchBarComponent title="Jobs" />
-          <TouchableOpacity
-            style={{ alignSelf: "center" }}
-            onPress={this.filter}
-          >
-            <MaterialCommunityIcons
-              name="filter"
-              size={40}
-              color={styles.tabStyles.color}
-            />
-          </TouchableOpacity>
-        </View>
         <ScrollView>
           <View style={[styles.containerView, styles.jobCenterContainer]}>
             {cards}
           </View>
         </ScrollView>
-
+        <TouchableOpacity
+          style={styles.filterIcon}
+          onPress={this.filter.bind(this)}
+        >
+          <MaterialCommunityIcons name="filter" size={30} color="#fff" />
+        </TouchableOpacity>
         <TouchableOpacity
           style={styles.newJobIcon}
           onPress={this.newJob.bind(this)}

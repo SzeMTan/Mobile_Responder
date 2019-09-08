@@ -46,6 +46,16 @@ const newJobIcon = {
   borderRadius:25,
 }
 
+const filterIcon = {
+  position: 'absolute',
+  width: 50,
+  height: 50,
+  alignItems: 'center',
+  justifyContent: 'center',
+  right: 20,
+  top: 25,
+  borderRadius:25,
+}
 const containerView = {
   flex: 1,
 }
@@ -410,7 +420,10 @@ const lightStyleSheet = StyleSheet.create({
       ...newJobIcon,
         backgroundColor: "#0076FF",
     },
-
+    filterIcon: {
+      ...filterIcon,
+        backgroundColor: "#0076FF",
+    },
     containerView: {
       ...containerView
     },
@@ -688,6 +701,10 @@ const darkStyleSheet = StyleSheet.create({
     },
     newJobIcon: {
       ...newJobIcon,
+        backgroundColor: "#0076FF",
+    },
+    filterIcon: {
+      ...filterIcon,
         backgroundColor: "#0076FF",
     },
     containerView: {

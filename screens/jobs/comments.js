@@ -7,6 +7,7 @@ import CommentCardComponent from "../../components/customCommentCardComponent";
 import { askPermissions } from "../../notifications";
 
 import GLOBAL from "../../global";
+import { getFormattedDate } from "../../helpers";
 
 export default class CommentTestScreen extends React.Component {
   constructor() {
@@ -38,13 +39,7 @@ export default class CommentTestScreen extends React.Component {
   }
 
   updateMessages(message) {
-    GLOBAL.messages.push({
-      sender: "d0710013",
-      message: message,
-      uri: false,
-      pinned: false,
-      date: new Date().toLocaleString()
-    });
+    GLOBAL.messages.push(message);
     if (this.state.mounted) {
       this.state.messages = GLOBAL.messages;
       this.forceUpdate();
@@ -77,15 +72,16 @@ export default class CommentTestScreen extends React.Component {
       />
     );
   }
-  
+
   render() {
     if (this.props.uri != "" && this.state.newuri != this.props.uri) {
+      formattedDate = getFormattedDate("");
       this.state.messages.push({
         sender: this.state.sender,
         message: this.props.uri,
         uri: true,
         pinned: false,
-        date: new Date().toLocaleString()
+        date: formattedDate
       });
       this.state.newuri = this.props.uri;
     }
@@ -94,12 +90,13 @@ export default class CommentTestScreen extends React.Component {
       this.props.message != "" &&
       this.state.newmessage != this.props.message
     ) {
+      formattedDate = getFormattedDate("");
       this.state.messages.push({
         sender: this.state.sender,
         message: this.props.message,
         uri: false,
         pinned: false,
-        date: new Date().toLocaleString()
+        date: formattedDate
       });
       this.state.newmessage = this.props.message;
     }

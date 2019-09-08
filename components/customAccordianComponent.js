@@ -21,9 +21,9 @@ export default class Accordion extends React.Component {
           onPress={() => this.toggleExpand()}
         >
           {this.state.expanded ? (
-            <MaterialIcons name="expand-less" size={40} color={styles.header.color}/>
+            <MaterialIcons name="expand-less" size={40} color={styles.accordianText.color}/>
           ) : (
-            <MaterialIcons name="expand-more" size={40} color={styles.header.color}/>
+            <MaterialIcons name="expand-more" size={40} color={styles.accordianText.color}/>
           )}
 
           {this.props.title()}

@@ -405,6 +405,9 @@ const lightStyleSheet = StyleSheet.create({
     headerText:{
         color : darkThemeTextColor,
     },
+    accordianText:{
+      color : lightThemeTextColor,
+    },
     rootContainer: {
           backgroundColor: '#8FC1E3',
       },
@@ -422,7 +425,7 @@ const lightStyleSheet = StyleSheet.create({
     },
     cardDivider: {
       ...cardDivider,
-      backgroundColor: 'blue'
+      backgroundColor: '#C1C7C9'
     },
 
     sliderContainer: {
@@ -677,6 +680,9 @@ const darkStyleSheet = StyleSheet.create({
     headerText:{
         color : darkThemeTextColor,
     },
+    accordianText:{
+      color : darkThemeTextColor,
+    },
     rootContainer: {
           backgroundColor: darkThemeTextColor,
       },
@@ -906,7 +912,7 @@ const darkStyleSheet = StyleSheet.create({
   // job filter
   accordionTitleRow: {
     ...accordionTitleRow,
-    backgroundColor: darkThemeBackgroundColor
+    backgroundColor: "#09174a"
   },
   title: {
     ...title,
@@ -923,7 +929,7 @@ const darkStyleSheet = StyleSheet.create({
   // accordion
   titleRow: {
     ...titleRow,
-    backgroundColor: darkThemeBackgroundColor
+    backgroundColor: "#09174a"
   },
   accordionContentRow: {
     ...accordionContentRow,

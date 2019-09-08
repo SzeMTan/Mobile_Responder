@@ -17,7 +17,7 @@ module.exports = {
       code: "3C-CRIME PREVENTION ADVICE",
       destination: "10 Waterloo Quadrant",
       date: "17 Mar 17:35",
-      status: "COMPLETED",
+      status: "CLOSED",
       latlng: { latitude: -36.853943, longitude: 174.768265 },
       assigned: false
     },
@@ -37,7 +37,7 @@ module.exports = {
       code: "3C-CRIME PREVENTION ADVICE",
       destination: "10 Waterloo Quadrant",
       date: "17 Mar 17:35",
-      status: "COMPLETED",
+      status: "CLOSED",
       latlng: { latitude: -36.852638, longitude: 174.768265 },
       assigned: true
     },
@@ -47,7 +47,7 @@ module.exports = {
       code: "3C-CRIME PREVENTION ADVICE",
       destination: "10 Waterloo Quadrant",
       date: "17 Mar 17:35",
-      status: "COMPLETED",
+      status: "CLOSED",
       latlng: { latitude: -36.852638, longitude: 174.768265 },
       assigned: true
     }

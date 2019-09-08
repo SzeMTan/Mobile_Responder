@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import Slider from 'react-native-slider';
-// import styles from '../styles/style'
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 

@@ -3,7 +3,6 @@ import { ScrollView, View, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
 import SearchBarComponent from '../../components/customSearchBarComponent';
 import CardComponent from '../../components/customCardComponent';
-// import styles from '../../styles/style'
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 

@@ -33,7 +33,6 @@ export default class JobsList extends Component {
     FileSystem.makeDirectoryAsync(
       FileSystem.documentDirectory + "photos"
     ).catch(e => {
-      console.log(e, "Directory exists");
     });
    
   }
@@ -90,7 +89,6 @@ export default class JobsList extends Component {
   
   filterJobs = object => {
     this.state.filter = object;
-    console.log(this.state);
     this.forceUpdate();
   };
 
@@ -105,7 +103,6 @@ export default class JobsList extends Component {
       d.getHours() +
       ":" +
       d.getMinutes();
-    console.log(formattedDate);
 
     newEvent = {
       title: "P0" + Math.round(Math.random() * 100000000),

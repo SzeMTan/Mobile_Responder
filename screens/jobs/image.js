@@ -46,7 +46,6 @@ export default class GalleryScreen extends React.Component {
     for (i = 0; i < this.state.photos.length; i++) {
       fileName = this.state.photos[i];
       uri = `${PHOTOS_DIR}/${fileName}`;
-      console.log("deleting " + uri);
       FileSystem.deleteAsync(uri);
     }
   };
@@ -66,7 +65,6 @@ export default class GalleryScreen extends React.Component {
         <View style={styles.bottomBar}>
           <TouchableOpacity
             style={styles.bottomButton}
-            // onPress={this.props.onPress}
             onPress={this.deleteImages}
           >
             <SimpleLineIcons name="reload" size={40} color="white" />

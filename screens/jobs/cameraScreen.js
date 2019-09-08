@@ -1,13 +1,9 @@
 import { Camera, FileSystem, Permissions } from "expo";
 import React from "react";
 import {
-  Alert,
-  StyleSheet,
   Text,
   View,
   TouchableOpacity,
-  Slider,
-  Platform
 } from "react-native";
 import GalleryScreen from "./image";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
@@ -30,11 +26,6 @@ export default class CameraScreen extends React.Component {
   }
 
   componentDidMount() {
-    FileSystem.makeDirectoryAsync(
-      FileSystem.documentDirectory + "photos"
-    ).catch(e => {
-      console.log(e, "Directory exists");
-    });
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
       styles = getStyleSheet(GLOBAL.darkState);

@@ -80,7 +80,7 @@ export default class Home extends Component {
                               'Alert',
                               'You are still assigned to a job, would you like to close it before ending your shift?',
                               [
-                                {text: 'Yes', onPress: () => {(GLOBAL.jobs.map((job, index) => {if (job.assigned == true & job.status=="PENDING") {console.log(index); GLOBAL.jobs[index].status = "COMPLETED";}})); this.props.navigation.navigate("Login")}},
+                                {text: 'Yes', onPress: () => {(GLOBAL.jobs.map((job, index) => {if (job.assigned == true & job.status=="PENDING") {GLOBAL.jobs[index].status = "CLOSED";}})); this.props.navigation.navigate("Login")}},
                                 {text: 'No', onPress: () => this.props.navigation.navigate("Login")},
                               ],
                               )
@@ -91,19 +91,17 @@ export default class Home extends Component {
                     </ScrollView>
         }
         else {
-            // return <View style={styles.containerView}>
-                 return     <ScrollView>
-                        <View style={styles.unitCenterContainer}>
-                          <Text style={styles.homeText}>Current Jobs</Text>
-                          {GLOBAL.jobs.filter(job=>job.assigned && job.status=="PENDING").map((job, index) => this.renderCard(job, index))}
-                          <ButtonComponent style={ styles.endJob } title='END JOB' 
-                            onPress={() => GLOBAL.jobs.map((job, index) => {if (job.assigned == true & job.status=="PENDING") {console.log(index); GLOBAL.jobs[index].status = "COMPLETED"; this.forceUpdate()}})}/>
-                          <View style={styles.horizonalLine}/>
-                          <Text style={styles.homeText}>Dispatched Jobs</Text>
-                          {GLOBAL.jobs.filter(job=>job.assigned && job.status=="COMPLETED").map((job, index) => this.renderCard(job, index))}
-                        </View>
-                    </ScrollView>
-                    // </View>
+            return <ScrollView>
+                  <View style={styles.unitCenterContainer}>
+                    <Text style={styles.homeText}>Current Jobs</Text>
+                    {GLOBAL.jobs.filter(job=>job.assigned && job.status=="PENDING").map((job, index) => this.renderCard(job, index))}
+                    <ButtonComponent style={ styles.endJob } title='END JOB' 
+                      onPress={() => GLOBAL.jobs.map((job, index) => {if (job.assigned == true & job.status=="PENDING") {GLOBAL.jobs[index].status = "CLOSED"; this.forceUpdate()}})}/>
+                    <View style={styles.horizonalLine}/>
+                    <Text style={styles.homeText}>Dispatched Jobs</Text>
+                    {GLOBAL.jobs.filter(job=>job.assigned && job.status=="CLOSED").map((job, index) => this.renderCard(job, index))}
+                  </View>
+              </ScrollView>
         }
     }
 

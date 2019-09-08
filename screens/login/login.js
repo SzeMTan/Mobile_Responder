@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import {Keyboard, Text, View, TouchableWithoutFeedback, KeyboardAvoidingView} from 'react-native';
-// import styles from '../../styles/style'
-import { Button } from 'react-native-elements'
 import ToggleComponent from "../../components/customToggleComponent";
 import TextInputComponent from "../../components/customTextInputComponent";
 import ButtonComponent from "../../components/customButtonComponent";
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
-import {askPermissions} from '../../notifications'
 
 styles = getStyleSheet(GLOBAL.darkState);
 

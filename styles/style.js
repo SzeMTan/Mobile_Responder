@@ -151,14 +151,18 @@ const loginFormView = {
   justifyContent:'center'
 }
 
-const loginFormTextInput = {
+const androidPicker = {
   height: 45,
-  fontSize: 14,
   borderRadius: 5,
   borderWidth: 1,
   paddingLeft: 10,
   marginHorizontal: 15,
   marginVertical: 5,
+}
+
+const loginFormTextInput = {
+  fontSize: 14,
+  ...androidPicker
 }
 
 const emergencyButton = {
@@ -507,6 +511,15 @@ const lightStyleSheet = StyleSheet.create({
       ...loginFormTextInput,
       backgroundColor: '#fafafa',
     },
+    androidPicker: {
+      ...androidPicker,
+      backgroundColor: '#fafafa',
+    },
+    pickerSelector: {
+      ...loginFormTextInput,
+      justifyContent: 'center',
+      backgroundColor: '#fafafa',
+    },
     changePassword: {
       ...changePassword,
         color: '#0a84ff',
@@ -778,6 +791,15 @@ const darkStyleSheet = StyleSheet.create({
     },
     loginFormTextInput: {
       ...loginFormTextInput,
+      backgroundColor: '#fafafa',
+    },
+    androidPicker: {
+      ...androidPicker,
+      backgroundColor: '#fafafa',
+    },
+    pickerSelector: {
+      ...loginFormTextInput,
+      justifyContent: 'center',
       backgroundColor: '#fafafa',
     },
     changePassword: {

@@ -98,10 +98,6 @@ export default class JobsList extends Component {
   };
 
   newJobCreated = object => {
-    console.log(object);
-    console.log(new Date().getDate());
-    console.log(new Date().getHours());
-    console.log(new Date().getMinutes());
     const d = new Date();
 
     const formattedDate =

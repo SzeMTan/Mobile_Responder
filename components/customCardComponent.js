@@ -11,7 +11,7 @@ export default class CardComponent extends Component {
   };
 
   render() {
-      styles = getStyleSheet(GLOBAL.darkState);
+    styles = getStyleSheet(GLOBAL.darkState);
     return (
       <Card containerStyle={styles.card}>
         <Text
@@ -24,13 +24,11 @@ export default class CardComponent extends Component {
         </Text>
 
         {this.props.titlecontent.length != 0 &&
-          this.props.titlecontent.map((st, index) => {
-            return (
-              <Text style={{ marginVertical: 5 }} key={index}>
-                {st}
-              </Text>
-            );
-          })}
+          this.props.titlecontent.map((st, index) => (
+            <Text style={{ marginVertical: 5 }} key={index}>
+              {st}
+            </Text>
+          ))}
 
         {this.props.leftbottom && (
           <Divider style={{ backgroundColor: "blue", marginVertical: 10 }} />

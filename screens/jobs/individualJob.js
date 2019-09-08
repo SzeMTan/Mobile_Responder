@@ -2,13 +2,20 @@ import React, { Component } from "react";
 import CommentTestScreen from "./comments";
 import MessageInputComponent from "../../components/customMessageInputComponent";
 
-import { View, Text, ScrollView, Button, TouchableOpacity } from 'react-native';
-import SegmentControlComponent from '../../components/customSegmentControlComponent';
-import CardComponent from '../../components/customCardComponent';
-import ButtonComponent from '../../components/customButtonComponent';
-import { Ionicons } from '@expo/vector-icons';
-import GLOBAL from '../../global'
-import getStyleSheet from '../../styles/style'
+import {
+  View,
+  ScrollView,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Keyboard,
+  TouchableWithoutFeedback
+} from "react-native";
+import SegmentControlComponent from "../../components/customSegmentControlComponent";
+import CardComponent from "../../components/customCardComponent";
+import ButtonComponent from "../../components/customButtonComponent";
+import { Ionicons } from "@expo/vector-icons";
+import GLOBAL from "../../global";
+import getStyleSheet from "../../styles/style";
 
 export default class IndividualJob extends Component {
   constructor(props) {
@@ -25,7 +32,7 @@ export default class IndividualJob extends Component {
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
       styles = getStyleSheet(GLOBAL.darkState);
-      this.forceUpdate()
+      this.forceUpdate();
     });
   }
 
@@ -34,8 +41,10 @@ export default class IndividualJob extends Component {
     this.focusListener.remove();
   }
 
-  componentWillMount(){
-    GLOBAL.jobs.filter(job => this.props.navigation.getParam("title") == job.title).map(job=>this.setState({assigned: job.assigned}))
+  componentWillMount() {
+    GLOBAL.jobs
+      .filter(job => this.props.navigation.getParam("title") == job.title)
+      .map(job => this.setState({ assigned: job.assigned }));
   }
 
   setIndex = index => {
@@ -83,12 +92,12 @@ export default class IndividualJob extends Component {
   };
 
   assignJob() {
-    this.setState({assigned : true})
+    this.setState({ assigned: true });
   }
 
   commentPressed = () => {
-    this.props.navigation.navigate('OnDuty')
-  }
+    this.props.navigation.navigate("OnDuty");
+  };
 
   renderTabContent = index => {
     if (index === 0) {
@@ -100,7 +109,13 @@ export default class IndividualJob extends Component {
             }}
             style={styles.containerView}
           >
-            <CardComponent title={this.state.assigned ? 'Assigned: Assigned' : 'Assigned: Unassigned' }/>
+            <CardComponent
+              title={
+                this.state.assigned
+                  ? "Assigned: Assigned"
+                  : "Assigned: Unassigned"
+              }
+            />
             <CardComponent
               title="JOB INFO"
               titlecontent={[
@@ -110,14 +125,19 @@ export default class IndividualJob extends Component {
                 "Priority: " + this.props.navigation.getParam("priority", "P1")
               ]}
             />
-            <TouchableOpacity 
-            onPress={() => this.props.navigation.navigate('Map', {latlng: this.props.navigation.getParam("latlng")})}>
-            <CardComponent
-              title="LOCATION"
-              titlecontent={[
-                this.props.navigation.getParam("destination", "N/A")
-              ]}
-            />
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate("Map", {
+                  latlng: this.props.navigation.getParam("latlng")
+                })
+              }
+            >
+              <CardComponent
+                title="LOCATION"
+                titlecontent={[
+                  this.props.navigation.getParam("destination", "N/A")
+                ]}
+              />
             </TouchableOpacity>
             <CardComponent
               title="TIMES"
@@ -141,8 +161,12 @@ export default class IndividualJob extends Component {
             onPress={this.goToTop}
             isBackToTop={true}
           />
-          {this.state.assigned ? null : <ButtonComponent title="Assign job" onPress={() => this.assignJob()} />}
-          
+          {this.state.assigned ? null : (
+            <ButtonComponent
+              title="Assign job"
+              onPress={() => this.assignJob()}
+            />
+          )}
         </View>
       );
     } else {

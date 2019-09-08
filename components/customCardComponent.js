@@ -16,7 +16,7 @@ export default class CardComponent extends Component {
       <Card containerStyle={styles.card}>
         <Text
           style={[
-            { fontSize: 20 },
+            styles.cardTitle,
             { ...(this.props.titlecontent.length != 0 && { marginBottom: 10 }) }
           ]}
         >
@@ -26,22 +26,22 @@ export default class CardComponent extends Component {
         {this.props.titlecontent.length != 0 &&
           this.props.titlecontent.map((st, index) => {
             return (
-              <Text style={{ marginVertical: 5 }} key={index}>
+              <Text style={[{ marginVertical: 5 , color: styles.cardTitle.color}]} key={index}>
                 {st}
               </Text>
             );
           })}
 
         {this.props.leftbottom && (
-          <Divider style={{ backgroundColor: "blue", marginVertical: 10 }} />
+          <Divider style={styles.cardDivider} />
         )}
 
         {this.props.leftbottom && (
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
-            <Text style={{ fontStyle: "italic" }}>{this.props.leftbottom}</Text>
-            <Text>{this.props.rightbottom}</Text>
+            <Text style={[{ fontStyle: "italic" , color: styles.cardTitle.color}]}>{this.props.leftbottom}</Text>
+            <Text style={{ color: styles.cardTitle.color}}>{this.props.rightbottom}</Text>
           </View>
         )}
       </Card>

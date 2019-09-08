@@ -53,7 +53,7 @@ export default class IndividualJob extends Component {
       title: params.title || "JOB",
       headerTitleStyle: styles.header,
       headerStyle: styles.header,
-      headerTintColor: styles.headerText,
+      headerTintColor: styles.headerText.color,
       headerRight: <View />
     };
   };
@@ -172,6 +172,7 @@ export default class IndividualJob extends Component {
   };
 
   render() {
+    styles = getStyleSheet(GLOBAL.darkState);
     return (
       <View style={[styles.containerView, styles.appbackground]}>
         <SegmentControlComponent

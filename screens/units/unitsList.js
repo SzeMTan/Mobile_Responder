@@ -48,6 +48,7 @@ export default class UnitsList extends Component {
   };
 
   render() {
+    styles = getStyleSheet(GLOBAL.darkState);
     const cards = GLOBAL.units.map(
       unit =>         
         <TouchableOpacity key={unit.title} onPress={() => 

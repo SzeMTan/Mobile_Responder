@@ -11,23 +11,6 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // jobMarkers: [
-      //     {
-      //       title: 'P036986219',
-      //       latlng: {latitude: -36.848671,
-      //         longitude: 174.770107}
-      //     },
-      //   {
-      //     title: 'P036986218',
-      //     latlng: {latitude: -36.853943,
-      //       longitude: 174.768265}
-      //   },
-      //   {
-      //     title: 'P036986217',
-      //     latlng: {latitude: -36.852638,
-      //       longitude: 174.768265}
-      //   },
-    // ],
     jobMarkers: GLOBAL.jobs,
     selectedObject: null,
     unitMarkers: GLOBAL.units
@@ -114,7 +97,7 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.containerView}>
-        <HeaderComponent title='MAP'/>
+        <HeaderComponent title='Map'/>
         <View style={styles.mapContainer}>
         {
           this.state.locationResult === null ?

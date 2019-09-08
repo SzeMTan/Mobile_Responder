@@ -4,11 +4,18 @@ import isIPhoneX from "react-native-is-iphonex";
 
 const darkThemeTextColor='white'
 
-const darkThemeBackgroundColor = '#002060'
+const lightThemeTextColor='black'
 
-const iphoneBlue = '#0076FF'
+// const darkThemeBackgroundColor = '#002060'
+const darkThemeBackgroundColor = '#0D2062'
 
-const darkThemeHeader = '#65000B'
+// const iphoneBlue = '#0076FF'
+const iphoneBlue = 'white'
+
+// const darkThemeHeader = '#65000B'
+const darkThemeHeader = '#0D2062'
+
+const darkCardColor= '#18388F'
 
 const button = {
     padding:10,
@@ -40,7 +47,7 @@ const header = {
 
 const segmentedControlTab = {
   marginHorizontal: 10,
-  marginVertical: 5
+  marginTop: 10
 }
 
 const sliderContainer = {
@@ -115,6 +122,7 @@ const endJob = {
   backgroundColor: 'red',
   borderRadius: 10,
   marginHorizontal: 10,
+  marginTop: 10
 }
 
 const horizonalLine = {
@@ -135,7 +143,7 @@ const logoText = {
   fontSize: 35,
   fontWeight: "800",
   marginBottom:60,
-  textAlign: 'left',
+  textAlign: 'center',
 }
 
 const loginFormView = {
@@ -356,6 +364,14 @@ const card = {
   borderRadius:10, 
 }
 
+const cardTitle ={
+  fontSize: 20
+}
+
+const cardDivider={
+  marginVertical: 10
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export default function getStyleSheet(useDarkTheme){
     return useDarkTheme ? darkStyleSheet : lightStyleSheet;
@@ -392,8 +408,19 @@ const lightStyleSheet = StyleSheet.create({
         ...segmentedControlTab
     },
     card: {
-        backgroundColor: '#F7F9FB'
+      ...card,
+      backgroundColor: darkThemeTextColor,
+      borderColor: darkThemeTextColor
+        // backgroundColor: '#F7F9FB'
     },
+    cardTitle: {
+      ...cardTitle
+    },
+    cardDivider: {
+      ...cardDivider,
+      backgroundColor: 'blue'
+    },
+
     sliderContainer: {
       ...sliderContainer,
       backgroundColor: darkThemeTextColor,
@@ -407,12 +434,8 @@ const lightStyleSheet = StyleSheet.create({
     },
 
     tabStyles: {
-      backgroundColor: darkThemeTextColor,
-      color: 'black',
-    },
-
-    card: {
-      ...card
+      // backgroundColor: darkThemeTextColor,
+      // color: iphoneBlue,
     },
 
     //camera
@@ -635,7 +658,6 @@ const darkStyleSheet = StyleSheet.create({
     },
     header:{
         ...header,
-        // backgroundColor: '#0076FF',
         backgroundColor: darkThemeHeader,
         color : darkThemeTextColor
       },
@@ -651,7 +673,16 @@ const darkStyleSheet = StyleSheet.create({
     },
     card: {
       ...card,
-      backgroundColor: '#d8e6f0'
+      backgroundColor: darkCardColor,
+      borderColor: darkCardColor
+    },
+    cardTitle: {
+      ...cardTitle,
+      color: darkThemeTextColor
+    },
+    cardDivider: {
+      ...cardDivider,
+      backgroundColor: darkThemeTextColor
     },
     sliderContainer: {
       ...sliderContainer,
@@ -673,8 +704,8 @@ const darkStyleSheet = StyleSheet.create({
     },
 
     tabStyles: {
-      backgroundColor: 'black',
-      color: darkThemeTextColor,
+      backgroundColor: darkThemeBackgroundColor,
+      color: iphoneBlue,
     },
 
     // camera

@@ -49,9 +49,9 @@ const SettingsNavigator = createStackNavigator(
       screen: GeneralScreen,
       navigationOptions: {
         headerTitle: 'General',
-        headerTitleStyle: styles.header,
-        headerTintColor: styles.headerText.color,
-        headerStyle: styles.header,
+        // headerTitleStyle: styles.header,
+        // headerTintColor: styles.headerText.color,
+        // headerStyle: styles.header,
         headerRight: (<View/>),
       }, 
     },
@@ -240,9 +240,8 @@ const TabNavigator =  createBottomTabNavigator({
   initialRouteName: "Home",
   resetOnBlur:true,
   tabBarOptions: {
-    // inactiveBackgroundColor: styles.tabStyles.backgroundColor,
-    // inactiveTintColor: styles.tabStyles.color,
-    // activeTintColor: styles.tabStyles.backgroundColor
+    inactiveBackgroundColor: styles.tabStyles.backgroundColor,
+    inactiveTintColor: styles.tabStyles.color,
   }
 });
 

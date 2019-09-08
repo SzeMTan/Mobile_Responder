@@ -10,9 +10,20 @@ export default class GeneralScreen extends Component {
 
     constructor(){
         super();
-        this.state = {backgroundColor: styles.appbackground, switchValue: GLOBAL.darkState};
+        this.state = {styles: getStyleSheet(GLOBAL.darkState), switchValue: GLOBAL.darkState};
         this.onValueChange = this.onValueChange.bind(this);
       }
+
+      static navigationOptions = ({ navigation }) => {
+        const {
+          state: { params = {} }
+        } = navigation;
+        return {
+            headerTitleStyle: styles.header,
+            headerTintColor: styles.headerText.color,
+            headerStyle: styles.header,
+        };
+      };
 
       componentDidMount() {
         const { navigation } = this.props;
@@ -42,6 +53,6 @@ export default class GeneralScreen extends Component {
         const currentState = GLOBAL.darkState;
         GLOBAL.darkState = !currentState;
         styles = getStyleSheet(GLOBAL.darkState);
-        this.setState({backgroundColor: getStyleSheet(GLOBAL.darkState).appbackground})
+        this.setState({styles: getStyleSheet(GLOBAL.darkState)})
       }
 }

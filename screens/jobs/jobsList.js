@@ -67,9 +67,6 @@ export default class JobsList extends Component {
           title={"Jobs(" + navigation.getParam("jobsListSize") + ")"}
         />
       ),
-      headerTitleStyle: styles.header,
-      headerStyle: styles.header,
-      headerTintColor: styles.headerText,
     };
   };
 
@@ -148,6 +145,7 @@ export default class JobsList extends Component {
     </TouchableOpacity>
   }
   render() {
+    styles = getStyleSheet(GLOBAL.darkState);
     const cards =
       this.state.filter.dGroups == undefined
         ? GLOBAL.jobs.map(job => (

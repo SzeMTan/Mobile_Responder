@@ -237,9 +237,9 @@ const TabNavigator =  createBottomTabNavigator({
   initialRouteName: "Home",
   resetOnBlur:true,
   tabBarOptions: {
-    inactiveBackgroundColor: styles.tabStyles.backgroundColor,
-    inactiveTintColor: styles.tabStyles.color,
-    activeTintColor: styles.tabStyles.backgroundColor
+    // inactiveBackgroundColor: styles.tabStyles.backgroundColor,
+    // inactiveTintColor: styles.tabStyles.color,
+    // activeTintColor: styles.tabStyles.backgroundColor
   }
 });
 

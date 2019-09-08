@@ -11,6 +11,8 @@ import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 import { FlatList } from "react-native-gesture-handler";
 
+styles = getStyleSheet(GLOBAL.darkState);
+
 const monthNames = [
   "Jan",
   "Feb",
@@ -33,7 +35,10 @@ export default class JobsList extends Component {
     ).catch(e => {
       console.log(e, "Directory exists");
     });
-    
+   
+  }
+
+  componentWillMount(){
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
       styles = getStyleSheet(GLOBAL.darkState);
@@ -61,7 +66,10 @@ export default class JobsList extends Component {
         <HeaderComponent
           title={"Jobs(" + navigation.getParam("jobsListSize") + ")"}
         />
-      )
+      ),
+      headerTitleStyle: styles.header,
+      headerStyle: styles.header,
+      headerTintColor: styles.headerText,
     };
   };
 
@@ -159,14 +167,14 @@ export default class JobsList extends Component {
               this.renderCard(job)
             ));
     return (
-      <View style={styles.containerView}>
+      <View style={[styles.containerView,styles.appbackground]}>
         <View style={{ alignContent: "stretch", flexDirection: "row" }}>
           <SearchBarComponent title="Jobs" />
           <TouchableOpacity
             style={{ alignSelf: "center" }}
             onPress={this.filter}
           >
-            <MaterialCommunityIcons name="filter" size={40} />
+            <MaterialCommunityIcons name="filter" size={40} color={styles.tabStyles.color}/>
           </TouchableOpacity>
         </View>
         <ScrollView>

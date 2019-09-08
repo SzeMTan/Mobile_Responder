@@ -53,7 +53,7 @@ export default class IndividualJob extends Component {
       title: params.title || "JOB",
       headerTitleStyle: styles.header,
       headerStyle: styles.header,
-      headerTintColor: 'white',
+      headerTintColor: styles.headerText,
       headerRight: <View />
     };
   };
@@ -173,7 +173,7 @@ export default class IndividualJob extends Component {
 
   render() {
     return (
-      <View style={styles.containerView}>
+      <View style={[styles.containerView, styles.appbackground]}>
         <SegmentControlComponent
           paramvalues={["INFO", "COMMENTS"]}
           tabAction={this.setIndex}

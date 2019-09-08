@@ -86,7 +86,7 @@ export default class JobFilter extends Component {
 
   render() {
     return (
-      <View>
+      <View style={[styles.appbackground, styles.containerView]}>
         <HeaderComponent
           title="Job Filter"
           filter={true}
@@ -126,7 +126,7 @@ export default class JobFilter extends Component {
             paddingHorizontal: 5
           }}
         >
-          <Text>{filterType.title}</Text>
+          <Text style={styles.headerText}>{filterType.title}</Text>
         </View>
       ));
     return (
@@ -152,7 +152,7 @@ export default class JobFilter extends Component {
               color="green"
             />
           )}
-          <Text>{filterType.title}</Text>
+          <Text style={styles.headerText}>{filterType.title}</Text>
         </View>
       </TouchableOpacity>
     ));

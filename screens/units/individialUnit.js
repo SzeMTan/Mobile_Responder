@@ -44,7 +44,7 @@ export default class IndividualUnit extends Component {
           title: params.title || "Unit",
           headerTitleStyle: styles.header,
           headerStyle: styles.header,
-          headerTintColor: 'white',
+          headerTintColor: styles.headerText.color,
           headerRight: <View />
         };
       };
@@ -72,7 +72,7 @@ export default class IndividualUnit extends Component {
 
     render() {
         return (
-            <View style={styles.containerView}>
+            <View style={[styles.containerView, styles.appbackground]}>
                 <SegmentControlComponent paramvalues={['INFO', 'MESSAGE']} 
                     tabAction={this.setIndex}
                 />

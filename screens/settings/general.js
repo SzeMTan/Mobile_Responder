@@ -8,10 +8,16 @@ import getStyleSheet from '../../styles/style'
 
 export default class GeneralScreen extends Component {
 
-    componentDidMount() {
+    constructor(){
+        super();
+        this.state = {backgroundColor: styles.appbackground, switchValue: GLOBAL.darkState};
+        this.onValueChange = this.onValueChange.bind(this);
+      }
+
+      componentDidMount() {
         const { navigation } = this.props;
         this.focusListener = navigation.addListener("didFocus", () => {
-          styles = getStyleSheet(GLOBAL.darkState);
+            styles = getStyleSheet(GLOBAL.darkState);
           this.forceUpdate()
         });
       }
@@ -19,13 +25,6 @@ export default class GeneralScreen extends Component {
       componentWillUnmount() {
         // Remove the event listener
         this.focusListener.remove();
-      }
-
-
-    constructor(){
-        super();
-        this.state = {switchValue: GLOBAL.darkState};
-        this.onValueChange = this.onValueChange.bind(this);
       }
 
     render() {
@@ -42,6 +41,7 @@ export default class GeneralScreen extends Component {
         this.setState({switchValue: value});
         const currentState = GLOBAL.darkState;
         GLOBAL.darkState = !currentState;
+        styles = getStyleSheet(GLOBAL.darkState);
         this.setState({backgroundColor: getStyleSheet(GLOBAL.darkState).appbackground})
       }
 }

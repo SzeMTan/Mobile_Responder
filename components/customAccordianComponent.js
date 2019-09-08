@@ -15,15 +15,15 @@ export default class Accordion extends React.Component {
   render() {
     styles = getStyleSheet(GLOBAL.darkState);
     return (
-      <View>
+      <View style={styles.appbackground}>
         <TouchableOpacity
           style={styles.titleRow}
           onPress={() => this.toggleExpand()}
         >
           {this.state.expanded ? (
-            <MaterialIcons name="expand-less" size={40} />
+            <MaterialIcons name="expand-less" size={40} color={styles.header.color}/>
           ) : (
-            <MaterialIcons name="expand-more" size={40} />
+            <MaterialIcons name="expand-more" size={40} color={styles.header.color}/>
           )}
 
           {this.props.title()}

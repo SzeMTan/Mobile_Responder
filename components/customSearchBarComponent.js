@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { SearchBar } from 'react-native-elements';
+import GLOBAL from '../global'
+import getStyleSheet from '../styles/style'
 
 export default class SearchBarComponent extends Component {
 
@@ -12,6 +14,7 @@ export default class SearchBarComponent extends Component {
   };
 
   render() {
+    styles = getStyleSheet(GLOBAL.darkState);
     const { search } = this.state;
 
     return (

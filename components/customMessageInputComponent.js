@@ -50,7 +50,7 @@ export default class MessagingInputComponent extends Component {
             this.props.cameraPressed();
           }}
         >
-          <Ionicons name="ios-camera" size={40} />
+          <Ionicons name="ios-camera" size={40} color={styles.headerText.color} />
         </TouchableOpacity>
         <View>
           <TextInput

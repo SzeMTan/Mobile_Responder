@@ -13,7 +13,7 @@ export default class CardComponent extends Component {
   render() {
       styles = getStyleSheet(GLOBAL.darkState);
     return (
-      <Card>
+      <Card containerStyle={styles.card}>
         <Text
           style={[
             { fontSize: 20 },

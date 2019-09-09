@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   View,
   Text,
+  ActivityIndicator,
   ScrollView,
   Picker,
   Platform,
@@ -21,11 +22,12 @@ export default class NewFieldEvent extends Component {
       eventType: "1310 Robbery",
       jobStatus: "PENDING",
       location: "Location not found",
-      hasLocationPermissions: false
+      hasLocationPermissions: false,
+      lookingForLocation: false
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getLocationAsync();
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
@@ -41,30 +43,40 @@ export default class NewFieldEvent extends Component {
 
   getLocationAsync = async () => {
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
+
     if (status !== "granted") {
       this.setState({
         locationResult: "Permission to access location was denied"
       });
     } else {
-      this.setState({ hasLocationPermissions: true });
+      this.setState({ hasLocationPermissions: true, lookingForLocation: true });
     }
-    let location = await Location.getCurrentPositionAsync({});
 
-    fetch(
-      "https://nominatim.openstreetmap.org/reverse?format=geojson&lat=" +
-        location.coords.latitude +
-        "&lon=" +
-        location.coords.longitude
-    )
-      .then(response => response.json())
-      .then(responseJson => {
-        this.state.location = responseJson.features[0].properties.display_name;
-      })
-      .catch(error => console.error(error));
+    if (status === "granted") {
+      let location = await Location.getCurrentPositionAsync({});
+
+      fetch(
+        "https://nominatim.openstreetmap.org/reverse?format=geojson&lat=" +
+          location.coords.latitude +
+          "&lon=" +
+          location.coords.longitude
+      )
+        .then(response => response.json())
+        .then(responseJson => {
+          this.setState({
+            location: responseJson.features[0].properties.display_name,
+            lookingForLocation: false
+          });
+        })
+        .catch(error => {
+          console.error(error);
+          this.setState({ lookingForLocation: false });
+        });
+    }
   };
 
   static defaultProps = {
-    eventTypes: ["1310 Robbery", "1510 Serious Assault"],
+    eventTypes: ["1310 Robbery", "1510 Serious Assault", "1640 Minor Assault"],
     jobStatusButtons: ["PENDING", "CLOSED"]
   };
 
@@ -107,6 +119,26 @@ export default class NewFieldEvent extends Component {
           cancel={this.cancelPressed}
         />
         <ScrollView contentComponentStyle={{ flex: 1 }}>
+          {!this.state.hasLocationPermissions ? (
+            <View>
+              <Text style={styles.heading}>
+                No Permission To get Location or Location is not on
+              </Text>
+            </View>
+          ) : this.state.lookingForLocation ? (
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                margin: 10
+              }}
+            >
+              <ActivityIndicator size="small" color="#8BBE1B" />
+              <Text style={styles.heading}> Looking for location...</Text>
+            </View>
+          ) : (
+            <Text style={styles.heading}>Location: {this.state.location}</Text>
+          )}
           <Text style={styles.heading}>Event Type</Text>
 
           {Platform.OS == "android" ? (

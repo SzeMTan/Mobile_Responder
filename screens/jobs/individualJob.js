@@ -86,6 +86,11 @@ export default class IndividualJob extends Component {
 
   assignJob() {
     this.setState({ assigned: true });
+    GLOBAL.jobs.map((job, index) => {
+      if (this.props.navigation.getParam("title") == job.title) {
+        GLOBAL.jobs[index].assigned = true;
+      }
+    });
   }
 
   commentPressed = () => {

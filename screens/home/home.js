@@ -82,6 +82,7 @@ export default class Home extends Component {
                               [
                                 {text: 'Yes', onPress: () => {(GLOBAL.jobs.map((job, index) => {if (job.assigned == true & job.status=="PENDING") {GLOBAL.jobs[index].status = "CLOSED";}})); this.props.navigation.navigate("Login")}},
                                 {text: 'No', onPress: () => this.props.navigation.navigate("Login")},
+                                {text: 'Cancel', onPress: () => console.log("cancelled")},
                               ],
                               )
                         }else{

@@ -50,7 +50,7 @@ export default class UnitsList extends Component {
     const cards = GLOBAL.units.map(
       unit =>         
         <TouchableOpacity key={unit.title} onPress={() => 
-        this.props.navigation.navigate('IndividualUnit', {id: 1, title: unit.title, latlng: unit.latlng})}>
+        this.props.navigation.navigate('IndividualUnit', {id: 1, title: unit.title, latlng: unit.latlng, destination: unit.destination})}>
           <CardComponent key={unit.title} 
           title={unit.title} 
           titlecontent={[unit.code, unit.destination]}

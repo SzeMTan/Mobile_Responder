@@ -108,7 +108,7 @@ export default class JobsList extends Component {
       >
         <CardComponent
           key={job.title}
-          title={job.title}
+          title={job.title + "-" + job.priority}
           titlecontent={[job.code, job.destination]}
           leftbottom={job.date}
           rightbottom={job.status}

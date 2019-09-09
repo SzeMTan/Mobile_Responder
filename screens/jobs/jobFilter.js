@@ -25,7 +25,7 @@ export default class JobFilter extends Component {
     super(props);
     this.state = {
       priority: [
-        { title: "P0", selected: true },
+        { title: "P0", selected: false },
         { title: "P1", selected: false },
         { title: "P2", selected: false },
         { title: "P3", selected: false },

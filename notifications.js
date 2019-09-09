@@ -9,6 +9,12 @@ const sleep = milliseconds => {
 const messages = [
   {
     sender: "d0750033",
+    message: "PRN: 748903278",
+    uri: false,
+    pinned: false
+  },
+  {
+    sender: "d0750033",
     message: "said 'we will see you soon, thank you'",
     uri: false,
     pinned: false

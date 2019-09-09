@@ -42,10 +42,10 @@ export default class ReorderCardComponent extends Component {
             <MaterialCommunityIcons
               name={this.state.context[this.state.selectedIndex].iconName}
               size={20}
-              color={styles.cameraFontColor.color}
+              color={styles.reorderText.color}
 
             />
-            <Text style={styles.headerText}>
+            <Text style={styles.reorderText}>
               {this.state.context[this.state.selectedIndex].text}{" "}
             </Text>
           </View>

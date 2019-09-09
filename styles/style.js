@@ -598,13 +598,16 @@ const lightStyleSheet = StyleSheet.create({
     },
 
     reorderCardContainer: {
-      ...reorderCardContainer
+      ...reorderCardContainer,
     },
     reorderCardTouch: {
       ...reorderCardTouch
     },
     reorderCardRotation: {
       ...reorderCardRotation
+    },
+    reorderText: {
+      color: lightThemeTextColor
     },
     messageInputContainer: {
       ...messageInputContainer
@@ -892,6 +895,9 @@ const darkStyleSheet = StyleSheet.create({
     ...reorderCardContainer,
     backgroundColor: darkCardColor,
     borderColor: darkCardColor
+  },
+  reorderText: {
+    color: darkThemeTextColor
   },
   reorderCardTouch: {
     ...reorderCardTouch

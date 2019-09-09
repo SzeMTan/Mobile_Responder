@@ -1,100 +1,64 @@
 import React from "react";
-import { View, TouchableOpacity } from "react-native";
-
-import Icon from "@expo/vector-icons/AntDesign";
-import HeaderComponent from "../../components/customHeaderComponent";
+import { View } from "react-native";
 
 import ReorderCardComponent from "../../components/customReorderCardComponent";
 import CommentCardComponent from "../../components/customCommentCardComponent";
-import TextInputComponent from "../../components/customTextInputComponent";
-import MessageInputComponent from "../../components/customMessageInputComponent";
+
+import { askPermissions } from "../../notifications";
+
+import GLOBAL from "../../global";
+import { getFormattedDate } from "../../helpers";
 
 export default class CommentTestScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      sender: "d0710013",
-      messages: [
-        {
-          sender: "PBY",
-          message: "CALL FOR WINDOW",
-          date: "17/03/19 2:16PM",
-          uri: false,
-          pinned: false
-        },
-        {
-          sender: "ACY3",
-          message: "POS WAS ON THE MOVE",
-          uri: false,
-          pinned: false,
-          date: "17/03/19 3:00PM"
-        },
-        {
-          sender: "d0710013",
-          message: "YOUNG MALE ASKING FOR POLICE PRN: 765846",
-          uri: false,
-          pinned: false,
-          date: "17/03/19 5:00PM"
-        }
-      ]
+      sender: "ACY3",
+      messages: [],
+      newmessage: "",
+      newuri: "",
+      mounted: false,
+      reorder: false
     };
   }
 
+  componentWillMount() {
+    this.state.messages = GLOBAL.messages;
+    this.state.mounted = true;
+  }
+
+  componentDidMount() {
+    if (!GLOBAL.mounted) {
+      askPermissions(this.updateMessages.bind(this));
+      GLOBAL.mounted = true;
+    }
+  }
+
+  componentWillUnmount() {
+    this.state.mounted = false;
+  }
+
+  updateMessages(message) {
+    GLOBAL.messages.push(message);
+    if (this.state.mounted) {
+      this.state.messages = GLOBAL.messages;
+      this.forceUpdate();
+    }
+  }
+
   pinnedButtonPressed = index => {
-    this.state.messages[index].pinned = !this.state.messages[index].pinned
-    this.setState({
-      ...this.state,
-    })
+    this.state.messages[index].pinned = !this.state.messages[index].pinned;
+    GLOBAL.messages = this.state.messages;
+    this.forceUpdate();
   };
 
   reorder = () => {
-    this.setState({
-      ...this.state,
-      messages: this.state.messages.slice(0).reverse()
-    });
+    this.state.reorder = !this.state.reorder;
+    this.forceUpdate();
   };
 
-  render() {
-    if (this.props.uri != "") {
-      this.state.messages.push({
-        sender: this.state.sender,
-        message: this.props.uri,
-        uri: true,
-        pinned: false,
-        date: new Date().toLocaleString()
-      });
-    }
-    
-    if (this.props.message != "") {
-      this.state.messages.push({
-        sender: this.state.sender,
-        message: this.props.message,
-        uri: false,
-        pinned: false,
-        date: new Date().toLocaleString()
-      });
-    }
-
-    const pinnedComments = this.state.messages.map((message, index) => {
-      if (message.pinned) {
-        return (
-          <CommentCardComponent
-            key={index}
-            index={index}
-            sender={message.sender}
-            message={message.message}
-            onDuty={this.props.commentPressed}
-            uri={message.uri}
-            date={message.date}
-            pinned={message.pinned}
-            pinnedButtonPressed={this.pinnedButtonPressed}
-          />
-        );
-      }
-    });
-
-    const comments = this.state.messages.map((message, index) =>
-    // <TouchableOpacity onPress={this.props.commentPressed} >
+  renderComment(message, index) {
+    return (
       <CommentCardComponent
         key={index}
         index={index}
@@ -106,15 +70,58 @@ export default class CommentTestScreen extends React.Component {
         pinned={message.pinned}
         pinnedButtonPressed={this.pinnedButtonPressed}
       />
-    // </TouchableOpacity>
     );
+  }
+
+  render() {
+    if (this.props.uri != "" && this.state.newuri != this.props.uri) {
+      formattedDate = getFormattedDate("");
+      this.state.messages.push({
+        sender: this.state.sender,
+        message: this.props.uri,
+        uri: true,
+        pinned: false,
+        date: formattedDate
+      });
+      this.state.newuri = this.props.uri;
+    }
+
+    if (
+      this.props.message != "" &&
+      this.state.newmessage != this.props.message
+    ) {
+      formattedDate = getFormattedDate("");
+      this.state.messages.push({
+        sender: this.state.sender,
+        message: this.props.message,
+        uri: false,
+        pinned: false,
+        date: formattedDate
+      });
+      this.state.newmessage = this.props.message;
+    }
+
+    const pinnedComments = this.state.messages.map((message, index) => {
+      if (message.pinned) {
+        return this.renderComment(message, index);
+      }
+    });
+
+    const reverseComments = this.state.messages
+      .slice(0)
+      .reverse()
+      .map((message, index) => this.renderComment(message, index));
+
+    const comments = this.state.messages.map((message, index) =>
+      this.renderComment(message, index)
+    );
+
     return (
       <View>
         {pinnedComments}
         <ReorderCardComponent func={this.reorder} />
-        {comments}
+        {this.state.reorder ? reverseComments : comments}
       </View>
     );
   }
-
 }

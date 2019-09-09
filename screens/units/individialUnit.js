@@ -1,16 +1,26 @@
 import React, { Component } from "react";
-import { View, Text, ScrollView, Button, TouchableOpacity } from 'react-native';
-import HeaderComponent from '../../components/customHeaderComponent';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import UnitMessagingComponent from '../../components/customUnitMessagingComponent';
-// import styles from '../../styles/style'
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class IndividualUnit extends Component {
+
+    componentDidMount() {
+        const { navigation } = this.props;
+        this.focusListener = navigation.addListener("didFocus", () => {
+          styles = getStyleSheet(GLOBAL.darkState);
+          this.forceUpdate()
+        });
+      }
+    
+      componentWillUnmount() {
+        // Remove the event listener
+        this.focusListener.remove();
+      }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -32,7 +42,7 @@ export default class IndividualUnit extends Component {
           title: params.title || "Unit",
           headerTitleStyle: styles.header,
           headerStyle: styles.header,
-          headerTintColor: 'white',
+          headerTintColor: styles.headerText.color,
           headerRight: <View />
         };
       };
@@ -60,7 +70,7 @@ export default class IndividualUnit extends Component {
 
     render() {
         return (
-            <View style={styles.containerView}>
+            <View style={[styles.containerView, styles.appbackground]}>
                 <SegmentControlComponent paramvalues={['INFO', 'MESSAGE']} 
                     tabAction={this.setIndex}
                 />

@@ -6,8 +6,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class ReorderCardComponent extends Component {
   constructor() {
     super();
@@ -29,6 +27,7 @@ export default class ReorderCardComponent extends Component {
   };
 
   render() {
+    styles = getStyleSheet(GLOBAL.darkState);
     return (
       <Card containerStyle={styles.reorderCardContainer}>
         <TouchableOpacity
@@ -43,8 +42,10 @@ export default class ReorderCardComponent extends Component {
             <MaterialCommunityIcons
               name={this.state.context[this.state.selectedIndex].iconName}
               size={20}
+              color={styles.cameraFontColor.color}
+
             />
-            <Text>
+            <Text style={styles.headerText}>
               {this.state.context[this.state.selectedIndex].text}{" "}
             </Text>
           </View>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {View, StyleSheet } from 'react-native';
+import {View } from 'react-native';
 import HeaderComponent from './components/customHeaderComponent';
-import { createBottomTabNavigator, createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
 
 import CardStackStyleInterpolator from 'react-navigation-stack/src/views/StackView/StackViewStyleInterpolator'
 import Home from './screens/home/home';
@@ -20,7 +20,6 @@ import IndividualJob from './screens/jobs/individualJob';
 
 import { Ionicons } from '@expo/vector-icons'; 
 import ChangePasswordScreen from './screens/login/changePassword';
-// import styles from './styles/style';
 import GLOBAL from './global'
 import getStyleSheet from './styles/style';
 
@@ -28,11 +27,12 @@ import getStyleSheet from './styles/style';
 import CameraTestScreen from './screens/jobs/cameraScreen';
 import NewFieldEvent from "./screens/jobs/newFieldEvent";
 import OnDutyScreen from './screens/jobs/onDutyScreen';
+import JobFilter from "./screens/jobs/jobFilter";
+
+import { YellowBox } from 'react-native';
+YellowBox.ignoreWarnings(['Warning: Failed prop type: Invalid prop `children` supplied to `Card`.']);
 
 const iconSize = 30;
-
-const headerFontSize = 24;
-
 
 const styles = getStyleSheet(GLOBAL.darkState);
 
@@ -49,9 +49,6 @@ const SettingsNavigator = createStackNavigator(
       screen: GeneralScreen,
       navigationOptions: {
         headerTitle: 'General',
-        headerTitleStyle: styles.header,
-        headerTintColor: 'white',
-        headerStyle: styles.header,
         headerRight: (<View/>),
       }, 
     },
@@ -60,7 +57,7 @@ const SettingsNavigator = createStackNavigator(
       navigationOptions: {
         headerTitle: 'About',
         headerTitleStyle: styles.header,
-        headerTintColor: 'white',
+        headerTintColor: styles.headerText.color,
         headerStyle: styles.header,
         headerRight: (<View/>),
       },    
@@ -113,6 +110,27 @@ const UnitsNavigator = createStackNavigator(
   }
 );
 
+const HomeNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: Home,
+    },
+    IndividualJob: {
+      screen: IndividualJob,
+    },
+    Camera: {
+      screen: CameraTestScreen,
+    },
+    OnDuty: {
+      screen: OnDutyScreen,
+    },
+  },
+  {
+    initialRouteName: 'Home',
+    headerLayoutPreset: 'center',
+  }
+);
+
 const JobsNavigator = createStackNavigator(
   {
     Jobs: {
@@ -129,6 +147,9 @@ const JobsNavigator = createStackNavigator(
     },
     OnDuty: {
       screen: OnDutyScreen,
+    },
+    JobFilter: {
+      screen: JobFilter
     }
   },
   {
@@ -153,22 +174,30 @@ const JobsNavigator = createStackNavigator(
 //for hiding tab bar when in camera screen
 JobsNavigator.navigationOptions = ({ navigation }) => {
   let tabBarVisible = true;
-  if (navigation.state.index == 2) {
-    tabBarVisible = false;
+  for (i = 0; i < navigation.state.routes.length; i++) {
+    if (
+      navigation.state.routes[i].routeName == "OnDutyScreen" ||
+      navigation.state.routes[i].routeName == "NewFieldEvent" ||
+      navigation.state.routes[i].routeName == "JobFilter" ||
+      navigation.state.routes[i].routeName == "Camera"
+    ) {
+      tabBarVisible = false;
+    }
   }
 
   return {
     tabBarVisible,
   };
 };
+
 // main bottom tab navigator
 const TabNavigator =  createBottomTabNavigator({
   Home: {
-    screen: Home,
+    screen: HomeNavigator,
     navigationOptions: {
         tabBarLabel:"Home",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-home" size={iconSize}  />
+          <Ionicons name="ios-home" size={iconSize} color={tintColor} />
         )
       }
     },
@@ -177,7 +206,7 @@ const TabNavigator =  createBottomTabNavigator({
     navigationOptions: {
         tabBarLabel:"Settings",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-settings" size={iconSize}  />
+          <Ionicons name="ios-settings" size={iconSize} color={tintColor}  />
         )
       }
     },
@@ -187,7 +216,7 @@ const TabNavigator =  createBottomTabNavigator({
       navigationOptions: {
           tabBarLabel:"Map",
           tabBarIcon: ({ tintColor }) => (
-            <Ionicons name="ios-map" size={iconSize}  />
+            <Ionicons name="ios-map" size={iconSize} color={tintColor} />
           )
         }
       },
@@ -196,7 +225,7 @@ const TabNavigator =  createBottomTabNavigator({
     navigationOptions: {
         tabBarLabel:"Units",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-car" size={iconSize}  />
+          <Ionicons name="ios-car" size={iconSize} color={tintColor} />
         )
       }
     },
@@ -205,7 +234,7 @@ const TabNavigator =  createBottomTabNavigator({
     navigationOptions:{
       tabBarLabel:"Jobs",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-briefcase" size={iconSize}  />
+          <Ionicons name="ios-briefcase" size={iconSize} color={tintColor} />
         )
     }
   },
@@ -213,7 +242,12 @@ const TabNavigator =  createBottomTabNavigator({
 {
   order: ["Jobs", "Units", "Home", "Map", "Settings"],
   initialRouteName: "Home",
-  resetOnBlur:true
+  resetOnBlur:true,
+  tabBarOptions: {
+    inactiveBackgroundColor: styles.tabStyles.backgroundColor,
+    inactiveTintColor: styles.tabStyles.color,
+    activeTintColor: styles.tabStyles.backgroundColor
+  }
 });
 
 // login to home navigation

@@ -12,8 +12,6 @@ import { MaterialIcons, SimpleLineIcons } from "@expo/vector-icons";
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
-styles = getStyleSheet(GLOBAL.darkState);
-
 const PHOTOS_DIR = FileSystem.documentDirectory + "photos";
 
 export default class GalleryScreen extends React.Component {
@@ -25,6 +23,7 @@ export default class GalleryScreen extends React.Component {
   componentDidMount = async () => {
     const photos = await FileSystem.readDirectoryAsync(PHOTOS_DIR);
     this.setState({ photos });
+    const { navigation } = this.props;
   };
 
   sendImage = () => {
@@ -37,7 +36,6 @@ export default class GalleryScreen extends React.Component {
     for (i = 0; i < this.state.photos.length; i++) {
       fileName = this.state.photos[i];
       uri = `${PHOTOS_DIR}/${fileName}`;
-      console.log("deleting " + uri);
       FileSystem.deleteAsync(uri);
     }
   };
@@ -57,7 +55,6 @@ export default class GalleryScreen extends React.Component {
         <View style={styles.bottomBar}>
           <TouchableOpacity
             style={styles.bottomButton}
-            // onPress={this.props.onPress}
             onPress={this.deleteImages}
           >
             <SimpleLineIcons name="reload" size={40} color="white" />

@@ -1,15 +1,27 @@
 import React, { Component } from "react";
 import { ScrollView, View, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
-import SearchBarComponent from '../../components/customSearchBarComponent';
 import CardComponent from '../../components/customCardComponent';
-// import styles from '../../styles/style'
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
+styles = getStyleSheet(GLOBAL.darkState);
 
 export default class UnitsList extends Component {
+
+  componentWillMount() {
+    const { navigation } = this.props;
+    this.focusListener = navigation.addListener("didFocus", () => {
+      styles = getStyleSheet(GLOBAL.darkState);
+      this.forceUpdate()
+    });
+  }
+
+  componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -34,6 +46,7 @@ export default class UnitsList extends Component {
   };
 
   render() {
+    styles = getStyleSheet(GLOBAL.darkState);
     const cards = GLOBAL.units.map(
       unit =>         
         <TouchableOpacity key={unit.title} onPress={() => 
@@ -46,8 +59,7 @@ export default class UnitsList extends Component {
         </TouchableOpacity>
       )
     return (
-        <View style={styles.containerView}>
-            <SearchBarComponent title='Units'/>
+        <View style={[styles.containerView, styles.appbackground]}>
             <ScrollView >
               <View style={styles.unitCenterContainer}>
                 {cards}

@@ -1,35 +1,15 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
 import { MapView, Location, Permissions } from 'expo';
-// import styles from '../../styles/style'
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
-
-const styles = getStyleSheet(GLOBAL.darkState);
 
 export default class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      // jobMarkers: [
-      //     {
-      //       title: 'P036986219',
-      //       latlng: {latitude: -36.848671,
-      //         longitude: 174.770107}
-      //     },
-      //   {
-      //     title: 'P036986218',
-      //     latlng: {latitude: -36.853943,
-      //       longitude: 174.768265}
-      //   },
-      //   {
-      //     title: 'P036986217',
-      //     latlng: {latitude: -36.852638,
-      //       longitude: 174.768265}
-      //   },
-    // ],
     jobMarkers: GLOBAL.jobs,
     selectedObject: null,
     unitMarkers: GLOBAL.units
@@ -46,7 +26,14 @@ export default class App extends Component {
     const { navigation } = this.props;
         this.focusListener = navigation.addListener("didFocus", () => {
             this.getLocationAsync();
+            styles = getStyleSheet(GLOBAL.darkState);
+            this.forceUpdate() 
         });
+  }
+
+  componentWillUnmount() {
+    // Remove the event listener
+    this.focusListener.remove();
   }
 
   handleMapRegionChange = mapRegion => {
@@ -109,7 +96,7 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.containerView}>
-        <HeaderComponent title='MAP'/>
+        <HeaderComponent title='Map'/>
         <View style={styles.mapContainer}>
         {
           this.state.locationResult === null ?
@@ -129,8 +116,6 @@ export default class App extends Component {
               coordinate={marker.latlng}
               ref={marker => (this.marker = marker)}
               onPress={() => this.calloutJobPress(marker)}
-              // onPress={() => this.marker.showCallout()}
-              // onCalloutPress={this.calloutPress(marker)}
             >
               {this.renderJobMarker(marker.latlng)}
             </MapView.Marker>

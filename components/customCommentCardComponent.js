@@ -5,8 +5,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 
-const styles = getStyleSheet(GLOBAL.darkState);
-
 export default class ReorderCardComponent extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +13,7 @@ export default class ReorderCardComponent extends Component {
     this.props.pinnedButtonPressed(this.props.index);
   };
   render() {
+    styles = getStyleSheet(GLOBAL.darkState);
     const { message } = this.props;
     return (
       <Card containerStyle={styles.commentCardTopLevelContainer}>
@@ -28,7 +27,7 @@ export default class ReorderCardComponent extends Component {
             <TouchableOpacity style={styles.containerView} onPress={this.pin}>
               <MaterialCommunityIcons
                 name={this.props.pinned ? "pin" : "pin-outline"}
-                color="black"
+                color={styles.pinContainer.color}
                 size={20}
               />
             </TouchableOpacity>

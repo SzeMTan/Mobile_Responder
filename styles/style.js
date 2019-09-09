@@ -2,700 +2,990 @@ import {StyleSheet} from "react-native"
 import { Constants } from "expo";
 import isIPhoneX from "react-native-is-iphonex";
 
-const buttonStyles = {
+const darkThemeTextColor='white'
+
+const lightThemeTextColor='black'
+
+// const darkThemeBackgroundColor = '#002060'
+const darkThemeBackgroundColor = '#0D2062'
+
+// const iphoneBlue = '#0076FF'
+const iphoneBlue = 'white'
+
+// const darkThemeHeader = '#65000B'
+const darkThemeHeader = '#0D2062'
+
+const darkCardColor= '#18388F'
+
+const button = {
     padding:10,
     borderRadius:10,  
     height:45,
     margin:10
 }
 
+const iconButtonStyle = {
+  position: 'absolute',
+  width: 50,
+  height: 50,
+  alignItems: 'center',
+  justifyContent: 'center',
+  right: 20,
+  bottom: 75,
+  borderRadius:25,
+}
+
+const newJobIcon = {
+  position: 'absolute',
+  width: 50,
+  height: 50,
+  alignItems: 'center',
+  justifyContent: 'center',
+  right: 20,
+  bottom: 25,
+  borderRadius:25,
+}
+
+const filterIcon = {
+  position: 'absolute',
+  width: 50,
+  height: 50,
+  alignItems: 'center',
+  justifyContent: 'center',
+  right: 20,
+  top: 25,
+  borderRadius:25,
+}
+const containerView = {
+  flex: 1,
+}
+
+const header = {
+  fontSize: 24,
+  fontWeight: 'normal',
+  textAlign: 'center',
+}
+
+const segmentedControlTab = {
+  marginHorizontal: 15,
+  marginVertical: 10
+}
+
+const sliderContainer = {
+  justifyContent: 'center',
+  marginHorizontal: '5%',
+  paddingVertical: 15,
+  paddingHorizontal:30
+}
+
+const sliderTitleContainer = {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+}
+
+const toggleSwitchContainer = {
+  justifyContent: 'center',
+  marginHorizontal: '5%',
+  paddingVertical: 15,
+  paddingHorizontal:30
+}
+
+const cameraContainer = {
+  flex: 1,
+  backgroundColor: 'black'
+}
+
+const camera = {
+  flex: 1,
+  justifyContent: "space-between"
+}
+
+const topBar = {
+  flex: 0.2,
+  backgroundColor: "transparent",
+  flexDirection: "row",
+  paddingTop: Constants.statusBarHeight,
+  paddingLeft: Constants.statusBarHeight / 2
+}
+
+const bottomBar = {
+  paddingBottom: isIPhoneX ? 25 : 5,
+  backgroundColor: "transparent",
+  justifyContent: "space-around",
+  flex: 0.12,
+  flexDirection: "row"
+}
+
+const noPermissions = {
+  flex: 1,
+  alignItems: "center",
+  justifyContent: "center",
+  padding: 10
+}
+
+const bottomButton = {
+  height: 58,
+  justifyContent: "center",
+  alignItems: "center"
+}
+
+const takePicture = {
+  alignSelf: "center"
+}
+
+const imageBackgroundContainer = {
+  flex: 1,
+  justifyContent: "space-between"
+}
+
+const endJob = {
+  backgroundColor: 'red',
+  borderRadius: 10,
+  marginHorizontal: 10,
+  marginTop: 10
+}
+
+const horizonalLine = {
+  borderBottomColor: 'grey',
+  borderBottomWidth: 2,
+  marginHorizontal:10
+}
+
+const endContainer = {
+  justifyContent:'flex-end',
+}
+
+const centerContainer = {
+  justifyContent:'center'
+}
+
+const logoText = {
+  fontSize: 35,
+  fontWeight: "800",
+  marginBottom:60,
+  textAlign: 'center',
+}
+
+const loginFormView = {
+  paddingHorizontal:20,
+  justifyContent:'center'
+}
+
+const androidPicker = {
+  height: 45,
+  borderRadius: 5,
+  borderWidth: 1,
+  paddingLeft: 10,
+  marginHorizontal: 15,
+  marginVertical: 5,
+}
+
+const loginFormTextInput = {
+  fontSize: 14,
+  ...androidPicker
+}
+
+const emergencyButton = {
+  flexDirection: 'column',
+  backgroundColor: 'red',
+  height: 100,
+  marginHorizontal: 10,
+}
+
+const mapContainer = {
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center',
+}
+
+const paragraph = {
+  margin: 15,
+  fontSize: 18,
+  fontWeight: 'bold',
+  textAlign: 'center',
+}
+
+const map = {
+  flex:1,
+  alignSelf: 'stretch',
+}
+
+const marker = {
+  width: 25,
+  height: 25
+}
+
+const changePassword = {
+  textAlign: 'center'
+}
+
+const settingsContainer = {
+  flex: 1,
+  flexDirection: 'column',
+  justifyContent: 'space-between'
+}
+
+const reorderCardContainer = {
+  padding: 0, 
+  marginVertical: 0, 
+  flexDirection: "row-reverse",
+  borderRadius: 5
+}
+
+const reorderCardTouch = {
+  flex: 1,
+  padding: 10,
+}
+
+const reorderCardRotation = {
+  flexDirection: "row-reverse",
+  alignItems: "center",
+}
+
+const messageInputContainer = {
+  flexDirection: "row", 
+  padding: 0, 
+  margin: 0
+}
+
+const messagingTextInput = {
+  height: 43,
+  fontSize: 14,
+  borderRadius: 5,
+  borderWidth: 1,
+  paddingLeft: 10,
+  marginLeft: 5,
+  marginRight: 5,
+  marginTop: 5,
+  marginBottom: 5,
+}
+
+const commentButton = {
+  fontWeight: "600",
+  fontSize: 17,
+  backgroundColor: "transparent",
+  marginTop: 10,
+  marginBottom: 5
+}
+
+const cameraTouch = {
+  height: 30,
+  width: 30,
+  marginLeft: 10
+}
+
+const commentCardContainer = {
+  flexDirection: "row",
+  justifyContent: "space-between"
+}
+
+const commentCardAuthorContainer = {
+  paddingLeft: 10, 
+  paddingTop: 10
+}
+
+const commentCardAuthorText = {
+  fontSize: 18, 
+  fontWeight: "bold"
+}
+
+const commentCardTopLevelContainer = {
+  marginVertical: 0, 
+  padding: 0,
+  borderRadius: 5,
+}
+
+const pinContainer = {
+  margin: 0, 
+  padding: 0 
+}
+
+const commentCardImageTopLevel = {
+  flex: 1,
+  flexDirection: "row",
+  justifyContent: "space-around"
+}
+
+const commentCardImageSecondaryLevel = {
+  flex: 1,
+  width: 150,
+  height: 150,
+  alignItems: "center",
+  justifyContent: "center",
+  margin: 5
+}
+
+const commentCardImageThirdLevel = {
+  position: "absolute",
+  bottom: 0,
+  right: 0,
+  left: 0,
+  top: 0,
+  resizeMode: "contain"
+}
+
+const commentCardFontContainer = {
+  paddingLeft: 10
+}
+
+const commentCardFontSize = {
+  fontSize: 18
+}
+
+const commentCardDateContainer = {
+  paddingLeft: 10, 
+  paddingBottom: 10
+}
+
+const commentCardDate = {
+  fontStyle: "italic" 
+}
+
+const accordionTitleRow = {
+  flex: 1,
+  flexDirection: "row"
+} 
+const title = {
+  fontSize: 18
+}
+const contentRow = {
+  flexDirection: "row",
+  flexWrap: "wrap"
+}
+const box = {
+  minWidth: 65,
+  minHeight: 65,
+  borderRadius: 1,
+  borderWidth: 1,
+  alignItems: "center",
+  justifyContent: "center",
+  margin: 5
+}
+
+const titleRow = {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  height: 56,
+  alignItems: "center",
+  padding: 10,
+} 
+const accordionContentRow = {
+  paddingHorizontal: 15
+}
+
+const heading= {
+  fontSize: 17,
+  padding: 10
+}
+
+const homeText = {
+  fontSize: 25, 
+  marginTop: 10, 
+  alignSelf: "center"
+}
+
+const card = {
+  borderRadius:10, 
+}
+
+const cardTitle ={
+  fontSize: 20
+}
+
+const cardDivider={
+  marginVertical: 10
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export default function getStyleSheet(useDarkTheme){
     return useDarkTheme ? darkStyleSheet : lightStyleSheet;
 }
 
 const lightStyleSheet = StyleSheet.create({
     appbackground: {
-        backgroundColor: 'blue'
+        backgroundColor: darkThemeTextColor
     },
     button: {
         // backgroundColor: '#0076FF', // default ios button blue 
+        ...button,
         backgroundColor: 'green',
-        padding:10,
-        borderRadius:10,  
-        height:45,
-        margin:10
     },
     iconButtonStyle: {
-        position: 'absolute',
-        width: 50,
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        right: 20,
-        bottom: 25,
-        backgroundColor: '#0076FF',
-        borderRadius:25,
+      ...iconButtonStyle,
+        backgroundColor: "#0076FF",
+    },
+
+    newJobIcon: {
+      ...newJobIcon,
+        backgroundColor: "#0076FF",
+    },
+    filterIcon: {
+      ...filterIcon,
+        backgroundColor: "#0076FF",
     },
     containerView: {
-        flex: 1,
+      ...containerView
     },
     header:{
-        fontSize: 24,
-        fontWeight: 'normal',
-        textAlign: 'center',
-        backgroundColor: '#0076FF',
-        color : 'white'
+        ...header,
+        // backgroundColor: '#0076FF',
+        backgroundColor: darkThemeHeader,
+        color : darkThemeTextColor
       },
     headerText:{
-        color : 'white',
+        color : darkThemeTextColor,
+    },
+    accordianText:{
+      color : lightThemeTextColor,
     },
     rootContainer: {
           backgroundColor: '#8FC1E3',
       },
     segmentedControlTab: {
-        marginHorizontal: 10,
-        marginTop: 5
+        ...segmentedControlTab
     },
     card: {
-        backgroundColor: '#F7F9FB'
+      ...card,
+      backgroundColor: darkThemeTextColor,
+      borderColor: darkThemeTextColor
+        // backgroundColor: '#F7F9FB'
     },
-    cardAction: {        
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
+    cardTitle: {
+      ...cardTitle
     },
-    cardContent: { 
-        flex: 1, 
-        textAlign: "right", 
-        flexDirection: 'row', 
-        justifyContent: 'flex-end'
+    cardDivider: {
+      ...cardDivider,
+      backgroundColor: '#C1C7C9'
     },
+
     sliderContainer: {
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        marginHorizontal: '5%',
-        paddingVertical: 15,
-        paddingHorizontal:30
+      ...sliderContainer,
+      backgroundColor: darkThemeTextColor,
     },
     sliderTitleContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+      ...sliderTitleContainer
     },
     toggleSwitchContainer: {
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        marginHorizontal: '5%',
-        paddingVertical: 15,
-        paddingHorizontal:30
+      ...toggleSwitchContainer,
+      backgroundColor: darkThemeTextColor
+    },
+
+    tabStyles: {
+      // backgroundColor: darkThemeTextColor,
+      // color: iphoneBlue,
     },
 
     //camera
     cameraContainer: {
-      flex: 1,
-      backgroundColor: 'black'
+      ...cameraContainer
     },
     camera: {
-      flex: 1,
-      justifyContent: "space-between"
+      ...camera
     },
     topBar: {
-      flex: 0.2,
-      backgroundColor: "transparent",
-      flexDirection: "row",
-      paddingTop: Constants.statusBarHeight,
-      paddingLeft: Constants.statusBarHeight / 2
-    },
-    bottomBar: {
-      paddingBottom: isIPhoneX ? 25 : 5,
-      backgroundColor: "transparent",
-      alignSelf: "flex-end",
-      justifyContent: "space-between",
-      flex: 0.12,
-      flexDirection: "row"
+      ...topBar
     },
     noPermissions: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      padding: 10
+      ...noPermissions
     },
     cameraFontColor: {
-      color: "white"
-    },
-    generalContainer: {
-      flex: 1
+      color: darkThemeTextColor
     },
     takePicture: {
-      alignSelf: "center"
+      ...takePicture
     },
 
     // image
     imageBackgroundContainer: {
-      flex: 1,
-      justifyContent: "space-between"
-    },
-    topBar: {
-      flex: 0.2,
-      backgroundColor: "transparent",
-      flexDirection: "row",
-      paddingTop: Constants.statusBarHeight,
-      paddingLeft: Constants.statusBarHeight / 2
+      ...imageBackgroundContainer
     },
     bottomBar: {
-      paddingBottom: isIPhoneX ? 25 : 5,
-      backgroundColor: "transparent",
-      justifyContent: "space-around",
-      flex: 0.12,
-      flexDirection: "row"
+      ...bottomBar
     },
     whiteText: {
-      color: "white"
+      color: darkThemeTextColor
     },
     bottomButton: {
-      // flex: 0.3,
-      height: 58,
-      justifyContent: "center",
-      alignItems: "center"
+      ...bottomButton
     },
 
     // home
     endJob: {
-        backgroundColor: 'green',
-        borderRadius: 5,
-        marginHorizontal: 10,
+      ...endJob
       },
-      horizonalLine: {
-        borderBottomColor: 'grey',
-        borderBottomWidth: 2,
-        marginHorizontal:10
-      },
+    horizonalLine: {
+      ...horizonalLine
+    },
+    homeText: {
+      ...homeText,
+      color: 'black'
+    },
 
 
 
     // job
     jobEndContainer: {
-    justifyContent:'flex-end',
+    ...endContainer
     },
     jobCenterContainer: {
-        justifyContent:'center',
+      ...centerContainer
     },
 
 
 
     // login
     logoText: {
-        fontSize: 35,
-        fontWeight: "800",
-        marginBottom:60,
-        textAlign: 'left',
-      },
-      loginFormView: {
-        paddingHorizontal:20,
-        justifyContent:'center'
-      },
-      loginFormTextInput: {
-        height: 45,
-        fontSize: 14,
-        borderRadius: 5,
-        borderWidth: 1,
-        backgroundColor: '#fafafa',
-        paddingLeft: 10,
-        marginHorizontal: 15,
-        marginVertical: 5
-      },
-      changePassword: {
-          color: '#0a84ff',
-          textAlign: 'center'
-      },
-
-
-
-      // map
-      mapContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      paragraph: {
-        margin: 15,
-        fontSize: 18,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: '#34495e',
-      },
-      map: {
-        flex:1,
-        alignSelf: 'stretch',
-      },
-      marker: {
-        width: 25,
-        height: 25
-      },
-
-
-
-      // settings
-      emergencyButton: {
-        flexDirection: 'column',
-        backgroundColor: 'red',
-        height: 100,
-        marginHorizontal: 10,
-      },
-      settingsContainer:{
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between'
-      },
-
-
-      // units
-      unitEndContainer: {
-        flex: 1,
-        justifyContent:'flex-end',
+      ...logoText
     },
+    loginFormView: {
+      ...loginFormView
+    },
+    loginFormTextInput: {
+      ...loginFormTextInput,
+      backgroundColor: '#fafafa',
+    },
+    androidPicker: {
+      ...androidPicker,
+      backgroundColor: '#fafafa',
+    },
+    pickerSelector: {
+      ...loginFormTextInput,
+      justifyContent: 'center',
+      backgroundColor: '#fafafa',
+    },
+    changePassword: {
+      ...changePassword,
+        color: '#0a84ff',
+    },
+
+
+
+    // map
+    mapContainer: {
+      ...mapContainer
+    },
+    paragraph: {
+      ...paragraph,
+      color: '#34495e',
+    },
+    map: {
+      ...map
+    },
+    marker: {
+      ...marker
+    },
+
+
+
+    // settings
+    emergencyButton: {
+      ...emergencyButton
+    },
+    settingsContainer:{
+      ...settingsContainer,
+    },
+
+    settingsChildren:{
+
+    },
+
+
+    // units
     unitCenterContainer: {
-        justifyContent:'center',
+      ...centerContainer,
+      marginBottom: 20
     },
 
     reorderCardContainer: {
-        padding: 0, 
-        marginVertical: 0, 
-        flexDirection: "row-reverse"
+      ...reorderCardContainer
     },
     reorderCardTouch: {
-        flex: 1,
-        padding: 10,
+      ...reorderCardTouch
     },
     reorderCardRotation: {
-        flexDirection: "row-reverse",
-        alignItems: "center",
+      ...reorderCardRotation
     },
     messageInputContainer: {
-        flexDirection: "row", 
-        padding: 0, 
-        margin: 0
+      ...messageInputContainer
     },
     messagingTextInput: {
-        height: 43,
-        fontSize: 14,
-        borderRadius: 5,
-        borderWidth: 1,
-        backgroundColor: "#fafafa",
-        paddingLeft: 10,
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: 5,
-        marginBottom: 5
+      ...messagingTextInput,
+      backgroundColor: "#fafafa",
     },
     commentButton: {
+      ...commentButton,
         color: "#0084ff",
-        fontWeight: "600",
-        fontSize: 17,
-        backgroundColor: "transparent",
-        marginTop: 10,
-        marginBottom: 5
     },
     cameraTouch: {
-        height: 30,
-        width: 30,
-        marginLeft: 10
+      ...cameraTouch
     },
     commentCardContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between"
+      ...commentCardContainer
     },
     commentCardAuthorContainer: {
-        paddingLeft: 10, 
-        paddingTop: 10
+      ...commentCardAuthorContainer
     },
     commentCardAuthorText: {
-        fontSize: 18, 
-        fontWeight: "bold"
+      ...commentCardAuthorText
     },
     commentCardTopLevelContainer: {
-        marginVertical: 0, 
-        padding: 0
+      ...commentCardTopLevelContainer
     },
     pinContainer: { 
-        margin: 0, 
-        padding: 0 
+      ...pinContainer
     },
     commentCardImageTopLevel: {
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "space-around"
+      ...commentCardImageTopLevel
     },
     commentCardImageSecondaryLevel: {
-        flex: 1,
-        width: 150,
-        height: 150,
-        alignItems: "center",
-        justifyContent: "center",
-        margin: 5
+      ...commentCardImageSecondaryLevel
     },
     commentCardImageThirdLevel: {
-        position: "absolute",
-        bottom: 0,
-        right: 0,
-        left: 0,
-        top: 0,
-        resizeMode: "contain"
+      ...commentCardImageThirdLevel
     },
     commentCardFontContainer: {
-        paddingLeft: 10
+      ...commentCardFontContainer
     },
     commentCardFontSize: {
-        fontSize: 18    
+      ...commentCardFontSize 
     },
     commentCardDateContainer: {
-        paddingLeft: 10, 
-        paddingBottom: 10
+      ...commentCardDateContainer
     },
     commentCardDate: {
-        fontStyle: "italic"   
+      ...commentCardDate  
+    },
+
+    // job filter
+    accordionTitleRow: {
+      ...accordionTitleRow
+    },
+    title: {
+      ...title
+    },
+    contentRow: {
+      ...contentRow
+    },
+    box: {
+      ...box,
+      borderColor: "steelblue",
     },
     
+    // accordion
+    titleRow: {
+      ...titleRow,
+      backgroundColor: "#F8F8F8"
+    },
+    accordionContentRow: {
+      ...accordionContentRow
+    },
+
+    // new field event
+    heading: {
+      ...heading
+    }
 });
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const darkStyleSheet = StyleSheet.create({
     appbackground: {
-        backgroundColor: 'red'
+        backgroundColor: darkThemeBackgroundColor
     },
     button: {
+      ...button,
         backgroundColor: '#0076FF', // default ios button blue 
-        padding:10,
-        borderRadius:10,  
-        height:45,
-        margin:10
     },
     iconButtonStyle: {
-        position: 'absolute',
-        width: 50,
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        right: 20,
-        bottom: 55,
+        ...iconButtonStyle,
         backgroundColor: '#0076FF',
-        borderRadius:25,
+    },
+    newJobIcon: {
+      ...newJobIcon,
+        backgroundColor: "#0076FF",
+    },
+    filterIcon: {
+      ...filterIcon,
+        backgroundColor: "#0076FF",
     },
     containerView: {
-        flex: 1,
+      ...containerView
     },
     header:{
-        fontSize: 24,
-        fontWeight: 'normal',
-        textAlign: 'center',
-        backgroundColor: '#0076FF',
-        color : 'white'
+        ...header,
+        backgroundColor: darkThemeHeader,
+        color : darkThemeTextColor
       },
     headerText:{
-        color : 'white',
+        color : darkThemeTextColor,
+    },
+    accordianText:{
+      color : darkThemeTextColor,
     },
     rootContainer: {
-          backgroundColor: '#8FC1E3',
+          backgroundColor: darkThemeTextColor,
       },
     segmentedControlTab: {
-        marginHorizontal: 10,
-        marginTop: 5
+        ...segmentedControlTab,
+        backgroundColor: darkThemeBackgroundColor
     },
     card: {
-        backgroundColor: '#F7F9FB'
+      ...card,
+      backgroundColor: darkCardColor,
+      borderColor: darkCardColor
     },
-    cardAction: {        
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
+    cardTitle: {
+      ...cardTitle,
+      color: darkThemeTextColor
     },
-    cardContent: { 
-        flex: 1, 
-        textAlign: "right", 
-        flexDirection: 'row', 
-        justifyContent: 'flex-end'
+    cardDivider: {
+      ...cardDivider,
+      backgroundColor: darkThemeTextColor
     },
     sliderContainer: {
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        marginHorizontal: '5%',
-        paddingVertical: 15,
-        paddingHorizontal:30
+      ...sliderContainer,
+        backgroundColor: '#002060',
+        
     },
     sliderTitleContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+      ...sliderTitleContainer,
     },
+
+    sliderText:{
+      color: darkThemeTextColor
+    },
+
     toggleSwitchContainer: {
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        marginHorizontal: '5%',
-        paddingVertical: 15,
-        paddingHorizontal:30
+      ...toggleSwitchContainer,
+        backgroundColor: '#002060',
+        color: darkThemeTextColor,  
     },
-    reorderCardContainer: {
-        padding: 0, 
-        marginVertical: 0, 
-        flexDirection: "row-reverse"
-    },
-    reorderCardTouch: {
-        flex: 1,
-        padding: 10,
-    },
-    reorderCardRotation: {
-        flexDirection: "row-reverse",
-        alignItems: "center",
-    },
-    messageInputContainer: {
-        flexDirection: "row", 
-        padding: 0, 
-        margin: 0
-    },
-    messagingTextInput: {
-        height: 43,
-        fontSize: 14,
-        borderRadius: 5,
-        borderWidth: 1,
-        backgroundColor: "#fafafa",
-        paddingLeft: 10,
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: 5,
-        marginBottom: 5
-    },
-    commentButton: {
-        color: "#0084ff",
-        fontWeight: "600",
-        fontSize: 17,
-        backgroundColor: "transparent",
-        marginTop: 10,
-        marginBottom: 5
-    },
-    cameraTouch: {
-        height: 30,
-        width: 30,
-        marginLeft: 10
-    },
-    commentCardContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between"
-    },
-    commentCardAuthorContainer: {
-        paddingLeft: 10, 
-        paddingTop: 10
-    },
-    commentCardAuthorText: {
-        fontSize: 18, 
-        fontWeight: "bold"
-    },
-    commentCardTopLevelContainer: {
-        marginVertical: 0, 
-        padding: 0
-    },
-    pinContainer: { 
-        margin: 0, 
-        padding: 0 
-    },
-    commentCardImageTopLevel: {
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "space-around"
-    },
-    commentCardImageSecondaryLevel: {
-        flex: 1,
-        width: 150,
-        height: 150,
-        alignItems: "center",
-        justifyContent: "center",
-        margin: 5
-    },
-    commentCardImageThirdLevel: {
-        position: "absolute",
-        bottom: 0,
-        right: 0,
-        left: 0,
-        top: 0,
-        resizeMode: "contain"
-    },
-    commentCardFontContainer: {
-        paddingLeft: 10
-    },
-    commentCardFontSize: {
-        fontSize: 18    
-    },
-    commentCardDateContainer: {
-        paddingLeft: 10, 
-        paddingBottom: 10
-    },
-    commentCardDate: {
-        fontStyle: "italic"   
+
+    tabStyles: {
+      backgroundColor: darkThemeBackgroundColor,
+      color: iphoneBlue,
     },
 
     // camera
     cameraContainer: {
-      flex: 1,
-      backgroundColor: 'black'
+      ...cameraContainer
     },
     camera: {
-      flex: 1,
-      justifyContent: "space-between"
+      ...camera
     },
     topBar: {
-      flex: 0.2,
-      backgroundColor: "transparent",
-      flexDirection: "row",
-      paddingTop: Constants.statusBarHeight,
-      paddingLeft: Constants.statusBarHeight / 2
+      ...topBar
     },
-    bottomBar: {
-      paddingBottom: isIPhoneX ? 25 : 5,
-      backgroundColor: "transparent",
-      alignSelf: "flex-end",
-      justifyContent: "space-between",
-      flex: 0.12,
-      flexDirection: "row"
-    },
+
     noPermissions: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      padding: 10
+      ...noPermissions
     },
     cameraFontColor: {
-      color: "white"
-    },
-    generalContainer: {
-      flex: 1
+      color: darkThemeTextColor
     },
     takePicture: {
-      alignSelf: "center"
+      ...takePicture
     },
 
     // image
     imageBackgroundContainer: {
-      flex: 1,
-      justifyContent: "space-between"
+      ...imageBackgroundContainer
     },
-    topBar: {
-      flex: 0.2,
-      backgroundColor: "transparent",
-      flexDirection: "row",
-      paddingTop: Constants.statusBarHeight,
-      paddingLeft: Constants.statusBarHeight / 2
-    },
+
     bottomBar: {
-      paddingBottom: isIPhoneX ? 25 : 5,
-      backgroundColor: "transparent",
-      justifyContent: "space-around",
-      flex: 0.12,
-      flexDirection: "row"
+      ...bottomBar
     },
     whiteText: {
-      color: "white"
+      color: darkThemeTextColor
     },
     bottomButton: {
-      // flex: 0.3,
-      height: 58,
-      justifyContent: "center",
-      alignItems: "center"
+      ...bottomButton
     },
     // home
     endJob: {
-        backgroundColor: 'green',
-        borderRadius: 5,
-        marginHorizontal: 10,
+        ...endJob
       },
-      horizonalLine: {
-        borderBottomColor: 'grey',
-        borderBottomWidth: 2,
-        marginHorizontal:10
-      },
+    horizonalLine: {
+      ...horizonalLine
+    },
+    homeText: {
+      ...homeText,
+      color: darkThemeTextColor
+    },
 
 
 
     // job
     jobEndContainer: {
-    justifyContent:'flex-end',
+    ...endContainer,
+    backgroundColor: darkThemeBackgroundColor
     },
     jobCenterContainer: {
-        justifyContent:'center',
+      ...centerContainer
     },
 
 
 
     // login
     logoText: {
-        fontSize: 35,
-        fontWeight: "800",
-        marginBottom:60,
-        textAlign: 'left',
+      ...logoText,
+      color: darkThemeTextColor
       },
-      loginFormView: {
-        paddingHorizontal:20,
-        justifyContent:'center'
-      },
-      loginFormTextInput: {
-        height: 45,
-        fontSize: 14,
-        borderRadius: 5,
-        borderWidth: 1,
-        backgroundColor: '#fafafa',
-        paddingLeft: 10,
-        marginHorizontal: 15,
-        marginVertical: 5
-      },
-      changePassword: {
-          color: '#0a84ff',
-          textAlign: 'center'
-      },
-
-
-
-      // map
-      mapContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      paragraph: {
-        margin: 15,
-        fontSize: 18,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: '#34495e',
-      },
-      map: {
-        flex:1,
-        alignSelf: 'stretch',
-      },
-      marker: {
-        width: 25,
-        height: 25
-      },
-
-
-
-      // settings
-      emergencyButton: {
-        flexDirection: 'column',
-        backgroundColor: 'red',
-        height: 100,
-        marginHorizontal: 10,
-      },
-      settingsContainer:{
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between'
-      },
-
-
-      // units
-      unitEndContainer: {
-        flex: 1,
-        justifyContent:'flex-end',
+    loginFormView: {
+      ...loginFormView
     },
-    unitCenterContainer: {
-        justifyContent:'center',
-    }
+    loginFormTextInput: {
+      ...loginFormTextInput,
+      backgroundColor: '#fafafa',
+    },
+    androidPicker: {
+      ...androidPicker,
+      backgroundColor: '#fafafa',
+    },
+    pickerSelector: {
+      ...loginFormTextInput,
+      justifyContent: 'center',
+      backgroundColor: '#fafafa',
+    },
+    changePassword: {
+      ...changePassword,
+      color: '#0a84ff',
+    },
+
+
+
+    // map
+    mapContainer: {
+      ...mapContainer
+    },
+    paragraph: {
+      ...paragraph,
+      color: '#34495e',
+    },
+    map: {
+      ...map
+    },
+    marker: {
+      ...marker
+    },
+
+
+
+  // settings
+  emergencyButton: {
+    ...emergencyButton
+  },
+  settingsContainer:{
+    ...settingsContainer
+  },
+  settingsChildren:{
+    backgroundColor: '#002060',
+    color: 'white'
+  },
+
+
+  // units
+  unitCenterContainer: {
+    ...centerContainer
+  },
+  reorderCardContainer: {
+    ...reorderCardContainer,
+    backgroundColor: darkCardColor,
+    borderColor: darkCardColor
+  },
+  reorderCardTouch: {
+    ...reorderCardTouch
+  },
+  reorderCardRotation: {
+    ...reorderCardRotation
+  },
+  messageInputContainer: {
+    ...messageInputContainer
+  },
+  messagingTextInput: {
+    ...messagingTextInput,
+      backgroundColor: "#fafafa",
+  },
+  commentButton: {
+    ...commentButton,
+      color: darkThemeTextColor
+  },
+  cameraTouch: {
+    ...cameraTouch
+  },
+  commentCardContainer: {
+    ...commentCardContainer
+  },
+  commentCardAuthorContainer: {
+    ...commentCardAuthorContainer
+  },
+  commentCardAuthorText: {
+    ...commentCardAuthorText,
+    color: darkThemeTextColor
+  },
+  commentCardTopLevelContainer: {
+    ...commentCardTopLevelContainer,
+    backgroundColor: darkCardColor,
+    borderColor: darkThemeBackgroundColor
+  },
+  pinContainer: { 
+    ...pinContainer,
+    color: darkThemeTextColor
+  },
+  commentCardImageTopLevel: {
+    ...commentCardImageTopLevel
+  },
+  commentCardImageSecondaryLevel: {
+    ...commentCardImageSecondaryLevel
+  },
+  commentCardImageThirdLevel: {
+    ...commentCardImageThirdLevel
+  },
+  commentCardFontContainer: {
+    ...commentCardFontContainer
+  },
+  commentCardFontSize: {
+    ...commentCardFontSize,
+    color: darkThemeTextColor
+  },
+  commentCardDateContainer: {
+    ...commentCardDateContainer,
+  },
+  commentCardDate: {
+    ...commentCardDate,
+    color: darkThemeTextColor
+  },
+
+  // job filter
+  accordionTitleRow: {
+    ...accordionTitleRow,
+    backgroundColor: "#09174a"
+  },
+  title: {
+    ...title,
+    color: darkThemeTextColor
+  },
+  contentRow: {
+    ...contentRow
+  },
+  box: {
+    ...box,
+    borderColor: "steelblue",
+  },
+
+  // accordion
+  titleRow: {
+    ...titleRow,
+    backgroundColor: "#09174a"
+  },
+  accordionContentRow: {
+    ...accordionContentRow,
+
+  },
+
+  //new field event
+  heading: {
+    ...heading,
+    color: darkThemeTextColor
+  }
 });

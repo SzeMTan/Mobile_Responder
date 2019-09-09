@@ -121,9 +121,16 @@ const HomeNavigator = createStackNavigator(
     IndividualJob: {
       screen: IndividualJob,
     },
+    Camera: {
+      screen: CameraTestScreen,
+    },
+    OnDuty: {
+      screen: OnDutyScreen,
+    },
   },
   {
     initialRouteName: 'Home',
+    headerLayoutPreset: 'center',
   }
 );
 

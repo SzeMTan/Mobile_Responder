@@ -14,7 +14,8 @@ export default class CardComponent extends Component {
     styles = getStyleSheet(GLOBAL.darkState);
     return (
       <Card containerStyle={styles.card}>
-        <Text
+        <Text 
+        selectable
           style={[
             styles.cardTitle,
             { ...(this.props.titlecontent.length != 0 && { marginBottom: 10 }) }

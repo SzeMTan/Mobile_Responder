@@ -31,7 +31,7 @@ class OnDutyScreen extends Component {
       title: 'Summary',
       headerTitleStyle: styles.header,
       headerStyle: styles.header,
-      headerTintColor: 'white',
+      headerTintColor: styles.darkThemeTextColor,
       headerRight: <View />
     };
   };

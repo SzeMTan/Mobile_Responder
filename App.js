@@ -49,9 +49,6 @@ const SettingsNavigator = createStackNavigator(
       screen: GeneralScreen,
       navigationOptions: {
         headerTitle: 'General',
-        // headerTitleStyle: styles.header,
-        // headerTintColor: styles.headerText.color,
-        // headerStyle: styles.header,
         headerRight: (<View/>),
       }, 
     },
@@ -60,7 +57,7 @@ const SettingsNavigator = createStackNavigator(
       navigationOptions: {
         headerTitle: 'About',
         headerTitleStyle: styles.header,
-        headerTintColor: styles.headerText.color,
+        headerTintColor: styles.darkThemeTextColor,
         headerStyle: styles.header,
         headerRight: (<View/>),
       },    

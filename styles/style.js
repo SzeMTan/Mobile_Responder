@@ -429,11 +429,12 @@ const lightStyleSheet = StyleSheet.create({
     },
     header:{
         ...header,
-        backgroundColor: '#0076FF',
+        // backgroundColor: '#0076FF',
+        backgroundColor: darkThemeHeader,
         color : darkThemeTextColor
       },
     headerText:{
-        color : darkThemeTextColor,
+        color : lightThemeTextColor,
     },
     accordianText:{
       color : lightThemeTextColor,
@@ -888,7 +889,9 @@ const darkStyleSheet = StyleSheet.create({
     ...centerContainer
   },
   reorderCardContainer: {
-    ...reorderCardContainer
+    ...reorderCardContainer,
+    backgroundColor: darkCardColor,
+    borderColor: darkCardColor
   },
   reorderCardTouch: {
     ...reorderCardTouch

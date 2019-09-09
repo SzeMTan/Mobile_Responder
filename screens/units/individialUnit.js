@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { View, Text, ScrollView, Button, TouchableOpacity } from 'react-native';
-import HeaderComponent from '../../components/customHeaderComponent';
+import { View, ScrollView, TouchableOpacity } from 'react-native';
 import SegmentControlComponent from '../../components/customSegmentControlComponent';
 import CardComponent from '../../components/customCardComponent';
 import UnitMessagingComponent from '../../components/customUnitMessagingComponent';
-// import styles from '../../styles/style'
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 

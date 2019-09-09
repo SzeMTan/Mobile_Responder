@@ -1,18 +1,10 @@
 import { Camera, FileSystem, Permissions } from "expo";
 import React from "react";
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Slider,
-  Platform
-} from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import GalleryScreen from "./image";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import GLOBAL from '../../global'
-import getStyleSheet from '../../styles/style'
+import GLOBAL from "../../global";
+import getStyleSheet from "../../styles/style";
 
 export default class CameraScreen extends React.Component {
   state = {
@@ -38,7 +30,7 @@ export default class CameraScreen extends React.Component {
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
       styles = getStyleSheet(GLOBAL.darkState);
-      this.forceUpdate()
+      this.forceUpdate();
     });
   }
 
@@ -48,7 +40,9 @@ export default class CameraScreen extends React.Component {
   }
 
   static navigationOptions = ({ navigation }) => {
-    const { state: { params = {} } } = navigation;
+    const {
+      state: { params = {} }
+    } = navigation;
     return {
       header: null
     };
@@ -58,10 +52,10 @@ export default class CameraScreen extends React.Component {
 
   backButtonPressed = () => this.props.navigation.goBack();
 
-  sendButtonPressed = (uri) =>{
-    this.props.navigation.state.params.send(uri)
+  sendButtonPressed = uri => {
+    this.props.navigation.state.params.send(uri);
     this.props.navigation.goBack();
-  }
+  };
 
   takePicture = () => {
     if (this.camera) {
@@ -89,14 +83,15 @@ export default class CameraScreen extends React.Component {
     );
   }
 
-  renderNoPermissions = () =>
+  renderNoPermissions = () => (
     <View style={styles.noPermissions}>
       <Text style={styles.cameraFontColor}>
         Camera permissions not granted - cannot open camera preview.
       </Text>
-    </View>;
+    </View>
+  );
 
-  renderTopBar = () =>
+  renderTopBar = () => (
     <View style={styles.topBar}>
       <TouchableOpacity
         onPress={() => {
@@ -105,21 +100,20 @@ export default class CameraScreen extends React.Component {
       >
         <MaterialIcons name="arrow-back" size={40} color="white" />
       </TouchableOpacity>
-    </View>;
+    </View>
+  );
 
-  renderBottomBar = () =>
+  renderBottomBar = () => (
     <View style={styles.bottomBar}>
       <View style={styles.containerView}>
-        <TouchableOpacity
-          onPress={this.takePicture}
-          style={styles.takePicture}
-        >
+        <TouchableOpacity onPress={this.takePicture} style={styles.takePicture}>
           <Ionicons name="ios-radio-button-on" size={70} color="white" />
         </TouchableOpacity>
       </View>
-    </View>;
+    </View>
+  );
 
-  renderCamera = () =>
+  renderCamera = () => (
     <View style={styles.containerView}>
       <Camera
         ref={ref => {
@@ -132,7 +126,8 @@ export default class CameraScreen extends React.Component {
         {this.renderTopBar()}
         {this.renderBottomBar()}
       </Camera>
-    </View>;
+    </View>
+  );
 
   render() {
     const cameraScreenContent = this.state.permissionsGranted
@@ -141,10 +136,6 @@ export default class CameraScreen extends React.Component {
     const content = this.state.showGallery
       ? this.renderGallery()
       : cameraScreenContent;
-    return (
-      <View style={styles.cameraContainer}>
-        {content}
-      </View>
-    );
+    return <View style={styles.cameraContainer}>{content}</View>;
   }
 }

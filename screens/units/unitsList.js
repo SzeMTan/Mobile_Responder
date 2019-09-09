@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { ScrollView, View, TouchableOpacity } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
-import SearchBarComponent from '../../components/customSearchBarComponent';
 import CardComponent from '../../components/customCardComponent';
-// import styles from '../../styles/style'
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
@@ -62,9 +60,6 @@ export default class UnitsList extends Component {
       )
     return (
         <View style={[styles.containerView, styles.appbackground]}>
-            <View style={{ alignContent: "stretch", flexDirection: "row" }}>
-              <SearchBarComponent title='Units'/>
-            </View>
             <ScrollView >
               <View style={styles.unitCenterContainer}>
                 {cards}

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { Header } from 'react-native-elements';
-// import styles from '../styles/style'
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 

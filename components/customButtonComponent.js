@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button } from 'react-native-elements'
-// import styles from '../styles/style'
 import GLOBAL from '../global'
 import getStyleSheet from '../styles/style'
 
@@ -14,7 +13,6 @@ class ButtonComponent extends Component {
   static defaultProps = {
     title: "",
     isBackToTop: false,
-    // style: styles.button
   }
 
   render() {
@@ -31,5 +29,3 @@ class ButtonComponent extends Component {
 }
 
 export default ButtonComponent;
-
-

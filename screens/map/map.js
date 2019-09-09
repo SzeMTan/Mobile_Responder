@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
 import { MapView, Location, Permissions } from 'expo';
-// import styles from '../../styles/style'
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
 
@@ -117,8 +116,6 @@ export default class App extends Component {
               coordinate={marker.latlng}
               ref={marker => (this.marker = marker)}
               onPress={() => this.calloutJobPress(marker)}
-              // onPress={() => this.marker.showCallout()}
-              // onCalloutPress={this.calloutPress(marker)}
             >
               {this.renderJobMarker(marker.latlng)}
             </MapView.Marker>

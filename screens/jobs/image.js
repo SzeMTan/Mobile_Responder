@@ -20,20 +20,10 @@ export default class GalleryScreen extends React.Component {
     photos: []
   };
 
-
-  componentWillUnmount() {
-    // Remove the event listener
-    this.focusListener.remove();
-  }
-
   componentDidMount = async () => {
     const photos = await FileSystem.readDirectoryAsync(PHOTOS_DIR);
     this.setState({ photos });
     const { navigation } = this.props;
-    this.focusListener = navigation.addListener("didFocus", () => {
-      styles = getStyleSheet(GLOBAL.darkState);
-      this.forceUpdate()
-    });
   };
 
   sendImage = () => {
@@ -46,7 +36,6 @@ export default class GalleryScreen extends React.Component {
     for (i = 0; i < this.state.photos.length; i++) {
       fileName = this.state.photos[i];
       uri = `${PHOTOS_DIR}/${fileName}`;
-      console.log("deleting " + uri);
       FileSystem.deleteAsync(uri);
     }
   };
@@ -66,7 +55,6 @@ export default class GalleryScreen extends React.Component {
         <View style={styles.bottomBar}>
           <TouchableOpacity
             style={styles.bottomButton}
-            // onPress={this.props.onPress}
             onPress={this.deleteImages}
           >
             <SimpleLineIcons name="reload" size={40} color="white" />

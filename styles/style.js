@@ -31,10 +31,31 @@ const iconButtonStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   right: 20,
+  bottom: 75,
+  borderRadius:25,
+}
+
+const newJobIcon = {
+  position: 'absolute',
+  width: 50,
+  height: 50,
+  alignItems: 'center',
+  justifyContent: 'center',
+  right: 20,
   bottom: 25,
   borderRadius:25,
 }
 
+const filterIcon = {
+  position: 'absolute',
+  width: 50,
+  height: 50,
+  alignItems: 'center',
+  justifyContent: 'center',
+  right: 20,
+  top: 25,
+  borderRadius:25,
+}
 const containerView = {
   flex: 1,
 }
@@ -151,14 +172,18 @@ const loginFormView = {
   justifyContent:'center'
 }
 
-const loginFormTextInput = {
+const androidPicker = {
   height: 45,
-  fontSize: 14,
   borderRadius: 5,
   borderWidth: 1,
   paddingLeft: 10,
   marginHorizontal: 15,
   marginVertical: 5,
+}
+
+const loginFormTextInput = {
+  fontSize: 14,
+  ...androidPicker
 }
 
 const emergencyButton = {
@@ -388,7 +413,16 @@ const lightStyleSheet = StyleSheet.create({
     },
     iconButtonStyle: {
       ...iconButtonStyle,
-        backgroundColor: iphoneBlue,
+        backgroundColor: "#0076FF",
+    },
+
+    newJobIcon: {
+      ...newJobIcon,
+        backgroundColor: "#0076FF",
+    },
+    filterIcon: {
+      ...filterIcon,
+        backgroundColor: "#0076FF",
     },
     containerView: {
       ...containerView
@@ -400,6 +434,9 @@ const lightStyleSheet = StyleSheet.create({
       },
     headerText:{
         color : darkThemeTextColor,
+    },
+    accordianText:{
+      color : lightThemeTextColor,
     },
     rootContainer: {
           backgroundColor: '#8FC1E3',
@@ -418,7 +455,7 @@ const lightStyleSheet = StyleSheet.create({
     },
     cardDivider: {
       ...cardDivider,
-      backgroundColor: 'blue'
+      backgroundColor: '#C1C7C9'
     },
 
     sliderContainer: {
@@ -505,6 +542,15 @@ const lightStyleSheet = StyleSheet.create({
     },
     loginFormTextInput: {
       ...loginFormTextInput,
+      backgroundColor: '#fafafa',
+    },
+    androidPicker: {
+      ...androidPicker,
+      backgroundColor: '#fafafa',
+    },
+    pickerSelector: {
+      ...loginFormTextInput,
+      justifyContent: 'center',
       backgroundColor: '#fafafa',
     },
     changePassword: {
@@ -653,6 +699,14 @@ const darkStyleSheet = StyleSheet.create({
         ...iconButtonStyle,
         backgroundColor: '#0076FF',
     },
+    newJobIcon: {
+      ...newJobIcon,
+        backgroundColor: "#0076FF",
+    },
+    filterIcon: {
+      ...filterIcon,
+        backgroundColor: "#0076FF",
+    },
     containerView: {
       ...containerView
     },
@@ -663,6 +717,9 @@ const darkStyleSheet = StyleSheet.create({
       },
     headerText:{
         color : darkThemeTextColor,
+    },
+    accordianText:{
+      color : darkThemeTextColor,
     },
     rootContainer: {
           backgroundColor: darkThemeTextColor,
@@ -780,6 +837,15 @@ const darkStyleSheet = StyleSheet.create({
       ...loginFormTextInput,
       backgroundColor: '#fafafa',
     },
+    androidPicker: {
+      ...androidPicker,
+      backgroundColor: '#fafafa',
+    },
+    pickerSelector: {
+      ...loginFormTextInput,
+      justifyContent: 'center',
+      backgroundColor: '#fafafa',
+    },
     changePassword: {
       ...changePassword,
       color: '#0a84ff',
@@ -884,7 +950,7 @@ const darkStyleSheet = StyleSheet.create({
   // job filter
   accordionTitleRow: {
     ...accordionTitleRow,
-    backgroundColor: darkThemeBackgroundColor
+    backgroundColor: "#09174a"
   },
   title: {
     ...title,
@@ -901,7 +967,7 @@ const darkStyleSheet = StyleSheet.create({
   // accordion
   titleRow: {
     ...titleRow,
-    backgroundColor: darkThemeBackgroundColor
+    backgroundColor: "#09174a"
   },
   accordionContentRow: {
     ...accordionContentRow,

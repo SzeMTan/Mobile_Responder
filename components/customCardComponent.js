@@ -11,7 +11,7 @@ export default class CardComponent extends Component {
   };
 
   render() {
-      styles = getStyleSheet(GLOBAL.darkState);
+    styles = getStyleSheet(GLOBAL.darkState);
     return (
       <Card containerStyle={styles.card}>
         <Text

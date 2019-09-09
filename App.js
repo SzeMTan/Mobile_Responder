@@ -29,6 +29,9 @@ import NewFieldEvent from "./screens/jobs/newFieldEvent";
 import OnDutyScreen from './screens/jobs/onDutyScreen';
 import JobFilter from "./screens/jobs/jobFilter";
 
+import { YellowBox } from 'react-native';
+YellowBox.ignoreWarnings(['Warning: Failed prop type: Invalid prop `children` supplied to `Card`.']);
+
 const iconSize = 30;
 
 const styles = getStyleSheet(GLOBAL.darkState);

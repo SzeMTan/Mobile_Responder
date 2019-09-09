@@ -118,15 +118,15 @@ export default class JobFilter extends Component {
         
         <View
           key={index}
-          style={{
-            borderColor: "steelblue",
+          style={[{
+            borderColor: styles.box.borderColor,
             borderWidth: 2,
             borderRadius: 13,
             marginHorizontal: 5,
             paddingHorizontal: 5
-          }}
+          }]}
         >
-          <Text style={styles.headerText}>{filterType.title}</Text>
+          <Text style={styles.accordianText}>{filterType.title}</Text>
         </View>
       ));
     return (
@@ -152,7 +152,7 @@ export default class JobFilter extends Component {
               color="green"
             />
           )}
-          <Text style={styles.headerText}>{filterType.title}</Text>
+          <Text style={styles.accordianText}>{filterType.title}</Text>
         </View>
       </TouchableOpacity>
     ));

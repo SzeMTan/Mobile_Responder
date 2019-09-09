@@ -55,7 +55,7 @@ export default class IndividualJob extends Component {
       title: params.title || "JOB",
       headerTitleStyle: styles.header,
       headerStyle: styles.header,
-      headerTintColor: styles.headerText.color,
+      headerTintColor: styles.darkThemeTextColor,
       headerRight: <View />
     };
   };

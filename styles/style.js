@@ -68,7 +68,7 @@ const header = {
 
 const segmentedControlTab = {
   marginHorizontal: 10,
-  marginTop: 10
+  marginVertical: 10
 }
 
 const sliderContainer = {
@@ -429,11 +429,12 @@ const lightStyleSheet = StyleSheet.create({
     },
     header:{
         ...header,
-        backgroundColor: '#0076FF',
+        // backgroundColor: '#0076FF',
+        backgroundColor: darkThemeHeader,
         color : darkThemeTextColor
       },
     headerText:{
-        color : darkThemeTextColor,
+        color : lightThemeTextColor,
     },
     accordianText:{
       color : lightThemeTextColor,
@@ -888,7 +889,9 @@ const darkStyleSheet = StyleSheet.create({
     ...centerContainer
   },
   reorderCardContainer: {
-    ...reorderCardContainer
+    ...reorderCardContainer,
+    backgroundColor: darkCardColor,
+    borderColor: darkCardColor
   },
   reorderCardTouch: {
     ...reorderCardTouch
@@ -917,13 +920,17 @@ const darkStyleSheet = StyleSheet.create({
     ...commentCardAuthorContainer
   },
   commentCardAuthorText: {
-    ...commentCardAuthorText
+    ...commentCardAuthorText,
+    color: darkThemeTextColor
   },
   commentCardTopLevelContainer: {
-    ...commentCardTopLevelContainer
+    ...commentCardTopLevelContainer,
+    backgroundColor: darkCardColor,
+    borderColor: darkCardColor
   },
   pinContainer: { 
-    ...pinContainer
+    ...pinContainer,
+    color: darkThemeTextColor
   },
   commentCardImageTopLevel: {
     ...commentCardImageTopLevel
@@ -938,13 +945,15 @@ const darkStyleSheet = StyleSheet.create({
     ...commentCardFontContainer
   },
   commentCardFontSize: {
-    ...commentCardFontSize  
+    ...commentCardFontSize,
+    color: darkThemeTextColor
   },
   commentCardDateContainer: {
-    ...commentCardDateContainer
+    ...commentCardDateContainer,
   },
   commentCardDate: {
-    ...commentCardDate  
+    ...commentCardDate,
+    color: darkThemeTextColor
   },
 
   // job filter

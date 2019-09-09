@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions } from 'react-native';
+import { View, Text, Dimensions, Linking, Platform, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements'
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
@@ -35,6 +35,14 @@ class OnDutyScreen extends Component {
       headerRight: <View />
     };
   };
+
+  pressCall=()=>{
+    const iosPhone='tel://+0211234560'
+    const androidPhone= 'tel:+0211234560'
+    const url = Platform.OS === 'ios' ? iosPhone : androidPhone
+    Linking.openURL(url)
+  }
+
   render() {
     let {height, width} = Dimensions.get('window');
     return (
@@ -65,8 +73,9 @@ class OnDutyScreen extends Component {
             <View style={{padding: 5}}>
                 <Text style={{fontWeight: 'bold', fontSize: 22, paddingLeft: 10, borderTopWidth: 2, paddingTop: 5, backgroundColor: '#D3D3D3'}}>Description and Information</Text>
                 <Text style={{fontSize: 17}}>Phone</Text>
+                <TouchableOpacity onPress={this.pressCall}>
                 <Text style={{color: 'grey', fontSize: 17, borderBottomWidth: 1}}>0211234560 {"\n"}{"\n"}</Text>
-
+                </TouchableOpacity>
                 <Text style={{fontSize: 17}}>Drivers Licence</Text>
                 <Text style={{color: 'grey', fontSize: 17}}>DP654321 Current, Exp: 12/02/2024 {"\n"}{"\n"}</Text>
                 <Text style={{color: 'grey', fontSize: 17}}>Class 2/F Medium Rigid Vehicles,

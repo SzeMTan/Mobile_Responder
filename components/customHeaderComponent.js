@@ -20,7 +20,7 @@ export default class HeaderComponent extends Component {
                   <Header
                     leftComponent={
                       <TouchableOpacity onPress={this.props.cancel}>
-                        <Text style={styles.darkThemeTextColor}>CANCEL</Text>
+                        <Text style={styles.headerText}>CANCEL</Text>
                       </TouchableOpacity>
                     }
                     centerComponent={{ text: this.props.title, style: styles.header }}
@@ -34,7 +34,7 @@ export default class HeaderComponent extends Component {
                 ) : (
                   <Header
                     centerComponent={{ text: this.props.title, style: styles.header }}
-                    rightComponent={{ text: "10/10", style: styles.darkThemeTextColor }}
+                    rightComponent={{ text: "10/10", style: styles.headerText }}
                     backgroundColor={styles.header.backgroundColor}
                   />
                 )}

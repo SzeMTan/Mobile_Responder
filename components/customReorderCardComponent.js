@@ -42,7 +42,7 @@ export default class ReorderCardComponent extends Component {
             <MaterialCommunityIcons
               name={this.state.context[this.state.selectedIndex].iconName}
               size={20}
-              color={styles.headerText.color}
+              color={styles.cameraFontColor.color}
 
             />
             <Text style={styles.headerText}>

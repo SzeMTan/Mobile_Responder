@@ -20,7 +20,7 @@ export default class GeneralScreen extends Component {
         } = navigation;
         return {
             headerTitleStyle: styles.header,
-            headerTintColor: styles.darkThemeTextColor,
+            headerTintColor: styles.headerText.color,
             headerStyle: styles.header,
         };
       };

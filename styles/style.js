@@ -67,7 +67,7 @@ const header = {
 }
 
 const segmentedControlTab = {
-  marginHorizontal: 10,
+  marginHorizontal: 15,
   marginVertical: 10
 }
 
@@ -434,7 +434,7 @@ const lightStyleSheet = StyleSheet.create({
         color : darkThemeTextColor
       },
     headerText:{
-        color : lightThemeTextColor,
+        color : darkThemeTextColor,
     },
     accordianText:{
       color : lightThemeTextColor,
@@ -926,7 +926,7 @@ const darkStyleSheet = StyleSheet.create({
   commentCardTopLevelContainer: {
     ...commentCardTopLevelContainer,
     backgroundColor: darkCardColor,
-    borderColor: darkCardColor
+    borderColor: darkThemeBackgroundColor
   },
   pinContainer: { 
     ...pinContainer,

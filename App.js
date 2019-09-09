@@ -57,7 +57,7 @@ const SettingsNavigator = createStackNavigator(
       navigationOptions: {
         headerTitle: 'About',
         headerTitleStyle: styles.header,
-        headerTintColor: styles.darkThemeTextColor,
+        headerTintColor: styles.headerText.color,
         headerStyle: styles.header,
         headerRight: (<View/>),
       },    
@@ -239,6 +239,7 @@ const TabNavigator =  createBottomTabNavigator({
   tabBarOptions: {
     inactiveBackgroundColor: styles.tabStyles.backgroundColor,
     inactiveTintColor: styles.tabStyles.color,
+    activeTintColor: styles.tabStyles.backgroundColor
   }
 });
 

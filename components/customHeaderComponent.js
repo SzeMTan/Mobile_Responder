@@ -26,7 +26,7 @@ export default class HeaderComponent extends Component {
                     centerComponent={{ text: this.props.title, style: styles.header }}
                     rightComponent={
                       <TouchableOpacity onPress={this.props.done}>
-                        <Text style={styles.darkThemeTextColor}>DONE</Text>
+                        <Text style={styles.headerText}>DONE</Text>
                       </TouchableOpacity>
                     }
                     backgroundColor={styles.header.backgroundColor}

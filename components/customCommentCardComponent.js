@@ -27,7 +27,7 @@ export default class ReorderCardComponent extends Component {
             <TouchableOpacity style={styles.containerView} onPress={this.pin}>
               <MaterialCommunityIcons
                 name={this.props.pinned ? "pin" : "pin-outline"}
-                color="black"
+                color={styles.pinContainer.color}
                 size={20}
               />
             </TouchableOpacity>

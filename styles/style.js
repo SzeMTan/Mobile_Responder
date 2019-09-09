@@ -68,7 +68,7 @@ const header = {
 
 const segmentedControlTab = {
   marginHorizontal: 10,
-  marginTop: 10
+  marginVertical: 10
 }
 
 const sliderContainer = {
@@ -917,13 +917,17 @@ const darkStyleSheet = StyleSheet.create({
     ...commentCardAuthorContainer
   },
   commentCardAuthorText: {
-    ...commentCardAuthorText
+    ...commentCardAuthorText,
+    color: darkThemeTextColor
   },
   commentCardTopLevelContainer: {
-    ...commentCardTopLevelContainer
+    ...commentCardTopLevelContainer,
+    backgroundColor: darkCardColor,
+    borderColor: darkCardColor
   },
   pinContainer: { 
-    ...pinContainer
+    ...pinContainer,
+    color: darkThemeTextColor
   },
   commentCardImageTopLevel: {
     ...commentCardImageTopLevel
@@ -938,13 +942,15 @@ const darkStyleSheet = StyleSheet.create({
     ...commentCardFontContainer
   },
   commentCardFontSize: {
-    ...commentCardFontSize  
+    ...commentCardFontSize,
+    color: darkThemeTextColor
   },
   commentCardDateContainer: {
-    ...commentCardDateContainer
+    ...commentCardDateContainer,
   },
   commentCardDate: {
-    ...commentCardDate  
+    ...commentCardDate,
+    color: darkThemeTextColor
   },
 
   // job filter

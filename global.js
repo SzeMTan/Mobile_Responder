@@ -1,4 +1,4 @@
-import { getFormattedDate } from "./helpers"
+import { getFormattedDate } from "./helpers";
 module.exports = {
   darkState: false,
   jobs: [
@@ -39,7 +39,7 @@ module.exports = {
       destination: "10 Waterloo Quadrant",
       date: getFormattedDate("10:24"),
       status: "CLOSED",
-      latlng: { latitude: -36.852638, longitude: 174.768265 },
+      latlng: { latitude: -36.855786, longitude: 174.759803 },
       assigned: true
     },
     {
@@ -49,7 +49,7 @@ module.exports = {
       destination: "10 Waterloo Quadrant",
       date: getFormattedDate("11:40"),
       status: "CLOSED",
-      latlng: { latitude: -36.852638, longitude: 174.768265 },
+      latlng: { latitude: -36.861438, longitude: 174.758121 },
       assigned: true
     }
   ],
@@ -82,10 +82,11 @@ module.exports = {
   messages: [
     {
       sender: "d0750033",
-      message: "HEADLINE: Operator - female req police - line cutting in and out",
+      message:
+        "HEADLINE: Operator - female req police - line cutting in and out",
       uri: false,
       pinned: false,
-      date: getFormattedDate(""),
+      date: getFormattedDate("")
     },
     {
       sender: "d0750033",
@@ -99,8 +100,8 @@ module.exports = {
       message: "said she was locked out",
       uri: false,
       pinned: false,
-      date: getFormattedDate(""),
-    },
+      date: getFormattedDate("")
+    }
   ],
   mounted: false
 };

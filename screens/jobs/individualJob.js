@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import CommentTestScreen from "./comments";
 import MessageInputComponent from "../../components/customMessageInputComponent";
 
-import { View, ScrollView, TouchableOpacity } from "react-native";
+import {
+  View,
+  ScrollView,
+  TouchableOpacity,
+  ActionSheetIOS
+} from "react-native";
 import SegmentControlComponent from "../../components/customSegmentControlComponent";
 import CardComponent from "../../components/customCardComponent";
 import ButtonComponent from "../../components/customButtonComponent";
@@ -19,9 +24,14 @@ export default class IndividualJob extends Component {
       message: "",
       assigned: false,
       teamAssigned: "",
-      jobStatus: ""
+      jobStatus: "",
+      jobCloseCode: ""
     };
   }
+
+  static defaultProps = {
+    jobCloseCodes: ["K1", "K2", "K3", "K6", "K8", "K9", "Cancel"]
+  };
 
   componentDidMount() {
     const { navigation } = this.props;
@@ -39,13 +49,13 @@ export default class IndividualJob extends Component {
   componentWillMount() {
     GLOBAL.jobs
       .filter(job => this.props.navigation.getParam("title") == job.title)
-      .map(job =>
+      .map(job => {
         this.setState({
           assigned: job.assigned,
           teamAssigned: job.teamAssigned,
           jobStatus: job.status
-        })
-      );
+        });
+      });
   }
 
   setIndex = index => {
@@ -107,6 +117,19 @@ export default class IndividualJob extends Component {
     });
   }
 
+  closeJob(resolutionCode) {
+    this.setState({
+      jobStatus: "CLOSED",
+      jobCloseCode: resolutionCode
+    });
+    GLOBAL.jobs.map((job, index) => {
+      if (this.props.navigation.getParam("title") == job.title) {
+        GLOBAL.jobs[index].status = "CLOSED";
+        GLOBAL.jobs[index].jobCloseCode = resolutionCode;
+      }
+    });
+  }
+
   commentPressed = () => {
     this.props.navigation.navigate("OnDuty");
   };
@@ -133,7 +156,10 @@ export default class IndividualJob extends Component {
               titlecontent={[
                 "Job code: " + this.props.navigation.getParam("code"),
                 "Time Reported: " + this.props.navigation.getParam("date"),
-                "Job status: " + this.state.jobStatus,
+                "Job status: " +
+                  this.state.jobStatus +
+                  "-" +
+                  this.state.jobCloseCode,
                 "Priority: " + this.props.navigation.getParam("priority", "P1")
               ]}
             />
@@ -168,7 +194,9 @@ export default class IndividualJob extends Component {
               titlecontent={["Source: ", "Name", "Address", "Number"]}
             />
           </ScrollView>
-          {!this.state.assigned ? (
+          {!this.state.assigned ||
+          (this.state.jobStatus === "ASSIGNED" &&
+            this.state.teamAssigned === GLOBAL.globalUnit) ? (
             <TouchableOpacity
               style={styles.iconButtonStyle}
               onPress={this.goToTop.bind(this)}
@@ -184,12 +212,30 @@ export default class IndividualJob extends Component {
             </TouchableOpacity>
           )}
 
-          {!this.state.assigned && (
+          {!this.state.assigned ? (
             <ButtonComponent
               title="Assign job"
               onPress={() => this.assignJob()}
             />
-          )}
+          ) : this.state.jobStatus === "ASSIGNED" &&
+            this.state.teamAssigned === GLOBAL.globalUnit ? (
+            <ButtonComponent
+              title="Close job"
+              onPress={() => {
+                ActionSheetIOS.showActionSheetWithOptions(
+                  {
+                    options: this.props.jobCloseCodes,
+                    title: "Resolution Code"
+                  },
+                  buttonIndex => {
+                    if (buttonIndex < this.props.jobCloseCodes.length - 1) {
+                      this.closeJob(this.props.jobCloseCodes[buttonIndex]);
+                    }
+                  }
+                );
+              }}
+            />
+          ) : null}
         </View>
       );
     } else {

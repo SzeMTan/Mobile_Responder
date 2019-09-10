@@ -77,7 +77,7 @@ export default class NewFieldEvent extends Component {
 
   static defaultProps = {
     eventTypes: ["1310 Robbery", "1510 Serious Assault", "1640 Minor Assault"],
-    jobStatusButtons: ["PENDING", "CLOSED"]
+    jobStatusButtons: ["PENDING", "ASSIGNED", "CLOSED"]
   };
 
   updateEventType = eventType => {

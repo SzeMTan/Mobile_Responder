@@ -81,7 +81,7 @@ module.exports = {
   ],
   messages: [
     {
-      sender: "d0750033",
+      sender: "Comms",
       message:
         "HEADLINE: Operator - female req police - line cutting in and out",
       uri: false,
@@ -89,14 +89,14 @@ module.exports = {
       date: getFormattedDate("")
     },
     {
-      sender: "d0750033",
+      sender: "Comms",
       message: "female stating address",
       date: getFormattedDate(""),
       uri: false,
       pinned: false
     },
     {
-      sender: "d0750033",
+      sender: "Comms",
       message: "said she was locked out",
       uri: false,
       pinned: false,

@@ -17,7 +17,9 @@ export default class IndividualJob extends Component {
       selectedIndex: 0,
       uri: "",
       message: "",
-      assigned: false
+      assigned: false,
+      teamAssigned: "",
+      jobStatus: ""
     };
   }
 
@@ -37,7 +39,13 @@ export default class IndividualJob extends Component {
   componentWillMount() {
     GLOBAL.jobs
       .filter(job => this.props.navigation.getParam("title") == job.title)
-      .map(job => this.setState({ assigned: job.assigned }));
+      .map(job =>
+        this.setState({
+          assigned: job.assigned,
+          teamAssigned: job.teamAssigned,
+          jobStatus: job.status
+        })
+      );
   }
 
   setIndex = index => {
@@ -85,10 +93,16 @@ export default class IndividualJob extends Component {
   };
 
   assignJob() {
-    this.setState({ assigned: true });
+    this.setState({
+      assigned: true,
+      teamAssigned: GLOBAL.globalUnit,
+      jobStatus: "ASSIGNED"
+    });
     GLOBAL.jobs.map((job, index) => {
       if (this.props.navigation.getParam("title") == job.title) {
         GLOBAL.jobs[index].assigned = true;
+        GLOBAL.jobs[index].teamAssigned = GLOBAL.globalUnit;
+        GLOBAL.jobs[index].status = "ASSIGNED";
       }
     });
   }
@@ -110,8 +124,8 @@ export default class IndividualJob extends Component {
             <CardComponent
               title={
                 this.state.assigned
-                  ? "Assigned: Assigned"
-                  : "Assigned: Unassigned"
+                  ? "Assigned: " + this.state.teamAssigned
+                  : "Assigned: unassigned"
               }
             />
             <CardComponent
@@ -119,7 +133,7 @@ export default class IndividualJob extends Component {
               titlecontent={[
                 "Job code: " + this.props.navigation.getParam("code"),
                 "Time Reported: " + this.props.navigation.getParam("date"),
-                "Job status: " + this.props.navigation.getParam("status"),
+                "Job status: " + this.state.jobStatus,
                 "Priority: " + this.props.navigation.getParam("priority", "P1")
               ]}
             />

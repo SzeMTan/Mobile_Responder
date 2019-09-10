@@ -31,3 +31,21 @@ export function getFormattedDate(time) {
   }
   return formattedDate;
 }
+
+export async function getGeolocation(lat, long) {
+  fetch(
+    "https://nominatim.openstreetmap.org/reverse?format=geojson&lat=" +
+      lat +
+      "&lon=" +
+      long
+  )
+    .then(response => response.json())
+    .then(responseJson => {
+      console.log(responseJson.features[0].properties.display_name)
+      return responseJson.features[0].properties.display_name;
+    })
+    .catch(error => {
+      console.error(error);
+      return error + "could not find location with geolocation";
+    });
+}

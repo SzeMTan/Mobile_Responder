@@ -13,7 +13,7 @@ export default class CommentTestScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      sender: "ACY3",
+      sender: GLOBAL.globalUnit,
       messages: [],
       newmessage: "",
       newuri: "",

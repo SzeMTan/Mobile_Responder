@@ -6,7 +6,7 @@ module.exports = {
     {
       title: "P036986219",
       priority: "P2",
-      code: "3C-CRIME PREVENTION ADVICE",
+      code: "3T Turnover",
       destination:
         "University of Auckland, Waterloo Quadrant, Auckland Central, Waitemata, Auckland, 1053, New Zealand / Aotearoa",
       date: getFormattedDate("02:35"),
@@ -18,7 +18,7 @@ module.exports = {
     {
       title: "P036986218",
       priority: "P2",
-      code: "3C-CRIME PREVENTION ADVICE",
+      code: "1C Car/person acting suspiciously",
       destination:
         "Science Centre (303), 38, Princes Street, Auckland Central, Waitemata, Auckland, 1010, New Zealand / Aotearoa",
       date: getFormattedDate("03:03"),
@@ -30,7 +30,7 @@ module.exports = {
     {
       title: "P036986217",
       priority: "P2",
-      code: "3C-CRIME PREVENTION ADVICE",
+      code: "3F Foot patrol",
       destination:
         "Wellesley Street East, Auckland Central, Waitemata, Auckland, 1010, New Zealand / Aotearoa",
       date: getFormattedDate("08:25"),
@@ -42,7 +42,7 @@ module.exports = {
     {
       title: "P036546217",
       priority: "P2",
-      code: "3C-CRIME PREVENTION ADVICE",
+      code: "3H Hotel visit",
       destination:
         "Auckland Hebrew Congregation, 108, Greys Avenue, Auckland Central, Waitemata, Auckland, 1010, New Zealand / Aotearoa",
       date: getFormattedDate("10:24"),
@@ -54,7 +54,7 @@ module.exports = {
     {
       title: "P036986223",
       priority: "P2",
-      code: "3C-CRIME PREVENTION ADVICE",
+      code: "5F Family Harm",
       destination:
         "21, Dacre Street, Newton, Waitemata, Auckland, 1024, New Zealand / Aotearoa",
       date: getFormattedDate("11:40"),

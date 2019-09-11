@@ -76,7 +76,22 @@ export default class NewFieldEvent extends Component {
   };
 
   static defaultProps = {
-    eventTypes: ["1310 Robbery", "1510 Serious Assault", "1640 Minor Assault"],
+    eventTypes: [
+      "3T Turnover",
+      "1C Car/person acting suspiciously",
+      "3F Foot patrol",
+      "3H Hotel visit",
+      "3M Directed patrol",
+      "3R Road checkpoint",
+      "3W Watching/observing",
+      "4L Logistics/transport",
+      "4Q enquiry/investigation",
+      "5K Bail check",
+      "6D Bail breach",
+      "1310 Robbery",
+      "1510 Serious Assault",
+      "1640 Minor Assault"
+    ],
     jobStatusButtons: ["PENDING", "ASSIGNED", "CLOSED"]
   };
 

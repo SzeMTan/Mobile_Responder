@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import CommentTestScreen from "./comments";
 import MessageInputComponent from "../../components/customMessageInputComponent";
-
+import ModalSelector from "react-native-modal-selector";
 import {
   View,
   ScrollView,
   TouchableOpacity,
-  ActionSheetIOS
+  ActionSheetIOS,
+  Platform,
+  TextInput
 } from "react-native";
 import SegmentControlComponent from "../../components/customSegmentControlComponent";
 import CardComponent from "../../components/customCardComponent";
@@ -30,7 +32,15 @@ export default class IndividualJob extends Component {
   }
 
   static defaultProps = {
-    jobCloseCodes: ["K1", "K2", "K3", "K6", "K8", "K9", "Cancel"]
+    jobCloseCodes: ["K1", "K2", "K3", "K6", "K8", "K9", "Cancel"],
+    jobCloseCodesAndroid: [
+      { key: 0, label: "K1" },
+      { key: 1, label: "K2" },
+      { key: 2, label: "K3" },
+      { key: 3, label: "K6" },
+      { key: 4, label: "K8" },
+      { key: 5, label: "K9" }
+    ]
   };
 
   componentDidMount() {
@@ -118,6 +128,7 @@ export default class IndividualJob extends Component {
   }
 
   closeJob(resolutionCode) {
+    console.log(this.state);
     this.setState({
       jobStatus: "CLOSED",
       jobCloseCode: resolutionCode
@@ -130,11 +141,22 @@ export default class IndividualJob extends Component {
     });
   }
 
+  test = eventType => {
+    this.setState({ jobStatus: eventType });
+  };
+
   commentPressed = () => {
     this.props.navigation.navigate("OnDuty");
   };
 
   renderTabContent = index => {
+    const jobStatusTextEnd =
+      this.state.jobStatus == "ASSIGNED"
+        ? "-" + this.state.teamAssigned
+        : this.state.jobStatus == "CLOSED"
+        ? "-" + this.state.jobCloseCode
+        : "";
+    const jobStatusText = this.state.jobStatus + jobStatusTextEnd;
     if (index === 0) {
       return (
         <View style={[styles.containerView, styles.jobEndContainer]}>
@@ -151,15 +173,13 @@ export default class IndividualJob extends Component {
                   : "Assigned: unassigned"
               }
             />
+
             <CardComponent
               title="JOB INFO"
               titlecontent={[
                 "Job code: " + this.props.navigation.getParam("code"),
                 "Time Reported: " + this.props.navigation.getParam("date"),
-                "Job status: " +
-                  this.state.jobStatus +
-                  "-" +
-                  this.state.jobCloseCode,
+                "Job status: " + jobStatusText,
                 "Priority: " + this.props.navigation.getParam("priority", "P1")
               ]}
             />
@@ -219,22 +239,47 @@ export default class IndividualJob extends Component {
             />
           ) : this.state.jobStatus === "ASSIGNED" &&
             this.state.teamAssigned === GLOBAL.globalUnit ? (
-            <ButtonComponent
-              title="Close job"
-              onPress={() => {
-                ActionSheetIOS.showActionSheetWithOptions(
-                  {
-                    options: this.props.jobCloseCodes,
-                    title: "Resolution Code"
-                  },
-                  buttonIndex => {
-                    if (buttonIndex < this.props.jobCloseCodes.length - 1) {
-                      this.closeJob(this.props.jobCloseCodes[buttonIndex]);
+            Platform.OS == "ios" ? (
+              <ButtonComponent
+                title="Close job"
+                onPress={() => {
+                  ActionSheetIOS.showActionSheetWithOptions(
+                    {
+                      options: this.props.jobCloseCodes,
+                      title: "Resolution Code",
+                      cancelButtonIndex: this.props.jobCloseCodes.length - 1
+                    },
+                    buttonIndex => {
+                      if (buttonIndex < this.props.jobCloseCodes.length - 1) {
+                        this.closeJob(
+                          this.props.jobCloseCodes[buttonIndex]
+                        ).bind(this);
+                      }
                     }
-                  }
-                );
-              }}
-            />
+                  );
+                }}
+              />
+            ) : (
+              <ModalSelector
+                data={this.props.jobCloseCodesAndroid}
+                initValue="Close job"
+                onChange={option => {
+                  this.closeJob(option.label);
+                }}
+                style={styles.button}
+              >
+                <TextInput
+                  style={{
+                    borderColor: "transparent",
+                    alignSelf: "center",
+                    fontSize: 16
+                  }}
+                  editable={false}
+                  placeholderTextColor="white"
+                  placeholder="Close job"
+                />
+              </ModalSelector>
+            )
           ) : null}
         </View>
       );

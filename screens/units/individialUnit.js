@@ -55,7 +55,7 @@ export default class IndividualUnit extends Component {
           <View style={styles.unitCenterContainer}>
             <CardComponent
               title="PERSONNEL"
-              titlecontent={["Name: ", "UserID: "]}
+              titlecontent={["Name: " + "Jack", "UserID: " +  "jac098"]}
             />
             <TouchableOpacity
               onPress={() =>
@@ -72,8 +72,8 @@ export default class IndividualUnit extends Component {
               />
             </TouchableOpacity>
             <CardComponent title="DEVICES" leftbottom="N/A" />
-            <CardComponent title="VEHICLES" leftbottom="N/A" />
-            <CardComponent title="EQUIPMENT" leftbottom="N/A" />
+            <CardComponent title="VEHICLES" leftbottom="F430F1" />
+            <CardComponent title="EQUIPMENT" leftbottom="Firearms" />
           </View>
         </ScrollView>
       );

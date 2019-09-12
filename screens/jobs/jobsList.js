@@ -83,7 +83,8 @@ export default class JobsList extends Component {
       destination: object.location,
       date: formattedDate,
       status: object.jobStatus,
-      assigned: true
+      assigned: true,
+      teamAssigned: GLOBAL.globalUnit
     };
     GLOBAL.jobs.push(newEvent);
     this.forceUpdate();

@@ -149,7 +149,8 @@ const endJob = {
 const horizonalLine = {
   borderBottomColor: 'grey',
   borderBottomWidth: 2,
-  marginHorizontal:10
+  marginHorizontal:10,
+  marginVertical:2
 }
 
 const endContainer = {

@@ -1,11 +1,21 @@
 import React, { Component } from "react";
-import { ScrollView, View, TouchableOpacity, Text, Alert } from "react-native";
+import {
+  ActionSheetIOS,
+  ScrollView,
+  View,
+  TouchableOpacity,
+  Text,
+  Alert,
+  Platform,
+  TextInput
+} from "react-native";
 import SegmentControlComponent from "../../components/customSegmentControlComponent";
 import CardComponent from "../../components/customCardComponent";
 import HeaderComponent from "../../components/customHeaderComponent";
 import ButtonComponent from "../../components/customButtonComponent";
 import GLOBAL from "../../global";
 import getStyleSheet from "../../styles/style";
+import ModalSelector from "react-native-modal-selector";
 
 export default class Home extends Component {
   componentDidMount() {
@@ -15,6 +25,17 @@ export default class Home extends Component {
       this.forceUpdate();
     });
   }
+  static defaultProps = {
+    jobCloseCodes: ["K1", "K2", "K3", "K6", "K8", "K9", "Cancel"],
+    jobCloseCodesAndroid: [
+      { key: 0, label: "K1" },
+      { key: 1, label: "K2" },
+      { key: 2, label: "K3" },
+      { key: 3, label: "K6" },
+      { key: 4, label: "K8" },
+      { key: 5, label: "K9" }
+    ]
+  };
 
   componentWillUnmount() {
     // Remove the event listener
@@ -40,6 +61,17 @@ export default class Home extends Component {
     });
   };
 
+  closeJob(resolutionCode) {
+    console.log(resolutionCode)
+    GLOBAL.jobs.map((job, index) => {
+      if (job.teamAssigned == GLOBAL.globalUnit) {
+        GLOBAL.jobs[index].status = "CLOSED";
+        GLOBAL.jobs[index].jobCloseCode = resolutionCode;
+      }
+    });
+    this.forceUpdate();
+  }
+
   renderCard(job, index) {
     return (
       <TouchableOpacity
@@ -52,7 +84,8 @@ export default class Home extends Component {
             date: job.date,
             status: job.status,
             priority: job.priority,
-            latlng: job.latlng
+            latlng: job.latlng,
+            destination: job.destination
           })
         }
       >
@@ -102,7 +135,7 @@ export default class Home extends Component {
                         GLOBAL.jobs.map((job, index) => {
                           if (
                             (job.assigned == true) &
-                            (job.status == "PENDING")
+                            (job.teamAssigned == GLOBAL.globalUnit)
                           ) {
                             GLOBAL.jobs[index].status = "CLOSED";
                           }
@@ -130,24 +163,64 @@ export default class Home extends Component {
           <View style={styles.unitCenterContainer}>
             <Text style={styles.homeText}>Current Jobs</Text>
             {GLOBAL.jobs
-              .filter(job => job.assigned && job.status == "PENDING")
+              .filter(
+                job =>
+                  job.assigned &&
+                  job.status == "ASSIGNED" &&
+                  job.teamAssigned == GLOBAL.globalUnit
+              )
               .map((job, index) => this.renderCard(job, index))}
-            <ButtonComponent
-              style={styles.endJob}
-              title="END JOB"
-              onPress={() =>
-                GLOBAL.jobs.map((job, index) => {
-                  if ((job.assigned == true) & (job.status == "PENDING")) {
-                    GLOBAL.jobs[index].status = "CLOSED";
-                    this.forceUpdate();
-                  }
-                })
-              }
-            />
+            {Platform.OS == "ios" ? (
+              <ButtonComponent
+                title="Close job"
+                onPress={() => {
+                  ActionSheetIOS.showActionSheetWithOptions(
+                    {
+                      options: this.props.jobCloseCodes,
+                      title: "Resolution Code",
+                      cancelButtonIndex: this.props.jobCloseCodes.length - 1
+                    },
+                    buttonIndex => {
+                      if (buttonIndex < this.props.jobCloseCodes.length - 1) {
+                        this.closeJob(
+                          this.props.jobCloseCodes[buttonIndex]
+                        ).bind(this);
+                      }
+                    }
+                  );
+                }}
+              />
+            ) : (
+              <ModalSelector
+                data={this.props.jobCloseCodesAndroid}
+                initValue="Close job"
+                onChange={option => {
+                  this.closeJob(option.label);
+                }}
+                style={styles.endJob}
+              >
+                <TextInput
+                  style={{
+                    borderColor: "transparent",
+                    alignSelf: "center",
+                    fontWeight: "200",
+                    fontSize: 18
+                  }}
+                  editable={false}
+                  placeholderTextColor="white"
+                  placeholder="Close job"
+                />
+              </ModalSelector>
+            )}
             <View style={styles.horizonalLine} />
             <Text style={styles.homeText}>Dispatched Jobs</Text>
             {GLOBAL.jobs
-              .filter(job => job.assigned && job.status == "CLOSED")
+              .filter(
+                job =>
+                  job.assigned &&
+                  job.status == "CLOSED" &&
+                  job.teamAssigned == GLOBAL.globalUnit
+              )
               .map((job, index) => this.renderCard(job, index))}
           </View>
         </ScrollView>

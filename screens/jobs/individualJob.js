@@ -63,7 +63,8 @@ export default class IndividualJob extends Component {
         this.setState({
           assigned: job.assigned,
           teamAssigned: job.teamAssigned,
-          jobStatus: job.status
+          jobStatus: job.status,
+          jobCloseCode: job.jobCloseCode
         });
       });
   }
@@ -140,10 +141,6 @@ export default class IndividualJob extends Component {
       }
     });
   }
-
-  test = eventType => {
-    this.setState({ jobStatus: eventType });
-  };
 
   commentPressed = () => {
     this.props.navigation.navigate("OnDuty");
@@ -272,7 +269,8 @@ export default class IndividualJob extends Component {
                   style={{
                     borderColor: "transparent",
                     alignSelf: "center",
-                    fontSize: 16
+                    fontWeight: "500",
+                    fontSize: 18
                   }}
                   editable={false}
                   placeholderTextColor="white"

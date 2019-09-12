@@ -13,7 +13,8 @@ module.exports = {
       status: "PENDING",
       latlng: { latitude: -36.848671, longitude: 174.770107 },
       assigned: false,
-      teamAssigned: ""
+      teamAssigned: "", 
+      jobCloseCode: ""
     },
     {
       title: "P036986218",
@@ -25,7 +26,8 @@ module.exports = {
       status: "CLOSED",
       latlng: { latitude: -36.853943, longitude: 174.768265 },
       assigned: true,
-      teamAssigned: ""
+      teamAssigned: "",
+      jobCloseCode: ""
     },
     {
       title: "P036986217",
@@ -37,7 +39,8 @@ module.exports = {
       status: "ASSIGNED",
       latlng: { latitude: -36.852638, longitude: 174.768265 },
       assigned: true,
-      teamAssigned: "PBY"
+      teamAssigned: "PBY",
+      jobCloseCode: "",
     },
     {
       title: "P036546217",
@@ -49,7 +52,8 @@ module.exports = {
       status: "CLOSED",
       latlng: { latitude: -36.855786, longitude: 174.759803 },
       assigned: true,
-      teamAssigned: this.globalUnit
+      teamAssigned: "ACY3",
+      jobCloseCode: ""
     },
     {
       title: "P036986223",
@@ -61,7 +65,8 @@ module.exports = {
       status: "CLOSED",
       latlng: { latitude: -36.861438, longitude: 174.758121 },
       assigned: true,
-      teamAssigned: "CEPR22"
+      teamAssigned: "CEPR22",
+      jobCloseCode: ""
     }
   ],
   units: [

@@ -20,7 +20,7 @@ export default class NewFieldEvent extends Component {
     super(props);
     this.state = {
       eventType: "1310 Robbery",
-      jobStatus: "PENDING",
+      jobStatus: "ASSIGNED",
       location: "Location not found",
       hasLocationPermissions: false,
       lookingForLocation: false
@@ -189,7 +189,7 @@ export default class NewFieldEvent extends Component {
               onValueChange={this.updateStatus}
               style={styles.androidPicker}
             >
-              <Picker.Item label="PENDING" value="PENDING" />
+              <Picker.Item label="ASSIGNED" value="ASSIGNED" />
               <Picker.Item label="CLOSED" value="CLOSED" />
             </Picker>
           ) : (

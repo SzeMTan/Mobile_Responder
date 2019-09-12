@@ -73,7 +73,7 @@ export default class IndividualUnit extends Component {
             </TouchableOpacity>
             <CardComponent title="DEVICES" leftbottom="N/A" />
             <CardComponent title="VEHICLES" leftbottom="F430F1" />
-            <CardComponent title="EQUIPMENT" leftbottom="Firearms" />
+            <CardComponent title="EQUIPMENT" leftbottom="Firearms, TDD (Tire Deflation Device), Taser" />
           </View>
         </ScrollView>
       );

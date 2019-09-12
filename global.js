@@ -5,7 +5,7 @@ module.exports = {
   jobs: [
     {
       title: "P036986219",
-      priority: "P2",
+      priority: "P1",
       code: "3T Turnover",
       destination:
         "University of Auckland, Waterloo Quadrant, Auckland Central, Waitemata, Auckland, 1053, New Zealand / Aotearoa",

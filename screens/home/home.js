@@ -75,8 +75,8 @@ export default class Home extends Component {
           <CardComponent
             title={"Unit: " + GLOBAL.globalUnit}
             titlecontent={[
-              "Name: Bob",
-              "QID: bob123",
+              "Name: John",
+              "QID: JOHN12, IWIS44",
               "phone no: +64 21 3613 4287",
               "shift start: 0800",
               "shift end: 1700",

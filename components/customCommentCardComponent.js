@@ -12,6 +12,22 @@ export default class ReorderCardComponent extends Component {
   pin = () => {
     this.props.pinnedButtonPressed(this.props.index);
   };
+
+  renderTouchableMessage = (msg) => {
+    if (msg.includes('PRN:')) {
+      return <TouchableOpacity onPress={this.props.onDuty}>
+              <Text style={styles.commentCardFontSize}>
+                {this.props.message}
+              </Text>
+            </TouchableOpacity>
+    } 
+    else {
+        return <Text style={styles.commentCardFontSize}>
+          {this.props.message}
+        </Text>
+    }
+  }
+
   render() {
     styles = getStyleSheet(GLOBAL.darkState);
     const { message } = this.props;
@@ -45,11 +61,7 @@ export default class ReorderCardComponent extends Component {
               </View>
             </View>
           : <View style={styles.commentCardFontContainer}>
-            <TouchableOpacity onPress={this.props.onDuty}>
-              <Text style={styles.commentCardFontSize}>
-                {this.props.message}
-              </Text>
-            </TouchableOpacity>
+            {this.renderTouchableMessage(this.props.message)}
             </View>}
         <View style={styles.commentCardDateContainer}>
           <Text style={styles.commentCardDate}>

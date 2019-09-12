@@ -59,6 +59,7 @@ class OnDutyScreen extends Component {
                 
             </View>
             <View>
+                <Text style={{fontSize:30}}> PRN: 748903278</Text> 
                 <Text style={{fontSize: 30}}> WICK, John</Text>
             </View>
             <View style={{flexDirection: 'row'}}>

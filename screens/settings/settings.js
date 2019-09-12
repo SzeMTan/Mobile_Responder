@@ -41,7 +41,20 @@ class SettingsScreen extends Component {
                             />
                         <SettingsList.Item 
                             title='Caching'
-                            onPress={() => Alert.alert('Route To Caching Settings Page')}
+                            onPress={() => Alert.alert(
+                                "Remove cache",
+                                "Do you wish to remove cache?",
+                                [
+                                  {
+                                    text: "No",
+                                    onPress: () => console.log('caching no')
+                                  },
+                                  {
+                                    text: "Yes",
+                                    onPress: () => console.log('caching yes')
+                                  }
+                                ]
+                              )}
                             titleStyle={styles.settingsChildren}
                             />
                     </SettingsList>
@@ -59,12 +72,27 @@ class SettingsScreen extends Component {
                     backgroundColor={styles.settingsChildren.backgroundColor} borderColor='#c8c7cc' defaultItemSize={50}>
                         <SettingsList.Item 
                             title='Reset Application'
-                            onPress={() => Alert.alert('Route To General Page')}
+                            onPress={() => Alert.alert(
+                                "Reset application",
+                                "Do you wish to reset your application",
+                                [
+                                    {
+                                        text: "No",
+                                        onPress: () => console.log('reset no')
+                                      },
+                                      {
+                                    text: "Yes",
+                                    onPress: () => console.log('reset yes')
+                                  }                                  
+                                ]
+                              )}
                             titleStyle={styles.settingsChildren}
                             />
                         <SettingsList.Item 
                             title='About App'
-                            onPress={() => this.props.navigation.navigate('About')}
+                            onPress={() => Alert.alert(
+                                "About App ",
+                                "Jenny Lee & Sze-Meeng Tan Intergraph Mobile Responder Part 4 Project 2019")}
                             titleStyle={styles.settingsChildren}
                             />
 

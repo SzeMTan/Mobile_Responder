@@ -44,7 +44,8 @@ export default class Home extends Component {
   constructor() {
     super();
     this.state = {
-      selectedIndex: 0
+      selectedIndex: 0,
+      currentJob: false
     };
   }
 
@@ -68,6 +69,7 @@ export default class Home extends Component {
         GLOBAL.jobs[index].jobCloseCode = resolutionCode;
       }
     });
+    this.state.currentJob = false;
     this.forceUpdate();
   }
 
@@ -175,11 +177,15 @@ export default class Home extends Component {
                   job.status == "ASSIGNED" &&
                   job.teamAssigned == GLOBAL.globalUnit
               )
-              .map((job, index) => this.renderCard(job, index))}
+              .map((job, index) => {
+                this.state.currentJob = true;
+                return this.renderCard(job, index);
+              })}
             {Platform.OS == "ios" ? (
               <ButtonComponent
                 title="Close job"
                 style={styles.endJob}
+                disabled={!this.state.currentJob}
                 onPress={() => {
                   ActionSheetIOS.showActionSheetWithOptions(
                     {

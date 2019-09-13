@@ -26,8 +26,8 @@ module.exports = {
       status: "CLOSED",
       latlng: { latitude: -36.853943, longitude: 174.768265 },
       assigned: true,
-      teamAssigned: "",
-      jobCloseCode: ""
+      teamAssigned: "PBY",
+      jobCloseCode: "K2"
     },
     {
       title: "P036986217",
@@ -53,7 +53,7 @@ module.exports = {
       latlng: { latitude: -36.855786, longitude: 174.759803 },
       assigned: true,
       teamAssigned: "ACY3",
-      jobCloseCode: ""
+      jobCloseCode: "K3"
     },
     {
       title: "P036986223",
@@ -66,7 +66,7 @@ module.exports = {
       latlng: { latitude: -36.861438, longitude: 174.758121 },
       assigned: true,
       teamAssigned: "CEPR22",
-      jobCloseCode: ""
+      jobCloseCode: "K4"
     }
   ],
   units: [

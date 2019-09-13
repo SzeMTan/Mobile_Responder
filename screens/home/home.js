@@ -72,6 +72,13 @@ export default class Home extends Component {
   }
 
   renderCard(job, index) {
+    const jobStatusTextEnd =
+      job.status == "ASSIGNED"
+        ? "-" + job.teamAssigned
+        : job.status == "CLOSED"
+        ? "-" + job.jobCloseCode
+        : "";
+    const jobStatusText = job.status + jobStatusTextEnd;
     return (
       <TouchableOpacity
         key={index}
@@ -93,7 +100,7 @@ export default class Home extends Component {
           title={job.title}
           titlecontent={[job.code, job.destination]}
           leftbottom={job.date}
-          rightbottom={job.status}
+          rightbottom={jobStatusText}
         />
       </TouchableOpacity>
     );

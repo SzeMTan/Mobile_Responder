@@ -98,7 +98,6 @@ export default class JobsList extends Component {
         ? "-" + job.jobCloseCode
         : "";
     const jobStatusText = job.status + jobStatusTextEnd;
-    console.log(job.status)
     return (
       <TouchableOpacity
         key={job.title}

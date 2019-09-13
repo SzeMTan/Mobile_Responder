@@ -129,7 +129,6 @@ export default class IndividualJob extends Component {
   }
 
   closeJob(resolutionCode) {
-    console.log(this.state);
     this.setState({
       jobStatus: "CLOSED",
       jobCloseCode: resolutionCode
@@ -248,9 +247,7 @@ export default class IndividualJob extends Component {
                     },
                     buttonIndex => {
                       if (buttonIndex < this.props.jobCloseCodes.length - 1) {
-                        this.closeJob(
-                          this.props.jobCloseCodes[buttonIndex]
-                        ).bind(this);
+                        this.closeJob(this.props.jobCloseCodes[buttonIndex]);
                       }
                     }
                   );

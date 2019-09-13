@@ -206,7 +206,6 @@ async function sendSingleNotification(message) {
     title: "New messages",
     body: message
   });
-  console.log(notificationId);
 }
 
 async function startSendingNotification(f) {

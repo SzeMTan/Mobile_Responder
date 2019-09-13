@@ -41,7 +41,6 @@ export async function getGeolocation(lat, long) {
   )
     .then(response => response.json())
     .then(responseJson => {
-      console.log(responseJson.features[0].properties.display_name)
       return responseJson.features[0].properties.display_name;
     })
     .catch(error => {

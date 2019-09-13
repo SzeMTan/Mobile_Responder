@@ -62,7 +62,6 @@ export default class Home extends Component {
   };
 
   closeJob(resolutionCode) {
-    console.log(resolutionCode)
     GLOBAL.jobs.map((job, index) => {
       if (job.teamAssigned == GLOBAL.globalUnit) {
         GLOBAL.jobs[index].status = "CLOSED";
@@ -182,9 +181,7 @@ export default class Home extends Component {
                     },
                     buttonIndex => {
                       if (buttonIndex < this.props.jobCloseCodes.length - 1) {
-                        this.closeJob(
-                          this.props.jobCloseCodes[buttonIndex]
-                        ).bind(this);
+                        this.closeJob(this.props.jobCloseCodes[buttonIndex]);
                       }
                     }
                   );

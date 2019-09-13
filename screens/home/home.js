@@ -172,6 +172,7 @@ export default class Home extends Component {
             {Platform.OS == "ios" ? (
               <ButtonComponent
                 title="Close job"
+                style={styles.endJob}
                 onPress={() => {
                   ActionSheetIOS.showActionSheetWithOptions(
                     {

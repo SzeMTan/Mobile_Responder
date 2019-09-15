@@ -123,7 +123,7 @@ module.exports = {
       equipment: "2x Glock pistols, \nfirst aid kit"
     }
   ],
-  messages: [
+  messages: [[
     {
       sender: "Comms",
       message:
@@ -146,6 +146,6 @@ module.exports = {
       pinned: false,
       date: getFormattedDate("")
     }
-  ],
+  ]],
   mounted: false
 };

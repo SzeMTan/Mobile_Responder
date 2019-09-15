@@ -6,7 +6,7 @@ const sleep = milliseconds => {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 };
 
-const messages = [
+const messages = [[
   {
     sender: "Comms",
     message: "PRN: 748903278",
@@ -198,7 +198,7 @@ const messages = [
     uri: false,
     pinned: false
   }
-];
+]];
 
 async function sendSingleNotification(message) {
   await sleep(2000);
@@ -208,7 +208,7 @@ async function sendSingleNotification(message) {
   });
 }
 
-async function startSendingNotification(f) {
+async function startSendingNotification(f, index) {
   if (Platform.OS != "ios") {
     Notifications.dismissAllNotificationsAsync();
     Notifications.cancelAllScheduledNotificationsAsync();
@@ -216,15 +216,15 @@ async function startSendingNotification(f) {
 
   for (let i = 0; i < messages.length; i++) {
     await sendSingleNotification(
-      messages[i].sender + ": " + messages[i].message
+      messages[index][i].sender + ": " + messages[0][i].message
     );
     formattedDate = getFormattedDate("");
-    messages[i].date = formattedDate;
-    f(messages[i]);
+    messages[index][i].date = formattedDate;
+    f(messages[index][i]);
   }
 }
 
-export async function askPermissions(f) {
+export async function askPermissions(f, index) {
   const { status: existingStatus } = await Permissions.getAsync(
     Permissions.NOTIFICATIONS
   );
@@ -236,6 +236,6 @@ export async function askPermissions(f) {
   }
 
   if (finalStatus === "granted") {
-    startSendingNotification(f);
+    startSendingNotification(f, index);
   }
 }

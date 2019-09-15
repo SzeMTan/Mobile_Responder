@@ -23,13 +23,13 @@ export default class CommentTestScreen extends React.Component {
   }
 
   componentWillMount() {
-    this.state.messages = GLOBAL.messages;
+    this.state.messages = GLOBAL.messages[this.props.index];
     this.state.mounted = true;
   }
 
   componentDidMount() {
     if (!GLOBAL.mounted) {
-      askPermissions(this.updateMessages.bind(this));
+      askPermissions(this.updateMessages.bind(this), this.props.index);
       GLOBAL.mounted = true;
     }
   }
@@ -39,16 +39,17 @@ export default class CommentTestScreen extends React.Component {
   }
 
   updateMessages(message) {
-    GLOBAL.messages.push(message);
+    console.log(this.props.index)
+    GLOBAL.messages[this.props.index].push(message);
     if (this.state.mounted) {
-      this.state.messages = GLOBAL.messages;
+      this.state.messages = GLOBAL.messages[this.props.index];
       this.forceUpdate();
     }
   }
 
   pinnedButtonPressed = index => {
-    this.state.messages[index].pinned = !this.state.messages[index].pinned;
-    GLOBAL.messages = this.state.messages;
+    this.state.messages[index].pinned = !this.state.messages[this.props.index].pinned;
+    GLOBAL.messages[this.props.index] = this.state.messages;
     this.forceUpdate();
   };
 

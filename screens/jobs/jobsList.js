@@ -90,7 +90,7 @@ export default class JobsList extends Component {
     this.forceUpdate();
   };
 
-  renderCard(job) {
+  renderCard(job, index) {
     const jobStatusTextEnd =
       job.status == "ASSIGNED"
         ? "-" + job.teamAssigned
@@ -103,7 +103,7 @@ export default class JobsList extends Component {
         key={job.title}
         onPress={() =>
           this.props.navigation.navigate("IndividualJob", {
-            id: 1,
+            id: index,
             title: job.title,
             code: job.code,
             date: job.date,
@@ -128,14 +128,15 @@ export default class JobsList extends Component {
     styles = getStyleSheet(GLOBAL.darkState);
     const cards =
       this.state.filter.dGroups == undefined
-        ? GLOBAL.jobs.map(job => this.renderCard(job))
-        : GLOBAL.jobs
-            .filter(
-              job =>
-                this.state.filter.priority.includes(job.priority) ||
-                this.state.filter.dGroups.includes(job.destination)
-            )
-            .map(job => this.renderCard(job));
+        ? GLOBAL.jobs.map((job, index) => this.renderCard(job, index))
+        : GLOBAL.jobs.map((job, index) => {
+            if (
+              this.state.filter.priority.includes(job.priority) ||
+              this.state.filter.dGroups.includes(job.destination)
+            ) {
+              return this.renderCard(job, index);
+            }
+          });
     return (
       <View style={[styles.containerView, styles.appbackground]}>
         <ScrollView>

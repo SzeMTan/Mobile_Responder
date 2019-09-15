@@ -27,7 +27,8 @@ export default class IndividualJob extends Component {
       assigned: false,
       teamAssigned: "",
       jobStatus: "",
-      jobCloseCode: ""
+      jobCloseCode: "",
+      arrayIndex: props.navigation.getParam("id")
     };
   }
 
@@ -289,6 +290,7 @@ export default class IndividualJob extends Component {
             contentComponentStyle={styles.containerView}
           >
             <CommentTestScreen
+              index={this.state.arrayIndex}
               title="Comments"
               uri={this.state.uri}
               message={this.state.message}

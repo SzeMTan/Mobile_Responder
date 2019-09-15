@@ -7,6 +7,7 @@ import GLOBAL from "../../global";
 import getStyleSheet from "../../styles/style";
 
 export default class IndividualUnit extends Component {
+
   componentDidMount() {
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
@@ -24,7 +25,7 @@ export default class IndividualUnit extends Component {
     super(props);
     this.state = {
       selectedIndex: 0,
-      messages: []
+      unit: GLOBAL.units[props.navigation.getParam("id")]
     };
   }
 
@@ -55,7 +56,7 @@ export default class IndividualUnit extends Component {
           <View style={styles.unitCenterContainer}>
             <CardComponent
               title="PERSONNEL"
-              titlecontent={["Name: " + "Jack", "UserID: " +  "jac098"]}
+              titlecontent={["Names: " + this.state.unit.names, "UserID: " +  this.state.unit.userids]}
             />
             <TouchableOpacity
               onPress={() =>
@@ -71,9 +72,8 @@ export default class IndividualUnit extends Component {
                 ]}
               />
             </TouchableOpacity>
-            <CardComponent title="DEVICES" leftbottom="N/A" />
-            <CardComponent title="VEHICLES" leftbottom="F430F1" />
-            <CardComponent title="EQUIPMENT" leftbottom="Firearms, TDD (Tire Deflation Device), Taser" />
+            <CardComponent title="VEHICLES" leftbottom={this.state.unit.numberPlate} />
+            <CardComponent title="EQUIPMENT" leftbottom={this.state.unit.equipment} />
           </View>
         </ScrollView>
       );

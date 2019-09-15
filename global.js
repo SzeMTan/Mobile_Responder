@@ -71,31 +71,56 @@ module.exports = {
   ],
   units: [
     {
+      title: "CEW23",
+      names: "Emil Leyendecker, Elva Cumpston",
+      userids: "emi391, elv524",
+      title: "CEW23",
+      code: "1V Vehicle collision",
+      destination:
+        "146 Trafalgar Street, Onehunga, Auckland",
+      id: "P036986219",
+      status: "DISPATCHED",
+      numberPlate: "GYC892 - marked car",
+      latlng: { latitude: -36.850581, longitude: 174.772951 },
+      equipment: "2x Glock pistols, \n2x Taser, \nTDD(Tire Deflation Device), \nfirst aid kit"
+    },    {
       title: "PBY",
+      names: "Randell Gammons, Angelic Mcaleer",
+      userids: "ran753, ang028",
       code: "3C-CRIME PREVENTION ADVICE",
       destination:
         "5, Alten Road, Auckland Central, Waitemata, Auckland, 1053, New Zealand / Aotearoa",
       id: "P036986219",
-      status: "ARRIVED",
-      latlng: { latitude: -36.850581, longitude: 174.772951 }
+      status: "UNASSIGNED",
+      numberPlate: "GNN593 - marked car",
+      latlng: { latitude: -36.850581, longitude: 174.772951 },
+      equipment: "2x Glock pistols, \n2x Bushmaster rifles, \nTDD(Tire Deflation Device), \nfirst aid kit"
     },
     {
       title: "ACY3",
+      names: "Sammy Munford, Garry Grajeda",
+      userids: "sam012, gar357",
       code: "3M-DIRECTED PATROL",
       destination:
         "University Of Auckland, Wynyard Street, Auckland Central, Waitemata, Auckland, 1053, New Zealand / Aotearoa",
       id: "P036986219",
-      status: "ARRIVED",
-      latlng: { latitude: -36.851958, longitude: 174.772524 }
+      status: "DISPATCHED",
+      numberPlate: "KWH692 - marked car",
+      latlng: { latitude: -36.851958, longitude: 174.772524 },
+      equipment: "4x road cones, \nfirst aid kit"
     },
     {
       title: "ACY1",
+      names: "Cassidy Law, Vernita Wason",
+      userids: "cas035, ver829",
       code: "3M-DIRECTED PATROL",
       destination:
         "Grafton Road, Auckland Central, Waitemata, Auckland, 1053, New Zealand / Aotearoa",
       id: "P036986219",
-      status: "ARRIVED",
-      latlng: { latitude: -36.854165, longitude: 174.770824 }
+      status: "DISPATCHED",
+      numberPlate: "CYJ472 - marked car",
+      latlng: { latitude: -36.854165, longitude: 174.770824 },
+      equipment: "2x Glock pistols, \nfirst aid kit"
     }
   ],
   messages: [

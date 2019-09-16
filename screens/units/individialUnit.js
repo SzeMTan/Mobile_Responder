@@ -7,7 +7,6 @@ import GLOBAL from "../../global";
 import getStyleSheet from "../../styles/style";
 
 export default class IndividualUnit extends Component {
-
   componentDidMount() {
     const { navigation } = this.props;
     this.focusListener = navigation.addListener("didFocus", () => {
@@ -50,13 +49,14 @@ export default class IndividualUnit extends Component {
   };
 
   renderTabContent = index => {
+    const { names, userids, numberPlate, equipment, title } = this.state.unit;
     if (index === 0) {
       return (
         <ScrollView>
           <View style={styles.unitCenterContainer}>
             <CardComponent
               title="PERSONNEL"
-              titlecontent={["Names: " + this.state.unit.names, "UserID: " +  this.state.unit.userids]}
+              titlecontent={["Names: " + names, "UserID: " + userids]}
             />
             <TouchableOpacity
               onPress={() =>
@@ -72,13 +72,13 @@ export default class IndividualUnit extends Component {
                 ]}
               />
             </TouchableOpacity>
-            <CardComponent title="VEHICLES" leftbottom={this.state.unit.numberPlate} />
-            <CardComponent title="EQUIPMENT" leftbottom={this.state.unit.equipment} />
+            <CardComponent title="VEHICLES" leftbottom={numberPlate} />
+            <CardComponent title="EQUIPMENT" leftbottom={equipment} />
           </View>
         </ScrollView>
       );
     } else {
-      return <UnitMessagingComponent />;
+      return <UnitMessagingComponent name={title} />;
     }
   };
 

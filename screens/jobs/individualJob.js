@@ -58,16 +58,13 @@ export default class IndividualJob extends Component {
   }
 
   componentWillMount() {
-    GLOBAL.jobs
-      .filter(job => this.props.navigation.getParam("title") == job.title)
-      .map(job => {
-        this.setState({
-          assigned: job.assigned,
-          teamAssigned: job.teamAssigned,
-          jobStatus: job.status,
-          jobCloseCode: job.jobCloseCode
-        });
-      });
+    job = GLOBAL.jobs[this.state.arrayIndex];
+    this.setState({
+      assigned: job.assigned,
+      teamAssigned: job.teamAssigned,
+      jobStatus: job.status,
+      jobCloseCode: job.jobCloseCode
+    });
   }
 
   setIndex = index => {
@@ -120,13 +117,10 @@ export default class IndividualJob extends Component {
       teamAssigned: GLOBAL.globalUnit,
       jobStatus: "ASSIGNED"
     });
-    GLOBAL.jobs.map((job, index) => {
-      if (this.props.navigation.getParam("title") == job.title) {
-        GLOBAL.jobs[index].assigned = true;
-        GLOBAL.jobs[index].teamAssigned = GLOBAL.globalUnit;
-        GLOBAL.jobs[index].status = "ASSIGNED";
-      }
-    });
+
+    GLOBAL.jobs[this.state.arrayIndex].assigned = true;
+    GLOBAL.jobs[this.state.arrayIndex].teamAssigned = GLOBAL.globalUnit;
+    GLOBAL.jobs[this.state.arrayIndex].status = "ASSIGNED";
   }
 
   closeJob(resolutionCode) {
@@ -134,12 +128,8 @@ export default class IndividualJob extends Component {
       jobStatus: "CLOSED",
       jobCloseCode: resolutionCode
     });
-    GLOBAL.jobs.map((job, index) => {
-      if (this.props.navigation.getParam("title") == job.title) {
-        GLOBAL.jobs[index].status = "CLOSED";
-        GLOBAL.jobs[index].jobCloseCode = resolutionCode;
-      }
-    });
+    GLOBAL.jobs[this.state.arrayIndex].status = "CLOSED";
+    GLOBAL.jobs[this.state.arrayIndex].jobCloseCode = resolutionCode;
   }
 
   commentPressed = () => {
@@ -154,6 +144,7 @@ export default class IndividualJob extends Component {
         ? "-" + this.state.jobCloseCode
         : "";
     const jobStatusText = this.state.jobStatus + jobStatusTextEnd;
+    const { caller, headline, cross } = GLOBAL.jobs[this.state.arrayIndex];
     if (index === 0) {
       return (
         <View style={[styles.containerView, styles.jobEndContainer]}>
@@ -198,17 +189,22 @@ export default class IndividualJob extends Component {
               title="TIMES"
               titlecontent={["Dispatched: ", "First Arrival: ", "Closed: "]}
             />
-            <CardComponent title="HEADLINE" titlecontent={["ORANGE 1- "]} />
+            <CardComponent title="HEADLINE" titlecontent={[headline]} />
             <CardComponent
               title="CROSS STREETS"
               titlecontent={[
-                "X-STREET 1 - Collow RD",
-                "X-STREET 1 - SELWYN AVE"
+                "X-STREET 1 - " + cross.x1,
+                "X-STREET 1 - " + cross.x2
               ]}
             />
             <CardComponent
               title="CALLER INFO"
-              titlecontent={["Source: ", "Name", "Address", "Number"]}
+              titlecontent={[
+                "Source: " + caller.source,
+                "Name: " + caller.name,
+                "Address: " + caller.address,
+                "Number: " + caller.number
+              ]}
             />
           </ScrollView>
           {!this.state.assigned ||

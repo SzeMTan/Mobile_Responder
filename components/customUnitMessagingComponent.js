@@ -20,11 +20,11 @@ export default class UnitMessagingComponent extends React.Component {
       messages: [
         {
           _id: 1,
-          text: "Hello World",
+          text: "Hiya",
           createdAt: new Date(),
           user: {
             _id: 2,
-            name: "PBY"
+            name: this.props.name
           }
         }
       ]

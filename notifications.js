@@ -6,199 +6,508 @@ const sleep = milliseconds => {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 };
 
-const messages = [[
-  {
-    sender: "Comms",
-    message: "PRN: 748903278",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "said 'we will see you soon, thank you'",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "Hung up",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "C/T calling back",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "female back on line",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "states are cold and want to go inside to bed",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "sound quite young - mid to late teens perhaps",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "line disconnected again",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "TD 3 mins",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "NIL ringing straight to UK V/MAIL - msg left to call 111 back",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "End of Duplicate Event data",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message:
-      "HEADLINE: young male asking for police then hung up - NIL DISTRESS OR B/G NOISE",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message:
-      "HEADLINE: FEMALE didn't speak to operator - sounded rushed - kept saying 'let's go'",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "POSS was on the move",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "Call Window as Auckland",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message:
-      "ECLI Handset (GPS) for +64632899889(Vodafone): LL(174:51:19.7640,-36:52:43.0680)",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "several calls in PCL form number",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "relates to P058239789",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "CT calling back",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "Duplicate Event: Location = 20 Symonds St, AUCKLAND",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message:
-      "female stating its a family argument and trying to reason with her mother",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "sounds like informant has been locked out of house",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "They said police aren't needed anymore and disconnected",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "CT Standing down",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "Event P036994062 Dispatch Assigned",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "Same event",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "End of Duplicate Event data",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "ADDRESS NOT CONFIRMED",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "$ONI34",
-    message:
-      "just called informant, introduced myself and got reply 'don't really need you, too late' and hung up. Sounded like she was in a car",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "Preempt Unit ONI34",
-    uri: false,
-    pinned: false
-  },
-  {
-    sender: "Comms",
-    message: "held for earlies",
-    uri: false,
-    pinned: false
-  }
-]];
+const messages = [
+  [
+    {
+      sender: "Comms",
+      message:
+        "Descr 1  M/C approx late 20s, blue jeans with no top on, tattoos on shoulder",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message:
+        "Descr 2 M/C approx. late 20s, wearing striped long sleeve top with tan jeans and white shoes",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Both males appear to be 1K",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Neighbour told infmt this has been going on for 30 mins",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "1 male is lying flat on back, with blood on face",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Other male is leaning on male",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Both males are in the middle of the driveway near the street",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Males are talking to each other now",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Both males ae in the middle of the driveway near the street",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "1 males just lifted head, so is responsive",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "UK drugs",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Adv to call back if anything changes or escalates",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Unit 10/2",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "One in custody, ambos transporting the victim",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "CES11 advising crime",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Male is status 1",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Victim believed to be Ryan GRAHAM",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "PRN 123456",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message:
+        "Offender back at Mount Wellington and is John SMITH D/L DJ817761",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    }
+  ],
+  [
+    ,
+    {
+      sender: "Comms",
+      message: "Infmt elderly and hard of hearing",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Male is WORETA/Teodros/Warin",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Ages 26 years",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Known to local Police",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "M/Ethiopian, 5ft 10, medium build",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Wearing grey wraparound jacket",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message:
+        "Police officers have previously turned up to infmt’s address to speak to them about this male",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Known in area to ask for money",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Confirm still at infmt’s address",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Adv will get unit to attend as soon as possible",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "NIA confirms male trespassed from property on 14 August",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message:
+        "Person Id: 975693945 Master PRN 5783665 (Real) WORETA/Teodros/Warin (Home address) 67 Dominion Road, Mount Roskill, Auckland (Cell) 021 8990373",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Infmt on line",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Male still there now",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Male getting agitated",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Walking up and down",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Upgraded as trespassed male is still present",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Male is still there, infmt has obs",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Adv to call back if escalates",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Infmt back online",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Infmt stating male is still walking around on pathway",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Adv Police will attend when able",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Infmt back online",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message:
+        "Infmt stating male currently posing risk of harm to self or others",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Adv to call back if situation escalates",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Hears male voice arguing",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Infmt still requesting Police",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Upgraded to P1 as male still present and becoming agitated",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message:
+        "Male currently outside still talking to infmt’s friend who has come over",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "CT notes mental health alerts",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Adv Police will be there as soon as possible",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "Finding a unit",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message: "AVI11 advised no issues",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    }
+  ],
+  [],
+  [
+    {
+      sender: "Comms",
+      message: "Nil alcohol or drugs",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message: "3 adults one child",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message: "Nil access to vehicle",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message:
+        "Infmt has served him with a trespass and will now drop him off at his parents – UK address",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message: "Infmt will RTS with the trespass notice and do 5F report",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message:
+        "Ongoing issues with male forcing himself into her house to see the child",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message: "Has been verbally abusive in past",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message: "Infmt doesn’t require attendance now",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message: "Advised to call back on 111 if anything escalates or changes",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message: "Infmt will RTS",
+      uri: false,
+      pinned: false
+    }
+  ],
+  [
+    {
+      sender: "Comms",
+      message: "Location = 146 Trafalgar Street, Onehunga, Auckland",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message:
+        "AMBO update: Caller name = Melanie, Caller phone = 021 1135 8760",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message:
+        "Reg no. HHK712, make/model: Toyota Ractis hatchback, colour silver, year 2005, current owner PETERSON/Ben DW889982, male, 05/10/1987, 450 Great South Road, Greenlane, Auckland, licence expiry 01/03/2020, WOD due 04/05/20, VIN 564237534543",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message: "11:07hrs CHX organising tow",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message: "A1 Onehunga Towing Ltd – refused",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message: "Crystal Panelbeaters Ltd – accept",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message: "Supercity towing ETA 20-30 mins",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message: "Unit adv",
+      uri: false,
+      pinned: false
+    },
+    {
+      sender: "Comms",
+      message:
+        "Tow company advised that vehicle is blocking the road currently – will attend as soon as possible within 20-30 mins at most",
+      uri: false,
+      pinned: false
+    }
+  ]
+];
 
 async function sendSingleNotification(message) {
   await sleep(2000);

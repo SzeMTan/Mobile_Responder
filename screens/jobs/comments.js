@@ -23,14 +23,20 @@ export default class CommentTestScreen extends React.Component {
   }
 
   componentWillMount() {
-    this.state.messages = GLOBAL.messages[this.props.index];
-    this.state.mounted = true;
+    if (this.props.index < 5) {
+      this.state.messages = GLOBAL.messages[this.props.index];
+      this.state.mounted = true;
+    } else {
+      this.state.messages = [];
+    }
   }
 
   componentDidMount() {
-    if (!GLOBAL.mounted) {
-      askPermissions(this.updateMessages.bind(this), this.props.index);
-      GLOBAL.mounted = true;
+    if (this.props.index < 5) {
+      if (!GLOBAL.mounted[this.props.index]) {
+        askPermissions(this.updateMessages.bind(this), this.props.index);
+        GLOBAL.mounted[this.props.index] = true;
+      }
     }
   }
 
@@ -39,7 +45,6 @@ export default class CommentTestScreen extends React.Component {
   }
 
   updateMessages(message) {
-    console.log(this.props.index)
     GLOBAL.messages[this.props.index].push(message);
     if (this.state.mounted) {
       this.state.messages = GLOBAL.messages[this.props.index];
@@ -48,7 +53,7 @@ export default class CommentTestScreen extends React.Component {
   }
 
   pinnedButtonPressed = index => {
-    this.state.messages[index].pinned = !this.state.messages[this.props.index].pinned;
+    this.state.messages[index].pinned = !this.state.messages[index].pinned;
     GLOBAL.messages[this.props.index] = this.state.messages;
     this.forceUpdate();
   };
@@ -85,8 +90,8 @@ export default class CommentTestScreen extends React.Component {
         date: formattedDate
       });
       this.state.newuri = this.props.uri;
+      GLOBAL.messages[this.props.index] = this.state.messages;
     }
-
     if (
       this.props.message != "" &&
       this.state.newmessage != this.props.message
@@ -100,6 +105,7 @@ export default class CommentTestScreen extends React.Component {
         date: formattedDate
       });
       this.state.newmessage = this.props.message;
+      GLOBAL.messages[this.props.index] = this.state.messages;
     }
 
     const pinnedComments = this.state.messages.map((message, index) => {

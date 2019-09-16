@@ -279,15 +279,17 @@ module.exports = {
         sender: "Comms",
         message: "Car v parked car – dominoes car – driver angry",
         uri: false,
-        pinned: false
+        pinned: false,
+        date: getFormattedDate("")
       },
       {
         sender: "Comms",
         message: "Ambo event created 0302-1-2019/09/14-POL",
         uri: false,
-        pinned: false
+        pinned: false,
+        date: getFormattedDate("")
       }
     ]
   ],
-  mounted: false
+  mounted: [false, false, false, false, false]
 };

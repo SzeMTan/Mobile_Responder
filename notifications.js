@@ -146,7 +146,6 @@ const messages = [
     }
   ],
   [
-    ,
     {
       sender: "Comms",
       message: "Infmt elderly and hard of hearing",
@@ -523,7 +522,7 @@ async function startSendingNotification(f, index) {
     Notifications.cancelAllScheduledNotificationsAsync();
   }
 
-  for (let i = 0; i < messages.length; i++) {
+  for (let i = 0; i < messages[index].length; i++) {
     await sendSingleNotification(
       messages[index][i].sender + ": " + messages[0][i].message
     );

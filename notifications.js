@@ -447,69 +447,11 @@ const messages = [
       pinned: false
     }
   ],
-  [
-    {
-      sender: "Comms",
-      message: "Location = 146 Trafalgar Street, Onehunga, Auckland",
-      uri: false,
-      pinned: false
-    },
-    {
-      sender: "Comms",
-      message:
-        "AMBO update: Caller name = Melanie, Caller phone = 021 1135 8760",
-      uri: false,
-      pinned: false
-    },
-    {
-      sender: "Comms",
-      message:
-        "Reg no. HHK712, make/model: Toyota Ractis hatchback, colour silver, year 2005, current owner PETERSON/Ben DW889982, male, 05/10/1987, 450 Great South Road, Greenlane, Auckland, licence expiry 01/03/2020, WOD due 04/05/20, VIN 564237534543",
-      uri: false,
-      pinned: false
-    },
-    {
-      sender: "Comms",
-      message: "11:07hrs CHX organising tow",
-      uri: false,
-      pinned: false
-    },
-    {
-      sender: "Comms",
-      message: "A1 Onehunga Towing Ltd – refused",
-      uri: false,
-      pinned: false
-    },
-    {
-      sender: "Comms",
-      message: "Crystal Panelbeaters Ltd – accept",
-      uri: false,
-      pinned: false
-    },
-    {
-      sender: "Comms",
-      message: "Supercity towing ETA 20-30 mins",
-      uri: false,
-      pinned: false
-    },
-    {
-      sender: "Comms",
-      message: "Unit adv",
-      uri: false,
-      pinned: false
-    },
-    {
-      sender: "Comms",
-      message:
-        "Tow company advised that vehicle is blocking the road currently – will attend as soon as possible within 20-30 mins at most",
-      uri: false,
-      pinned: false
-    }
-  ]
+  []
 ];
 
 async function sendSingleNotification(message) {
-  await sleep(2000);
+  await sleep(Math.random()*1000*Math.random()*100);
   let notificationId = await Notifications.presentLocalNotificationAsync({
     title: "New messages",
     body: message
@@ -524,7 +466,7 @@ async function startSendingNotification(f, index) {
 
   for (let i = 0; i < messages[index].length; i++) {
     await sendSingleNotification(
-      messages[index][i].sender + ": " + messages[0][i].message
+      messages[index][i].sender + ": " + messages[index][i].message
     );
     formattedDate = getFormattedDate("");
     messages[index][i].date = formattedDate;

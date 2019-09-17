@@ -8,7 +8,7 @@ module.exports = {
       priority: "P1",
       code: "3530 - Disorder",
       destination: "Amy Street, Ellerslie, Auckland",
-      date: getFormattedDate("02:35"),
+      date: getFormattedDate(""),
       status: "PENDING",
       latlng: { latitude: -36.848671, longitude: 174.770107 },
       assigned: false,
@@ -16,6 +16,11 @@ module.exports = {
       jobCloseCode: "",
       headline: "2 UK males physically fighting on street – UK WPNS",
       cross: { x1: "Pukerangi Cr", x2: "Elwood Pl" },
+      times: {
+        dispatched: "",
+        firstArrival: "",
+        closed: ""
+      },
       caller: {
         source: "Phone",
         name: "BROWN/Vicky",
@@ -29,18 +34,23 @@ module.exports = {
       code: "6110 - Trespass",
       destination: "25 London Road, Mount Eden, Auckland",
       date: getFormattedDate("03:03"),
-      status: "CLOSED",
+      status: "ASSIGNED",
       latlng: { latitude: -36.853943, longitude: 174.768265 },
       assigned: true,
       teamAssigned: "PBY",
       headline:
         "Known homeless male sitting on doorstep – asking for money – weap UK",
-      jobCloseCode: "K2",
+      jobCloseCode: "",
       caller: {
         source: "ANI/ALI",
         name: "LOMAX/Isaac",
         address: "25 London Road, Mount Eden",
         number: "09 585 2678"
+      },
+      times: {
+        dispatched: getFormattedDate("03:34"),
+        firstArrival: getFormattedDate("04:01"),
+        closed: ""
       },
       cross: { x1: "Dominion Rd", x2: "Eldon Rd" }
     },
@@ -50,17 +60,22 @@ module.exports = {
       code: "1S - Sudden Death",
       destination: "46 Mountain Road, Otara, Auckland",
       date: getFormattedDate("08:25"),
-      status: "ASSIGNED",
+      status: "CLOSED",
       latlng: { latitude: -36.852638, longitude: 174.768265 },
       assigned: true,
       headline: "Infmt has found his daughter",
       teamAssigned: "PBY",
-      jobCloseCode: "",
+      jobCloseCode: "K3",
       caller: {
         source: "ANI/ALI",
         name: "CRIGHTON/Joan",
         address: "46 Mountain Road, Otara, Auckland",
         number: "09 377 8076"
+      },
+      times: {
+        dispatched: getFormattedDate("09:01"),
+        firstArrival: getFormattedDate("09:13"),
+        closed: getFormattedDate("10:30")
       },
       cross: { x1: "Waterview Cr", x2: "Robert St" }
     },
@@ -70,17 +85,22 @@ module.exports = {
       code: "5F Family Harm",
       destination: "14 Princes Street, Onehunga, Auckland",
       date: getFormattedDate("10:24"),
-      status: "CLOSED",
+      status: "ASSIGNED",
       latlng: { latitude: -36.855786, longitude: 174.759803 },
       assigned: true,
       headline: "Ex was refusing to leave nil weapons",
       teamAssigned: "ACY3",
-      jobCloseCode: "K3",
+      jobCloseCode: "",
       caller: {
         source: "ANI/ALI",
         name: "THU/Eli",
         address: "14 Princes Street, Onehunga, Auckland",
         number: "022 87776 556"
+      },
+      times: {
+        dispatched: getFormattedDate("11:01"),
+        firstArrival: "",
+        closed: ""
       },
       cross: { x1: "Hill St", x2: "Gloucester Park Rd" }
     },
@@ -89,7 +109,7 @@ module.exports = {
       priority: "P2",
       code: "1V - Vehicle collision",
       destination: "146 Trafalgar Street, Onehunga, Auckland",
-      date: getFormattedDate("11:40"),
+      date: getFormattedDate("02:35"),
       status: "CLOSED",
       headline: "Orange 2 – Traffic/Transportation Incident",
       latlng: { latitude: -36.861438, longitude: 174.758121 },
@@ -101,6 +121,11 @@ module.exports = {
         name: "N/A",
         address: "N/A",
         number: "021 1135 8760"
+      },
+      times: {
+        dispatched: getFormattedDate("02:40"),
+        firstArrival: getFormattedDate("02:40"),
+        closed: getFormattedDate("02:45")
       },
       cross: { x1: "Selwyn St", x2: "Onehunga Mall" }
     }
@@ -198,14 +223,14 @@ module.exports = {
         message: "TD Nil",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("03:03")
       },
       {
         sender: "Comms",
         message: "Currently at doorstep",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("03:05")
       }
     ],
     [
@@ -214,42 +239,42 @@ module.exports = {
         message: "TD Nil",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("08:25")
       },
       {
         sender: "Comms",
         message: "Infmt’s husband has said daughter is “completely rigid”",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("08:30")
       },
       {
         sender: "Comms",
         message: "Daughter is CRIGHTON/Debbie – 23 years",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("09:09")
       },
       {
         sender: "Comms",
         message: "Infmt has her husband and 8 yr old daughter with her",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("09:10")
       },
       {
         sender: "Comms",
         message: "Event copied to ambulance via intercad",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("09:40")
       },
       {
         sender: "Comms",
         message: "Ambo event 8788-1-2019/09/14-POL linked",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("10:19")
       },
       {
         sender: "Comms",
@@ -257,7 +282,7 @@ module.exports = {
           "Ambo update: Problem changed to: Purple – cardiac arrest/respiratory arrest/death",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("10:19")
       },
       {
         sender: "Comms",
@@ -265,7 +290,7 @@ module.exports = {
           "Caller name = CRIGHTON/Joan, caller address = 46 Mountain Road, Otara, caller phone = 09 377 8076",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("10:20")
       },
       {
         sender: "Comms",
@@ -273,14 +298,14 @@ module.exports = {
           "Ambo update: Problem changed to Red – cardiac arrest/respiratory arrest/death",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("10:25")
       },
       {
         sender: "Comms",
         message: "AMB2POL: PT deceased",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("10:30")
       }
     ],
     [
@@ -289,12 +314,12 @@ module.exports = {
         message: "TD Nil",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("11:05")
       },
       {
         sender: "Comms",
         message: "Still there at 14 Princes Street",
-        date: getFormattedDate(""),
+        date: getFormattedDate("11:20"),
         uri: false,
         pinned: false
       },
@@ -303,7 +328,7 @@ module.exports = {
         message: "Ex partner is THU/Tatai DOB 06051993",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("11:21")
       }
     ],
     [
@@ -312,14 +337,80 @@ module.exports = {
         message: "Car v parked car – dominoes car – driver angry",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("02:35")
       },
       {
         sender: "Comms",
         message: "Ambo event created 0302-1-2019/09/14-POL",
         uri: false,
         pinned: false,
-        date: getFormattedDate("")
+        date: getFormattedDate("02:35")
+      },
+      {
+        sender: "Comms",
+        message: "Location = 146 Trafalgar Street, Onehunga, Auckland",
+        uri: false,
+        pinned: false,
+        date: getFormattedDate("02:35")
+      },
+      {
+        sender: "Comms",
+        message:
+          "AMBO update: Caller name = Melanie, Caller phone = 021 1135 8760",
+        uri: false,
+        pinned: false,
+        date: getFormattedDate("02:36")
+      },
+      {
+        sender: "Comms",
+        message:
+          "Reg no. HHK712, make/model: Toyota Ractis hatchback, colour silver, year 2005, current owner PETERSON/Ben DW889982, male, 05/10/1987, 450 Great South Road, Greenlane, Auckland, licence expiry 01/03/2020, WOD due 04/05/20, VIN 564237534543",
+        uri: false,
+        pinned: false,
+        date: getFormattedDate("02:37")
+      },
+      {
+        sender: "Comms",
+        message: "11:07hrs CHX organising tow",
+        uri: false,
+        pinned: false,
+        date: getFormattedDate("02:37")
+      },
+      {
+        sender: "Comms",
+        message: "A1 Onehunga Towing Ltd – refused",
+        uri: false,
+        pinned: false,
+        date: getFormattedDate("02:39")
+      },
+      {
+        sender: "Comms",
+        message: "Crystal Panelbeaters Ltd – accept",
+        uri: false,
+        pinned: false,
+        date: getFormattedDate("02:40")
+      },
+      {
+        sender: "Comms",
+        message: "Supercity towing ETA 20-30 mins",
+        uri: false,
+        pinned: false,
+        date: getFormattedDate("02:42")
+      },
+      {
+        sender: "Comms",
+        message: "Unit adv",
+        uri: false,
+        pinned: false,
+        date: getFormattedDate("02:43")
+      },
+      {
+        sender: "Comms",
+        message:
+          "Tow company advised that vehicle is blocking the road currently – will attend as soon as possible within 20-30 mins at most",
+        uri: false,
+        pinned: false,
+        date: getFormattedDate("02:45")
       }
     ]
   ],

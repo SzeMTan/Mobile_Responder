@@ -144,7 +144,9 @@ export default class IndividualJob extends Component {
         ? "-" + this.state.jobCloseCode
         : "";
     const jobStatusText = this.state.jobStatus + jobStatusTextEnd;
-    const { caller, headline, cross } = GLOBAL.jobs[this.state.arrayIndex];
+    const { caller, headline, cross, times } = GLOBAL.jobs[
+      this.state.arrayIndex
+    ];
     if (index === 0) {
       return (
         <View style={[styles.containerView, styles.jobEndContainer]}>
@@ -187,7 +189,11 @@ export default class IndividualJob extends Component {
             </TouchableOpacity>
             <CardComponent
               title="TIMES"
-              titlecontent={["Dispatched: ", "First Arrival: ", "Closed: "]}
+              titlecontent={[
+                "Dispatched: " + times.dispatched,
+                "First Arrival: " + times.firstArrival,
+                "Closed: " + times.closed
+              ]}
             />
             <CardComponent title="HEADLINE" titlecontent={[headline]} />
             <CardComponent

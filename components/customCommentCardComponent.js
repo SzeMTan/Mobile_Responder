@@ -16,7 +16,7 @@ export default class ReorderCardComponent extends Component {
   renderTouchableMessage = (msg) => {
     if (msg.includes('PRN')) {
       return <TouchableOpacity onPress={this.props.onDuty}>
-              <Text style={styles.commentCardFontSize}>
+              <Text style={[styles.commentCardFontSize, {color: '#0076FF'}]}>
                 {this.props.message}
               </Text>
             </TouchableOpacity>

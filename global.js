@@ -414,5 +414,27 @@ module.exports = {
       }
     ]
   ],
-  mounted: [false, false, false, false, false]
+  mounted: [false, false, false, false, false],
+  onDuty: [
+    {
+      prn: "1234567",
+      name: "SMITH, John",
+      licence: "DJ817761",
+      age: '26',
+      address: '501 North Highland Avenue',
+      dob: '27/04/1993',
+      phone:'0211234560'
+    },
+    {
+      prn: "5783665",
+      name: "WICK, John",
+      licence: "DP654321",
+      age: '32',
+      address: '67 Dominion Road, Mount Roskill',
+      dob: '01/08/1987',
+      phone: '021 8990373'
+
+    },
+
+  ]
 };

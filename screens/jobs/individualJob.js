@@ -133,7 +133,7 @@ export default class IndividualJob extends Component {
   }
 
   commentPressed = () => {
-    this.props.navigation.navigate("OnDuty");
+    this.props.navigation.navigate('OnDuty', {msg: this.state.message});
   };
 
   renderTabContent = index => {

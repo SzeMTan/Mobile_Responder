@@ -21,6 +21,13 @@ export default class ReorderCardComponent extends Component {
               </Text>
             </TouchableOpacity>
     } 
+    else if (msg.includes('Reg no.')){
+      return <TouchableOpacity onPress={this.props.onDutyVehicle}>
+              <Text style={[styles.commentCardFontSize, {color: '#0076FF'}]}>
+                {this.props.message}
+              </Text>
+            </TouchableOpacity>
+    } 
     else {
         return <Text style={styles.commentCardFontSize}>
           {this.props.message}

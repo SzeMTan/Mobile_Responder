@@ -71,6 +71,7 @@ export default class CommentTestScreen extends React.Component {
         sender={message.sender}
         message={message.message}
         onDuty={this.props.commentPressed}
+        onDutyVehicle={this.props.commentPressedVehicle}
         uri={message.uri}
         date={message.date}
         pinned={message.pinned}

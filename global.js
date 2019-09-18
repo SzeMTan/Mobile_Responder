@@ -364,7 +364,15 @@ module.exports = {
       {
         sender: "Comms",
         message:
-          "Reg no. HHK712, make/model: Toyota Ractis hatchback, colour silver, year 2005, current owner PETERSON/Ben DW889982, male, 05/10/1987, 450 Great South Road, Greenlane, Auckland, licence expiry 01/03/2020, WOD due 04/05/20, VIN 564237534543",
+          "Reg no. HHK712",
+        uri: false,
+        pinned: false,
+        date: getFormattedDate("02:37")
+      },
+      {
+        sender: "Comms",
+        message:
+          "make/model: Toyota Ractis hatchback, colour silver, year 2005, current owner PETERSON/Ben DW889982, male, 05/10/1987, 450 Great South Road, Greenlane, Auckland, licence expiry 01/03/2020, WOD due 04/05/20, VIN 564237534543",
         uri: false,
         pinned: false,
         date: getFormattedDate("02:37")

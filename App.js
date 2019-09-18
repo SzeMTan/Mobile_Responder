@@ -28,7 +28,7 @@ import CameraTestScreen from './screens/jobs/cameraScreen';
 import NewFieldEvent from "./screens/jobs/newFieldEvent";
 import OnDutyScreen from './screens/jobs/onDutyScreen';
 import JobFilter from "./screens/jobs/jobFilter";
-
+import OnDutyVehicle from './screens/jobs/onDutyVehicle';
 import { YellowBox } from 'react-native';
 YellowBox.ignoreWarnings(['Warning: Failed prop type: Invalid prop `children` supplied to `Card`.']);
 
@@ -124,6 +124,9 @@ const HomeNavigator = createStackNavigator(
     OnDuty: {
       screen: OnDutyScreen,
     },
+    OnDutyVehicle: {
+      screen: OnDutyVehicle
+    }
   },
   {
     initialRouteName: 'Home',
@@ -147,6 +150,9 @@ const JobsNavigator = createStackNavigator(
     },
     OnDuty: {
       screen: OnDutyScreen,
+    },
+    OnDutyVehicle: {
+      screen: OnDutyVehicle,
     },
     JobFilter: {
       screen: JobFilter
@@ -179,7 +185,8 @@ JobsNavigator.navigationOptions = ({ navigation }) => {
       navigation.state.routes[i].routeName == "OnDutyScreen" ||
       navigation.state.routes[i].routeName == "NewFieldEvent" ||
       navigation.state.routes[i].routeName == "JobFilter" ||
-      navigation.state.routes[i].routeName == "Camera"
+      navigation.state.routes[i].routeName == "Camera" ||
+      navigation.state.routes[i].routeName == "OnDutyVehicle"
     ) {
       tabBarVisible = false;
     }

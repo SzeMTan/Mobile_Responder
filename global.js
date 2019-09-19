@@ -364,7 +364,15 @@ module.exports = {
       {
         sender: "Comms",
         message:
-          "Reg no. HHK712, make/model: Toyota Ractis hatchback, colour silver, year 2005, current owner PETERSON/Ben DW889982, male, 05/10/1987, 450 Great South Road, Greenlane, Auckland, licence expiry 01/03/2020, WOD due 04/05/20, VIN 564237534543",
+          "Reg no. HHK712",
+        uri: false,
+        pinned: false,
+        date: getFormattedDate("02:37")
+      },
+      {
+        sender: "Comms",
+        message:
+          "make/model: Toyota Ractis hatchback, colour silver, year 2005, current owner PETERSON/Ben DW889982, male, 05/10/1987, 450 Great South Road, Greenlane, Auckland, licence expiry 01/03/2020, WOD due 04/05/20, VIN 564237534543",
         uri: false,
         pinned: false,
         date: getFormattedDate("02:37")
@@ -414,5 +422,27 @@ module.exports = {
       }
     ]
   ],
-  mounted: [false, false, false, false, false]
+  mounted: [false, false, false, false, false],
+  onDuty: [
+    {
+      prn: "1234567",
+      name: "SMITH, John",
+      licence: "DJ817761",
+      age: '26',
+      address: '501 North Highland Avenue',
+      dob: '27/04/1993',
+      phone:'0211234560'
+    },
+    {
+      prn: "5783665",
+      name: "WICK, John",
+      licence: "DP654321",
+      age: '32',
+      address: '67 Dominion Road, Mount Roskill',
+      dob: '01/08/1987',
+      phone: '021 8990373'
+
+    },
+
+  ]
 };

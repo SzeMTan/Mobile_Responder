@@ -131,7 +131,7 @@ const messages = [
     },
     {
       sender: "Comms",
-      message: "PRN 123456",
+      message: "PRN 1234567",
       uri: false,
       pinned: false,
       date: getFormattedDate("")
@@ -227,7 +227,15 @@ const messages = [
     {
       sender: "Comms",
       message:
-        "Person Id: 975693945 Master PRN 5783665 (Real) WORETA/Teodros/Warin (Home address) 67 Dominion Road, Mount Roskill, Auckland (Cell) 021 8990373",
+        "PRN 5783665",
+      uri: false,
+      pinned: false,
+      date: getFormattedDate("")
+    },
+    {
+      sender: "Comms",
+      message:
+        "Person Id: 975693945 Master (Real) WORETA/Teodros/Warin (Home address) 67 Dominion Road, Mount Roskill, Auckland (Cell) 021 8990373",
       uri: false,
       pinned: false,
       date: getFormattedDate("")

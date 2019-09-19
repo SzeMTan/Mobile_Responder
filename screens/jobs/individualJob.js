@@ -133,9 +133,12 @@ export default class IndividualJob extends Component {
   }
 
   commentPressed = () => {
-    this.props.navigation.navigate("OnDuty");
+    this.props.navigation.navigate('OnDuty', {msg: this.state.message});
   };
 
+  commentPressedVehicle = () => {
+    this.props.navigation.navigate('OnDutyVehicle');
+  };
   renderTabContent = index => {
     const jobStatusTextEnd =
       this.state.jobStatus == "ASSIGNED"
@@ -297,6 +300,7 @@ export default class IndividualJob extends Component {
               uri={this.state.uri}
               message={this.state.message}
               commentPressed={() => this.commentPressed()}
+              commentPressedVehicle={() => this.commentPressedVehicle()}
             />
           </ScrollView>
           <MessageInputComponent

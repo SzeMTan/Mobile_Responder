@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions, Linking, Platform, TouchableOpacity } from 'react-native';
+import { View, Text, Dimensions, Linking, Platform, TouchableOpacity, ScrollView } from 'react-native';
 import { Button } from 'react-native-elements'
 import GLOBAL from '../../global'
 import getStyleSheet from '../../styles/style'
@@ -9,6 +9,7 @@ class OnDutyScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      onDutyUser: GLOBAL.onDuty[0]
     };
   }
 
@@ -18,6 +19,13 @@ class OnDutyScreen extends Component {
       styles = getStyleSheet(GLOBAL.darkState);
       this.forceUpdate()
     });
+    const msg = this.props.navigation.getParam("msg")
+    if (msg.includes('1234567')){
+      this.setState({onDutyUser: GLOBAL.onDuty[0]})
+    }
+    else {
+      this.setState({onDutyUser: GLOBAL.onDuty[1]})
+    }
   }
 
   componentWillUnmount() {
@@ -37,8 +45,8 @@ class OnDutyScreen extends Component {
   };
 
   pressCall=()=>{
-    const iosPhone='tel://+0211234560'
-    const androidPhone= 'tel:+0211234560'
+    const iosPhone=`tel://+${this.state.onDutyUser.phone}`
+    const androidPhone= `tel:+${this.state.onDutyUser.phone}`
     const url = Platform.OS === 'ios' ? iosPhone : androidPhone
     Linking.openURL(url)
   }
@@ -46,7 +54,7 @@ class OnDutyScreen extends Component {
   render() {
     let {height, width} = Dimensions.get('window');
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-around'}}>
             <Button buttonStyle={{width:width/2 - 10, margin: 5, backgroundColor: '#0076FF'}}
                 onPress={() => this.props.navigation.navigate('Login')}
@@ -59,26 +67,26 @@ class OnDutyScreen extends Component {
                 
             </View>
             <View>
-                <Text style={{fontSize:30}}> PRN: 748903278</Text> 
-                <Text style={{fontSize: 30}}> WICK, John</Text>
+                <Text style={{fontSize:30}}> PRN: {this.state.onDutyUser.prn}</Text> 
+                <Text style={{fontSize: 30}}> {this.state.onDutyUser.name}</Text>
             </View>
             <View style={{flexDirection: 'row'}}>
                 <SimpleLineIcons name='user' size={75} style={{margin: 10}}></SimpleLineIcons>
                 <View>
-                <Text style={{fontSize: 17}}>501 North Highland Avenue</Text>
+                <Text style={{fontSize: 17}}>{this.state.onDutyUser.address}</Text>
                 <Text style={{fontSize: 17}}>0614 (Bail Address)</Text>
-                <Text style={{fontSize: 17}}>31/10/1969 (49)</Text>
-                <Text style={{fontSize: 17}}>DP654321</Text>
+                <Text style={{fontSize: 17}}>{this.state.onDutyUser.dob} ({this.state.onDutyUser.age})</Text>
+                <Text style={{fontSize: 17}}>{this.state.onDutyUser.licence}</Text>
                 </View>
             </View>
             <View style={{padding: 5}}>
                 <Text style={{fontWeight: 'bold', fontSize: 22, paddingLeft: 10, borderTopWidth: 2, paddingTop: 5, backgroundColor: '#D3D3D3'}}>Description and Information</Text>
                 <Text style={{fontSize: 17}}>Phone</Text>
                 <TouchableOpacity onPress={this.pressCall}>
-                <Text style={{color: 'grey', fontSize: 17, borderBottomWidth: 1}}>0211234560 {"\n"}{"\n"}</Text>
+                <Text style={{color: 'grey', fontSize: 17, borderBottomWidth: 1}}>{this.state.onDutyUser.phone} {"\n"}{"\n"}</Text>
                 </TouchableOpacity>
                 <Text style={{fontSize: 17}}>Drivers Licence</Text>
-                <Text style={{color: 'grey', fontSize: 17}}>DP654321 Current, Exp: 12/02/2024 {"\n"}{"\n"}</Text>
+                <Text style={{color: 'grey', fontSize: 17}}>{this.state.onDutyUser.licence} Current, Exp: 12/02/2024 {"\n"}{"\n"}</Text>
                 <Text style={{color: 'grey', fontSize: 17}}>Class 2/F Medium Rigid Vehicles,
                     Full (Requalify), ISS: 17/06/2010 {"\n"}
                     Exp: 12/02/2024 {"\n"}
@@ -88,7 +96,7 @@ class OnDutyScreen extends Component {
                     Exp: 12/02/2024
                 </Text>
             </View>
-        </View>
+        </ScrollView>
         );
     }
 }

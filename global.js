@@ -85,11 +85,11 @@ module.exports = {
       code: "5F Family Harm",
       destination: "14 Princes Street, Onehunga, Auckland",
       date: getFormattedDate("10:24"),
-      status: "ASSIGNED",
+      status: "PENDING",
       latlng: { latitude: -36.855786, longitude: 174.759803 },
-      assigned: true,
+      assigned: false,
       headline: "Ex was refusing to leave nil weapons",
-      teamAssigned: "ACY3",
+      teamAssigned: "",
       jobCloseCode: "",
       caller: {
         source: "ANI/ALI",
@@ -98,7 +98,7 @@ module.exports = {
         number: "022 87776 556"
       },
       times: {
-        dispatched: getFormattedDate("11:01"),
+        dispatched: "",
         firstArrival: "",
         closed: ""
       },
@@ -110,7 +110,7 @@ module.exports = {
       code: "1V - Vehicle collision",
       destination: "146 Trafalgar Street, Onehunga, Auckland",
       date: getFormattedDate("02:35"),
-      status: "CLOSED",
+      status: "ASSIGNED",
       headline: "Orange 2 – Traffic/Transportation Incident",
       latlng: { latitude: -36.861438, longitude: 174.758121 },
       assigned: true,
@@ -125,7 +125,7 @@ module.exports = {
       times: {
         dispatched: getFormattedDate("02:40"),
         firstArrival: getFormattedDate("02:40"),
-        closed: getFormattedDate("02:45")
+        closed: ""
       },
       cross: { x1: "Selwyn St", x2: "Onehunga Mall" }
     }

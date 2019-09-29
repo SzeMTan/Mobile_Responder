@@ -459,7 +459,7 @@ const messages = [
 ];
 
 async function sendSingleNotification(message) {
-  await sleep(Math.random()*1000*Math.random()*100);
+  await sleep(2000);
   let notificationId = await Notifications.presentLocalNotificationAsync({
     title: "New messages",
     body: message

@@ -16,10 +16,14 @@ export default class CameraScreen extends React.Component {
     showGallery: false
   };
 
-  async componentWillMount() {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
-    this.setState({ permissionsGranted: status === "granted" });
+  componentWillMount() {
+    this.getPermissionAsync();
   }
+
+  getPermissionAsync = async () => {
+    let { status } = await Permissions.askAsync(Permissions.CAMERA);
+    this.setState({ permissionsGranted: status === "granted" });
+  };
 
   componentDidMount() {
     FileSystem.makeDirectoryAsync(

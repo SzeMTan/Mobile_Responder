@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { View, Text, Image } from 'react-native';
 import HeaderComponent from '../../components/customHeaderComponent';
-import { MapView, Location, Permissions } from 'expo';
-import GLOBAL from '../../global'
+import { Location, Permissions } from 'expo';
+import  MapView  from 'react-native-maps';
+import GLOBAL from '../../global';
 import getStyleSheet from '../../styles/style'
 
 export default class App extends Component {
